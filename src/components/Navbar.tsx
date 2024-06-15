@@ -4,13 +4,14 @@ import {
   ChevronUp,
   Home,
   Menu,
-  Moon,
   Search,
   ShoppingCart,
   User,
   X,
 } from "lucide-react";
 import React, { useState } from "react";
+
+import Theme from "./Theme";
 
 export default function Navbar() {
   const [open, setOpen] = useState<boolean>(false);
@@ -28,26 +29,26 @@ export default function Navbar() {
 
   const mobileNav: React.ReactNode = (
     <>
-      <div className="absolute p-4 z-20 h-screen left-0 right-0 block w-full transition lg:hidden bg-white">
-        <ul className="p-12 text-xl text-center items-center text-[#333D4C] border border-[#E0E5EB]">
+      <div className="absolute dark:bg-dark dark:text-light p-4 z-20 h-screen left-0 right-0 block w-full transition lg:hidden bg-white">
+        <ul className="p-12 text-xl text-center dark:text-light items-center text-[#333D4C] border border-[#E0E5EB]">
           <li className="py-4 my-4 border-b border-[#E0E5EB]">
             <div className="flex gap-1 items-center justify-center pr-5">
-              <Home className="h-5 w-5" />
+              <Home className="h-5 w-5 dark:text-gray-400" />
               <button type="button">Home</button>
             </div>
           </li>
           <li className="py-4 my-4 border-b border-[#E0E5EB]">
             <div className="flex gap-1 items-center justify-center pr-5">
-              <User className="h-5 w-5" />
+              <User className="h-5 w-5 dark:text-gray-400" />
               <button type="button">Profile</button>
             </div>
           </li>
           <li className="py-4 my-4 border-b border-[#E0E5EB]">
             <div className="flex gap-1 items-center justify-center pr-5">
               {openCategories ? (
-                <ChevronUp className="h-5 w-5" />
+                <ChevronUp className="h-5 w-5 dark:text-gray-400" />
               ) : (
-                <ChevronDown className="h-5 w-5" />
+                <ChevronDown className="h-5 w-5 dark:text-gray-400" />
               )}
               <button onClick={handleClickCategories} type="button">
                 Categories
@@ -55,21 +56,21 @@ export default function Navbar() {
             </div>
             <>
               {openCategories ? (
-                <div className="flex gap-1 items-center justify-center pt-4 md:pt-0">
-                  <ul className="p-4 md:p-12 text-lg text-center items-center text-[#333D4C] border-x border-[#E0E5EB]">
-                    <li className="py-4 my-4 border-b text-[#4f5e75] border-[#E0E5EB]">
+                <div className="flex  dark:text-light gap-1 items-center justify-center pt-4 md:pt-0">
+                  <ul className="p-4  md:p-12 text-lg text-center items-center text-[#333D4C] border-x border-[#E0E5EB]">
+                    <li className="py-4 my-4 border-b dark:text-light text-[#4f5e75] border-[#E0E5EB]">
                       Clothes
                     </li>
-                    <li className="py-4 my-4 border-b text-[#4f5e75] border-[#E0E5EB]">
+                    <li className="py-4 my-4 border-b dark:text-light text-[#4f5e75] border-[#E0E5EB]">
                       Shoes
                     </li>
-                    <li className="py-4 my-4 border-b text-[#4f5e75] border-[#E0E5EB]">
+                    <li className="py-4 my-4 border-b dark:text-light text-[#4f5e75] border-[#E0E5EB]">
                       Electronics
                     </li>
-                    <li className="py-4 my-4 border-b text-[#4f5e75] border-[#E0E5EB]">
+                    <li className="py-4 my-4 border-b dark:text-light text-[#4f5e75] border-[#E0E5EB]">
                       Furniture
                     </li>
-                    <li className="py-4 my-4 border-b text-[#4f5e75] border-[#E0E5EB]">
+                    <li className="py-4 my-4 border-b dark:text-light text-[#4f5e75] border-[#E0E5EB]">
                       Miscellaneous
                     </li>
                   </ul>
@@ -100,8 +101,8 @@ export default function Navbar() {
           </h1>
         </div>
         <div className="flex gap-4 text-[#E0E5EB] items-center">
-          <Moon className="h-5 w-5" strokeWidth={1} />
           <Search className="h-5 w-5" strokeWidth={1} />
+          <Theme />
           <div className="bg-[#333D4C] p-3 rounded-full">
             <ShoppingCart className="h-5 w-5" strokeWidth={1} />
           </div>

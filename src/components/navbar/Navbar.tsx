@@ -1,9 +1,10 @@
 "use client";
-import { Menu, Search, ShoppingCart, X } from "lucide-react";
+import { Menu, ShoppingCart, X } from "lucide-react";
 import React, { useState } from "react";
 
 import Theme from "../Theme";
 import DDMobileNav from "./DDMobileNav";
+import MobileSearch from "./MobileSearch";
 
 export default function Navbar() {
   const [openNav, setOpenNav] = useState<boolean>(false);
@@ -25,14 +26,13 @@ export default function Navbar() {
           </h1>
         </div>
         <div className="flex gap-4 text-[#E0E5EB] items-center">
-          <Search className="h-5 w-5" strokeWidth={1} />
+          <MobileSearch />
           <Theme />
           <div className="bg-[#333D4C] p-3 rounded-full">
             <ShoppingCart className="h-5 w-5" strokeWidth={1} />
           </div>
         </div>
       </div>
-
       {openNav && <DDMobileNav />}
     </nav>
   );

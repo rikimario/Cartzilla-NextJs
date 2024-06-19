@@ -26,14 +26,17 @@ export default function Theme() {
     setDarkMode(!darkMode);
   };
   return (
-    <>
-      <button onClick={handleDarkMode}>
+    <div>
+      <button
+        onClick={handleDarkMode}
+        className="hover:bg-[#333D4C] p-3 hover:rounded-full"
+      >
         {!darkMode ? (
           <Moon className="h-5 w-5" strokeWidth={1} />
         ) : (
           <Sun className="h-5 w-5" strokeWidth={1} />
         )}
       </button>
-    </>
+    </div>
   );
 }

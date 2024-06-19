@@ -16,7 +16,7 @@ export default function DDMobileNav({ handleClickNav }: DDMobileNavProps) {
   return (
     <>
       <div className="absolute dark:bg-[#181D25] dark:text-[white] p-4 z-20 h-screen left-0 right-0 block w-full transition lg:hidden bg-white">
-        <ul className="p-12 text-xl text-center dark:text-[white] items-center text-[#333D4C] border border-[#E0E5EB]">
+        <ul className="p-12 text-xl text-center dark:bg-[#181D25] dark:text-[white] items-center text-[#333D4C] border border-[#E0E5EB]">
           <li className="py-4 my-4 border-b border-[#E0E5EB]">
             <div className="flex gap-1 items-center justify-center pr-5">
               <Home className="h-5 w-5 dark:text-gray-400" />

@@ -58,10 +58,12 @@ export default function Navbar() {
         <div className="flex gap-4 text-[#E0E5EB] items-center">
           <MobileSearch />
           <Theme />
-          <User className="h-5 w-5 hidden lg:block" strokeWidth={1} />
-          <div className="bg-[#333D4C] p-3 rounded-full">
+          <button className="hidden lg:block hover:bg-[#333D4C] p-3 hover:rounded-full">
+            <User className="h-5 w-5 hidden lg:block" strokeWidth={1} />
+          </button>
+          <button className="bg-[#333D4C] p-3 rounded-full">
             <ShoppingCart className="h-5 w-5" strokeWidth={1} />
-          </div>
+          </button>
         </div>
       </div>
 

@@ -8,6 +8,15 @@ import Theme from "../Theme";
 import DDMobileNav from "./DDMobileNav";
 import MobileSearch from "./MobileSearch";
 import DesktopNav from "./DesktopNav";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "../ui/sheet";
 
 export default function Navbar() {
   const [openNav, setOpenNav] = useState<boolean>(false);
@@ -22,9 +31,19 @@ export default function Navbar() {
     <nav>
       <div className="h-20 px-4 md:px-12 lg:px-0 flex items-center justify-between lg:justify-around bg-[#222934]">
         <div className="flex gap-2 items-center">
-          <button onClick={handleClickNav} className="lg:hidden text-[#E0E5EB]">
-            {openNav ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+          <Sheet>
+            <SheetTrigger asChild>
+              <button className="lg:hidden text-[#E0E5EB]">
+                <Menu className="h-6 w-6" />
+              </button>
+            </SheetTrigger>
+            <SheetContent side="left" className="">
+              <SheetHeader>
+                <SheetTitle>Menu</SheetTitle>
+                <DDMobileNav handleClickNav={handleClickNav} />
+              </SheetHeader>
+            </SheetContent>
+          </Sheet>
           <Link href="/">
             <div className="flex gap-2 items-center">
               <div className="hidden lg:block">
@@ -69,7 +88,7 @@ export default function Navbar() {
 
       <DesktopNav />
 
-      {openNav && <DDMobileNav handleClickNav={handleClickNav} />}
+      {/* {openNav && <DDMobileNav handleClickNav={handleClickNav} />} */}
     </nav>
   );
 }

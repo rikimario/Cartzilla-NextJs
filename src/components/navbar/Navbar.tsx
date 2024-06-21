@@ -17,6 +17,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "../ui/sheet";
+import { ScrollArea } from "../ui/scroll-area";
 
 export default function Navbar() {
   const [openNav, setOpenNav] = useState<boolean>(false);
@@ -37,11 +38,16 @@ export default function Navbar() {
                 <Menu className="h-6 w-6" />
               </button>
             </SheetTrigger>
-            <SheetContent side="left" className="">
-              <SheetHeader>
-                <SheetTitle>Menu</SheetTitle>
-                <DDMobileNav handleClickNav={handleClickNav} />
-              </SheetHeader>
+            <SheetContent
+              side="left"
+              className="dark:bg-[#181D25] dark:text-[white]"
+            >
+              <ScrollArea className="h-screen">
+                <SheetHeader>
+                  <SheetTitle>Menu</SheetTitle>
+                  <DDMobileNav handleClickNav={handleClickNav} />
+                </SheetHeader>
+              </ScrollArea>
             </SheetContent>
           </Sheet>
           <Link href="/">

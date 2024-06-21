@@ -9,17 +9,23 @@ type DDMobileNavProps = {
 
 export default function DDMobileNav({ handleClickNav }: DDMobileNavProps) {
   const [openCategories, setOpenCategories] = useState<boolean>(false);
+  const [openSubCategories, setOpenSubCategories] = useState<boolean>(false);
 
   const handleClickCategories = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setOpenCategories(!openCategories);
   };
 
+  const handleSubClickCategories = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setOpenSubCategories(!openSubCategories);
+  };
+
   return (
-    <>
-      <ul className="text-center text-xl dark:bg-[#181D25] dark:text-[white] items-center text-[#333D4C] border-[#E0E5EB]">
+    <div className="dark:bg-[#181D25] dark:text-[white]">
+      <ul className=" text-xl dark:bg-[#181D25] dark:text-[white] text-[#333D4C] border-[#E0E5EB]">
         <li className="py-4 my-4 border-b border-[#E0E5EB]">
-          <div className="flex gap-1 items-center justify-center pr-5">
+          <div className="flex gap-1 items-center pr-5">
             <Home className="h-5 w-5 dark:text-gray-400" />
             <button onClick={handleClickNav} type="button">
               <Link href="/">Home</Link>
@@ -27,7 +33,7 @@ export default function DDMobileNav({ handleClickNav }: DDMobileNavProps) {
           </div>
         </li>
         <li className="py-4 my-4 border-b border-[#E0E5EB]">
-          <div className="flex gap-1 items-center justify-center pr-5">
+          <div className="flex gap-1 items-center pr-5">
             <User className="h-5 w-5 dark:text-gray-400" />
             <button onClick={handleClickNav} type="button">
               <Link href="/profile">Profile</Link>
@@ -35,7 +41,7 @@ export default function DDMobileNav({ handleClickNav }: DDMobileNavProps) {
           </div>
         </li>
         <li className="py-4 my-4 border-b border-[#E0E5EB]">
-          <div className="flex gap-1 items-center justify-center pr-5">
+          <div className="flex gap-1 items-center pr-5">
             {openCategories ? (
               <ChevronUp className="h-5 w-5 dark:text-gray-400" />
             ) : (
@@ -48,64 +54,75 @@ export default function DDMobileNav({ handleClickNav }: DDMobileNavProps) {
           <>
             {openCategories ? (
               <div className="flex dark:text-gray-300 gap-1 items-center justify-center pt-4 md:pt-0">
-                <ul className="p-4 gap-8 flex flex-col md:p-8 text-lg text-center items-center text-[#333D4C] border-x border-[#E0E5EB]">
-                  <button onClick={handleClickNav}>
-                    <Link
-                      href="/clothes"
-                      className="py-4 border-b dark:text-gray-300 text-[#4f5e75] border-[#E0E5EB]"
-                      type="button"
+                <ul className="gap-8 flex flex-col md:p-8 text-lg text-left items-center text-[#333D4C] border-[#E0E5EB]">
+                  <div className="flex flex-col p-2 gap-2">
+                    <button
+                      onClick={handleSubClickCategories}
+                      className=" border-b dark:text-gray-300 text-xl text-[#4f5e75] border-[#E0E5EB]"
                     >
-                      Clothes
-                    </Link>
-                  </button>
-                  <button onClick={handleClickNav}>
-                    <Link
-                      href="/shoes"
-                      className="py-4 border-b dark:text-gray-300 text-[#4f5e75] border-[#E0E5EB]"
+                      Men
+                    </button>
+                    <>
+                      {openSubCategories ? (
+                        <ul className="gap-4 flex flex-col md:p-8 text-lg p-2 text-end text-[#333D4C] border-[#E0E5EB]">
+                          <li className="">Shirts</li>
+                          <li className="">Shoes</li>
+                          <li className="">Watches</li>
+                        </ul>
+                      ) : null}
+                    </>
+                  </div>
+                  <div className="flex flex-col p-2 gap-2">
+                    <button
+                      onClick={handleSubClickCategories}
+                      className=" border-b dark:text-gray-300 text-xl text-[#4f5e75] border-[#E0E5EB]"
                     >
-                      Shoes
-                    </Link>
-                  </button>
-                  <button onClick={handleClickNav}>
-                    <Link
-                      href="/electronics"
-                      className="py-4 border-b dark:text-gray-300 text-[#4f5e75] border-[#E0E5EB]"
-                    >
-                      Electronics
-                    </Link>
-                  </button>
-                  <button onClick={handleClickNav}>
-                    <Link
-                      href="/furniture"
-                      className="py-4 border-b dark:text-gray-300 text-[#4f5e75] border-[#E0E5EB]"
-                    >
-                      Furniture
-                    </Link>
-                  </button>
-                  <button onClick={handleClickNav}>
-                    <Link
-                      href="/miscellaneous"
-                      className="py-4 border-b dark:text-gray-300 text-[#4f5e75] border-[#E0E5EB]"
-                    >
-                      Miscellaneous
-                    </Link>
-                  </button>
+                      Woman
+                    </button>
+                    <>
+                      {openSubCategories ? (
+                        <ul className="gap-4 flex flex-col md:p-8 text-lg p-2 text-end text-[#333D4C] border-[#E0E5EB]">
+                          <li className="">Tops</li>
+                          <li className="">Dresses</li>
+                          <li className="">Shoes</li>
+                          <li className="">Bags</li>
+                          <li className="">Watches</li>
+                          <li className="">Jewelry</li>
+                        </ul>
+                      ) : null}
+                    </>
+                  </div>
                 </ul>
               </div>
             ) : null}
           </>
         </li>
-        <li className="py-4 my-4 border-b border-[#E0E5EB]">
+        <li className="py-4 my-4 border-b text-start pl-5 border-[#E0E5EB]">
+          <button onClick={handleClickNav} type="button">
+            <Link href="/best-sellers">Best Sellers</Link>
+          </button>
+        </li>
+        <li className="py-4 my-4 border-b text-start pl-5 border-[#E0E5EB]">
+          <button onClick={handleClickNav} type="button">
+            <Link href="/todays-deals">Today's Deals</Link>
+          </button>
+        </li>
+        <li className="py-4 my-4 border-b text-start pl-5 border-[#E0E5EB]">
+          <button onClick={handleClickNav} type="button">
+            <Link href="/new-arrivals">New Arrivals</Link>
+          </button>
+        </li>
+        <li className="py-4 my-4 border-b text-start pl-5 border-[#E0E5EB]">
           <button onClick={handleClickNav} type="button">
             <Link href="/about">About</Link>
           </button>
         </li>
-        <li className="py-4 my-4 border-b border-[#E0E5EB]">
+        <li className="py-4 my-4 border-b text-start pl-5 border-[#E0E5EB]">
           <button onClick={handleClickNav} type="button">
             <Link href="/contact">Contact</Link>
           </button>
         </li>
       </ul>
-    </>
+    </div>
   );
 }

@@ -136,10 +136,10 @@ export default function DesktopNav() {
 
       <div className="flex text-[#E0E5EB] gap-6 p-2">
         <DropdownMenu>
-          <DropdownMenuTrigger className="text-[#E0E5EB] text-xs items-center flex gap-2">
+          <DropdownMenuTrigger className="text-[#E0E5EB] text-xs items-center flex">
             Eng{" "}
             <span>
-              <ChevronDown strokeWidth={1} />
+              <ChevronDown strokeWidth={1} size={16} />
             </span>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
@@ -149,10 +149,10 @@ export default function DesktopNav() {
         </DropdownMenu>
 
         <DropdownMenu>
-          <DropdownMenuTrigger className="text-[#E0E5EB] text-xs items-center flex gap-2">
+          <DropdownMenuTrigger className="text-[#E0E5EB] text-xs items-center flex">
             USD($){" "}
             <span>
-              <ChevronDown strokeWidth={1} />
+              <ChevronDown strokeWidth={1} size={16} />
             </span>
           </DropdownMenuTrigger>
           <DropdownMenuContent>

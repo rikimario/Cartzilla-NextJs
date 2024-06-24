@@ -1,8 +1,9 @@
 "use client";
-import { ChevronDown, ChevronUp, Home, User } from "lucide-react";
+import { ChevronDown, ChevronUp, Heart, Home, User } from "lucide-react";
 import { links } from "./MobileLinks";
 import Link from "next/link";
 import React, { useState } from "react";
+import { SheetClose } from "../ui/sheet";
 
 type DDMobileNavProps = {
   handleClickNav: (e: React.MouseEvent<HTMLButtonElement>) => void;
@@ -23,8 +24,10 @@ export default function DDMobileNav({ handleClickNav }: DDMobileNavProps) {
         <li className="py-4 my-4 border-b border-[#E0E5EB]">
           <div className="flex gap-1 items-center pr-5">
             <Home className="h-5 w-5 dark:text-gray-400" />
-            <button onClick={handleClickNav} type="button">
-              <Link href="/">Home</Link>
+            <button type="button">
+              <SheetClose asChild>
+                <Link href="/">Home</Link>
+              </SheetClose>
             </button>
           </div>
         </li>
@@ -33,6 +36,14 @@ export default function DDMobileNav({ handleClickNav }: DDMobileNavProps) {
             <User className="h-5 w-5 dark:text-gray-400" />
             <button onClick={handleClickNav} type="button">
               <Link href="/profile">Profile</Link>
+            </button>
+          </div>
+        </li>
+        <li className="py-4 my-4 border-b border-[#E0E5EB]">
+          <div className="flex gap-1 items-center pr-5">
+            <Heart className="h-5 w-5 dark:text-gray-400" />
+            <button onClick={handleClickNav} type="button">
+              <Link href="/wishlist">Wishlist</Link>
             </button>
           </div>
         </li>
@@ -72,7 +83,9 @@ export default function DDMobileNav({ handleClickNav }: DDMobileNavProps) {
                           >
                             {link.sublinks.map((link) => (
                               <li className="p-2 dark:text-gray-400">
-                                <Link href={link.link}>{link.name}</Link>
+                                <SheetClose asChild>
+                                  <Link href={link.link}>{link.name}</Link>
+                                </SheetClose>
                               </li>
                             ))}
                           </div>

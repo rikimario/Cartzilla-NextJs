@@ -1,5 +1,5 @@
 "use client";
-import { Menu, ShoppingCart, User, X } from "lucide-react";
+import { Heart, Menu, ShoppingCart, User } from "lucide-react";
 
 import Link from "next/link";
 import React, { useState } from "react";
@@ -10,9 +10,7 @@ import MobileSearch from "./MobileSearch";
 import DesktopNav from "./DesktopNav";
 import {
   Sheet,
-  SheetClose,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -21,7 +19,6 @@ import { ScrollArea } from "../ui/scroll-area";
 
 export default function Navbar() {
   const [openNav, setOpenNav] = useState<boolean>(false);
-  const [openCategories, setOpenCategories] = useState<boolean>(false);
 
   const handleClickNav = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -70,7 +67,7 @@ export default function Navbar() {
             placeholder="Search"
           />
           <div className="flex gap-2 items-center">
-            <div className="bg-[#333D4C] p-3 h-10 w-10 rounded-full flex items-center">
+            <div className="bg-[#333D4C] p-3 h-10 w-10 rounded-full flex items-center justify-center">
               <span className="text-[#F55266]">%</span>
             </div>
             <div>
@@ -81,20 +78,28 @@ export default function Navbar() {
         </div>
 
         <div className="flex gap-4 text-[#E0E5EB] items-center">
-          <MobileSearch />
+          <div className="z-50 flex">
+            <MobileSearch />
+          </div>
           <Theme />
+          <button className="hidden lg:block hover:bg-[#333D4C] p-3 hover:rounded-full">
+            <Heart className="h-5 w-5 hidden lg:block" strokeWidth={1} />
+          </button>
           <button className="hidden lg:block hover:bg-[#333D4C] p-3 hover:rounded-full">
             <User className="h-5 w-5 hidden lg:block" strokeWidth={1} />
           </button>
-          <button className="bg-[#333D4C] p-3 rounded-full">
-            <ShoppingCart className="h-5 w-5" strokeWidth={1} />
-          </button>
+          <div className="relative">
+            <button className="bg-[#333D4C] p-3 rounded-full">
+              <ShoppingCart className="h-5 w-5" strokeWidth={1} />
+            </button>
+            <div className="absolute bg-[#33B36B] text-sm top-0 right-[-12px] border-2 border-[#222934] rounded-full h-6 w-6 items-center justify-center flex">
+              3
+            </div>
+          </div>
         </div>
       </div>
 
       <DesktopNav />
-
-      {/* {openNav && <DDMobileNav handleClickNav={handleClickNav} />} */}
     </nav>
   );
 }

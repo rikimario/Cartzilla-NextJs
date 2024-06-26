@@ -11,7 +11,7 @@ export const heroImages = [
   },
   {
     p: "Virtual reality glasses",
-    title: "Experience new reality",
+    title: "Experience New Reality",
     img: "/vr-glasses.png",
   },
 ];

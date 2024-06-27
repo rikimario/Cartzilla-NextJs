@@ -2,7 +2,7 @@ import { CreditCard, MessageCircle, RefreshCcw, Truck } from "lucide-react";
 
 export default function Benefits() {
   return (
-    <div className="dark:bg-[#181D25] p-4 lg:px-[4rem] xl:px-[7.5rem] lg:py-8 grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-4 lg:gap-2 items-center justify-center text-center">
+    <div className="dark:bg-[#181D25] p-4 lg:px-[4rem] xl:px-[7.5rem] lg:py-8 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 lg:gap-2 items-center justify-center text-center">
       <div className="flex flex-col lg:flex-row gap-2 items-center lg:justify-center">
         <div className="bg-gray-100 p-6 rounded-full dark:bg-gray-800">
           <Truck className="h-6 w-6 dark:text-white" />

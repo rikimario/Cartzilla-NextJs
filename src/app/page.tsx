@@ -3,6 +3,7 @@
 import Benefits from "@/components/benefits/Benefits";
 import Hero from "@/components/hero/Hero";
 import NewArrivals from "@/components/new-arrivals/NewArrivals";
+import SpecialOffers from "@/components/special-offers/SpecialOffers";
 import TrendingProducts from "@/components/trending-products/TrendingProducts";
 import WeeklySaleBanner from "@/components/weekly-sale-banner/WeeklySaleBanner";
 
@@ -14,6 +15,7 @@ export default function Home() {
       <NewArrivals />
       <TrendingProducts />
       <WeeklySaleBanner />
+      <SpecialOffers />
     </>
   );
 }

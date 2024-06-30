@@ -20,7 +20,7 @@ export default function TrendingProducts() {
   return (
     <div className="p-4 dark:bg-[#181D25]">
       <div className="flex items-center justify-between border-b-[1px] border-gray-200">
-        <h1 className="text-xl lg:text-2xl lg:pl-[4rem] xl:pl-[6.5rem] text-gray-900 dark:text-white font-semibold pb-6">
+        <h1 className="text-xl lg:text-2xl lg:pl-[4rem] xl:pl-[7.7rem] text-gray-900 dark:text-white font-semibold pb-6">
           Trending Products
         </h1>
         <span className="flex items-center pb-6 lg:pr-[4rem] xl:pr-[6.5rem]">
@@ -37,7 +37,7 @@ export default function TrendingProducts() {
             id: number;
           }) => (
             <div
-              className="relative flex flex-col text-center items-center gap-2 lg:max-w-[250px] pb-8"
+              className="relative flex flex-col text-center items-center gap-2 lg:min-w-[250px] pb-8 hover:shadow-xl transition-transform duration-600"
               key={item.id}
             >
               <div className="absolute top-2 right-1">
@@ -55,7 +55,7 @@ export default function TrendingProducts() {
                 width={120}
                 height={120}
               />
-              <div className="flex flex-col gap-2  w-full text-start">
+              <div className="flex flex-col gap-2  w-full text-start p-2">
                 <div className="flex">
                   {Array.from({ length: 5 }).map((_, index) => (
                     <Star
@@ -91,7 +91,7 @@ export default function TrendingProducts() {
             id: number;
           }) => (
             <div
-              className="relative flex flex-col text-center items-center gap-2 lg:max-w-[250px]"
+              className="relative flex flex-col text-center items-center gap-2 lg:min-w-[250px] pb-8 hover:shadow-xl transition-transform duration-600"
               key={item.id}
             >
               <div className="absolute top-1 right-1">
@@ -109,7 +109,7 @@ export default function TrendingProducts() {
                 width={120}
                 height={120}
               />
-              <div className="text-start flex flex-col gap-2 w-full">
+              <div className="text-start flex flex-col gap-2 w-full p-2">
                 <div className="flex">
                   {Array.from({ length: 5 }).map((_, index) => (
                     <Star

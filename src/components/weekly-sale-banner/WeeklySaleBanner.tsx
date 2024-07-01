@@ -4,7 +4,7 @@ import React from "react";
 
 export default function WeeklySaleBanner() {
   return (
-    <div className="px-4 py-4 w-full md:flex dark:bg-[#181D25] md:px-12 lg:px-[7rem] xl:px-[14rem]">
+    <div className="px-4 py-4 md:py-10 w-full md:flex dark:bg-[#181D25] md:px-12 lg:px-[7rem] xl:px-[14rem]">
       <div className="flex md:w-1/3 items-center justify-center gap-2 pt-14 bg-gradient-to-r from-[#ACCBEE] to-[#E7F0FD] dark:bg-gradient-to-r dark:from-[#1B273A] dark:to-[#1F2632] md:from-[#ACCBEE] md:to-[#ACCBEE] md:dark:from-[#1B273A] md:dark:to-[#1B273A] rounded-t-xl md:rounded-xl md:border-dashed md:border-r-2 md:border-white md:dark:border-[#181D25] md:p-8 lg:p-12">
         <h1 className="text-7xl font-bold text-gray-900 dark:text-white">20</h1>
         <div className="text-gray-900 dark:text-white text-center flex flex-col items-center">

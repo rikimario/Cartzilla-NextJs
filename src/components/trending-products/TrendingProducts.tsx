@@ -75,7 +75,7 @@ export default function TrendingProducts() {
                     ${item.price}
                   </p>
                   <button className="bg-gray-200 dark:bg-gray-700 p-3 rounded-xl">
-                    <ShoppingCart className="h-5 w-5" strokeWidth={1} />
+                    <ShoppingCart className="h-4 w-4" strokeWidth={1} />
                   </button>
                 </div>
               </div>
@@ -129,7 +129,7 @@ export default function TrendingProducts() {
                     ${item.price}
                   </p>
                   <button className="bg-gray-200 dark:bg-gray-700 p-3 rounded-xl">
-                    <ShoppingCart className="h-5 w-5" strokeWidth={1} />
+                    <ShoppingCart className="h-4 w-4" strokeWidth={1} />
                   </button>
                 </div>
               </div>

@@ -37,7 +37,7 @@ export default function TrendingProducts() {
             id: number;
           }) => (
             <div
-              className="relative flex flex-col text-center items-center gap-2 lg:min-w-[250px] pb-8 hover:shadow-xl transition-transform duration-600"
+              className="relative flex flex-col text-center items-center gap-2 lg:min-w-[250px] pb-8 hover:shadow-lg transition-transform duration-600"
               key={item.id}
             >
               <div className="absolute top-2 right-1">
@@ -67,8 +67,8 @@ export default function TrendingProducts() {
                     />
                   ))}
                 </div>
-                <h1 className="text-xs lg:text-base text-gray-900 dark:text-white font-medium md:truncate">
-                  {item.title}...
+                <h1 className="text-xs lg:text-base text-gray-900 dark:text-white font-medium md:truncate md:overflow-ellipsis">
+                  {item.title}
                 </h1>
                 <div className="flex items-center justify-between pt-4">
                   <p className="text-base lg:text-lg text-gray-900 dark:text-white font-semibold">
@@ -91,7 +91,7 @@ export default function TrendingProducts() {
             id: number;
           }) => (
             <div
-              className="relative flex flex-col text-center items-center gap-2 lg:min-w-[250px] pb-8 hover:shadow-xl transition-transform duration-600"
+              className="relative flex flex-col text-center items-center gap-2 lg:min-w-[250px] pb-8 hover:shadow-lg transition-transform duration-600"
               key={item.id}
             >
               <div className="absolute top-1 right-1">
@@ -121,8 +121,8 @@ export default function TrendingProducts() {
                     />
                   ))}
                 </div>
-                <h1 className="text-xs lg:text-base text-gray-900 dark:text-white font-medium md:truncate">
-                  {item.title}...
+                <h1 className="text-xs lg:text-base text-gray-900 dark:text-white font-medium md:truncate md:overflow-ellipsis">
+                  {item.title}
                 </h1>
                 <div className="flex items-center justify-between pt-4 gap-2">
                   <p className="text-base lg:text-lg text-gray-900 dark:text-white font-semibold">

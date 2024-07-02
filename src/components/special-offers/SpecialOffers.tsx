@@ -1,6 +1,7 @@
 import { ChevronRight } from "lucide-react";
 import React from "react";
 import CountDownTimer from "./CountDownTimer";
+import SpecialOffersList from "./SpecialOffersList";
 
 export default function SpecialOffers() {
   return (
@@ -15,6 +16,10 @@ export default function SpecialOffers() {
         <span className="flex items-center pb-14 md:pb-4 lg:pr-[4rem] xl:pr-[6.5rem]">
           view all <ChevronRight strokeWidth={1} className="h-5 w-5" />
         </span>
+      </div>
+
+      <div>
+        <SpecialOffersList />
       </div>
     </div>
   );

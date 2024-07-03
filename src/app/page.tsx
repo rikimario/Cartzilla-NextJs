@@ -1,6 +1,7 @@
 "use client";
 
 import Benefits from "@/components/benefits/Benefits";
+import Brands from "@/components/brands/Brands";
 import Hero from "@/components/hero/Hero";
 import NewArrivals from "@/components/new-arrivals/NewArrivals";
 import SpecialOffers from "@/components/special-offers/SpecialOffers";
@@ -16,6 +17,7 @@ export default function Home() {
       <TrendingProducts />
       <WeeklySaleBanner />
       <SpecialOffers />
+      <Brands />
     </>
   );
 }

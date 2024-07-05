@@ -4,15 +4,15 @@ export const links = [
     submenu: true,
     sublinks: [
       {
-        name: "T-Shirts",
+        name: "Mans T-Shirts",
         link: "/man-t-shirts",
       },
       {
-        name: "Shoes",
+        name: "Mans Shoes",
         link: "/man-shoes",
       },
       {
-        name: "Watches",
+        name: "Mans Watches",
         link: "/man-watches",
       },
     ],
@@ -30,20 +30,20 @@ export const links = [
         link: "/women-dresses",
       },
       {
-        name: "Shoes",
-        link: "/woemen-shoes",
+        name: "Women Shoes",
+        link: "/women-shoes",
       },
       {
-        name: "Bags",
-        link: "/woemen-bags",
+        name: "Women Bags",
+        link: "/women-bags",
       },
       {
-        name: "Watches",
-        link: "/woemen-watches",
+        name: "Women Watches",
+        link: "/women-watches",
       },
       {
         name: "Jewelry",
-        link: "/woemen-jewelry",
+        link: "/women-jewelry",
       },
     ],
   },

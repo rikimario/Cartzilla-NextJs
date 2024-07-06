@@ -7,6 +7,7 @@ import {
 } from "../ui/dropdown-menu";
 import FooterAccordion from "./FooterAccordion";
 import FooterMenus from "./FooterMenus";
+import FooterCategories from "./FooterCategories";
 
 export default function Footer() {
   return (
@@ -18,7 +19,7 @@ export default function Footer() {
             Got questions? Contact us 24/7
           </p>
           <DropdownMenu>
-            <DropdownMenuTrigger className="text-[#E0E5EB] text-sm md:text-xs items-center md:w-full bg-gray-700 p-2 rounded-md flex justify-between">
+            <DropdownMenuTrigger className="text-[#E0E5EB] text-sm md:text-xs xl:text-sm items-center md:w-full bg-gray-700 p-2 rounded-md flex justify-between">
               Help and consulting
               <span>
                 <ChevronDown strokeWidth={1} />
@@ -39,6 +40,10 @@ export default function Footer() {
 
       <div className="md:hidden">
         <FooterAccordion />
+      </div>
+
+      <div>
+        <FooterCategories />
       </div>
     </div>
   );

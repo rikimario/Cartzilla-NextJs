@@ -8,6 +8,7 @@ import {
 import FooterAccordion from "./FooterAccordion";
 import FooterMenus from "./FooterMenus";
 import FooterCategories from "./FooterCategories";
+import FooterBottom from "./FooterBottom";
 
 export default function Footer() {
   return (
@@ -42,9 +43,9 @@ export default function Footer() {
         <FooterAccordion />
       </div>
 
-      <div>
-        <FooterCategories />
-      </div>
+      <FooterCategories />
+
+      <FooterBottom />
     </div>
   );
 }

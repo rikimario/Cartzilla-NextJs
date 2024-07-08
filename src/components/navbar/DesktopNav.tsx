@@ -27,9 +27,9 @@ export default function DesktopNav() {
             <DropdownMenuSubTrigger>Men</DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent>
-                <DropdownMenuItem>Shirts</DropdownMenuItem>
-                <DropdownMenuItem>Shoes</DropdownMenuItem>
-                <DropdownMenuItem>Watches</DropdownMenuItem>
+                <DropdownMenuItem>Mans T-Shirts</DropdownMenuItem>
+                <DropdownMenuItem>Mans Shoes</DropdownMenuItem>
+                <DropdownMenuItem>Mans Watches</DropdownMenuItem>
               </DropdownMenuSubContent>
             </DropdownMenuPortal>
           </DropdownMenuSub>
@@ -39,12 +39,12 @@ export default function DesktopNav() {
             <DropdownMenuSubTrigger>Woman</DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent>
-                <DropdownMenuItem>Tops</DropdownMenuItem>
+                <DropdownMenuItem>Woman Tops</DropdownMenuItem>
                 <DropdownMenuItem>Dresses</DropdownMenuItem>
-                <DropdownMenuItem>Shoes</DropdownMenuItem>
+                <DropdownMenuItem>Woman Shoes</DropdownMenuItem>
                 <DropdownMenuItem>Bags</DropdownMenuItem>
-                <DropdownMenuItem>Watches</DropdownMenuItem>
-                <DropdownMenuItem>Jewelry</DropdownMenuItem>
+                <DropdownMenuItem>Woman Watches</DropdownMenuItem>
+                <DropdownMenuItem>Woman Jewelry</DropdownMenuItem>
               </DropdownMenuSubContent>
             </DropdownMenuPortal>
           </DropdownMenuSub>

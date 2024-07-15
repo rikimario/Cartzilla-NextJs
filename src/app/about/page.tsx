@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import AboutMission from "./AboutMission";
+import AboutPrinciples from "./AboutPrinciples";
 
 export default function About() {
   return (
@@ -82,6 +83,7 @@ export default function About() {
       </div>
 
       <AboutMission />
+      <AboutPrinciples />
     </div>
   );
 }

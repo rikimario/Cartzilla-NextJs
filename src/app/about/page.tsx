@@ -3,6 +3,7 @@ import { ArrowDown } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import AboutMission from "./AboutMission";
 
 export default function About() {
   return (
@@ -18,7 +19,7 @@ export default function About() {
           />
         </div>
 
-        <div className="px-4 md:px-0 pt-8 w-full md:w-1/3">
+        <div className="px-4 md:px-0 pt-8 w-full md:w-1/2 lg:w-1/3">
           <div className="bg-gradient-to-r from-[#E7F0FD] to-[#ACCBEE] dark:bg-gradient-to-r dark:from-[#1B273A] dark:to-[#1F2632] rounded-xl px-6 lg:px-10 xl:px-20 gap-6 py-12 h-full flex flex-col justify-center">
             <h1 className="text-3xl lg:text-4xl xl:text-5xl text-gray-900 dark:text-white font-semibold">
               Cartzilla - More than a retailer
@@ -45,7 +46,7 @@ export default function About() {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 px-4 pt-8 gap-2">
+      <div className="grid grid-cols-2 md:grid-cols-4 px-4 xl:px-36 pt-8 gap-2">
         <div className="text-center p-2">
           <h1 className="text-3xl md:text-5xl text-gray-900 dark:text-white font-bold">
             14K
@@ -79,6 +80,8 @@ export default function About() {
           </p>
         </div>
       </div>
+
+      <AboutMission />
     </div>
   );
 }

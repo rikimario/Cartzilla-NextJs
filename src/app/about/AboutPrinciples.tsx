@@ -21,8 +21,8 @@ export default function AboutPrinciples() {
       </div>
 
       <div className="px-4 md:px-0 pt-8 w-full">
-        <p className="px-4 pt-4 text-gray-600">Principles</p>
-        <h1 className="text-2xl md:text-3xl font-semibold text-gray-900 p-4">
+        <p className="px-4 pt-4 text-gray-600 dark:text-gray-300">Principles</p>
+        <h1 className="text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white p-4">
           The main principles that will allow us to grow
         </h1>
         <p className="text-lg text-gray-600 dark:text-gray-300 px-4">
@@ -39,7 +39,7 @@ export default function AboutPrinciples() {
               <AccordionTrigger className="text-base font-semibold">
                 Customer focus
               </AccordionTrigger>
-              <AccordionContent className="text-gray-600">
+              <AccordionContent className="text-gray-600 dark:text-gray-300">
                 We prioritize understanding and anticipating our customers'
                 needs, delivering an exceptional and personalized experience
                 from start to finish.
@@ -50,7 +50,7 @@ export default function AboutPrinciples() {
               <AccordionTrigger className="text-base font-semibold">
                 Betting on reputation
               </AccordionTrigger>
-              <AccordionContent className="text-gray-600">
+              <AccordionContent className="text-gray-600 dark:text-gray-300">
                 We value a solid reputation built on integrity, transparency,
                 and quality - ensuring our customers trust and rely on our
                 brand.
@@ -61,7 +61,7 @@ export default function AboutPrinciples() {
               <AccordionTrigger className="text-base font-semibold">
                 Fast, convenient and enjoyable
               </AccordionTrigger>
-              <AccordionContent className="text-gray-600">
+              <AccordionContent className="text-gray-600 dark:text-gray-300">
                 We've streamlined our process for speed, convenience, and an
                 enjoyable shopping experience, redefining online standards for
                 our delighted customers.

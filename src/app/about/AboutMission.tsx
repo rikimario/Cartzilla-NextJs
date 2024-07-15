@@ -7,8 +7,8 @@ export default function AboutMission() {
       id="mission"
       className="flex flex-col justify-center items-center py-14 lg:px-20 xl:px-36"
     >
-      <p className="text-gray-600">Mission</p>
-      <h1 className="text-2xl md:text-4xl font-semibold text-gray-900 p-6 text-center">
+      <p className="text-gray-600 dark:text-gray-300">Mission</p>
+      <h1 className="text-2xl md:text-4xl font-semibold text-gray-900 dark:text-white p-6 text-center">
         The best products at fair prices
       </h1>
       <p className="text-lg text-gray-600 dark:text-gray-300 text-center px-6">
@@ -26,7 +26,7 @@ export default function AboutMission() {
           height={70}
         />
       </div>
-      <p className="pt-4 text-gray-900 text-xl font-semibold">
+      <p className="pt-4 text-gray-900 dark:text-white text-xl font-semibold">
         William Lacker, Cartzilla CEO
       </p>
     </div>

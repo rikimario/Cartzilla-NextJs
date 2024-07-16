@@ -5,6 +5,7 @@ import Link from "next/link";
 import React from "react";
 import AboutMission from "./AboutMission";
 import AboutPrinciples from "./AboutPrinciples";
+import AboutValues from "./AboutValues";
 
 export default function About() {
   return (
@@ -84,6 +85,7 @@ export default function About() {
 
       <AboutMission />
       <AboutPrinciples />
+      <AboutValues />
     </div>
   );
 }

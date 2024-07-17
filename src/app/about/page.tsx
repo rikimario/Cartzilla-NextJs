@@ -9,7 +9,7 @@ import AboutValues from "./AboutValues";
 
 export default function About() {
   return (
-    <div className="md:px-10 xl:px-20">
+    <div className="md:px-10 xl:px-20 dark:bg-[#181D25]">
       <div className="md:flex md:flex-row-reverse justify-center md:gap-8">
         <div className="px-4 pt-8 md:px-0">
           <Image

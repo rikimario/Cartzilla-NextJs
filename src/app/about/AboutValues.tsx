@@ -31,11 +31,11 @@ export default function AboutValues() {
             align: "start",
             loop: true,
           }}
-          className="relative p-4 md:w-[21rem] lg:w-[35rem] xl:w-[53rem] 2xl:w-[76rem]"
+          className="relative p-4 md:w-[21rem] lg:w-[35rem] xl:w-[53rem] 2xl:w-[65rem]"
         >
           <CarouselContent>
             <CarouselItem className="py-6 max-w-96">
-              <Card className="min-h-full">
+              <Card className="min-h-full dark:bg-[#181D25]">
                 <CardContent>
                   <div className="py-6">
                     <div className="flex gap-4 p-2 items-center">
@@ -43,7 +43,7 @@ export default function AboutValues() {
                         className="h-6 w-6 dark:text-white"
                         strokeWidth={1}
                       />
-                      <h1 className="text-2xl font-semibold text-gray-900">
+                      <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
                         People
                       </h1>
                     </div>
@@ -59,7 +59,7 @@ export default function AboutValues() {
             </CarouselItem>
 
             <CarouselItem className="py-6 max-w-96">
-              <Card className="min-h-full">
+              <Card className="min-h-full dark:bg-[#181D25]">
                 <CardContent>
                   <div className="py-6">
                     <div className="flex gap-4 p-2 items-center">
@@ -67,7 +67,7 @@ export default function AboutValues() {
                         className="h-6 w-6 dark:text-white"
                         strokeWidth={1}
                       />
-                      <h1 className="text-2xl font-semibold text-gray-900">
+                      <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
                         Service
                       </h1>
                     </div>
@@ -82,7 +82,7 @@ export default function AboutValues() {
             </CarouselItem>
 
             <CarouselItem className="py-6 max-w-96">
-              <Card className="min-h-full">
+              <Card className="min-h-full dark:bg-[#181D25]">
                 <CardContent>
                   <div className="py-6">
                     <div className="flex gap-4 p-2 items-center">
@@ -90,7 +90,7 @@ export default function AboutValues() {
                         className="h-6 w-6 dark:text-white"
                         strokeWidth={1}
                       />
-                      <h1 className="text-2xl font-semibold text-gray-900">
+                      <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
                         Responsibility
                       </h1>
                     </div>
@@ -106,7 +106,7 @@ export default function AboutValues() {
             </CarouselItem>
 
             <CarouselItem className="py-6 max-w-96">
-              <Card className="min-h-full">
+              <Card className="min-h-full dark:bg-[#181D25]">
                 <CardContent>
                   <div className="py-6">
                     <div className="flex gap-4 p-2 items-center">
@@ -114,7 +114,7 @@ export default function AboutValues() {
                         className="h-6 w-6 dark:text-white"
                         strokeWidth={1}
                       />
-                      <h1 className="text-2xl font-semibold text-gray-900">
+                      <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
                         Innovation
                       </h1>
                     </div>
@@ -130,7 +130,7 @@ export default function AboutValues() {
             </CarouselItem>
 
             <CarouselItem className="py-6 max-w-96">
-              <Card className="min-h-full">
+              <Card className="min-h-full dark:bg-[#181D25]">
                 <CardContent>
                   <div className="py-6">
                     <div className="flex gap-4 p-2 items-center">
@@ -138,7 +138,7 @@ export default function AboutValues() {
                         className="h-6 w-6 dark:text-white"
                         strokeWidth={1}
                       />
-                      <h1 className="text-2xl font-semibold text-gray-900">
+                      <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
                         Leadership
                       </h1>
                     </div>
@@ -153,7 +153,7 @@ export default function AboutValues() {
             </CarouselItem>
 
             <CarouselItem className="py-6 max-w-96">
-              <Card className="min-h-full">
+              <Card className="min-h-full dark:bg-[#181D25]">
                 <CardContent>
                   <div className="py-6">
                     <div className="flex gap-4 p-2 items-center">
@@ -161,7 +161,7 @@ export default function AboutValues() {
                         className="h-6 w-6 dark:text-white"
                         strokeWidth={1}
                       />
-                      <h1 className="text-2xl font-semibold text-gray-900">
+                      <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
                         Sustainability
                       </h1>
                     </div>

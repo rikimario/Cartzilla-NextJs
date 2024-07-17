@@ -31,7 +31,7 @@ export default function AboutValues() {
             align: "start",
             loop: true,
           }}
-          className="relative p-4 md:w-[21rem] lg:w-[35rem] xl:w-[53rem] 2xl:w-[65rem]"
+          className="relative p-4 md:w-[21rem] lg:w-[35rem] xl:w-[53rem] 2xl:w-[63rem]"
         >
           <CarouselContent>
             <CarouselItem className="py-6 max-w-96">

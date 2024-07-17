@@ -6,12 +6,14 @@ import React from "react";
 import AboutMission from "./AboutMission";
 import AboutPrinciples from "./AboutPrinciples";
 import AboutValues from "./AboutValues";
+import Philanthropy from "./Philanthropy";
 
 export default function About() {
   return (
-    <div className="md:px-10 xl:px-20 dark:bg-[#181D25]">
-      <div className="md:flex md:flex-row-reverse justify-center md:gap-8">
-        <div className="px-4 pt-8 md:px-0">
+    <div className="md:px-10 xl:px-[6.5rem] dark:bg-[#181D25]">
+      <div className="md:flex md:flex-row-reverse p-4 md:gap-8">
+        {/* <div className="px-4 pt-8 md:px-0"> */}
+        <div className="py-8 w-full md:w-1/2 md:py-0 md:px-0">
           <Image
             className="rounded-xl h-full w-full object-cover"
             src="/about-hero-img.jpg"
@@ -21,7 +23,7 @@ export default function About() {
           />
         </div>
 
-        <div className="px-4 md:px-0 pt-8 w-full md:w-1/2 lg:w-1/3">
+        <div className="px-4 md:px-0 w-full md:w-1/2">
           <div className="bg-gradient-to-r from-[#E7F0FD] to-[#ACCBEE] dark:bg-gradient-to-r dark:from-[#1B273A] dark:to-[#1F2632] rounded-xl px-6 lg:px-10 xl:px-20 gap-6 py-12 h-full flex flex-col justify-center">
             <h1 className="text-3xl lg:text-4xl xl:text-5xl text-gray-900 dark:text-white font-semibold">
               Cartzilla - More than a retailer
@@ -86,6 +88,7 @@ export default function About() {
       <AboutMission />
       <AboutPrinciples />
       <AboutValues />
+      <Philanthropy />
     </div>
   );
 }

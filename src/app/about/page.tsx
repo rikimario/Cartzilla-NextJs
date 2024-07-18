@@ -7,6 +7,7 @@ import AboutMission from "./AboutMission";
 import AboutPrinciples from "./AboutPrinciples";
 import AboutValues from "./AboutValues";
 import Philanthropy from "./Philanthropy";
+import AboutCareers from "./AboutCareers";
 
 export default function About() {
   return (
@@ -23,7 +24,7 @@ export default function About() {
           />
         </div>
 
-        <div className="px-4 md:px-0 w-full md:w-1/2">
+        <div className="md:px-0 w-full md:w-1/2">
           <div className="bg-gradient-to-r from-[#E7F0FD] to-[#ACCBEE] dark:bg-gradient-to-r dark:from-[#1B273A] dark:to-[#1F2632] rounded-xl px-6 lg:px-10 xl:px-20 gap-6 py-12 h-full flex flex-col justify-center">
             <h1 className="text-3xl lg:text-4xl xl:text-5xl text-gray-900 dark:text-white font-semibold">
               Cartzilla - More than a retailer
@@ -89,6 +90,7 @@ export default function About() {
       <AboutPrinciples />
       <AboutValues />
       <Philanthropy />
+      <AboutCareers />
     </div>
   );
 }

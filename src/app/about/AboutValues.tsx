@@ -176,12 +176,10 @@ export default function AboutValues() {
               </Card>
             </CarouselItem>
           </CarouselContent>
-          {/* <div className="absolute top-2 right-16 md:left-[-20px] md:bottom-[-120px]"> */}
           <div className="absolute text-gray-900 dark:text-white bottom-4 left-1/2 md:left-1/3 lg:1/2">
             <CarouselPrevious className="dark:bg-[#181D25]" />
             <CarouselNext className="dark:bg-[#181D25]" />
           </div>
-          {/* </div> */}
         </Carousel>
       </div>
     </div>

@@ -6,7 +6,7 @@ export default function NewsLetter() {
     <div className="flex flex-col items-center justify-center text-center px-3 bg-gray-100 dark:bg-gray-800">
       <div className="py-12">
         <div>
-          <h1 className="text-xl text-gray-900 font-semibold dark:text-white">
+          <h1 className="text-xl md:text-2xl text-gray-900 font-semibold dark:text-white">
             Stay in touch with us
           </h1>
           <p className="text-sm text-gray-600 dark:text-gray-300 py-4">

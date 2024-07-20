@@ -1,9 +1,19 @@
 "use client";
-import { ChevronDown, ChevronUp, Heart, Home, User } from "lucide-react";
+import {
+  ChevronDown,
+  ChevronRight,
+  ChevronUp,
+  Heart,
+  Home,
+  LayoutGrid,
+  User,
+} from "lucide-react";
 import { links } from "./MobileLinks";
 import Link from "next/link";
 import React, { useState } from "react";
 import { SheetClose } from "../ui/sheet";
+import { Accordion, AccordionItem, AccordionTrigger } from "../ui/accordion";
+import { AccordionContent } from "@radix-ui/react-accordion";
 
 type DDMobileNavProps = {
   handleClickNav: (e: React.MouseEvent<HTMLButtonElement>) => void;
@@ -20,7 +30,7 @@ export default function DDMobileNav({ handleClickNav }: DDMobileNavProps) {
 
   return (
     <div className="dark:bg-[#181D25] dark:text-[white]">
-      <ul className=" text-xl dark:bg-[#181D25] dark:text-[white] text-[#333D4C] border-[#E0E5EB]">
+      {/* <ul className=" text-xl dark:bg-[#181D25] dark:text-[white] text-[#333D4C] border-[#E0E5EB]">
         <li className="py-4 my-4 border-b border-[#E0E5EB]">
           <div className="flex gap-1 items-center pr-5">
             <Home className="h-5 w-5 dark:text-gray-400" />
@@ -123,7 +133,31 @@ export default function DDMobileNav({ handleClickNav }: DDMobileNavProps) {
             <Link href="/contact">Contact</Link>
           </button>
         </li>
-      </ul>
+      </ul> */}
+
+      <div>
+        <Accordion type="single" collapsible className="w-full">
+          <AccordionItem className="border-none" value="item-1">
+            <AccordionTrigger className="pr-8 pl-12 bg-gray-200 rounded-xl text-gray-700">
+              <span className="absolute left-4">
+                <LayoutGrid className="h-5 w-5" />
+              </span>
+              Categories
+            </AccordionTrigger>
+            <AccordionContent className="text-start text-sm p-4 pr-8  border border-gray-100 mt-2">
+              <Link className="flex items-center gap-2" href="/all-categories">
+                <span>
+                  <LayoutGrid className="h-5 w-5 text-gray-400" />
+                </span>
+                All Categories
+                <span className="absolute right-8">
+                  <ChevronRight className=" h-4 w-4" />
+                </span>
+              </Link>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+      </div>
     </div>
   );
 }

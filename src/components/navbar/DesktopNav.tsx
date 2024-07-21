@@ -27,24 +27,24 @@ export default function DesktopNav() {
             <DropdownMenuSubTrigger>Men</DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent>
-                <DropdownMenuItem>Mans T-Shirts</DropdownMenuItem>
-                <DropdownMenuItem>Mans Shoes</DropdownMenuItem>
-                <DropdownMenuItem>Mans Watches</DropdownMenuItem>
+                <DropdownMenuItem>Mens T-Shirts</DropdownMenuItem>
+                <DropdownMenuItem>Mens Shoes</DropdownMenuItem>
+                <DropdownMenuItem>Mens Watches</DropdownMenuItem>
               </DropdownMenuSubContent>
             </DropdownMenuPortal>
           </DropdownMenuSub>
 
           {/* Woman */}
           <DropdownMenuSub>
-            <DropdownMenuSubTrigger>Woman</DropdownMenuSubTrigger>
+            <DropdownMenuSubTrigger>Women</DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent>
-                <DropdownMenuItem>Woman Tops</DropdownMenuItem>
+                <DropdownMenuItem>Women Tops</DropdownMenuItem>
                 <DropdownMenuItem>Dresses</DropdownMenuItem>
-                <DropdownMenuItem>Woman Shoes</DropdownMenuItem>
+                <DropdownMenuItem>Women Shoes</DropdownMenuItem>
                 <DropdownMenuItem>Bags</DropdownMenuItem>
-                <DropdownMenuItem>Woman Watches</DropdownMenuItem>
-                <DropdownMenuItem>Woman Jewelry</DropdownMenuItem>
+                <DropdownMenuItem>Women Watches</DropdownMenuItem>
+                <DropdownMenuItem>Women Jewelry</DropdownMenuItem>
               </DropdownMenuSubContent>
             </DropdownMenuPortal>
           </DropdownMenuSub>

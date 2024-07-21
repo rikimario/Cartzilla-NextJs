@@ -41,7 +41,9 @@ export default function Navbar() {
             >
               <ScrollArea className="h-screen">
                 <SheetHeader>
-                  <SheetTitle>Menu</SheetTitle>
+                  <SheetTitle className="text-start text-xl">
+                    Browse Cartzilla
+                  </SheetTitle>
                   <DDMobileNav handleClickNav={handleClickNav} />
                 </SheetHeader>
               </ScrollArea>

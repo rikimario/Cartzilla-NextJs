@@ -14,6 +14,7 @@ import React, { useState } from "react";
 import { SheetClose } from "../ui/sheet";
 import { Accordion, AccordionItem, AccordionTrigger } from "../ui/accordion";
 import { AccordionContent } from "@radix-ui/react-accordion";
+import MobileCategoriesAccordion from "./MobileCategoriesAccordion";
 
 type DDMobileNavProps = {
   handleClickNav: (e: React.MouseEvent<HTMLButtonElement>) => void;
@@ -135,25 +136,29 @@ export default function DDMobileNav({ handleClickNav }: DDMobileNavProps) {
         </li>
       </ul> */}
 
-      <div>
+      <div className="py-6">
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem className="border-none" value="item-1">
-            <AccordionTrigger className="pr-8 pl-12 bg-gray-200 rounded-xl text-gray-700">
-              <span className="absolute left-4">
-                <LayoutGrid className="h-5 w-5" />
+            <AccordionTrigger className="relative pr-8 pl-12 justify-between bg-gray-200 rounded-xl text-gray-700">
+              <span className="absolute left-4 top-[1.2rem]">
+                <LayoutGrid className="  h-5 w-5" />
               </span>
               Categories
             </AccordionTrigger>
             <AccordionContent className="text-start text-sm p-4 pr-8  border border-gray-100 mt-2">
-              <Link className="flex items-center gap-2" href="/all-categories">
+              <Link
+                className="relative flex items-center gap-2"
+                href="/all-categories"
+              >
                 <span>
                   <LayoutGrid className="h-5 w-5 text-gray-400" />
                 </span>
                 All Categories
-                <span className="absolute right-8">
+                <span className="absolute right-0">
                   <ChevronRight className=" h-4 w-4" />
                 </span>
               </Link>
+              <MobileCategoriesAccordion />
             </AccordionContent>
           </AccordionItem>
         </Accordion>

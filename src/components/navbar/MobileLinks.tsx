@@ -1,19 +1,30 @@
-export const links = [
+export const links: {
+  name: string;
+  submenu: boolean;
+  sublinks: {
+    name: string;
+    link: string;
+  }[];
+}[] = [
   {
     name: "Men",
     submenu: true,
     sublinks: [
       {
-        name: "Mans T-Shirts",
-        link: "/man-t-shirts",
+        name: "Mens T-Shirts",
+        link: "/men-t-shirts",
       },
       {
-        name: "Mans Shoes",
-        link: "/man-shoes",
+        name: "Mens Shoes",
+        link: "/men-shoes",
       },
       {
-        name: "Mans Watches",
+        name: "Mens Watches",
         link: "/man-watches",
+      },
+      {
+        name: "See All",
+        link: "/all-men",
       },
     ],
   },
@@ -45,6 +56,10 @@ export const links = [
         name: "Jewelry",
         link: "/women-jewelry",
       },
+      {
+        name: "See All",
+        link: "/all-women",
+      },
     ],
   },
   {
@@ -66,6 +81,10 @@ export const links = [
       {
         name: "Mobile Accessories",
         link: "/mobile-accessories",
+      },
+      {
+        name: "See All",
+        link: "/all-electronics",
       },
     ],
   },
@@ -89,6 +108,10 @@ export const links = [
         name: "Groceries",
         link: "/groceries",
       },
+      {
+        name: "See All",
+        link: "/all-groceries",
+      },
     ],
   },
   {
@@ -107,6 +130,10 @@ export const links = [
         name: "Fragrances",
         link: "/fragrances",
       },
+      {
+        name: "See All",
+        link: "/all-cosmetics",
+      },
     ],
   },
   {
@@ -120,6 +147,10 @@ export const links = [
       {
         name: "Motorcycles",
         link: "/motorcycles",
+      },
+      {
+        name: "See All",
+        link: "/all-automotive",
       },
     ],
   },

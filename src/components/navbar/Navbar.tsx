@@ -16,6 +16,7 @@ import {
   SheetTrigger,
 } from "../ui/sheet";
 import { ScrollArea } from "../ui/scroll-area";
+import MobileFooter from "./MobileFooter";
 
 export default function Navbar() {
   const [openNav, setOpenNav] = useState<boolean>(false);
@@ -47,6 +48,7 @@ export default function Navbar() {
                   <DDMobileNav handleClickNav={handleClickNav} />
                 </SheetHeader>
               </ScrollArea>
+              <MobileFooter />
             </SheetContent>
           </Sheet>
           <Link href="/">

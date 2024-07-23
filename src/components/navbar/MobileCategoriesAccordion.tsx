@@ -16,11 +16,11 @@ export default function MobileCategoriesAccordion() {
               onClick={() =>
                 heading !== link.name ? setHeading(link.name) : setHeading("")
               }
-              className="text-gray-700"
+              className="text-gray-700 dark:text-white"
             >
               {link.name}
             </AccordionTrigger>
-            <AccordionContent className="text-gray-600 border border-gray-200 rounded-xl">
+            <AccordionContent className="text-gray-600 border dark:text-gray-300 border-gray-200 rounded-xl">
               {link.sublinks.map((sublink) => (
                 <Link
                   key={sublink.name}
@@ -38,7 +38,7 @@ export default function MobileCategoriesAccordion() {
         ))}
         <AccordionContent className="py-4">
           <Link
-            className="flex items-center justify-between gap-2 text-gray-700"
+            className="flex items-center justify-between gap-2 text-gray-700 dark:text-white"
             href="/sports-accessories"
           >
             Sports Accessories
@@ -47,7 +47,7 @@ export default function MobileCategoriesAccordion() {
             </span>
           </Link>
         </AccordionContent>
-        <AccordionContent className="py-4 text-gray-700">
+        <AccordionContent className="py-4 text-gray-700 dark:text-white">
           <Link
             className="flex items-center justify-between gap-2"
             href="/sunglasses"

@@ -12,7 +12,7 @@ export default function MobileNavLinks() {
   return (
     <>
       <div className="pt-4 text-left px-2 border-b-2 border-gray-200">
-        <ul className="py-4 text-lg text-gray-900">
+        <ul className="py-4 text-lg text-gray-900 dark:text-white">
           <li className="p-2">
             <Link
               className="flex justify-between items-center pr-4"
@@ -49,7 +49,7 @@ export default function MobileNavLinks() {
           <li className="p-2">
             <Link
               className="flex justify-between items-center pr-4"
-              href="/bestAbout"
+              href="/about"
             >
               About{" "}
               <span>
@@ -74,11 +74,11 @@ export default function MobileNavLinks() {
       <div className="pt-4 mb-44 pl-4 pr-8">
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem className="border-none" value="item-1">
-            <AccordionTrigger className="text-gray-700 text-sm">
+            <AccordionTrigger className="text-gray-700 dark:text-white text-sm">
               Eng
             </AccordionTrigger>
             <AccordionContent className="text-start text-sm p-2 border border-gray-200">
-              <div className="py-2 flex flex-col gap-2 text-gray-500">
+              <div className="py-2 flex flex-col gap-2 text-gray-500 dark:text-gray-300">
                 <p>English</p>
                 <p>Bulgarian</p>
               </div>
@@ -88,11 +88,11 @@ export default function MobileNavLinks() {
 
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem className="border-none" value="item-1">
-            <AccordionTrigger className="text-gray-700 text-sm">
+            <AccordionTrigger className="text-gray-700 dark:text-white text-sm">
               USD($)
             </AccordionTrigger>
             <AccordionContent className="text-start text-sm p-2 border border-gray-200">
-              <div className="py-2 flex flex-col gap-2 text-gray-500">
+              <div className="py-2 flex flex-col gap-2 text-gray-500 dark:text-gray-300">
                 <p>USD($)</p>
                 <p>LV(lv)</p>
               </div>

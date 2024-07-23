@@ -30,7 +30,7 @@ export default function AboutCareers() {
               <Card className="min-h-full dark:bg-[#181D25]">
                 <CardContent>
                   <div className="py-6">
-                    <div className="flex p-1 m-2 items-center justify-center rounded-2xl text-white bg-[#2F6ED5] w-1/5">
+                    <div className="flex p-1 m-2 items-center justify-center rounded-2xl text-white bg-[#2F6ED5] w-1/4 md:w-1/5">
                       <p className="text-xs">Full time</p>
                     </div>
                     <h1 className="text-xl p-2 font-semibold text-gray-900 dark:text-white">
@@ -48,7 +48,7 @@ export default function AboutCareers() {
               <Card className="min-h-full dark:bg-[#181D25]">
                 <CardContent>
                   <div className="py-6">
-                    <div className="flex p-1 m-2 items-center justify-center rounded-2xl text-white bg-[#33B36B] w-1/5">
+                    <div className="flex p-1 m-2 items-center justify-center rounded-2xl text-white bg-[#33B36B] w-1/4 md:w-1/5">
                       <p className="text-xs">Part time</p>
                     </div>
                     <h1 className="text-xl p-2 font-semibold text-gray-900 dark:text-white">
@@ -66,7 +66,7 @@ export default function AboutCareers() {
               <Card className="min-h-full dark:bg-[#181D25]">
                 <CardContent>
                   <div className="py-6">
-                    <div className="flex p-1 m-2 items-center justify-center rounded-2xl text-white bg-[#2F6ED5] w-1/5">
+                    <div className="flex p-1 m-2 items-center justify-center rounded-2xl text-white bg-[#2F6ED5] w-1/4 md:w-1/5">
                       <p className="text-xs">Full time</p>
                     </div>
                     <h1 className="text-xl p-2 font-semibold text-gray-900 dark:text-white">
@@ -84,7 +84,7 @@ export default function AboutCareers() {
               <Card className="min-h-full dark:bg-[#181D25]">
                 <CardContent>
                   <div className="py-6">
-                    <div className="flex p-1 m-2 items-center justify-center rounded-2xl text-white bg-[#FC9231] w-1/5">
+                    <div className="flex p-1 m-2 items-center justify-center rounded-2xl text-white bg-[#FC9231] w-1/4 md:w-1/5">
                       <p className="text-xs">Freelance</p>
                     </div>
                     <h1 className="text-xl p-2 font-semibold text-gray-900 dark:text-white">
@@ -102,7 +102,7 @@ export default function AboutCareers() {
               <Card className="min-h-full dark:bg-[#181D25]">
                 <CardContent>
                   <div className="py-6">
-                    <div className="flex p-1 m-2 items-center justify-center rounded-2xl text-white bg-[#2F6ED5] w-1/5">
+                    <div className="flex p-1 m-2 items-center justify-center rounded-2xl text-white bg-[#2F6ED5] w-1/4 md:w-1/5">
                       <p className="text-xs">Full time</p>
                     </div>
                     <h1 className="text-xl p-2 font-semibold text-gray-900 dark:text-white pr-8">

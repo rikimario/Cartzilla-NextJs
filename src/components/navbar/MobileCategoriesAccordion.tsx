@@ -3,7 +3,7 @@ import { Accordion, AccordionContent, AccordionTrigger } from "../ui/accordion";
 import { AccordionItem } from "@radix-ui/react-accordion";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
-import { links } from "./MobileLinks";
+import { links } from "./CategoriesLinks";
 
 export default function MobileCategoriesAccordion() {
   const [heading, setHeading] = useState<string>("");

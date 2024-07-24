@@ -8,7 +8,7 @@ import {
   LayoutGrid,
   User,
 } from "lucide-react";
-import { links } from "./MobileLinks";
+import { links } from "./CategoriesLinks";
 import Link from "next/link";
 import React, { useState } from "react";
 import { SheetClose } from "../ui/sheet";

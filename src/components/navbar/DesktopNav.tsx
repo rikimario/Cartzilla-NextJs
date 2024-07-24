@@ -1,4 +1,4 @@
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ChevronRight } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,6 +11,8 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import Link from "next/link";
+import { links } from "./CategoriesLinks";
+
 export default function DesktopNav() {
   return (
     <div className="hidden font-light lg:flex px-4 md:px-12 lg:px-0 justify-around bg-[#222934]">
@@ -22,87 +24,41 @@ export default function DesktopNav() {
           </span>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="min-w-[15rem]">
-          {/* Men */}
-          <DropdownMenuSub>
-            <DropdownMenuSubTrigger>Men</DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
-              <DropdownMenuSubContent>
-                <DropdownMenuItem>Mens T-Shirts</DropdownMenuItem>
-                <DropdownMenuItem>Mens Shoes</DropdownMenuItem>
-                <DropdownMenuItem>Mens Watches</DropdownMenuItem>
-              </DropdownMenuSubContent>
-            </DropdownMenuPortal>
-          </DropdownMenuSub>
-
-          {/* Woman */}
-          <DropdownMenuSub>
-            <DropdownMenuSubTrigger>Women</DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
-              <DropdownMenuSubContent>
-                <DropdownMenuItem>Women Tops</DropdownMenuItem>
-                <DropdownMenuItem>Dresses</DropdownMenuItem>
-                <DropdownMenuItem>Women Shoes</DropdownMenuItem>
-                <DropdownMenuItem>Bags</DropdownMenuItem>
-                <DropdownMenuItem>Women Watches</DropdownMenuItem>
-                <DropdownMenuItem>Women Jewelry</DropdownMenuItem>
-              </DropdownMenuSubContent>
-            </DropdownMenuPortal>
-          </DropdownMenuSub>
-
-          {/* Electronics */}
-          <DropdownMenuSub>
-            <DropdownMenuSubTrigger>Electronics</DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
-              <DropdownMenuSubContent>
-                <DropdownMenuItem>Laptops</DropdownMenuItem>
-                <DropdownMenuItem>Tablets</DropdownMenuItem>
-                <DropdownMenuItem>Smartphones</DropdownMenuItem>
-                <DropdownMenuItem>Mobile Accessories</DropdownMenuItem>
-              </DropdownMenuSubContent>
-            </DropdownMenuPortal>
-          </DropdownMenuSub>
-
-          {/* Home */}
-          <DropdownMenuSub>
-            <DropdownMenuSubTrigger>Home</DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
-              <DropdownMenuSubContent>
-                <DropdownMenuItem>Furniture</DropdownMenuItem>
-                <DropdownMenuItem>Kitchen</DropdownMenuItem>
-                <DropdownMenuItem>Decorations</DropdownMenuItem>
-                <DropdownMenuItem>Groceries</DropdownMenuItem>
-              </DropdownMenuSubContent>
-            </DropdownMenuPortal>
-          </DropdownMenuSub>
-
-          {/* Cosmetics */}
-          <DropdownMenuSub>
-            <DropdownMenuSubTrigger>Cosmetics</DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
-              <DropdownMenuSubContent>
-                <DropdownMenuItem>Beauty</DropdownMenuItem>
-                <DropdownMenuItem>Skin Care</DropdownMenuItem>
-                <DropdownMenuItem>Fragrances</DropdownMenuItem>
-              </DropdownMenuSubContent>
-            </DropdownMenuPortal>
-          </DropdownMenuSub>
-
-          {/* Automotive */}
-          <DropdownMenuSub>
-            <DropdownMenuSubTrigger>Automotive</DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
-              <DropdownMenuSubContent>
-                <DropdownMenuItem>Cars</DropdownMenuItem>
-                <DropdownMenuItem>Motorcycles</DropdownMenuItem>
-              </DropdownMenuSubContent>
-            </DropdownMenuPortal>
-          </DropdownMenuSub>
+          {/* All categories */}
+          <DropdownMenuItem>
+            <div className="flex justify-between items-center">
+              <Link className="flex gap-[6.59rem]" href="/all-categories">
+                All Categories{" "}
+                <span>
+                  <ChevronRight className="h-4 w-4" strokeWidth={2} />
+                </span>
+              </Link>
+            </div>
+          </DropdownMenuItem>
+          {links.map((link) => (
+            <DropdownMenuSub key={link.name}>
+              <DropdownMenuSubTrigger>{link.name}</DropdownMenuSubTrigger>
+              <DropdownMenuPortal>
+                <DropdownMenuSubContent>
+                  {link.sublinks.map((sublink) => (
+                    <DropdownMenuItem>
+                      <Link href={sublink.link}>{sublink.name}</Link>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuSubContent>
+              </DropdownMenuPortal>
+            </DropdownMenuSub>
+          ))}
 
           {/* Sports */}
-          <DropdownMenuItem>Sports Accessories</DropdownMenuItem>
+          <DropdownMenuItem>
+            <Link href="/sports-accessories">Sports Accessories</Link>
+          </DropdownMenuItem>
 
           {/* Sunglasses */}
-          <DropdownMenuItem>Sunglasses</DropdownMenuItem>
+          <DropdownMenuItem>
+            <Link href="/sunglasses">Sunglasses</Link>
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
 

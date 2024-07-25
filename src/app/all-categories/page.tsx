@@ -1,11 +1,15 @@
 import React from "react";
 import AllCategoriesBrands from "./AllCategoriesBrands";
+import AllCategoriesList from "./AllCategoriesList";
 
 export default function page() {
   return (
-    <div className="px-4 xl:px-20 py-12">
-      <h1 className="text-2xl text-gray-900 font-semibold">Shop Categories</h1>
+    <div className="px-4 md:px-12 lg:px-4 xl:px-32 py-12 dark:bg-[#181D25]">
+      <h1 className="text-2xl text-gray-900 dark:text-white font-semibold">
+        Shop Categories
+      </h1>
       <AllCategoriesBrands />
+      <AllCategoriesList />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import AllCategoriesBrands from "./AllCategoriesBrands";
 import AllCategoriesList from "./AllCategoriesList";
+import AllCategoriesBanner from "./AllCategoriesBanner";
 
 export default function page() {
   return (
@@ -10,6 +11,7 @@ export default function page() {
       </h1>
       <AllCategoriesBrands />
       <AllCategoriesList />
+      <AllCategoriesBanner />
     </div>
   );
 }

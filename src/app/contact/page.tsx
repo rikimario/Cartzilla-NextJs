@@ -1,11 +1,13 @@
 import { Button } from "@/components/ui/button";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { ChevronDown, Clock, Mail, MapPin, PhoneOutgoing } from "lucide-react";
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Clock, Mail, MapPin, PhoneOutgoing } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 
@@ -57,37 +59,37 @@ export default function page() {
               >
                 Subject *
               </label>
-              <DropdownMenu>
-                <DropdownMenuTrigger className="flex items-center justify-between w-full h-12 bg-white dark:bg-inherit rounded-3xl border border-gray-300 px-4 text-gray-400">
-                  Select subject
-                  <span className="text-gray-900 dark:text-gray-400">
-                    <ChevronDown strokeWidth={1} />
-                  </span>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="p-4">
-                  <DropdownMenuItem className="text-gray-900 dark:text-white p-2 text-base">
-                    General inquiry
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="text-gray-900 dark:text-white p-2 text-base">
-                    Order status
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="text-gray-900 dark:text-white p-2 text-base">
-                    Product information
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="text-gray-900 dark:text-white p-2 text-base">
-                    Technical support
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="text-gray-900 dark:text-white p-2 text-base">
-                    Website feedback
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="text-gray-900 dark:text-white p-2 text-base">
-                    Account assistance
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="text-gray-900 dark:text-white p-2 text-base">
-                    Security concerns
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <Select>
+                <SelectTrigger className="w-full h-12 dark:bg-inherit rounded-3xl border border-gray-300 text-gray-600 dark:text-white px-4">
+                  <SelectValue
+                    className="text-gray-300"
+                    placeholder="Select subject"
+                  />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectItem value="general-inquiry">
+                      General inquiry
+                    </SelectItem>
+                    <SelectItem value="order-status">Order status</SelectItem>
+                    <SelectItem value="product-information">
+                      Product information
+                    </SelectItem>
+                    <SelectItem value="technical-support">
+                      Technical support
+                    </SelectItem>
+                    <SelectItem value="website-feedback">
+                      Website feedback
+                    </SelectItem>
+                    <SelectItem value="account-assistance">
+                      Account assistance
+                    </SelectItem>
+                    <SelectItem value="security-concerns">
+                      Security concerns
+                    </SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
             </div>
 
             <div className="pb-6 flex flex-col gap-2">

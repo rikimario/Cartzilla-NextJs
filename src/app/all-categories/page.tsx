@@ -2,7 +2,6 @@ import React from "react";
 import AllCategoriesBrands from "./AllCategoriesBrands";
 import AllCategoriesList from "./AllCategoriesList";
 import AllCategoriesBanner from "./AllCategoriesBanner";
-import TrendingProducts from "@/components/trending-products/TrendingProducts";
 import AllCategoriesProducts from "./AllCategoriesProducts";
 
 export default function page() {

@@ -62,28 +62,30 @@ export default function AllCategoriesList() {
   }, []);
   return (
     <div className="py-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      {/* Mens */}
       <div className="py-2">
-        {/* Mens */}
         {mens.map((men: { title: string; thumbnail: string; id: number }) => (
           <div
             key={men.id}
             className="bg-gray-100 dark:bg-[#222934] rounded-lg"
           >
-            <Image
-              className="hover:scale-105 hover:overflow-hidden hover:cursor-pointer hover:ease-in-out hover:duration-300"
-              src={men.thumbnail}
-              alt={men.title}
-              width={400}
-              height={400}
-            />
+            <Link href="categories/all-men">
+              <Image
+                className="hover:scale-105 hover:overflow-hidden hover:cursor-pointer hover:ease-in-out hover:duration-300"
+                src={men.thumbnail}
+                alt={men.title}
+                width={400}
+                height={400}
+              />
+            </Link>
           </div>
         ))}
         <p className="text-gray-900 dark:text-white py-4 font-semibold">
-          <Link href="/all-men">Men</Link>
+          <Link href="categories/all-men">Men</Link>
         </p>
         <ul className="text-gray-700 dark:text-gray-300 flex flex-col gap-2">
           <li>
-            <Link href="/men-t-shirts">Mens T-Shirts</Link>
+            <Link href="categories/all-men/men-t-shirts">Mens T-Shirts</Link>
           </li>
           <li>
             <Link href="/men-shoes">Mens Shoes</Link>
@@ -102,18 +104,20 @@ export default function AllCategoriesList() {
               key={women.id}
               className="bg-gray-100 dark:bg-[#222934] rounded-lg"
             >
-              <Image
-                className="hover:scale-105 hover:overflow-hidden hover:cursor-pointer hover:ease-in-out hover:duration-300"
-                src={women.thumbnail}
-                alt={women.title}
-                width={400}
-                height={400}
-              />
+              <Link href="categories/all-women">
+                <Image
+                  className="hover:scale-105 hover:overflow-hidden hover:cursor-pointer hover:ease-in-out hover:duration-300"
+                  src={women.thumbnail}
+                  alt={women.title}
+                  width={400}
+                  height={400}
+                />
+              </Link>
             </div>
           )
         )}
         <p className="text-gray-900 dark:text-white py-4 font-semibold">
-          <Link href="/all-women">Women</Link>
+          <Link href="categories/all-women">Women</Link>
         </p>
         <ul className="text-gray-700 dark:text-gray-300 flex flex-col gap-2">
           <li>
@@ -142,18 +146,20 @@ export default function AllCategoriesList() {
               key={tablet.id}
               className="bg-gray-100 dark:bg-[#222934] rounded-lg"
             >
-              <Image
-                className="hover:scale-105 hover:overflow-hidden hover:cursor-pointer hover:ease-in-out hover:duration-300"
-                src={tablet.thumbnail}
-                alt={tablet.title}
-                width={400}
-                height={400}
-              />
+              <Link href="categories/all-electronics">
+                <Image
+                  className="hover:scale-105 hover:overflow-hidden hover:cursor-pointer hover:ease-in-out hover:duration-300"
+                  src={tablet.thumbnail}
+                  alt={tablet.title}
+                  width={400}
+                  height={400}
+                />
+              </Link>
             </div>
           )
         )}
         <p className="text-gray-900 dark:text-white py-4 font-semibold">
-          <Link href="/all-electronics">Electronics</Link>
+          <Link href="categories/all-electronics">Electronics</Link>
         </p>
         <ul className="text-gray-700 dark:text-gray-300 flex flex-col gap-2">
           <li>
@@ -178,17 +184,19 @@ export default function AllCategoriesList() {
             key={item.id}
             className="bg-gray-100 dark:bg-[#222934] rounded-lg"
           >
-            <Image
-              className="hover:scale-105 hover:overflow-hidden hover:cursor-pointer hover:ease-in-out hover:duration-300"
-              src={item.thumbnail}
-              alt={item.title}
-              width={400}
-              height={400}
-            />
+            <Link href="categories/all-groceries">
+              <Image
+                className="hover:scale-105 hover:overflow-hidden hover:cursor-pointer hover:ease-in-out hover:duration-300"
+                src={item.thumbnail}
+                alt={item.title}
+                width={400}
+                height={400}
+              />
+            </Link>
           </div>
         ))}
         <p className="text-gray-900 dark:text-white py-4 font-semibold">
-          <Link href="/all-groceries">Home & Kitchen</Link>
+          <Link href="categories/all-groceries">Home & Kitchen</Link>
         </p>
         <ul className="text-gray-700 dark:text-gray-300 flex flex-col gap-2">
           <li>
@@ -214,18 +222,20 @@ export default function AllCategoriesList() {
               key={item.id}
               className="bg-gray-100 dark:bg-[#222934] rounded-lg"
             >
-              <Image
-                className="hover:scale-105 hover:overflow-hidden hover:cursor-pointer hover:ease-in-out hover:duration-300"
-                src={item.thumbnail}
-                alt={item.title}
-                width={400}
-                height={400}
-              />
+              <Link href="categories/all-cosmetics">
+                <Image
+                  className="hover:scale-105 hover:overflow-hidden hover:cursor-pointer hover:ease-in-out hover:duration-300"
+                  src={item.thumbnail}
+                  alt={item.title}
+                  width={400}
+                  height={400}
+                />
+              </Link>
             </div>
           )
         )}
         <p className="text-gray-900 dark:text-white py-4 font-semibold">
-          <Link href="/all-cosmetics">Cosmetics</Link>
+          <Link href="categories/all-cosmetics">Cosmetics</Link>
         </p>
         <ul className="text-gray-700 dark:text-gray-300 flex flex-col gap-2">
           <li>
@@ -248,18 +258,20 @@ export default function AllCategoriesList() {
               key={item.id}
               className="bg-gray-100 dark:bg-[#222934] rounded-lg"
             >
-              <Image
-                className="hover:scale-105 hover:overflow-hidden hover:cursor-pointer hover:ease-in-out hover:duration-300"
-                src={item.thumbnail}
-                alt={item.title}
-                width={400}
-                height={400}
-              />
+              <Link href="categories/all-automotive">
+                <Image
+                  className="hover:scale-105 hover:overflow-hidden hover:cursor-pointer hover:ease-in-out hover:duration-300"
+                  src={item.thumbnail}
+                  alt={item.title}
+                  width={400}
+                  height={400}
+                />
+              </Link>
             </div>
           )
         )}
         <p className="text-gray-900 dark:text-white py-4 font-semibold">
-          <Link href="/all-automotive">Automotive</Link>
+          <Link href="categories/all-automotive">Automotive</Link>
         </p>
         <ul className="text-gray-700 dark:text-gray-300 flex flex-col gap-2">
           <li>
@@ -279,22 +291,24 @@ export default function AllCategoriesList() {
               key={item.id}
               className="bg-gray-100 dark:bg-[#222934] rounded-lg"
             >
-              <Image
-                className="hover:scale-105 hover:overflow-hidden hover:cursor-pointer hover:ease-in-out hover:duration-300"
-                src={item.thumbnail}
-                alt={item.title}
-                width={400}
-                height={400}
-              />
+              <Link href="categories/sports-accessories">
+                <Image
+                  className="hover:scale-105 hover:overflow-hidden hover:cursor-pointer hover:ease-in-out hover:duration-300"
+                  src={item.thumbnail}
+                  alt={item.title}
+                  width={400}
+                  height={400}
+                />
+              </Link>
             </div>
           )
         )}
         <p className="text-gray-900 dark:text-white py-4 font-semibold">
-          <Link href="/sports-accessories">Sports Accessories</Link>
+          <Link href="categories/sports-accessories">Sports Accessories</Link>
         </p>
         <ul className="text-gray-700 dark:text-gray-300 flex flex-col gap-2">
           <li>
-            <Link href="/sports-accessories">See All</Link>
+            <Link href="categories/sports-accessories">See All</Link>
           </li>
         </ul>
       </div>
@@ -307,22 +321,24 @@ export default function AllCategoriesList() {
               key={item.id}
               className="bg-gray-100 dark:bg-[#222934] rounded-lg"
             >
-              <Image
-                className="hover:scale-105 hover:overflow-hidden hover:cursor-pointer hover:ease-in-out hover:duration-300"
-                src={item.thumbnail}
-                alt={item.title}
-                width={400}
-                height={400}
-              />
+              <Link href="categories/sunglasses">
+                <Image
+                  className="hover:scale-105 hover:overflow-hidden hover:cursor-pointer hover:ease-in-out hover:duration-300"
+                  src={item.thumbnail}
+                  alt={item.title}
+                  width={400}
+                  height={400}
+                />
+              </Link>
             </div>
           )
         )}
         <p className="text-gray-900 dark:text-white py-4 font-semibold">
-          <Link href="/sunglasses">Sunglasses</Link>
+          <Link href="categories/sunglasses">Sunglasses</Link>
         </p>
         <ul className="text-gray-700 dark:text-gray-300 flex flex-col gap-2">
           <li>
-            <Link href="/sunglasses">See All</Link>
+            <Link href="categories/sunglasses">See All</Link>
           </li>
         </ul>
       </div>

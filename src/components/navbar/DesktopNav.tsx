@@ -52,12 +52,14 @@ export default function DesktopNav() {
 
           {/* Sports */}
           <DropdownMenuItem>
-            <Link href="/sports-accessories">Sports Accessories</Link>
+            <Link href="/categories/sports-accessories">
+              Sports Accessories
+            </Link>
           </DropdownMenuItem>
 
           {/* Sunglasses */}
           <DropdownMenuItem>
-            <Link href="/sunglasses">Sunglasses</Link>
+            <Link href="/categories/sunglasses">Sunglasses</Link>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

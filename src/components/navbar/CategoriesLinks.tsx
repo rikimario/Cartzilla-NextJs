@@ -24,7 +24,7 @@ export const links: {
       },
       {
         name: "See All",
-        link: "/all-men",
+        link: "/categories/all-men",
       },
     ],
   },
@@ -58,7 +58,7 @@ export const links: {
       },
       {
         name: "See All",
-        link: "/all-women",
+        link: "/categories/all-women",
       },
     ],
   },
@@ -84,7 +84,7 @@ export const links: {
       },
       {
         name: "See All",
-        link: "/all-electronics",
+        link: "/categories/all-electronics",
       },
     ],
   },
@@ -110,7 +110,7 @@ export const links: {
       },
       {
         name: "See All",
-        link: "/all-groceries",
+        link: "/categories/all-groceries",
       },
     ],
   },
@@ -132,7 +132,7 @@ export const links: {
       },
       {
         name: "See All",
-        link: "/all-cosmetics",
+        link: "/categories/all-cosmetics",
       },
     ],
   },
@@ -150,7 +150,7 @@ export const links: {
       },
       {
         name: "See All",
-        link: "/all-automotive",
+        link: "/categories/all-automotive",
       },
     ],
   },

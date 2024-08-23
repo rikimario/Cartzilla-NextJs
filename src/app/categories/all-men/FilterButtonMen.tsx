@@ -9,7 +9,7 @@ import {
 import { Filter } from "lucide-react";
 import React from "react";
 
-export default function FilterButton() {
+export default function FilterButtonMen() {
   return (
     <>
       <Sheet>

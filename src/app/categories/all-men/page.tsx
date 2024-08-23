@@ -6,7 +6,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import React from "react";
-import FilterButton from "../FilterButton";
+import FilterButtonMen from "./FilterButtonMen";
 
 export default function page() {
   return (
@@ -37,7 +37,7 @@ export default function page() {
           </SelectContent>
         </Select>
       </div>
-      <FilterButton />
+      <FilterButtonMen />
     </div>
   );
 }

@@ -7,10 +7,11 @@ import {
 } from "@/components/ui/select";
 import React from "react";
 import FilterButtonMen from "./FilterButtonMen";
+import MenProducts from "./MenProducts";
 
 export default function page() {
   return (
-    <div className="p-4 h-[800px]">
+    <div className="p-4">
       <h1 className="text-2xl font-semibold">Men's Category</h1>
 
       <div className="flex items-center mt-4 mr-16">
@@ -37,7 +38,10 @@ export default function page() {
           </SelectContent>
         </Select>
       </div>
-      <FilterButtonMen />
+      <MenProducts />
+      <div className="lg:hidden">
+        <FilterButtonMen />
+      </div>
     </div>
   );
 }

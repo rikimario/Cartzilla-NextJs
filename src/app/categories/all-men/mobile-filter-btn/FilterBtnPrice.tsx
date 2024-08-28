@@ -14,17 +14,17 @@ export default function FilterBtnPrice() {
           min={0}
           max={5000}
           step={50}
-          defaultValue={[0, 4500]}
+          defaultValue={value}
           onValueChange={(value) => setValue(value)}
         />
 
         <div className="flex justify-between items-center mt-8">
-          <p className="p-4 border border-gray-200 rounded-xl min-w-20 max-w-20 text-center">
-            ${value[0]}
+          <p className="p-4 border border-gray-200 rounded-xl min-w-24 max-w-24 text-center">
+            $ {value[0]}
           </p>{" "}
           -{" "}
-          <p className="p-4 border border-gray-200 rounded-xl min-w-20 max-w-20 text-center">
-            ${value[1]}
+          <p className="p-4 border border-gray-200 rounded-xl min-w-24 max-w-24 text-center">
+            $ {value[1]}
           </p>
         </div>
       </div>

@@ -9,6 +9,7 @@ import {
 import { Filter } from "lucide-react";
 import FilterBtnCategories from "./FilterBtnCategories";
 import FilterBtnPrice from "./FilterBtnPrice";
+import FilterBtnBrands from "./FilterBtnBrands";
 
 export default function FilterButtonMen() {
   // const [categoriesMen, setCategoriesMen] = useState();
@@ -32,9 +33,9 @@ export default function FilterButtonMen() {
         </SheetTrigger>
         <SheetContent
           side="left"
-          className="dark:bg-[#181D25] dark:text-[white]"
+          className="dark:bg-[#181D25] dark:text-[white] mb-4"
         >
-          <ScrollArea className="h-screen">
+          <ScrollArea className="h-full">
             <SheetHeader>
               <SheetTitle className="text-start text-xl">
                 Filters and sort
@@ -44,6 +45,8 @@ export default function FilterButtonMen() {
             <FilterBtnCategories />
             {/* Price */}
             <FilterBtnPrice />
+            {/* Brands */}
+            <FilterBtnBrands />
           </ScrollArea>
         </SheetContent>
       </Sheet>

@@ -8,6 +8,7 @@ import {
 import React from "react";
 import FilterButtonMen from "./mobile-filter-btn/FilterButtonMen";
 import MenProducts from "./MenProducts";
+import FilterSectionMen from "./FilterSectionMen";
 
 export default function page() {
   return (
@@ -38,9 +39,15 @@ export default function page() {
           </SelectContent>
         </Select>
       </div>
-      <MenProducts />
-      <div className="lg:hidden">
-        <FilterButtonMen />
+
+      <div className="flex gap-4 xl:justify-between">
+        <div className="lg:block hidden">
+          <FilterSectionMen />
+        </div>
+        <MenProducts />
+        <div className="lg:hidden">
+          <FilterButtonMen />
+        </div>
       </div>
     </div>
   );

@@ -11,18 +11,18 @@ import MenProducts from "./MenProducts";
 
 export default function page() {
   return (
-    <div className="p-4">
+    <div className="p-4 xl:px-[5.4rem] 2xl:px-[7.7rem]">
       <h1 className="text-2xl font-semibold">Men's Category</h1>
 
-      <div className="flex items-center mt-4 mr-16">
+      <div className="flex items-center justify-start mt-4  text-nowrap">
         <label
-          className="text-sm font-semibold w-1/3 text-gray-900 dark:text-white"
+          className="text-sm font-semibold text-gray-900 dark:text-white"
           htmlFor=""
         >
           Sort by:
         </label>
         <Select>
-          <SelectTrigger className="md:w-1/4 dark:bg-inherit text-gray-600 dark:text-white border-none">
+          <SelectTrigger className="w-44 dark:bg-inherit text-gray-600 dark:text-white border-none">
             <SelectValue className="text-gray-300" placeholder="Relevance" />
           </SelectTrigger>
           <SelectContent>

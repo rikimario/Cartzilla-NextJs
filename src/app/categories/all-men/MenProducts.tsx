@@ -33,7 +33,7 @@ export default function MenProducts() {
 
   return (
     <div className="px-4 md:px-0 py-10 dark:bg-[#181D25]">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 lg:gap-2 lg:pt-4 items-center justify-center justify-items-center text-center">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-4 lg:gap-2 lg:pt-4 items-center justify-center justify-items-center text-center">
         {products.map((item) => (
           <div
             className="relative flex flex-col text-center items-center gap-2 lg:min-w-[250px] pb-8 hover:shadow-lg transition-transform duration-600"

@@ -3,7 +3,7 @@ import { Slider } from "@/components/ui/slider";
 import React, { useState } from "react";
 
 export default function FilterBtnPrice() {
-  const [value, setValue] = useState([0, 5000]);
+  const [value, setValue] = useState([0, 14000]);
   return (
     <div className="p-6 border border-gray-200 rounded-xl text-gray-700 mt-6">
       <h2 className="text-start text-xl text-gray-700 font-semibold mb-6">
@@ -12,8 +12,8 @@ export default function FilterBtnPrice() {
       <div>
         <Slider
           min={0}
-          max={5000}
-          step={50}
+          max={14000}
+          step={10}
           defaultValue={value}
           onValueChange={(value) => setValue(value)}
         />

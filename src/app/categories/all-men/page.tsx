@@ -20,6 +20,8 @@ export default function page() {
       tempArray.sort((a, b) => a.price - b.price);
     } else if (value === "high") {
       tempArray.sort((a, b) => b.price - a.price);
+    } else if (value === "name") {
+      tempArray.sort((a, b) => a.title.localeCompare(b.title));
     }
     setSort(tempArray);
   };

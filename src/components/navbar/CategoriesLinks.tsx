@@ -11,8 +11,8 @@ export const links: {
     submenu: true,
     sublinks: [
       {
-        name: "Mens T-Shirts",
-        link: "/men-t-shirts",
+        name: "Mens Shirts",
+        link: "/men-shirts",
       },
       {
         name: "Mens Shoes",

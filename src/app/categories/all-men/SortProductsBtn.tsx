@@ -25,7 +25,7 @@ export default function SortProductsBtn({
         </SelectTrigger>
         <SelectContent>
           <SelectItem value="Relevance">Relevance</SelectItem>
-          <SelectItem value="Popularity">Popularity</SelectItem>
+          <SelectItem value="name">Name</SelectItem>
           <SelectItem value="low">Price: Low to High</SelectItem>
           <SelectItem value="high">Price: High to Low</SelectItem>
           <SelectItem value="Newest Arrivals">Newest Arrivals</SelectItem>

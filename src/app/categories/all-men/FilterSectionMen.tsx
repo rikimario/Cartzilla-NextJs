@@ -5,10 +5,14 @@ import FilterBtnBrands from "./mobile-filter-btn/FilterBtnBrands";
 
 export default function FilterSectionMen() {
   return (
+    // <div>
+    //   <FilterBtnCategories />
+    //   <FilterBtnPrice />
+    //   <FilterBtnBrands />
+    // </div>
+
     <div>
-      <FilterBtnCategories />
-      <FilterBtnPrice />
-      <FilterBtnBrands />
+      <h1>asd</h1>
     </div>
   );
 }

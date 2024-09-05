@@ -3,24 +3,12 @@ import { links } from "@/components/navbar/CategoriesLinks";
 import { ChevronRight } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
-export default function FilterBtnCategories() {
-  const products = getProductsMen();
-  const [sort, setSort] = useState(products);
-
-  // useEffect(() => {
-  //   setSort(products);
-  // }, [products]);
-  // console.log(sort);
-
-  const [checkedCategories, setCheckedCategories] = useState<string[]>([]);
-  const handleChange = (category: string) => {
-    if (checkedCategories.includes(category)) {
-      setCheckedCategories(checkedCategories.filter((c) => c !== category));
-    } else {
-      setCheckedCategories([...checkedCategories, category]);
-    }
-  };
-
+interface SortByCategoryBtnProps {
+  handleCategoryClick: (category: string) => void;
+}
+export default function FilterBtnCategories({
+  handleCategoryClick,
+}: SortByCategoryBtnProps) {
   return (
     <div className="p-6 border border-gray-200 rounded-xl text-gray-700 mt-6">
       <h2 className="text-start text-xl text-gray-700 font-semibold">
@@ -33,12 +21,8 @@ export default function FilterBtnCategories() {
               {link.sublinks.map((sublink) => (
                 <button
                   key={sublink.name}
-                  className={`flex items-center justify-between gap-2 p-2 ${
-                    checkedCategories.includes(sublink.name)
-                      ? "bg-blue-500 text-white"
-                      : ""
-                  }`}
-                  onClick={handleChange.bind(null, sublink.name)}
+                  className="flex items-center justify-between gap-2 p-2"
+                  onClick={() => handleCategoryClick(sublink.link)}
                 >
                   {sublink.name}
                   <span>

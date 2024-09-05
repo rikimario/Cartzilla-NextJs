@@ -12,15 +12,15 @@ export const links: {
     sublinks: [
       {
         name: "Mens Shirts",
-        link: "/men-shirts",
+        link: "mens-shirts",
       },
       {
         name: "Mens Shoes",
-        link: "/men-shoes",
+        link: "mens-shoes",
       },
       {
         name: "Mens Watches",
-        link: "/man-watches",
+        link: "mens-watches",
       },
       {
         name: "See All",

@@ -11,6 +11,7 @@ export default function MenProducts({ products }: any) {
             className="relative flex flex-col text-center items-center gap-2 lg:min-w-[250px] pb-8 hover:shadow-lg transition-transform duration-600"
             key={item.id}
           >
+            <span className="hidden">{item.category}</span>
             <div className="absolute top-2 right-1">
               <button className="bg-gray-200 dark:bg-gray-700 p-2 rounded-lg">
                 <Heart

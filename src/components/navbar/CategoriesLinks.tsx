@@ -24,7 +24,7 @@ export const links: {
       },
       {
         name: "See All",
-        link: "/categories/all-men",
+        link: "categories/all-men",
       },
     ],
   },

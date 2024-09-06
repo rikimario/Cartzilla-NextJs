@@ -24,7 +24,7 @@ export default function SortProductsBtn({
           <SelectValue className="text-gray-300" placeholder="Relevance" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="Relevance">Relevance</SelectItem>
+          <SelectItem value="relevance">Relevance</SelectItem>
           <SelectItem value="name">Name</SelectItem>
           <SelectItem value="low">Price: Low to High</SelectItem>
           <SelectItem value="high">Price: High to Low</SelectItem>

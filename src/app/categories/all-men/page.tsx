@@ -11,22 +11,26 @@ import FilterBtnBrands from "./mobile-filter-btn/FilterBtnBrands";
 
 export default function page() {
   const products = getProductsMen();
-  const [sort, setSort] = useState(products);
+  // const [sort, setSort] = useState(products);
+  const [filteredProducts, setFilteredProducts] = useState(products);
+  const [sort, setSort] = useState(filteredProducts);
 
   useEffect(() => {
     setSort(products);
   }, [products]);
 
   const handleChange = (value: string) => {
-    const tempArray = [...products];
     if (value === "low") {
-      tempArray.sort((a, b) => a.price - b.price);
+      setSort((prev) => [...prev].sort((a, b) => a.price - b.price));
     } else if (value === "high") {
-      tempArray.sort((a, b) => b.price - a.price);
+      setSort((prev) => [...prev].sort((a, b) => b.price - a.price));
     } else if (value === "name") {
-      tempArray.sort((a, b) => a.title.localeCompare(b.title));
+      setSort((prev) =>
+        [...prev].sort((a, b) => a.title.localeCompare(b.title))
+      );
+    } else {
+      setSort(products);
     }
-    setSort(tempArray);
   };
 
   const handleCategoryClick = (category: string) => {
@@ -40,6 +44,8 @@ export default function page() {
     } else {
       setSort(filteredProducts);
     }
+    setFilteredProducts(filteredProducts);
+    // setSort(filteredProducts);
   };
 
   return (

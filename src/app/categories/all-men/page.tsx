@@ -28,7 +28,7 @@ export default function page() {
       setSort((prev) =>
         [...prev].sort((a, b) => a.title.localeCompare(b.title))
       );
-    } else {
+    } else if (value === "relevance") {
       setSort(products);
     }
   };

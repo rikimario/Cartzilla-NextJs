@@ -11,6 +11,13 @@ interface SortProductsBtnProps {
   handleChange: (value: string) => void;
 }
 
+const SORT_OPTIONS = [
+  { value: "relevance", name: "Relevance" },
+  { value: "name", name: "Name" },
+  { value: "low", name: "Price: Low to High" },
+  { value: "high", name: "Price: High to Low" },
+] as const;
+
 export default function SortProductsBtn({
   handleChange,
 }: SortProductsBtnProps) {
@@ -24,11 +31,11 @@ export default function SortProductsBtn({
           <SelectValue className="text-gray-300" placeholder="Relevance" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="relevance">Relevance</SelectItem>
-          <SelectItem value="name">Name</SelectItem>
-          <SelectItem value="low">Price: Low to High</SelectItem>
-          <SelectItem value="high">Price: High to Low</SelectItem>
-          <SelectItem value="Newest Arrivals">Newest Arrivals</SelectItem>
+          {SORT_OPTIONS.map((option) => (
+            <SelectItem key={option.name} value={option.value}>
+              {option.name}
+            </SelectItem>
+          ))}
         </SelectContent>
       </Select>
     </div>

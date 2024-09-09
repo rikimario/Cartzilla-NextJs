@@ -3,7 +3,7 @@ import FilterButtonMen from "./mobile-filter-btn/FilterButtonMen";
 import MenProducts from "./MenProducts";
 import FilterSectionMen from "./FilterSectionMen";
 import SortProductsBtn from "./SortProductsBtn";
-import getProductsMen from "@/app/utils/products";
+import getProductsMen, { Product } from "@/app/utils/products";
 import { useEffect, useState } from "react";
 import FilterBtnCategories from "./mobile-filter-btn/FilterBtnCategories";
 import FilterBtnPrice from "./mobile-filter-btn/FilterBtnPrice";
@@ -11,9 +11,19 @@ import FilterBtnBrands from "./mobile-filter-btn/FilterBtnBrands";
 
 export default function page() {
   const products = getProductsMen();
-  // const [sort, setSort] = useState(products);
-  const [filteredProducts, setFilteredProducts] = useState(products);
-  const [sort, setSort] = useState(filteredProducts);
+
+  const [sort, setSort] = useState(products);
+  const getSortedProducts = (products: Product[], sort: Product[]) => {
+    if (sort[0].price < sort[1].price) {
+      return products.sort((a, b) => a.price - b.price);
+    } else if (sort[0].price > sort[1].price) {
+      return products.sort((a, b) => b.price - a.price);
+    } else if (sort[0].title.localeCompare(sort[1].title) < 0) {
+      return products.sort((a, b) => a.title.localeCompare(b.title));
+    } else {
+      return products.sort((a, b) => a.id - b.id);
+    }
+  };
 
   useEffect(() => {
     setSort(products);
@@ -29,23 +39,20 @@ export default function page() {
         [...prev].sort((a, b) => a.title.localeCompare(b.title))
       );
     } else if (value === "relevance") {
-      setSort(products);
+      setSort((prev) => [...prev].sort((a, b) => a.id - b.id));
     }
   };
 
   const handleCategoryClick = (category: string) => {
-    console.log("Selected category:", category);
-    const filteredProducts = products.filter((product) => {
-      return product.category === category;
-    });
+    const filteredProducts = products.filter(
+      (product) => product.category === category
+    );
 
     if (filteredProducts.length === 0) {
-      setSort(products);
+      setSort(getSortedProducts(products, sort));
     } else {
-      setSort(filteredProducts);
+      setSort(getSortedProducts(filteredProducts, sort));
     }
-    setFilteredProducts(filteredProducts);
-    // setSort(filteredProducts);
   };
 
   return (

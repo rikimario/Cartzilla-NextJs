@@ -23,7 +23,7 @@ export const links: {
         link: "mens-watches",
       },
       {
-        name: "See All",
+        name: "All",
         link: "categories/all-men",
       },
     ],
@@ -57,7 +57,7 @@ export const links: {
         link: "/women-jewelry",
       },
       {
-        name: "See All",
+        name: "All",
         link: "/categories/all-women",
       },
     ],
@@ -83,7 +83,7 @@ export const links: {
         link: "/mobile-accessories",
       },
       {
-        name: "See All",
+        name: "All",
         link: "/categories/all-electronics",
       },
     ],
@@ -109,7 +109,7 @@ export const links: {
         link: "/groceries",
       },
       {
-        name: "See All",
+        name: "All",
         link: "/categories/all-groceries",
       },
     ],
@@ -131,7 +131,7 @@ export const links: {
         link: "/fragrances",
       },
       {
-        name: "See All",
+        name: "All",
         link: "/categories/all-cosmetics",
       },
     ],
@@ -149,7 +149,7 @@ export const links: {
         link: "/motorcycles",
       },
       {
-        name: "See All",
+        name: "All",
         link: "/categories/all-automotive",
       },
     ],

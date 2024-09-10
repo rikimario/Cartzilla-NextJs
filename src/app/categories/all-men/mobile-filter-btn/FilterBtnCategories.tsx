@@ -19,6 +19,10 @@ export default function FilterBtnCategories({
     },
     {}
   );
+  const totalProducts = Object.values(productsByCategory).reduce(
+    (acc, count) => acc + count,
+    0
+  );
 
   return (
     <div className="p-6 border border-gray-200 rounded-xl text-gray-700 mt-6">
@@ -38,7 +42,7 @@ export default function FilterBtnCategories({
                   {sublink.name}
 
                   <p className="text-sm text-gray-400">
-                    ({productsByCategory[sublink.link] || 0})
+                    ({productsByCategory[sublink.link] || totalProducts})
                   </p>
                 </button>
               ))}

@@ -1,7 +1,6 @@
 "use client";
 import FilterButtonMen from "./mobile-filter-btn/FilterButtonMen";
 import MenProducts from "./MenProducts";
-import FilterSectionMen from "./FilterSectionMen";
 import SortProductsBtn from "./SortProductsBtn";
 import getProductsMen, { Product } from "@/app/utils/products";
 import { useEffect, useState } from "react";
@@ -63,7 +62,6 @@ export default function page() {
 
       <div className="flex gap-4 xl:justify-between">
         <div className="lg:block hidden">
-          {/* <FilterSectionMen /> */}
           <FilterBtnCategories handleCategoryClick={handleCategoryClick} />
           <FilterBtnPrice />
           <FilterBtnBrands />

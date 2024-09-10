@@ -1,7 +1,5 @@
 import getProductsMen from "@/app/utils/products";
 import { links } from "@/components/navbar/CategoriesLinks";
-import { ChevronRight } from "lucide-react";
-import React, { useEffect, useState } from "react";
 
 interface SortByCategoryBtnProps {
   handleCategoryClick: (category: string) => void;
@@ -9,6 +7,19 @@ interface SortByCategoryBtnProps {
 export default function FilterBtnCategories({
   handleCategoryClick,
 }: SortByCategoryBtnProps) {
+  const products = getProductsMen();
+  const productsByCategory = products.reduce(
+    (acc: { [key: string]: number }, product) => {
+      const category = product.category;
+      if (!acc[category]) {
+        acc[category] = 0;
+      }
+      acc[category]++;
+      return acc;
+    },
+    {}
+  );
+
   return (
     <div className="p-6 border border-gray-200 rounded-xl text-gray-700 mt-6">
       <h2 className="text-start text-xl text-gray-700 font-semibold">
@@ -25,9 +36,10 @@ export default function FilterBtnCategories({
                   onClick={() => handleCategoryClick(sublink.link)}
                 >
                   {sublink.name}
-                  <span>
-                    <ChevronRight className=" h-4 w-4" />
-                  </span>
+
+                  <p className="text-sm text-gray-400">
+                    ({productsByCategory[sublink.link] || 0})
+                  </p>
                 </button>
               ))}
             </div>

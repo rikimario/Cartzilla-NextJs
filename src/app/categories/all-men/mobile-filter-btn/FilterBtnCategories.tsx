@@ -1,5 +1,7 @@
 import getProductsMen from "@/app/utils/products";
 import { links } from "@/components/navbar/CategoriesLinks";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
 
 interface SortByCategoryBtnProps {
   handleCategoryClick: (category: string) => void;
@@ -39,8 +41,8 @@ export default function FilterBtnCategories({
                   className="flex items-center justify-between gap-2 p-2"
                   onClick={() => handleCategoryClick(sublink.link)}
                 >
-                  {sublink.name}
-
+                  <Checkbox id={sublink.name} key={sublink.name} />
+                  <Label htmlFor={sublink.name}>{sublink.name}</Label>
                   <p className="text-sm text-gray-400">
                     ({productsByCategory[sublink.link] || totalProducts})
                   </p>

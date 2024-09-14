@@ -12,6 +12,8 @@ export default function page() {
   const products = getProductsMen();
 
   const [sort, setSort] = useState(products);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [categories, setCategories] = useState<string[]>([]);
   const getSortedProducts = (products: Product[], sort: Product[]) => {
     if (sort[0].price < sort[1].price) {
       return products.sort((a, b) => a.price - b.price);
@@ -43,16 +45,31 @@ export default function page() {
   };
 
   const handleCategoryClick = (category: string) => {
-    const filteredProducts = products.filter(
-      (product) => product.category === category
-    );
+    const isSelected = categories.includes(category);
 
-    if (filteredProducts.length === 0) {
+    if (isSelected) {
+      setCategories((prev) => prev.filter((c) => c !== category));
       setSort(getSortedProducts(products, sort));
     } else {
-      setSort(getSortedProducts(filteredProducts, sort));
+      setCategories((prev) => [...prev, category]);
+      setSort(getSortedProducts(products, sort));
     }
   };
+
+  useEffect(() => {
+    setSelectedCategories(categories);
+  }, [categories]);
+
+  useEffect(() => {
+    if (selectedCategories.length === 0) {
+      setSort(products);
+    } else {
+      const filteredProducts = products.filter((product) =>
+        selectedCategories.includes(product.category)
+      );
+      setSort(filteredProducts);
+    }
+  }, [selectedCategories]);
 
   return (
     <div className="p-4 xl:px-[5.4rem] 2xl:px-[7.7rem]">
@@ -62,7 +79,10 @@ export default function page() {
 
       <div className="flex gap-4 xl:justify-between">
         <div className="lg:block hidden">
-          <FilterBtnCategories handleCategoryClick={handleCategoryClick} />
+          <FilterBtnCategories
+            handleCategoryClick={handleCategoryClick}
+            selectedCategories={selectedCategories}
+          />
           <FilterBtnPrice />
           <FilterBtnBrands />
         </div>

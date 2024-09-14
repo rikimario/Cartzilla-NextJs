@@ -22,10 +22,10 @@ export const links: {
         name: "Mens Watches",
         link: "mens-watches",
       },
-      {
-        name: "All",
-        link: "categories/all-men",
-      },
+      // {
+      //   name: "All",
+      //   link: "categories/all-men",
+      // },
     ],
   },
   {

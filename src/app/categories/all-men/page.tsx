@@ -8,53 +8,41 @@ import FilterBtnCategories from "./mobile-filter-btn/FilterBtnCategories";
 import FilterBtnPrice from "./mobile-filter-btn/FilterBtnPrice";
 import FilterBtnBrands from "./mobile-filter-btn/FilterBtnBrands";
 
+enum SortOrder {
+  Relevance = "relevance",
+  Name = "name",
+  Low = "low",
+  High = "high",
+}
+
 export default function page() {
   const products = getProductsMen();
 
   const [sort, setSort] = useState(products);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
-  const getSortedProducts = (products: Product[], sort: Product[]) => {
-    if (sort[0].price < sort[1].price) {
-      return products.sort((a, b) => a.price - b.price);
-    } else if (sort[0].price > sort[1].price) {
-      return products.sort((a, b) => b.price - a.price);
-    } else if (sort[0].title.localeCompare(sort[1].title) < 0) {
-      return products.sort((a, b) => a.title.localeCompare(b.title));
-    } else {
-      return products.sort((a, b) => a.id - b.id);
+  const [sortOrder, setSortOrder] = useState<SortOrder>(SortOrder.Relevance);
+  const getSortedProducts = (
+    filteredProducts: Product[],
+    sortOrder: SortOrder
+  ) => {
+    switch (sortOrder) {
+      case SortOrder.Relevance:
+        return filteredProducts.sort((a, b) => a.id - b.id);
+      case SortOrder.Name:
+        return filteredProducts.sort((a, b) => a.title.localeCompare(b.title));
+      case SortOrder.Low:
+        return filteredProducts.sort((a, b) => a.price - b.price);
+      case SortOrder.High:
+        return filteredProducts.sort((a, b) => b.price - a.price);
+      default:
+        return filteredProducts;
     }
   };
 
   useEffect(() => {
     setSort(products);
   }, [products]);
-
-  const handleChange = (value: string) => {
-    if (value === "low") {
-      setSort((prev) => [...prev].sort((a, b) => a.price - b.price));
-    } else if (value === "high") {
-      setSort((prev) => [...prev].sort((a, b) => b.price - a.price));
-    } else if (value === "name") {
-      setSort((prev) =>
-        [...prev].sort((a, b) => a.title.localeCompare(b.title))
-      );
-    } else if (value === "relevance") {
-      setSort((prev) => [...prev].sort((a, b) => a.id - b.id));
-    }
-  };
-
-  const handleCategoryClick = (category: string) => {
-    const isSelected = categories.includes(category);
-
-    if (isSelected) {
-      setCategories((prev) => prev.filter((c) => c !== category));
-      setSort(getSortedProducts(products, sort));
-    } else {
-      setCategories((prev) => [...prev, category]);
-      setSort(getSortedProducts(products, sort));
-    }
-  };
 
   useEffect(() => {
     setSelectedCategories(categories);
@@ -70,6 +58,42 @@ export default function page() {
       setSort(filteredProducts);
     }
   }, [selectedCategories]);
+
+  const handleChange = (value: string) => {
+    if (value === "low") {
+      setSort((prev) => [...prev].sort((a, b) => a.price - b.price));
+      setSortOrder(SortOrder.Low);
+    } else if (value === "high") {
+      setSort((prev) => [...prev].sort((a, b) => b.price - a.price));
+      setSortOrder(SortOrder.High);
+    } else if (value === "name") {
+      setSort((prev) =>
+        [...prev].sort((a, b) => a.title.localeCompare(b.title))
+      );
+      setSortOrder(SortOrder.Name);
+    } else if (value === "relevance") {
+      setSort((prev) => [...prev].sort((a, b) => a.id - b.id));
+      setSortOrder(SortOrder.Relevance);
+    }
+  };
+
+  const handleCategoryClick = (category: string) => {
+    const isSelected = categories.includes(category);
+
+    if (isSelected) {
+      setCategories((prev) => prev.filter((c) => c !== category));
+    } else {
+      setCategories((prev) => [...prev, category]);
+    }
+
+    setSelectedCategories(categories);
+
+    const sortedProducts = getSortedProducts(products, sortOrder);
+    const filteredProducts = sortedProducts.filter((product) =>
+      categories.includes(product.category)
+    );
+    setSort(filteredProducts);
+  };
 
   return (
     <div className="p-4 xl:px-[5.4rem] 2xl:px-[7.7rem]">

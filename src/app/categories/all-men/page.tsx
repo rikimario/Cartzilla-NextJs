@@ -22,6 +22,8 @@ export default function page() {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
   const [sortOrder, setSortOrder] = useState<SortOrder>(SortOrder.Relevance);
+  const [brands, setBrands] = useState<string[]>([]);
+  const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const getSortedProducts = (
     filteredProducts: Product[],
     sortOrder: SortOrder
@@ -49,15 +51,23 @@ export default function page() {
   }, [categories]);
 
   useEffect(() => {
-    if (selectedCategories.length === 0) {
+    setSelectedBrands(brands);
+  }, [brands]);
+
+  useEffect(() => {
+    if (selectedCategories.length === 0 && selectedBrands.length === 0) {
       setSort(products);
     } else {
-      const filteredProducts = products.filter((product) =>
-        selectedCategories.includes(product.category)
+      const filteredProducts = products.filter(
+        (product) =>
+          (selectedCategories.length === 0 ||
+            selectedCategories.includes(product.category)) &&
+          (selectedBrands.length === 0 ||
+            selectedBrands.includes(product.brand))
       );
       setSort(filteredProducts);
     }
-  }, [selectedCategories]);
+  }, [selectedCategories, selectedBrands]);
 
   const handleChange = (value: string) => {
     if (value === "low") {
@@ -95,6 +105,24 @@ export default function page() {
     setSort(filteredProducts);
   };
 
+  const handleBrandClick = (brand: string) => {
+    const isSelected = brands.includes(brand);
+
+    if (isSelected) {
+      setBrands((prev) => prev.filter((c) => c !== brand));
+      setSelectedBrands((prev) => prev.filter((c) => c !== brand));
+    } else {
+      setBrands((prev) => [...prev, brand]);
+      setSelectedBrands((prev) => [...prev, brand]);
+    }
+
+    const sortedProducts = getSortedProducts(products, sortOrder);
+    const filteredProducts = sortedProducts.filter((product) =>
+      selectedBrands.includes(product.brand)
+    );
+    setSort(filteredProducts);
+  };
+
   return (
     <div className="p-4 xl:px-[5.4rem] 2xl:px-[7.7rem]">
       <h1 className="text-2xl font-semibold">Men's Category</h1>
@@ -108,7 +136,10 @@ export default function page() {
             selectedCategories={selectedCategories}
           />
           <FilterBtnPrice />
-          <FilterBtnBrands />
+          <FilterBtnBrands
+            handleBrandClick={handleBrandClick}
+            selectedBrands={selectedBrands}
+          />
         </div>
         <MenProducts products={sort} />
         <div className="lg:hidden">

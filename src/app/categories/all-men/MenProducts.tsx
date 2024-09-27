@@ -25,6 +25,7 @@ export default function MenProducts({ products }: any) {
                 key={item.id}
               >
                 <span className="hidden">{item.category}</span>
+                <span className="hidden">{item.brand}</span>
                 <div className="absolute top-2 right-1">
                   <button className="bg-gray-200 dark:bg-gray-700 p-2 rounded-lg">
                     <Heart

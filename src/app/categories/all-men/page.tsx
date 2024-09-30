@@ -24,6 +24,7 @@ export default function page() {
   const [sortOrder, setSortOrder] = useState<SortOrder>(SortOrder.Relevance);
   const [brands, setBrands] = useState<string[]>([]);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
+  const [value, setValue] = useState<[number, number]>([0, 14000]);
   const getSortedProducts = (
     filteredProducts: Product[],
     sortOrder: SortOrder
@@ -123,6 +124,19 @@ export default function page() {
     setSort(filteredProducts);
   };
 
+  const handlePriceChange = (values: [number, number]) => {
+    const filteredProducts = products.filter(
+      (product) =>
+        (selectedCategories.length === 0 ||
+          selectedCategories.includes(product.category)) &&
+        (selectedBrands.length === 0 ||
+          selectedBrands.includes(product.brand)) &&
+        product.price >= values[0] &&
+        product.price <= values[1]
+    );
+    setSort(filteredProducts);
+  };
+
   return (
     <div className="p-4 xl:px-[5.4rem] 2xl:px-[7.7rem]">
       <h1 className="text-2xl font-semibold">Men's Category</h1>
@@ -135,7 +149,11 @@ export default function page() {
             handleCategoryClick={handleCategoryClick}
             selectedCategories={selectedCategories}
           />
-          <FilterBtnPrice />
+          <FilterBtnPrice
+            values={value}
+            setValue={setValue}
+            onChange={handlePriceChange}
+          />
           <FilterBtnBrands
             handleBrandClick={handleBrandClick}
             selectedBrands={selectedBrands}

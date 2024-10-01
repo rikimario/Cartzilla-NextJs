@@ -1,5 +1,4 @@
 "use client";
-import { Product } from "@/app/utils/products";
 import { Slider } from "@/components/ui/slider";
 
 interface FilterBtnPriceProps {

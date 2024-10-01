@@ -161,7 +161,15 @@ export default function page() {
         </div>
         <MenProducts products={sort} />
         <div className="lg:hidden">
-          <FilterButtonMen />
+          <FilterButtonMen
+            handleCategoryClick={handleCategoryClick}
+            selectedCategories={selectedCategories}
+            values={value}
+            setValue={setValue}
+            onChange={handlePriceChange}
+            handleBrandClick={handleBrandClick}
+            selectedBrands={selectedBrands}
+          />
         </div>
       </div>
     </div>

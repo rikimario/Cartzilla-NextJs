@@ -11,15 +11,24 @@ import FilterBtnCategories from "./FilterBtnCategories";
 import FilterBtnPrice from "./FilterBtnPrice";
 import FilterBtnBrands from "./FilterBtnBrands";
 
-export default function FilterButtonMen() {
-  // const [categoriesMen, setCategoriesMen] = useState();
-
-  // useEffect(() => {
-  //   fetch("https://dummyjson.com/products/categories/men")
-  //     .then((res) => res.json())
-  //     .then((data) => setCategoriesMen(data));
-  // }, []);
-
+interface FilterButtonMenProps {
+  handleCategoryClick: (category: string) => void;
+  selectedCategories: string[];
+  values: [number, number];
+  setValue: (newValue: [number, number]) => void;
+  onChange: (values: [number, number]) => void;
+  handleBrandClick: (brand: string) => void;
+  selectedBrands: string[];
+}
+export default function FilterButtonMen({
+  handleCategoryClick,
+  selectedCategories,
+  values,
+  setValue,
+  onChange,
+  handleBrandClick,
+  selectedBrands,
+}: FilterButtonMenProps) {
   return (
     <>
       <Sheet>
@@ -42,11 +51,21 @@ export default function FilterButtonMen() {
               </SheetTitle>
             </SheetHeader>
             {/* Categories */}
-            <FilterBtnCategories />
+            <FilterBtnCategories
+              handleCategoryClick={handleCategoryClick}
+              selectedCategories={selectedCategories}
+            />
             {/* Price */}
-            <FilterBtnPrice />
+            <FilterBtnPrice
+              values={values}
+              setValue={setValue}
+              onChange={onChange}
+            />
             {/* Brands */}
-            <FilterBtnBrands />
+            <FilterBtnBrands
+              handleBrandClick={handleBrandClick}
+              selectedBrands={selectedBrands}
+            />
           </ScrollArea>
         </SheetContent>
       </Sheet>

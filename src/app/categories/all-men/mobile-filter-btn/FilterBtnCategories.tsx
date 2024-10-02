@@ -29,7 +29,7 @@ export default function FilterBtnCategories({
   );
 
   return (
-    <div className="p-6 border border-gray-200 rounded-xl text-gray-700 mt-6">
+    <div className="p-6 border border-gray-200 rounded-xl text-gray-700 mt-10">
       <h2 className="text-start text-xl text-gray-700 font-semibold">
         Categories
       </h2>

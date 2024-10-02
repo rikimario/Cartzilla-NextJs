@@ -139,11 +139,11 @@ export default function page() {
 
   return (
     <div className="p-4 xl:px-[5.4rem] 2xl:px-[7.7rem]">
-      <h1 className="text-2xl font-semibold">Men's Category</h1>
+      <h1 className="text-2xl font-semibold mt-10">Men's Category</h1>
 
       <SortProductsBtn handleChange={handleChange} />
 
-      <div className="flex gap-4 xl:justify-between">
+      <div className="flex lg:gap-4 md:justify-start w-full">
         <div className="lg:block hidden">
           <FilterBtnCategories
             handleCategoryClick={handleCategoryClick}
@@ -159,7 +159,9 @@ export default function page() {
             selectedBrands={selectedBrands}
           />
         </div>
-        <MenProducts products={sort} />
+        <div className="md:flex-1">
+          <MenProducts products={sort} />
+        </div>
         <div className="lg:hidden">
           <FilterButtonMen
             handleCategoryClick={handleCategoryClick}

@@ -15,7 +15,7 @@ export default function MenProducts({ products }: any) {
   }, [products]);
   return (
     <div className="py-10 dark:bg-[#181D25]">
-      <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-4 lg:gap-2 lg:pt-4 items-center justify-center justify-items-center text-center grid-auto-columns">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-4 lg:gap-2 lg:pt-4 items-center justify-center justify-items-center text-center grid-auto-columns">
         {isLoading
           ? Array.from({ length: 8 }).map((_, index) => (
               <ProductSkeleton key={index} />
@@ -41,15 +41,26 @@ export default function MenProducts({ products }: any) {
                     />
                     <div className="flex flex-col gap-2 w-full text-start p-2">
                       <div className="flex items-center text-center">
-                        {Array.from({ length: 5 }).map((_, index) => (
-                          <Star
-                            key={index}
-                            className="text-[#FC9231] lg:w-5 lg:h-5"
-                            size={16}
-                            fill="#FC9231"
-                            strokeWidth={0}
-                          />
-                        ))}
+                        {Array.from({ length: 5 }).map((_, index) =>
+                          item.rating >= index + 1 ? (
+                            <Star
+                              key={index}
+                              className="text-[#FC9231] lg:w-5 lg:h-5"
+                              size={16}
+                              fill="#FC9231"
+                              strokeWidth={0}
+                            />
+                          ) : (
+                            <Star
+                              key={index}
+                              className="text-gray-400 lg:w-5 lg:h-5"
+                              size={16}
+                              fill="none"
+                              stroke="#999897"
+                              strokeWidth={1}
+                            />
+                          )
+                        )}{" "}
                         <p className="pl-2 text-xs md:text-sm text-gray-400 flex items-center">
                           ({item.rating})
                         </p>

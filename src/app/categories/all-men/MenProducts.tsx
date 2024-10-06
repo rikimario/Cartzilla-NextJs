@@ -50,6 +50,33 @@ export default function MenProducts({ products }: any) {
                               fill="#FC9231"
                               strokeWidth={0}
                             />
+                          ) : item.rating > index && item.rating < index + 1 ? (
+                            <div style={{ position: "relative" }}>
+                              <Star
+                                key={index}
+                                className="text-[#FC9231] lg:w-5 lg:h-5"
+                                size={16}
+                                fill="#FC9231"
+                                strokeWidth={0}
+                                style={{
+                                  clipPath:
+                                    "polygon(0 0, 50% 0, 50% 100%, 0 100%)",
+                                }}
+                              />
+                              <Star
+                                key={index + 5}
+                                className="text-gray-400 lg:w-5 lg:h-5"
+                                size={16}
+                                fill="none"
+                                stroke="#999897"
+                                strokeWidth={1}
+                                style={{
+                                  position: "absolute",
+                                  top: 0,
+                                  left: 0,
+                                }}
+                              />
+                            </div>
                           ) : (
                             <Star
                               key={index}
@@ -60,7 +87,7 @@ export default function MenProducts({ products }: any) {
                               strokeWidth={1}
                             />
                           )
-                        )}{" "}
+                        )}
                         <p className="pl-2 text-xs md:text-sm text-gray-400 flex items-center">
                           ({item.rating})
                         </p>

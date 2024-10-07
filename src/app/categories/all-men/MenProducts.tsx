@@ -1,11 +1,17 @@
 "use client";
+import { Product } from "@/app/utils/products";
 import ProductSkeleton from "@/app/utils/ProductSkeleton";
 import { Card, CardContent } from "@/components/ui/card";
 import { Heart, ShoppingCart, Star } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
-export default function MenProducts({ products }: any) {
+interface MenProductsProps {
+  products: Product[];
+}
+
+export default function MenProducts({ products }: MenProductsProps) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -32,13 +38,15 @@ export default function MenProducts({ products }: any) {
                         />
                       </button>
                     </div>
-                    <Image
-                      className="lg:w-[200px] lg:h-[200px]"
-                      src={item.thumbnail}
-                      alt={item.title}
-                      width={160}
-                      height={160}
-                    />
+                    <Link href={`all-men/${item.id}`}>
+                      <Image
+                        className="lg:w-[200px] lg:h-[200px]"
+                        src={item.thumbnail}
+                        alt={item.title}
+                        width={160}
+                        height={160}
+                      />
+                    </Link>
                     <div className="flex flex-col gap-2 w-full text-start p-2">
                       <div className="flex items-center text-center">
                         {Array.from({ length: 5 }).map((_, index) =>

@@ -5,6 +5,8 @@ export interface Product {
   title: string;
   price: number;
   thumbnail: string;
+  description: string;
+  images: string[];
   category: string;
   brand: string;
   id: number;
@@ -32,4 +34,10 @@ export default function getProductsMen() {
   }, []);
 
   return products;
+}
+
+export async function getProductById(id: number) {
+  const res = await fetch(`https://dummyjson.com/products/${id}`);
+  const data = await res.json();
+  return data;
 }

@@ -29,8 +29,10 @@ export default function FilterBtnBrands({
   const products = getProductsMen();
 
   return (
-    <div className="p-6 border border-gray-200 rounded-xl text-gray-700 mt-6">
-      <h2 className="text-start text-xl text-gray-700 font-semibold">Brand</h2>
+    <div className="p-6 border border-gray-200 rounded-xl text-gray-700 dark:text-white mt-6">
+      <h2 className="text-start text-xl text-gray-700 dark:text-white font-semibold">
+        Brand
+      </h2>
       <div className="relative flex flex-col items-start gap-2 mt-4">
         {Array.from(new Set(products.map((item) => item.brand))).map(
           (brand) => (

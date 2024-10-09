@@ -138,7 +138,7 @@ export default function page() {
   };
 
   return (
-    <div className="p-4 xl:px-[5.4rem] 2xl:px-[7.7rem]">
+    <div className="p-4 xl:px-[5.4rem] 2xl:px-[7.7rem] dark:bg-[#181D25]">
       <h1 className="text-2xl font-semibold mt-10">Men's Category</h1>
 
       <SortProductsBtn handleChange={handleChange} />

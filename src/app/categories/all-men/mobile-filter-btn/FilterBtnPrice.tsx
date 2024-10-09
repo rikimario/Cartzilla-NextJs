@@ -17,8 +17,8 @@ export default function FilterBtnPrice({
     setValue(values);
   };
   return (
-    <div className="p-6 border border-gray-200 rounded-xl text-gray-700 mt-6">
-      <h2 className="text-start text-xl text-gray-700 font-semibold mb-6">
+    <div className="p-6 border border-gray-200 rounded-xl text-gray-700 dark:text-white mt-6">
+      <h2 className="text-start text-xl text-gray-700 dark:text-white font-semibold mb-6">
         Price
       </h2>
       <div>

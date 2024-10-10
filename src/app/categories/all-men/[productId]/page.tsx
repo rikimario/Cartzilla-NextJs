@@ -9,6 +9,7 @@ import {
 import { CircleChevronLeft, CircleChevronRight, Star } from "lucide-react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import ProductCount from "./ProductCount";
 
 export default function ProductDetails({
   params,
@@ -30,9 +31,7 @@ export default function ProductDetails({
   if (!product) return <div>Loading...</div>;
   return (
     <div className="p-4 xl:px-[5.4rem] 2xl:px-[7.7rem] dark:bg-[#181D25]">
-      <h1 className="text-2xl font-medium mt-10">{product.title}</h1>
-
-      <div className="flex gap-10">
+      <div className="flex gap-10 mt-14">
         <div className="w-1/2">
           <Carousel opts={{ watchDrag: false }} className="flex justify-center">
             <CarouselContent>
@@ -86,7 +85,7 @@ export default function ProductDetails({
                     onClick={() => setThumbImage(image)}
                     className={`${
                       thumbImage === image ? "opacity-100" : "opacity-60"
-                    }`}
+                    } hover:opacity-100 transition-opacity`}
                   >
                     <Image
                       src={image}
@@ -103,13 +102,13 @@ export default function ProductDetails({
 
         <div>
           <p className="text-lg font-semibold">{product.brand}</p>
-          <h2 className="text-3xl text-gray-700 font-bold mt-4">
+          <h2 className="text-3xl text-gray-900 font-bold mt-4">
             {product.title}
           </h2>
-          <p className="text-2xl text-gray-700 font-bold mt-4">
+          <p className="text-2xl text-gray-900 font-bold mt-4">
             ${product.price}
           </p>
-          <div className="flex items-center text-center mt-4">
+          <button className="flex items-center text-center mt-4">
             {Array.from({ length: 5 }).map((_, index) =>
               product.rating >= index + 1 ? (
                 <Star
@@ -157,9 +156,10 @@ export default function ProductDetails({
               )
             )}
             <p className="pl-2 text-xs md:text-sm text-gray-400 flex items-center">
-              ({product.rating})
+              ({product.reviews.length}) reviews
             </p>
-          </div>
+          </button>
+          <ProductCount />
         </div>
       </div>
     </div>

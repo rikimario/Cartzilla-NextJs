@@ -10,6 +10,7 @@ export interface Product {
   category: string;
   brand: string;
   rating: number;
+  reviews: string[];
   id: number;
 }
 

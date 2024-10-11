@@ -10,6 +10,8 @@ import { CircleChevronLeft, CircleChevronRight, Star } from "lucide-react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import ProductCount from "./ProductCount";
+import ProductAddToCart from "./ProductAddToCart";
+import ProductFavorite from "./ProductFavorite";
 
 export default function ProductDetails({
   params,
@@ -100,66 +102,75 @@ export default function ProductDetails({
           </ul>
         </div>
 
-        <div>
-          <p className="text-lg font-semibold">{product.brand}</p>
-          <h2 className="text-3xl text-gray-900 font-bold mt-4">
-            {product.title}
-          </h2>
-          <p className="text-2xl text-gray-900 font-bold mt-4">
-            ${product.price}
-          </p>
-          <button className="flex items-center text-center mt-4">
-            {Array.from({ length: 5 }).map((_, index) =>
-              product.rating >= index + 1 ? (
-                <Star
-                  key={index}
-                  className="text-[#FC9231] lg:w-5 lg:h-5"
-                  size={16}
-                  fill="#FC9231"
-                  strokeWidth={0}
-                />
-              ) : product.rating > index && product.rating < index + 1 ? (
-                <div style={{ position: "relative" }}>
+        <div className="w-1/2">
+          <div className="w-2/3">
+            <p className="text-lg font-semibold">{product.brand}</p>
+            <h2 className="text-3xl text-gray-900 font-bold mt-4">
+              {product.title}
+            </h2>
+            <p className="text-2xl text-gray-900 font-bold mt-4">
+              ${product.price}
+            </p>
+            <button className="flex items-center text-center mt-4">
+              {Array.from({ length: 5 }).map((_, index) =>
+                product.rating >= index + 1 ? (
                   <Star
                     key={index}
                     className="text-[#FC9231] lg:w-5 lg:h-5"
                     size={16}
                     fill="#FC9231"
                     strokeWidth={0}
-                    style={{
-                      clipPath: "polygon(0 0, 50% 0, 50% 100%, 0 100%)",
-                    }}
                   />
+                ) : product.rating > index && product.rating < index + 1 ? (
+                  <div style={{ position: "relative" }}>
+                    <Star
+                      key={index}
+                      className="text-[#FC9231] lg:w-5 lg:h-5"
+                      size={16}
+                      fill="#FC9231"
+                      strokeWidth={0}
+                      style={{
+                        clipPath: "polygon(0 0, 50% 0, 50% 100%, 0 100%)",
+                      }}
+                    />
+                    <Star
+                      key={index + 5}
+                      className="text-gray-400 lg:w-5 lg:h-5"
+                      size={16}
+                      fill="none"
+                      stroke="#999897"
+                      strokeWidth={1}
+                      style={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                      }}
+                    />
+                  </div>
+                ) : (
                   <Star
-                    key={index + 5}
+                    key={index}
                     className="text-gray-400 lg:w-5 lg:h-5"
                     size={16}
                     fill="none"
                     stroke="#999897"
                     strokeWidth={1}
-                    style={{
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                    }}
                   />
-                </div>
-              ) : (
-                <Star
-                  key={index}
-                  className="text-gray-400 lg:w-5 lg:h-5"
-                  size={16}
-                  fill="none"
-                  stroke="#999897"
-                  strokeWidth={1}
-                />
-              )
-            )}
-            <p className="pl-2 text-xs md:text-sm text-gray-400 flex items-center">
-              ({product.reviews.length}) reviews
-            </p>
-          </button>
-          <ProductCount />
+                )
+              )}
+              <p className="pl-2 text-xs md:text-sm text-gray-400 flex items-center">
+                ({product.reviews.length}) reviews
+              </p>
+            </button>
+            <div className="flex items-center gap-4 mt-8">
+              <ProductCount />
+              <ProductAddToCart />
+              <ProductFavorite />
+            </div>
+            <p className="max-w-fit mt-6 text-gray-600 font-medium  leading-relaxed">
+              {product.description}
+            </p>{" "}
+          </div>
         </div>
       </div>
     </div>

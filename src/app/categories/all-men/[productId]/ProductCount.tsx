@@ -6,7 +6,7 @@ import React, { useState } from "react";
 export default function ProductCount() {
   const [count, setCount] = useState<number>(1);
   return (
-    <div className="flex gap-4 mt-8 text-xl font-medium w-full">
+    <div className="flex gap-4 text-xl font-medium">
       <Card className="flex items-center gap-8 p-4">
         <button
           className="disabled:opacity-40"

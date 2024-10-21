@@ -15,6 +15,7 @@ export default function ShippingOptions({ product }: ShippingOptionsProps) {
   return (
     <div className="mt-6">
       <Accordion type="single" collapsible className="w-full">
+        {/* Shipping */}
         <AccordionItem value="item-1">
           <AccordionTrigger className="text-base font-semibold">
             Shipping options
@@ -43,7 +44,7 @@ export default function ShippingOptions({ product }: ShippingOptionsProps) {
             </AccordionContent>
           </div>
         </AccordionItem>
-
+        {/* Warranty */}
         <AccordionItem value="item-2">
           <AccordionTrigger className="text-base font-semibold">
             Warranty information
@@ -51,6 +52,17 @@ export default function ShippingOptions({ product }: ShippingOptionsProps) {
           <AccordionContent className="text-gray-600 dark:text-gray-300">
             <p className="text-gray-600 font-semibold">
               {product.warrantyInformation}
+            </p>
+          </AccordionContent>
+        </AccordionItem>
+        {/* Return */}
+        <AccordionItem value="item-3">
+          <AccordionTrigger className="text-base font-semibold">
+            Return policy
+          </AccordionTrigger>
+          <AccordionContent className="text-gray-600 dark:text-gray-300">
+            <p className="text-gray-600 font-semibold">
+              {product.returnPolicy}
             </p>
           </AccordionContent>
         </AccordionItem>

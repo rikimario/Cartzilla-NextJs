@@ -12,6 +12,7 @@ import React, { useEffect, useState } from "react";
 import ProductCount from "./ProductCount";
 import ProductAddToCart from "./ProductAddToCart";
 import ProductFavorite from "./ProductFavorite";
+import ShippingOptions from "./ShippingOptions";
 
 export default function ProductDetails({
   params,
@@ -170,6 +171,7 @@ export default function ProductDetails({
             <p className="max-w-fit mt-6 text-gray-600 font-medium  leading-relaxed">
               {product.description}
             </p>{" "}
+            <ShippingOptions product={product} />
           </div>
         </div>
       </div>

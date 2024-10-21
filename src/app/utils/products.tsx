@@ -11,6 +11,7 @@ export interface Product {
   brand: string;
   rating: number;
   reviews: string[];
+  warrantyInformation: string;
   id: number;
 }
 

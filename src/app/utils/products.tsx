@@ -1,6 +1,14 @@
 "use client";
 import { useEffect, useState } from "react";
 
+type Review = {
+  rating: number;
+  comment: string;
+  date: string;
+  reviewerName: string;
+  reviewerEmail: string;
+};
+
 export interface Product {
   title: string;
   price: number;
@@ -10,7 +18,7 @@ export interface Product {
   category: string;
   brand: string;
   rating: number;
-  reviews: string[];
+  reviews: Review[];
   warrantyInformation: string;
   returnPolicy: string;
   id: number;

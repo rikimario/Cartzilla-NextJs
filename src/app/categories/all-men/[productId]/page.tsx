@@ -13,6 +13,7 @@ import ProductCount from "./ProductCount";
 import ProductAddToCart from "./ProductAddToCart";
 import ProductFavorite from "./ProductFavorite";
 import ShippingOptions from "./ShippingOptions";
+import ProductReviews from "./ProductReviews";
 
 export default function ProductDetails({
   params,
@@ -35,6 +36,7 @@ export default function ProductDetails({
   return (
     <div className="p-4 xl:px-[5.4rem] 2xl:px-[7.7rem] dark:bg-[#181D25]">
       <div className="flex gap-10 mt-14">
+        {/* Product Images */}
         <div className="w-1/2">
           <Carousel opts={{ watchDrag: false }} className="flex justify-center">
             <CarouselContent>
@@ -103,6 +105,7 @@ export default function ProductDetails({
           </ul>
         </div>
 
+        {/* Product Details */}
         <div className="w-1/2">
           <div className="w-2/3">
             <p className="text-lg font-semibold">{product.brand}</p>
@@ -112,7 +115,7 @@ export default function ProductDetails({
             <p className="text-2xl text-gray-900 font-bold mt-4">
               ${product.price}
             </p>
-            <button className="flex items-center text-center mt-4">
+            <a href="#reviews" className="flex items-center text-center mt-4">
               {Array.from({ length: 5 }).map((_, index) =>
                 product.rating >= index + 1 ? (
                   <Star
@@ -162,7 +165,7 @@ export default function ProductDetails({
               <p className="pl-2 text-xs md:text-sm text-gray-400 flex items-center">
                 ({product.reviews.length}) reviews
               </p>
-            </button>
+            </a>
             <div className="flex items-center gap-4 mt-8">
               <ProductCount />
               <ProductAddToCart />
@@ -174,6 +177,10 @@ export default function ProductDetails({
             <ShippingOptions product={product} />
           </div>
         </div>
+      </div>
+      {/* Product Reviews */}
+      <div>
+        <ProductReviews product={product} />
       </div>
     </div>
   );

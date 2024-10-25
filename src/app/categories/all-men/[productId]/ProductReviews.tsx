@@ -6,6 +6,13 @@ import React, { useEffect, useState } from "react";
 interface ReviewsOptionsProps {
   product: Product;
 }
+
+interface ReviewState {
+  [reviewerEmail: string]: {
+    thumbsUp: number;
+    thumbsDown: number;
+  };
+}
 export default function ProductReviews({ product }: ReviewsOptionsProps) {
   const [stars, setStars] = useState([
     { rating: 5, count: 0 },
@@ -14,6 +21,45 @@ export default function ProductReviews({ product }: ReviewsOptionsProps) {
     { rating: 2, count: 0 },
     { rating: 1, count: 0 },
   ]);
+  const [reviewState, setReviewState] = useState<ReviewState>({});
+
+  const handleThumbsUp = (reviewerEmail: string) => {
+    setReviewState((prevState) => {
+      if (prevState[reviewerEmail]?.thumbsUp === 1) {
+        return prevState;
+      }
+      return {
+        ...prevState,
+        [reviewerEmail]: {
+          thumbsUp: prevState[reviewerEmail]?.thumbsUp
+            ? prevState[reviewerEmail].thumbsUp + 1
+            : 1,
+          thumbsDown: prevState[reviewerEmail]?.thumbsDown
+            ? prevState[reviewerEmail].thumbsDown - 1
+            : 0,
+        },
+      };
+    });
+  };
+
+  const handleThumbsDown = (reviewerEmail: string) => {
+    setReviewState((prevState) => {
+      if (prevState[reviewerEmail]?.thumbsDown === 1) {
+        return prevState;
+      }
+      return {
+        ...prevState,
+        [reviewerEmail]: {
+          thumbsUp: prevState[reviewerEmail]?.thumbsUp
+            ? prevState[reviewerEmail].thumbsUp - 1
+            : 0,
+          thumbsDown: prevState[reviewerEmail]?.thumbsDown
+            ? prevState[reviewerEmail].thumbsDown + 1
+            : 1,
+        },
+      };
+    });
+  };
 
   useEffect(() => {
     const updatedStars = stars.map((star) => {
@@ -195,12 +241,20 @@ export default function ProductReviews({ product }: ReviewsOptionsProps) {
                 Reply
               </button>
               <div className="flex gap-4">
-                <button className="flex items-center gap-2">
-                  <ThumbsUp size={20} strokeWidth={1} /> 0
+                <button
+                  onClick={() => handleThumbsUp(review.reviewerEmail)}
+                  className="flex items-center gap-2"
+                >
+                  <ThumbsUp size={20} strokeWidth={1} />{" "}
+                  {reviewState[review.reviewerEmail]?.thumbsUp || 0}
                 </button>
                 <span className="text-gray-300">|</span>
-                <button className="flex items-center gap-2">
-                  <ThumbsDown size={20} strokeWidth={1} /> 0
+                <button
+                  onClick={() => handleThumbsDown(review.reviewerEmail)}
+                  className="flex items-center gap-2"
+                >
+                  <ThumbsDown size={20} strokeWidth={1} />{" "}
+                  {reviewState[review.reviewerEmail]?.thumbsDown || 0}
                 </button>
               </div>
             </div>

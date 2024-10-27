@@ -13,7 +13,7 @@ import ProductCount from "./ProductCount";
 import ProductAddToCart from "./ProductAddToCart";
 import ProductFavorite from "./ProductFavorite";
 import ShippingOptions from "./ShippingOptions";
-import ProductReviews from "./ProductReviews";
+import ProductReviews from "./productReviews/ProductReviews";
 
 export default function ProductDetails({
   params,

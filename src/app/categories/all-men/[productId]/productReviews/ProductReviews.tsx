@@ -3,6 +3,7 @@ import { Progress } from "@/components/ui/progress";
 import { Star } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import ProductComments from "./ProductComments";
+import LeaveReview from "./LeaveReview";
 
 interface ReviewsOptionsProps {
   product: Product;
@@ -29,7 +30,10 @@ export default function ProductReviews({ product }: ReviewsOptionsProps) {
 
   return (
     <div id="reviews" className="p-4 mt-14 w-1/2">
-      <h1 className="text-2xl font-bold">Reviews</h1>
+      <div className="flex justify-between items-center">
+        <h1 className="text-2xl font-bold">Reviews</h1>
+        <LeaveReview />
+      </div>
       <div className="mt-8 flex gap-4">
         {/* Rating */}
         <div className="p-12 flex flex-col items-center justify-center bg-gray-100 rounded-md">

@@ -64,7 +64,7 @@ export default function page() {
           (selectedCategories.length === 0 ||
             selectedCategories.includes(product.category)) &&
           (selectedBrands.length === 0 ||
-            selectedBrands.includes(product.brand))
+            selectedBrands.includes(product.brand?.toString() || ""))
       );
       setSort(filteredProducts);
     }
@@ -119,7 +119,7 @@ export default function page() {
 
     const sortedProducts = getSortedProducts(products, sortOrder);
     const filteredProducts = sortedProducts.filter((product) =>
-      selectedBrands.includes(product.brand)
+      selectedBrands.includes(product.brand?.toString() || "")
     );
     setSort(filteredProducts);
   };
@@ -130,7 +130,7 @@ export default function page() {
         (selectedCategories.length === 0 ||
           selectedCategories.includes(product.category)) &&
         (selectedBrands.length === 0 ||
-          selectedBrands.includes(product.brand)) &&
+          selectedBrands.includes(product.brand?.toString() || "")) &&
         product.price >= values[0] &&
         product.price <= values[1]
     );

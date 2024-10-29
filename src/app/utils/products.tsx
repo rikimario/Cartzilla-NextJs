@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import productsData from "./products.json";
 
 type Review = {
   rating: number;
@@ -16,7 +17,7 @@ export interface Product {
   description: string;
   images: string[];
   category: string;
-  brand: string;
+  brand?: string;
   rating: number;
   reviews: Review[];
   warrantyInformation: string;
@@ -33,17 +34,31 @@ export default function getProductsMen() {
     const fetchProducts = async () => {
       const products = [];
       for (const category of categories) {
-        const res = await fetch(
-          `https://dummyjson.com/products/category/${category}`
+        const categoryProducts = productsData.filter(
+          (product) => product.category === category
         );
-        const data = await res.json();
-        products.push(...data.products);
+        products.push(...categoryProducts);
       }
       setProducts(products);
     };
 
     fetchProducts();
-  }, []);
+  }, [productsData]);
+  // useEffect(() => {
+  //   const fetchProducts = async () => {
+  //     const products = [];
+  //     for (const category of categories) {
+  //       const res = await fetch(
+  //         `https://dummyjson.com/products/category/${category}`
+  //       );
+  //       const data = await res.json();
+  //       products.push(...data.products);
+  //     }
+  //     setProducts(products);
+  //   };
+
+  //   fetchProducts();
+  // }, []);
 
   return products;
 }
@@ -51,5 +66,11 @@ export default function getProductsMen() {
 export async function getProductById(id: number) {
   const res = await fetch(`https://dummyjson.com/products/${id}`);
   const data = await res.json();
-  return data;
+  const updatedProduct = productsData.find((product) => product.id === id);
+  return { ...data, ...updatedProduct };
 }
+// export async function getProductById(id: number) {
+//   const res = await fetch(`https://dummyjson.com/products/${id}`);
+//   const data = await res.json();
+//   return data;
+// }

@@ -3,14 +3,18 @@ import {
   Dialog,
   DialogContent,
   DialogFooter,
+  DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { PenLine } from "lucide-react";
-import React from "react";
+import { PenLine, Star } from "lucide-react";
+import React, { useState } from "react";
 
 export default function LeaveReview() {
+  const [rating, setRating] = useState<number>(1);
+  const [hover, setHover] = useState<number>(0);
+
   return (
     <div className="flex gap-2">
       <Dialog>
@@ -21,14 +25,58 @@ export default function LeaveReview() {
           </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
-          <div>
+          <DialogTitle>Create a review</DialogTitle>
+          <div className="mt-4">
             <div className="flex flex-col gap-2">
+              <Label htmlFor="rating">Rating: *</Label>
+              <div className="flex">
+                {[...Array(5)].map((_, index) => {
+                  const currentRating = index + 1;
+                  return (
+                    <label>
+                      <input
+                        required
+                        className="hidden"
+                        type="radio"
+                        name="rating"
+                        value={currentRating}
+                        onClick={() => setRating(currentRating)}
+                      />
+                      <Star
+                        className="cursor-pointer"
+                        fill={
+                          currentRating <= (hover || rating)
+                            ? "#FC9231"
+                            : "#e5e7eb"
+                        }
+                        onMouseEnter={() => setHover(currentRating)}
+                        onMouseLeave={() => setHover(0)}
+                        strokeWidth={0.3}
+                        key={index}
+                      />
+                    </label>
+                  );
+                })}
+              </div>
+            </div>
+            <div className="flex flex-col gap-2 mt-5">
               <Label htmlFor="name">Name: *</Label>
               <Input
                 required
                 type="text"
                 id="name"
+                maxLength={50}
                 placeholder="Maximum 50 characters"
+                className="text-gray-900 dark:text-white font-semibold placeholder:text-gray-350"
+              />
+            </div>
+            <div className="flex flex-col gap-2 mt-5">
+              <Label htmlFor="email">Email: *</Label>
+              <Input
+                required
+                type="text"
+                id="email"
+                placeholder="example@me.com"
                 className="text-gray-900 dark:text-white font-semibold placeholder:text-gray-350"
               />
             </div>
@@ -37,6 +85,7 @@ export default function LeaveReview() {
               <textarea
                 required
                 id="review"
+                maxLength={3000}
                 placeholder="Maximum 3000 characters"
                 className="text-gray-900 dark:text-white font-semibold w-full px-3 py-2 rounded-md border border-input min-h-32"
               />

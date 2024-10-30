@@ -42,6 +42,10 @@ export default function ProductDetails({
           <Carousel opts={{ watchDrag: false }} className="flex justify-center">
             <CarouselContent>
               <CarouselItem className="flex">
+                <span className="absolute min-w-10 text-center top-10 right-5 text-xl -translate-x-1/2 -translate-y-1/2">
+                  {product.images.indexOf(thumbImage) + 1}/
+                  {product.images.length}
+                </span>
                 {/* Prev */}
                 <button
                   className="dark:bg-[#181D25]"

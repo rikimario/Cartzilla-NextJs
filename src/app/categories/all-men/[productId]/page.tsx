@@ -86,7 +86,7 @@ export default function ProductDetails({
           <ul className="flex">
             {product.images.map((image, index) => (
               <li key={index} className="flex">
-                <Card className="mx-2">
+                <Card className="mx-2 dark:bg-[#181D25]">
                   <button
                     onClick={() => setThumbImage(image)}
                     className={`${
@@ -110,10 +110,10 @@ export default function ProductDetails({
         <div className="w-1/2">
           <div className="w-2/3">
             <p className="text-lg font-semibold">{product.brand}</p>
-            <h2 className="text-3xl text-gray-900 font-bold mt-4">
+            <h2 className="text-3xl text-gray-900 dark:text-white font-bold mt-4">
               {product.title}
             </h2>
-            <p className="text-2xl text-gray-900 font-bold mt-4">
+            <p className="text-2xl text-gray-900 dark:text-white font-bold mt-4">
               ${product.price}
             </p>
             <a href="#reviews" className="flex items-center text-center mt-4">
@@ -173,7 +173,7 @@ export default function ProductDetails({
               <ProductAddToCart />
               <ProductFavorite />
             </div>
-            <p className="max-w-fit mt-6 text-gray-600 font-medium  leading-relaxed">
+            <p className="max-w-fit mt-6 text-gray-600 dark:text-gray-300 font-medium  leading-relaxed">
               {product.description}
             </p>{" "}
             <ShippingOptions product={product} />

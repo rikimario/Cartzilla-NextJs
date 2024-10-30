@@ -37,9 +37,15 @@ export default function ShippingOptions({ product }: ShippingOptionsProps) {
             </AccordionContent>
             <AccordionContent className="text-gray-600 dark:text-gray-300">
               <div className="text-end flex flex-col gap-5">
-                <p className="text-gray-900 font-semibold">Free</p>
-                <p className="text-gray-900 font-semibold">$5.00</p>
-                <p className="text-gray-900 font-semibold">$10.00</p>
+                <p className="text-gray-900 dark:text-gray-300 font-semibold">
+                  Free
+                </p>
+                <p className="text-gray-900 dark:text-gray-300 font-semibold">
+                  $5.00
+                </p>
+                <p className="text-gray-900 dark:text-gray-300 font-semibold">
+                  $10.00
+                </p>
               </div>
             </AccordionContent>
           </div>
@@ -50,7 +56,7 @@ export default function ShippingOptions({ product }: ShippingOptionsProps) {
             Warranty information
           </AccordionTrigger>
           <AccordionContent className="text-gray-600 dark:text-gray-300">
-            <p className="text-gray-600 font-semibold">
+            <p className="text-gray-600 dark:text-gray-300 font-semibold">
               {product.warrantyInformation}
             </p>
           </AccordionContent>
@@ -61,7 +67,7 @@ export default function ShippingOptions({ product }: ShippingOptionsProps) {
             Return policy
           </AccordionTrigger>
           <AccordionContent className="text-gray-600 dark:text-gray-300">
-            <p className="text-gray-600 font-semibold">
+            <p className="text-gray-600 dark:text-gray-300 font-semibold">
               {product.returnPolicy}
             </p>
           </AccordionContent>

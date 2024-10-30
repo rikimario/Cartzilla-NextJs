@@ -87,7 +87,7 @@ export default function LeaveReview() {
                 id="review"
                 maxLength={3000}
                 placeholder="Maximum 3000 characters"
-                className="text-gray-900 dark:text-white font-semibold w-full px-3 py-2 rounded-md border border-input min-h-32"
+                className="text-gray-900 dark:text-white dark:bg-[#020817] font-semibold w-full px-3 py-2 rounded-md border border-input min-h-32"
               />
             </div>
           </div>

@@ -36,7 +36,7 @@ export default function ProductReviews({ product }: ReviewsOptionsProps) {
       </div>
       <div className="mt-8 flex gap-4">
         {/* Rating */}
-        <div className="p-12 flex flex-col items-center justify-center bg-gray-100 rounded-md">
+        <div className="p-12 flex flex-col items-center justify-center bg-gray-100 dark:bg-[#181D25] dark:border border-gray-600 rounded-md">
           <span className="text-4xl font-semibold">{product.rating}</span>
           <span>
             <div className="flex flex-col items-center gap-2 text-center mt-4">

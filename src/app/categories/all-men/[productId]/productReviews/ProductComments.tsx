@@ -83,7 +83,7 @@ export default function ProductComments({ product }: ReviewsOptionsProps) {
         <div className="p-2 border-b-2 border-gray-200">
           <div className="flex justify-between py-4">
             <div>
-              <p className="text-gray-900 text-lg font-semibold">
+              <p className="text-gray-900 dark:text-white text-lg font-semibold">
                 {review.reviewerName}
               </p>
               <span className="flex items-center text-center mt-4">
@@ -137,7 +137,9 @@ export default function ProductComments({ product }: ReviewsOptionsProps) {
             </div>
             <p className="text-gray-500 text-sm">{formatDate(review.date)}</p>
           </div>
-          <p className="text-gray-600 py-2">{review.comment}</p>
+          <p className="text-gray-600 dark:text-gray-400 py-2">
+            {review.comment}
+          </p>
           <div className="flex justify-between my-4">
             <button className="font-medium flex items-center gap-2">
               <span>

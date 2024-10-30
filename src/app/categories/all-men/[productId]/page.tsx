@@ -14,6 +14,7 @@ import ProductAddToCart from "./ProductAddToCart";
 import ProductFavorite from "./ProductFavorite";
 import ShippingOptions from "./ShippingOptions";
 import ProductReviews from "./productReviews/ProductReviews";
+import ProductSizes from "./ProductSizes";
 
 export default function ProductDetails({
   params,
@@ -166,6 +167,7 @@ export default function ProductDetails({
                 ({product.reviews.length}) reviews
               </p>
             </a>
+            <ProductSizes product={product} />
             <div className="flex items-center gap-4 mt-8">
               <ProductCount />
               <ProductAddToCart />

@@ -16,6 +16,7 @@ export interface Product {
   thumbnail: string;
   description: string;
   images: string[];
+  size?: string[];
   category: string;
   brand?: string;
   rating: number;

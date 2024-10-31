@@ -12,11 +12,11 @@ export default function ProductSizes({ product }: SizesOptionsProps) {
   };
 
   return (
-    <div className="flex flex-wrap gap-4 mt-4 w-2/3">
+    <div className="flex flex-wrap justify-center gap-4 md:mt-4 mt-8 lg:w-2/3">
       {product.size?.map((s, index) => (
         <button
           key={index}
-          className={`flex items-center justify-center p-2 border border-gray-300 hover:border-gray-700 min-w-10 ${
+          className={`flex items-center justify-center p-2 border border-gray-300 hover:border-gray-700 min-w-10 md:min-w-32 lg:min-w-10 ${
             s === size
               ? "border-gray-800 bg-gray-800 text-white"
               : "border-gray-300"

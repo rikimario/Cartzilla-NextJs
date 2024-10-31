@@ -29,14 +29,16 @@ export default function ProductReviews({ product }: ReviewsOptionsProps) {
   }, [product]);
 
   return (
-    <div id="reviews" className="p-4 mt-14 w-1/2">
+    <div id="reviews" className="p-4 mt-14 lg:w-1/2">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold">Reviews</h1>
-        <LeaveReview />
+        <div className="hidden md:flex">
+          <LeaveReview />
+        </div>
       </div>
-      <div className="mt-8 flex gap-4">
+      <div className="mt-8 flex-col md:flex md:flex-row gap-4">
         {/* Rating */}
-        <div className="p-12 flex flex-col items-center justify-center bg-gray-100 dark:bg-[#181D25] dark:border border-gray-600 rounded-md">
+        <div className="lg:p-12 p-8 flex flex-col items-center justify-center bg-gray-100 dark:bg-[#181D25] dark:border border-gray-600 rounded-md">
           <span className="text-4xl font-semibold">{product.rating}</span>
           <span>
             <div className="flex flex-col items-center gap-2 text-center mt-4">
@@ -119,6 +121,9 @@ export default function ProductReviews({ product }: ReviewsOptionsProps) {
               ))}
             </div>
           ))}
+        </div>
+        <div className="md:hidden flex justify-center mt-6">
+          <LeaveReview />
         </div>
       </div>
       {/* Comments */}

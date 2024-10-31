@@ -6,7 +6,7 @@ export default function ProductFavorite() {
     <div className="">
       <button className="flex items-center justify-center bg-gray-200 dark:bg-gray-700 p-1 md:p-2 rounded-lg h-[62px] w-14">
         <Heart
-          className="h-3 w-3 lg:w-10 lg:h-10 text-gray-900 dark:text-white"
+          className="h-8 w-8 lg:w-10 lg:h-10 text-gray-900 dark:text-white"
           strokeWidth={0.5}
         />
       </button>

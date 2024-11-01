@@ -12,7 +12,7 @@ export default function ProductSizes({ product }: SizesOptionsProps) {
   };
 
   return (
-    <div className="flex flex-wrap justify-center gap-4 md:mt-4 mt-8 lg:w-2/3">
+    <div className="flex flex-wrap gap-4 md:mt-4 mt-8 lg:w-2/3">
       {product.size?.map((s, index) => (
         <button
           key={index}

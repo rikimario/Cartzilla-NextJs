@@ -1,12 +1,12 @@
 "use client";
-import FilterButtonMen from "./mobile-filter-btn/FilterButtonMen";
 import MenProducts from "./MenProducts";
-import SortProductsBtn from "./SortProductsBtn";
-import getProductsMen, { Product } from "@/app/utils/products";
+import SortProductsBtn from "../../utils/SortingUtils/SortProductsBtn";
+import { getProductsMen, Product } from "@/app/utils/products";
 import { useEffect, useState } from "react";
-import FilterBtnCategories from "./mobile-filter-btn/FilterBtnCategories";
-import FilterBtnPrice from "./mobile-filter-btn/FilterBtnPrice";
-import FilterBtnBrands from "./mobile-filter-btn/FilterBtnBrands";
+import FilterBtnCategories from "../../utils/SortingUtils/FilterBtnCategories";
+import FilterBtnPrice from "../../utils/SortingUtils/FilterBtnPrice";
+import MenBrands from "./MenBrands";
+import FilterButton from "../../utils/SortingUtils/FilterButton";
 
 enum SortOrder {
   Relevance = "relevance",
@@ -139,7 +139,7 @@ export default function page() {
 
   return (
     <div className="p-4 xl:px-[5.4rem] 2xl:px-[7.7rem] dark:bg-[#181D25]">
-      <h1 className="text-2xl font-semibold mt-10">Men's Category</h1>
+      <h1 className="text-2xl font-semibold mt-10">Men</h1>
 
       <SortProductsBtn handleChange={handleChange} />
 
@@ -148,22 +148,24 @@ export default function page() {
           <FilterBtnCategories
             handleCategoryClick={handleCategoryClick}
             selectedCategories={selectedCategories}
+            currentCategory="Men"
           />
           <FilterBtnPrice
             values={value}
             setValue={setValue}
             onChange={handlePriceChange}
           />
-          <FilterBtnBrands
+          <MenBrands
             handleBrandClick={handleBrandClick}
             selectedBrands={selectedBrands}
+            currentCategory="Men"
           />
         </div>
         <div className="md:flex-1">
           <MenProducts products={sort} />
         </div>
         <div className="lg:hidden">
-          <FilterButtonMen
+          <FilterButton
             handleCategoryClick={handleCategoryClick}
             selectedCategories={selectedCategories}
             values={value}
@@ -171,6 +173,7 @@ export default function page() {
             onChange={handlePriceChange}
             handleBrandClick={handleBrandClick}
             selectedBrands={selectedBrands}
+            currentCategory="Men"
           />
         </div>
       </div>

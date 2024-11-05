@@ -26,7 +26,7 @@ export interface Product {
   id: number;
 }
 
-export default function getProductsMen() {
+export function getProductsMen() {
   const [products, setProducts] = useState<Product[]>([]);
 
   const categories = ["mens-shirts", "mens-shoes", "mens-watches"];
@@ -64,6 +64,179 @@ export default function getProductsMen() {
   return products;
 }
 
+export function getProductsWomen() {
+  const [products, setProducts] = useState<Product[]>([]);
+
+  const categories = [
+    "womens-bags",
+    "womens-dresses",
+    "womens-jewellery",
+    "womens-shoes",
+    "womens-watches",
+    "tops",
+  ];
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const products = [];
+      for (const category of categories) {
+        const categoryProducts = productsData.filter(
+          (product) => product.category === category
+        );
+        products.push(...categoryProducts);
+      }
+      setProducts(products);
+    };
+
+    fetchProducts();
+  }, [productsData]);
+
+  return products;
+}
+
+export function getProductsElectronics() {
+  const [products, setProducts] = useState<Product[]>([]);
+
+  const categories = [
+    "laptops",
+    "tablets",
+    "smartphones",
+    "mobile-accessories",
+  ];
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const products = [];
+      for (const category of categories) {
+        const categoryProducts = productsData.filter(
+          (product) => product.category === category
+        );
+        products.push(...categoryProducts);
+      }
+      setProducts(products);
+    };
+
+    fetchProducts();
+  }, [productsData]);
+
+  return products;
+}
+
+export function getProductsHomeAndKitchen() {
+  const [products, setProducts] = useState<Product[]>([]);
+
+  const categories = [
+    "furniture",
+    "kitchen-accessories",
+    "home-decoration",
+    "groceries",
+  ];
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const products = [];
+      for (const category of categories) {
+        const categoryProducts = productsData.filter(
+          (product) => product.category === category
+        );
+        products.push(...categoryProducts);
+      }
+      setProducts(products);
+    };
+
+    fetchProducts();
+  }, [productsData]);
+
+  return products;
+}
+export function getProductsCosmetics() {
+  const [products, setProducts] = useState<Product[]>([]);
+
+  const categories = ["beauty", "skin-care", "fragrances"];
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const products = [];
+      for (const category of categories) {
+        const categoryProducts = productsData.filter(
+          (product) => product.category === category
+        );
+        products.push(...categoryProducts);
+      }
+      setProducts(products);
+    };
+
+    fetchProducts();
+  }, [productsData]);
+
+  return products;
+}
+export function getProductsAutomotive() {
+  const [products, setProducts] = useState<Product[]>([]);
+
+  const categories = ["vehicle", "motorcycle"];
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const products = [];
+      for (const category of categories) {
+        const categoryProducts = productsData.filter(
+          (product) => product.category === category
+        );
+        products.push(...categoryProducts);
+      }
+      setProducts(products);
+    };
+
+    fetchProducts();
+  }, [productsData]);
+
+  return products;
+}
+export function getProductsSportsAccessories() {
+  const [products, setProducts] = useState<Product[]>([]);
+
+  const categories = ["sports-accessories"];
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const products = [];
+      for (const category of categories) {
+        const categoryProducts = productsData.filter(
+          (product) => product.category === category
+        );
+        products.push(...categoryProducts);
+      }
+      setProducts(products);
+    };
+
+    fetchProducts();
+  }, [productsData]);
+
+  return products;
+}
+export function getProductsSunglasses() {
+  const [products, setProducts] = useState<Product[]>([]);
+
+  const categories = ["sunglasses"];
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const products = [];
+      for (const category of categories) {
+        const categoryProducts = productsData.filter(
+          (product) => product.category === category
+        );
+        products.push(...categoryProducts);
+      }
+      setProducts(products);
+    };
+
+    fetchProducts();
+  }, [productsData]);
+
+  return products;
+}
 export async function getProductById(id: number) {
   const res = await fetch(`https://dummyjson.com/products/${id}`);
   const data = await res.json();

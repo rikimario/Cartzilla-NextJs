@@ -9,7 +9,17 @@ import {
 import { Filter } from "lucide-react";
 import FilterBtnCategories from "./FilterBtnCategories";
 import FilterBtnPrice from "./FilterBtnPrice";
-import FilterBtnBrands from "./FilterBtnBrands";
+import FilterBtnBrands from "../../categories/all-men/MenBrands";
+import {
+  getProductsAutomotive,
+  getProductsCosmetics,
+  getProductsElectronics,
+  getProductsHomeAndKitchen,
+  getProductsMen,
+  getProductsSportsAccessories,
+  getProductsSunglasses,
+  getProductsWomen,
+} from "../products";
 
 interface FilterButtonMenProps {
   handleCategoryClick: (category: string) => void;
@@ -19,8 +29,9 @@ interface FilterButtonMenProps {
   onChange: (values: [number, number]) => void;
   handleBrandClick: (brand: string) => void;
   selectedBrands: string[];
+  currentCategory: string;
 }
-export default function FilterButtonMen({
+export default function FilterButton({
   handleCategoryClick,
   selectedCategories,
   values,
@@ -28,7 +39,29 @@ export default function FilterButtonMen({
   onChange,
   handleBrandClick,
   selectedBrands,
+  currentCategory,
 }: FilterButtonMenProps) {
+  let products;
+  if (currentCategory === "Men") {
+    products = getProductsMen();
+  } else if (currentCategory === "Women") {
+    products = getProductsWomen();
+  } else if (currentCategory === "Electronics") {
+    products = getProductsElectronics();
+  } else if (currentCategory === "Home & Kitchen") {
+    products = getProductsHomeAndKitchen();
+  } else if (currentCategory === "Cosmetics") {
+    products = getProductsCosmetics();
+  } else if (currentCategory === "Automotive") {
+    products = getProductsAutomotive();
+  } else if (currentCategory === "Sports Accessories") {
+    products = getProductsSportsAccessories();
+  } else if (currentCategory === "Sunglasses") {
+    products = getProductsSunglasses();
+  } else {
+    // Handle other categories or default to one of the above
+    products = getProductsMen(); // or getProductsWomen()
+  }
   return (
     <>
       <Sheet>
@@ -54,6 +87,7 @@ export default function FilterButtonMen({
             <FilterBtnCategories
               handleCategoryClick={handleCategoryClick}
               selectedCategories={selectedCategories}
+              currentCategory={currentCategory}
             />
             {/* Price */}
             <FilterBtnPrice
@@ -65,6 +99,7 @@ export default function FilterButtonMen({
             <FilterBtnBrands
               handleBrandClick={handleBrandClick}
               selectedBrands={selectedBrands}
+              currentCategory={currentCategory}
             />
           </ScrollArea>
         </SheetContent>

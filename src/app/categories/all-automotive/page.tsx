@@ -24,7 +24,7 @@ export default function page() {
   const [sortOrder, setSortOrder] = useState<SortOrder>(SortOrder.Relevance);
   const [brands, setBrands] = useState<string[]>([]);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
-  const [value, setValue] = useState<[number, number]>([0, 14000]);
+  const [value, setValue] = useState<[number, number]>([0, 40000]);
   const getSortedProducts = (
     filteredProducts: Product[],
     sortOrder: SortOrder
@@ -139,7 +139,7 @@ export default function page() {
 
   return (
     <div className="p-4 xl:px-[5.4rem] 2xl:px-[7.7rem] dark:bg-[#181D25]">
-      <h1 className="text-2xl font-semibold mt-10">Automotive</h1>
+      <h1 className="text-4xl font-semibold mt-10">Automotive</h1>
 
       <SortProductsBtn handleChange={handleChange} />
 

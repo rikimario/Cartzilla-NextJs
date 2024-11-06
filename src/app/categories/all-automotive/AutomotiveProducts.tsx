@@ -44,7 +44,7 @@ export default function AutomotiveProducts({
                         />
                       </button>
                     </div>
-                    <Link href={`all-men/${item.id}`}>
+                    <Link href={`all-automotive/${item.id}`}>
                       <Image
                         className="lg:w-[200px] lg:h-[200px]"
                         src={item.thumbnail}

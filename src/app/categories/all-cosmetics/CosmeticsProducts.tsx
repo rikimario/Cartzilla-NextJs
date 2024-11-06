@@ -44,7 +44,7 @@ export default function CosmeticsProducts({
                         />
                       </button>
                     </div>
-                    <Link href={`all-men/${item.id}`}>
+                    <Link href={`all-cosmetics/${item.id}`}>
                       <Image
                         className="lg:w-[200px] lg:h-[200px]"
                         src={item.thumbnail}

@@ -24,7 +24,7 @@ export default function FilterBtnPrice({
       <div>
         <Slider
           min={0}
-          max={14000}
+          max={40000}
           step={1}
           defaultValue={values}
           onValueChange={(value) =>
@@ -33,11 +33,11 @@ export default function FilterBtnPrice({
         />
 
         <div className="flex justify-between items-center mt-8">
-          <p className="p-4 border border-gray-200 rounded-xl min-w-24 max-w-24 text-center">
+          <p className="p-3 border border-gray-200 rounded-xl min-w-24 max-w-24 text-center">
             $ {values[0]}
           </p>{" "}
           -{" "}
-          <p className="p-4 border border-gray-200 rounded-xl min-w-24 max-w-24 text-center">
+          <p className="p-3 border border-gray-200 rounded-xl min-w-24 max-w-24 text-center">
             $ {values[1]}
           </p>
         </div>

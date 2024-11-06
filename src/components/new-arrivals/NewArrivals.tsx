@@ -10,7 +10,7 @@ export default function NewArrivals() {
       <h1 className="text-2xl lg:pl-[4rem] xl:pl-[6.5rem] text-gray-900 dark:text-white font-semibold pb-6">
         New Arrivals
       </h1>
-      <div className="lg:flex lg:justify-around">
+      <div className="lg:flex lg:justify-around items-center">
         <div className="relative h-[500px] lg:w-1/3 w-full py-4 px-4 bg-[url('/NewArrivalsBg.jpg')] bg-cover rounded-xl flex flex-col items-center justify-end">
           <div className="text-center flex flex-col items-center gap-4 pb-14">
             <Image

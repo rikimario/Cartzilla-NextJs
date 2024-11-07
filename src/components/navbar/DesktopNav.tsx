@@ -41,7 +41,7 @@ export default function DesktopNav() {
               <DropdownMenuPortal>
                 <DropdownMenuSubContent>
                   {link.sublinks.map((sublink) => (
-                    <DropdownMenuItem>
+                    <DropdownMenuItem key={link.name}>
                       <Link href={sublink.link}>{sublink.name}</Link>
                     </DropdownMenuItem>
                   ))}

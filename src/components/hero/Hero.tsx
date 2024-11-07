@@ -27,7 +27,7 @@ export default function Hero() {
       >
         <CarouselContent>
           {heroImages.map((hero) => (
-            <CarouselItem>
+            <CarouselItem key={hero.title}>
               <div>
                 <Card className="bg-gradient-to-r from-[#ACCBEE] to-[#E7F0FD] dark:bg-gradient-to-r dark:from-[#1B273A] dark:to-[#1F2632]">
                   <CardContent className="flex flex-col lg:flex-row min-h-[30rem] text-center items-center justify-between lg:justify-center lg:text-start lg:gap-12 pt-10">

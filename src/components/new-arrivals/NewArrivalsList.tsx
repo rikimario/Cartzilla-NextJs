@@ -10,7 +10,7 @@ export default function NewArrivalsList({}) {
   return (
     <div className="md:grid md:grid-cols-2">
       {product.slice(0, 8).map((item: Product) => (
-        <Link href={`categories/all-electronics/${item.id}`}>
+        <Link key={item.id} href={`categories/all-electronics/${item.id}`}>
           <div className="flex text-center items-center gap-2" key={item.id}>
             <Image
               src={item.thumbnail}
@@ -30,7 +30,7 @@ export default function NewArrivalsList({}) {
                       strokeWidth={0}
                     />
                   ) : item.rating > index && item.rating < index + 1 ? (
-                    <div style={{ position: "relative" }}>
+                    <div key={index} style={{ position: "relative" }}>
                       <Star
                         key={index}
                         className="text-[#FC9231] lg:w-5 lg:h-5"

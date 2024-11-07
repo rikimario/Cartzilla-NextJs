@@ -23,6 +23,7 @@ export interface Product {
   reviews: Review[];
   warrantyInformation: string;
   returnPolicy: string;
+  stock: number;
   id: number;
 }
 

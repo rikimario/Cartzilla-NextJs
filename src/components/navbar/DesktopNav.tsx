@@ -49,18 +49,6 @@ export default function DesktopNav() {
               </DropdownMenuPortal>
             </DropdownMenuSub>
           ))}
-
-          {/* Sports */}
-          <DropdownMenuItem>
-            <Link href="/categories/sports-accessories">
-              Sports Accessories
-            </Link>
-          </DropdownMenuItem>
-
-          {/* Sunglasses */}
-          <DropdownMenuItem>
-            <Link href="/categories/sunglasses">Sunglasses</Link>
-          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
 

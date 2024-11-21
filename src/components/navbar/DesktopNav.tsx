@@ -37,7 +37,9 @@ export default function DesktopNav() {
           </DropdownMenuItem>
           {links.map((link) => (
             <DropdownMenuSub key={link.name}>
-              <DropdownMenuSubTrigger>{link.name}</DropdownMenuSubTrigger>
+              <DropdownMenuSubTrigger>
+                <Link href={link.href ?? "/"}>{link.name}</Link>
+              </DropdownMenuSubTrigger>
               <DropdownMenuPortal>
                 <DropdownMenuSubContent>
                   {link.sublinks.map((sublink) => (

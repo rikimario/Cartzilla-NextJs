@@ -12,15 +12,15 @@ export const links: {
     sublinks: [
       {
         name: "Mens Shirts",
-        link: "mens-shirts",
+        link: "categories/all-men",
       },
       {
         name: "Mens Shoes",
-        link: "mens-shoes",
+        link: "categories/all-men",
       },
       {
         name: "Mens Watches",
-        link: "mens-watches",
+        link: "categories/all-men",
       },
     ],
   },
@@ -30,27 +30,27 @@ export const links: {
     sublinks: [
       {
         name: "Tops",
-        link: "tops",
+        link: "categories/all-women",
       },
       {
         name: "Dresses",
-        link: "womens-dresses",
+        link: "categories/all-women",
       },
       {
         name: "Women Shoes",
-        link: "womens-shoes",
+        link: "categories/all-women",
       },
       {
         name: "Women Bags",
-        link: "womens-bags",
+        link: "categories/all-women",
       },
       {
         name: "Women Watches",
-        link: "womens-watches",
+        link: "categories/all-women",
       },
       {
         name: "Jewelry",
-        link: "womens-jewellery",
+        link: "categories/all-women",
       },
     ],
   },
@@ -60,19 +60,19 @@ export const links: {
     sublinks: [
       {
         name: "Laptops",
-        link: "laptops",
+        link: "categories/all-electronics",
       },
       {
         name: "Tablets",
-        link: "tablets",
+        link: "categories/all-electronics",
       },
       {
         name: "Smartphones",
-        link: "smartphones",
+        link: "categories/all-electronics",
       },
       {
         name: "Mobile Accessories",
-        link: "mobile-accessories",
+        link: "categories/all-electronics",
       },
     ],
   },
@@ -82,19 +82,19 @@ export const links: {
     sublinks: [
       {
         name: "Furniture",
-        link: "furniture",
+        link: "categories/all-groceries",
       },
       {
         name: "Kitchen",
-        link: "kitchen-accessories",
+        link: "categories/all-groceries",
       },
       {
         name: "Decorations",
-        link: "home-decoration",
+        link: "categories/all-groceries",
       },
       {
         name: "Groceries",
-        link: "groceries",
+        link: "categories/all-groceries",
       },
     ],
   },
@@ -104,15 +104,15 @@ export const links: {
     sublinks: [
       {
         name: "Beauty",
-        link: "beauty",
+        link: "categories/all-cosmetics",
       },
       {
         name: "Skin Care",
-        link: "skin-care",
+        link: "categories/all-cosmetics",
       },
       {
         name: "Fragrances",
-        link: "fragrances",
+        link: "categories/all-cosmetics",
       },
     ],
   },
@@ -122,11 +122,11 @@ export const links: {
     sublinks: [
       {
         name: "Cars",
-        link: "vehicle",
+        link: "categories/all-automotive",
       },
       {
         name: "Motorcycles",
-        link: "motorcycle",
+        link: "categories/all-automotive",
       },
     ],
   },
@@ -136,7 +136,7 @@ export const links: {
     sublinks: [
       {
         name: "Sports Accessories",
-        link: "sports-accessories",
+        link: "categories/sports-accessories",
       },
     ],
   },
@@ -146,7 +146,7 @@ export const links: {
     sublinks: [
       {
         name: "Sunglasses",
-        link: "sunglasses",
+        link: "categories/sunglasses",
       },
     ],
   },

@@ -12,11 +12,16 @@ import {
 } from "../ui/dropdown-menu";
 import Link from "next/link";
 import { links } from "./CategoriesLinks";
+import { useState } from "react";
 
 export default function DesktopNav() {
+  const [open, setOpen] = useState(false);
+  const closeDropdown = () => {
+    setOpen(false);
+  };
   return (
     <div className="hidden font-light lg:flex px-4 md:px-12 lg:px-0 justify-around bg-[#222934]">
-      <DropdownMenu>
+      <DropdownMenu open={open} onOpenChange={setOpen}>
         <DropdownMenuTrigger className="text-[#E0E5EB] min-w-[15rem] bg-gray-700 py-2 px-4 rounded-md flex justify-between">
           Categories{" "}
           <span>
@@ -27,7 +32,11 @@ export default function DesktopNav() {
           {/* All categories */}
           <DropdownMenuItem>
             <div className="flex justify-between items-center">
-              <Link className="flex gap-[6.59rem]" href="/all-categories">
+              <Link
+                className="flex gap-[6.59rem]"
+                href="/all-categories"
+                onClick={closeDropdown}
+              >
                 All Categories{" "}
                 <span>
                   <ChevronRight className="h-4 w-4" strokeWidth={2} />
@@ -38,12 +47,14 @@ export default function DesktopNav() {
           {links.map((link) => (
             <DropdownMenuSub key={link.name}>
               <DropdownMenuSubTrigger>
-                <Link href={link.href ?? "/"}>{link.name}</Link>
+                <Link href={link.href ?? "/"} onClick={closeDropdown}>
+                  {link.name}
+                </Link>
               </DropdownMenuSubTrigger>
               <DropdownMenuPortal>
                 <DropdownMenuSubContent>
                   {link.sublinks.map((sublink) => (
-                    <DropdownMenuItem key={link.name}>
+                    <DropdownMenuItem key={link.name} onClick={closeDropdown}>
                       <Link href={sublink.link}>{sublink.name}</Link>
                     </DropdownMenuItem>
                   ))}

@@ -74,16 +74,21 @@ export default function FilterBtnCategories({
                 <button
                   key={sublink.name}
                   className="flex items-center justify-between gap-2 p-2"
-                  onClick={() => handleCategoryClick(sublink.link)}
+                  onClick={() => handleCategoryClick(sublink.sortLink || "")}
                 >
                   <Checkbox
                     id={sublink.name}
                     key={sublink.name}
-                    checked={selectedCategories.includes(sublink.link)}
+                    checked={selectedCategories.includes(
+                      sublink.sortLink || ""
+                    )}
                   />
                   <Label htmlFor={sublink.name}>{sublink.name}</Label>
                   <p className="text-sm text-gray-400">
-                    ({productsByCategory[sublink.link] || totalProducts})
+                    (
+                    {productsByCategory[sublink.sortLink || ""] ||
+                      totalProducts}
+                    )
                   </p>
                 </button>
               ))}

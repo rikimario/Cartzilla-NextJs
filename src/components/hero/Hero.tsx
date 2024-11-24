@@ -12,6 +12,7 @@ import { heroImages } from "../HeroSliderImgs";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
 export default function Hero() {
   const plugin = React.useRef(
@@ -38,14 +39,19 @@ export default function Hero() {
                       <h1 className="text-3xl lg:text-4xl font-semibold text-gray-900 dark:text-white pt-4">
                         {hero.title}
                       </h1>
-                      <div className="pt-4 lg:pt-8 flex gap-4 items-center justify-center lg:justify-start">
-                        <Button className="bg-[#F55266] hover:bg-[#F2223B] flex gap-1 items-center justify-center font-normal dark:text-white">
-                          Shop now{" "}
-                          <span>
-                            <ArrowUpRight className="h-5 w-5" strokeWidth={1} />
-                          </span>
-                        </Button>
-                      </div>
+                      <Link href="/categories/all-electronics">
+                        <div className="pt-4 lg:pt-8 flex gap-4 items-center justify-center lg:justify-start">
+                          <Button className="bg-[#F55266] hover:bg-[#F2223B] flex gap-1 items-center justify-center font-normal dark:text-white">
+                            Shop now{" "}
+                            <span>
+                              <ArrowUpRight
+                                className="h-5 w-5"
+                                strokeWidth={1}
+                              />
+                            </span>
+                          </Button>
+                        </div>
+                      </Link>
                     </div>
                     <div>
                       <Image

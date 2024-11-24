@@ -3,6 +3,7 @@ import React from "react";
 import { Button } from "../ui/button";
 import { ArrowUpRight } from "lucide-react";
 import NewArrivalsList from "./NewArrivalsList";
+import Link from "next/link";
 
 export default function NewArrivals() {
   return (
@@ -24,12 +25,14 @@ export default function NewArrivals() {
               MacBook
             </h2>
             <p className="text-gray-400">Be Pro Anywhere</p>
-            <Button className="bg-[#F55266] hover:bg-[#F2223B] flex gap-1 items-center justify-center font-normal dark:text-white">
-              From $1,199{" "}
-              <span>
-                <ArrowUpRight className="h-5 w-5" strokeWidth={1} />
-              </span>
-            </Button>
+            <Link href="/categories/all-electronics">
+              <Button className="bg-[#F55266] hover:bg-[#F2223B] flex gap-1 items-center justify-center font-normal dark:text-white">
+                From $1,199{" "}
+                <span>
+                  <ArrowUpRight className="h-5 w-5" strokeWidth={1} />
+                </span>
+              </Button>
+            </Link>
           </div>
         </div>
         {/* List of products */}

@@ -31,7 +31,7 @@ export default function TrendingProducts() {
                     />
                   </button>
                 </div>
-                <Link href={`all-electronics/${item.id}`}>
+                <Link href={`categories/all-electronics/${item.id}`}>
                   <Image
                     className="lg:w-[200px] lg:h-[200px]"
                     src={item.thumbnail}

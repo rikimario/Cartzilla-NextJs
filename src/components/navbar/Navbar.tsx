@@ -89,9 +89,11 @@ export default function Navbar() {
           <button className="hidden lg:block hover:bg-[#333D4C] p-3 hover:rounded-full">
             <Heart className="h-5 w-5 hidden lg:block" strokeWidth={1} />
           </button>
-          <button className="hidden lg:block hover:bg-[#333D4C] p-3 hover:rounded-full">
-            <User className="h-5 w-5 hidden lg:block" strokeWidth={1} />
-          </button>
+          <Link href="/login">
+            <button className="hidden lg:block hover:bg-[#333D4C] p-3 hover:rounded-full">
+              <User className="h-5 w-5 hidden lg:block" strokeWidth={1} />
+            </button>
+          </Link>
           <div className="relative">
             <button className="bg-[#333D4C] p-3 rounded-full">
               <ShoppingCart className="h-5 w-5" strokeWidth={1} />

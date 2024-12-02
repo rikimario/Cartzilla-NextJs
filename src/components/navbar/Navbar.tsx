@@ -1,8 +1,15 @@
 "use client";
-import { Heart, Menu, ShoppingCart, User } from "lucide-react";
+import {
+  Heart,
+  LogOut,
+  Menu,
+  ShoppingCart,
+  User,
+  UserCheck,
+} from "lucide-react";
 
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Theme from "../Theme";
 import DDMobileNav from "./DDMobileNav";
@@ -17,9 +24,36 @@ import {
 } from "../ui/sheet";
 import { ScrollArea } from "../ui/scroll-area";
 import MobileFooter from "./MobileFooter";
+import supabase from "@/config/supabaseClient";
+import { useRouter } from "next/navigation";
+
+type userData = {
+  email: string;
+};
 
 export default function Navbar() {
   const [openNav, setOpenNav] = useState<boolean>(false);
+  const [user, setUser] = useState<userData | null>(null);
+  const router = useRouter();
+
+  useEffect(() => {
+    const getUser = async () => {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      setUser(user as userData);
+    };
+    getUser();
+  }, []);
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    console.log("Logout successful!");
+    router.replace("/");
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
+  };
 
   const handleClickNav = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -89,11 +123,36 @@ export default function Navbar() {
           <button className="hidden lg:block hover:bg-[#333D4C] p-3 hover:rounded-full">
             <Heart className="h-5 w-5 hidden lg:block" strokeWidth={1} />
           </button>
-          <Link href="/login">
-            <button className="hidden lg:block hover:bg-[#333D4C] p-3 hover:rounded-full">
-              <User className="h-5 w-5 hidden lg:block" strokeWidth={1} />
-            </button>
-          </Link>
+
+          {user ? (
+            <div className="flex gap-1 items-center">
+              <Link href="/profile">
+                <button className="hidden lg:block hover:bg-[#333D4C] p-3 hover:rounded-full">
+                  <UserCheck
+                    className="h-5 w-5 hidden lg:block"
+                    strokeWidth={1}
+                  />
+                </button>
+              </Link>
+              <span className="text-gray-600 hidden lg:block">|</span>
+              <button>
+                <LogOut
+                  className="h-5 w-5 hidden lg:block"
+                  strokeWidth={1}
+                  onClick={handleLogout}
+                >
+                  Logout
+                </LogOut>
+              </button>
+            </div>
+          ) : (
+            <Link href="/login">
+              <button className="hidden lg:block hover:bg-[#333D4C] p-3 hover:rounded-full">
+                <User className="h-5 w-5 hidden lg:block" strokeWidth={1} />
+              </button>
+            </Link>
+          )}
+
           <div className="relative">
             <button className="bg-[#333D4C] p-3 rounded-full">
               <ShoppingCart className="h-5 w-5" strokeWidth={1} />

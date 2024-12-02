@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import supabase from "@/config/supabaseClient";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 type userData = {
@@ -16,14 +17,25 @@ export default function Register() {
     email: "",
     password: "",
   });
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    let { data, error } = await supabase.auth.signUp({
-      email: user.email,
-      password: user.password,
-    });
+    try {
+      let { data, error } = await supabase.auth.signUp({
+        email: user.email,
+        password: user.password,
+      });
+
+      if (error) {
+        console.error(error);
+      } else {
+        router.push("/login");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div className="my-10 mx-2 md:mx-12 lg:mx-52 xl:mx-96 2xl:my-20 2xl:mx-[35rem] dark:bg-[#181D25]">
@@ -49,7 +61,7 @@ export default function Register() {
               <input
                 className="border border-gray-300 w-full p-3 rounded-2xl"
                 placeholder="Email"
-                type="text"
+                type="email"
                 id="email"
                 value={user.email}
                 onChange={(e) => setUser({ ...user, email: e.target.value })}
@@ -57,7 +69,7 @@ export default function Register() {
               <input
                 className="border border-gray-300 w-full p-3 rounded-2xl"
                 placeholder="Password"
-                type="text"
+                type="password"
                 id="password"
                 value={user.password}
                 onChange={(e) => setUser({ ...user, password: e.target.value })}

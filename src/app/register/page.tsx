@@ -2,50 +2,14 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
-import supabase from "@/config/supabaseClient";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import React, { useState } from "react";
-
-type userData = {
-  email: string;
-  password: string;
-};
 
 export default function Register() {
-  const [user, setUser] = useState<userData>({
-    email: "",
-    password: "",
-  });
-  const router = useRouter();
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    try {
-      let { data, error } = await supabase.auth.signUp({
-        email: user.email,
-        password: user.password,
-      });
-
-      if (error) {
-        console.error(error);
-      } else {
-        router.push("/login");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
   return (
     <div className="my-10 mx-2 md:mx-12 lg:mx-52 xl:mx-96 2xl:my-20 2xl:mx-[35rem] dark:bg-[#181D25]">
       <Card className="flex flex-col items-center justify-center p-2 dark:bg-[#181D25]">
         <CardContent className="w-full">
-          <form
-            onSubmit={handleSubmit}
-            className="flex flex-col gap-2 xl:p-6"
-            action="#"
-          >
+          <form className="flex flex-col gap-2 xl:p-6" action="#">
             <div className="my-4">
               <h1 className="text-3xl text-gray-900 dark:text-white mb-4 font-semibold">
                 Create and account
@@ -63,16 +27,14 @@ export default function Register() {
                 placeholder="Email"
                 type="email"
                 id="email"
-                value={user.email}
-                onChange={(e) => setUser({ ...user, email: e.target.value })}
+                name="email"
               />
               <input
                 className="border border-gray-300 w-full p-3 rounded-2xl"
                 placeholder="Password"
                 type="password"
                 id="password"
-                value={user.password}
-                onChange={(e) => setUser({ ...user, password: e.target.value })}
+                name="password"
               />
             </div>
             <p className="text-sm text-gray-400 ml-2">

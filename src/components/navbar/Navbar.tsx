@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import {
   Heart,
   LogOut,
@@ -24,41 +24,45 @@ import {
 } from "../ui/sheet";
 import { ScrollArea } from "../ui/scroll-area";
 import MobileFooter from "./MobileFooter";
-import supabase from "@/config/supabaseClient";
-import { useRouter } from "next/navigation";
+// import supabase from "@/config/supabaseClient";
+import { redirect, useRouter } from "next/navigation";
+import { createClient } from "../../../utils/supabase/server";
+import LogoutBtn from "./LogoutBtn";
 
 type userData = {
   email: string;
 };
 
-export default function Navbar() {
-  const [openNav, setOpenNav] = useState<boolean>(false);
-  const [user, setUser] = useState<userData | null>(null);
-  const router = useRouter();
+export default async function Navbar() {
+  // const [openNav, setOpenNav] = useState<boolean>(false);
+  // const [user, setUser] = useState<userData | null>(null);
+  // const router = useRouter();
+  const supabase = await createClient();
 
-  useEffect(() => {
-    const getUser = async () => {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
-      setUser(user as userData);
-    };
-    getUser();
-  }, []);
+  const { data, error } = await supabase.auth.getUser();
+  // if (error || !data?.user) {
+  //   redirect("/");
+  // }
 
-  const handleLogout = async () => {
-    await supabase.auth.signOut();
-    console.log("Logout successful!");
-    router.replace("/");
-    setTimeout(() => {
-      window.location.reload();
-    }, 500);
-  };
+  // useEffect(() => {
+  //   const getUser = async () => {
+  //     const {
+  //       data: { user },
+  //     } = await supabase.auth.getUser();
+  //     setUser(user as userData);
+  //   };
+  //   getUser();
+  // }, []);
 
-  const handleClickNav = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    setOpenNav(!openNav);
-  };
+  // const handleLogout = async () => {
+  //   await supabase.auth.signOut();
+  //   redirect("/");
+  // };
+
+  // const handleClickNav = (e: React.MouseEvent<HTMLButtonElement>) => {
+  //   e.preventDefault();
+  //   setOpenNav(!openNav);
+  // };
 
   return (
     <nav>
@@ -79,7 +83,7 @@ export default function Navbar() {
                   <SheetTitle className="text-start text-xl">
                     Browse Cartzilla
                   </SheetTitle>
-                  <DDMobileNav handleClickNav={handleClickNav} />
+                  {/* <DDMobileNav handleClickNav={handleClickNav} /> */}
                 </SheetHeader>
               </ScrollArea>
               <MobileFooter />
@@ -124,7 +128,7 @@ export default function Navbar() {
             <Heart className="h-5 w-5 hidden lg:block" strokeWidth={1} />
           </button>
 
-          {user ? (
+          {data.user ? (
             <div className="flex gap-1 items-center">
               <Link href="/profile">
                 <button className="hidden lg:block hover:bg-[#333D4C] p-3 hover:rounded-full">
@@ -135,15 +139,7 @@ export default function Navbar() {
                 </button>
               </Link>
               <span className="text-gray-600 hidden lg:block">|</span>
-              <button>
-                <LogOut
-                  className="h-5 w-5 hidden lg:block"
-                  strokeWidth={1}
-                  onClick={handleLogout}
-                >
-                  Logout
-                </LogOut>
-              </button>
+              <LogoutBtn />
             </div>
           ) : (
             <Link href="/login">
@@ -164,7 +160,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      <DesktopNav />
+      {/* <DesktopNav /> */}
     </nav>
   );
 }

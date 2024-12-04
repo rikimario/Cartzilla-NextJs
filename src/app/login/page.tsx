@@ -1,11 +1,8 @@
-"use client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
-import supabase from "@/config/supabaseClient";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import { login } from "../../../utils/supabase/actions";
 
 type userData = {
   email: string;
@@ -13,39 +10,11 @@ type userData = {
 };
 
 export default function Login() {
-  const [user, setUser] = useState<userData>({
-    email: "",
-    password: "",
-  });
-  const router = useRouter();
-
-  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email: user.email,
-        password: user.password,
-      });
-
-      if (error) {
-        console.error(error);
-      } else {
-        console.log("Login successful!");
-        router.replace("/");
-        setTimeout(() => {
-          window.location.reload();
-        }, 500);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
   return (
     <div className="my-10 mx-2 md:mx-12 lg:mx-52 xl:mx-96 2xl:my-20 2xl:mx-[35rem] dark:bg-[#181D25]">
       <Card className="flex flex-col items-center justify-center p-2 dark:bg-[#181D25]">
         <CardContent className="w-full">
-          <form onSubmit={handleLogin} className="flex flex-col gap-2 xl:p-6">
+          <form className="flex flex-col gap-2 xl:p-6">
             <div className="my-4">
               <h1 className="text-3xl text-gray-900 dark:text-white mb-4 font-semibold">
                 Welcome back
@@ -63,16 +32,18 @@ export default function Login() {
                 placeholder="Email"
                 type="email"
                 id="email"
-                value={user.email}
-                onChange={(e) => setUser({ ...user, email: e.target.value })}
+                name="email"
+                // value={user.email}
+                // onChange={(e) => setUser({ ...user, email: e.target.value })}
               />
               <input
                 className="border border-gray-300 w-full p-3 rounded-2xl"
                 placeholder="Password"
                 type="password"
                 id="password"
-                value={user.password}
-                onChange={(e) => setUser({ ...user, password: e.target.value })}
+                name="password"
+                // value={user.password}
+                // onChange={(e) => setUser({ ...user, password: e.target.value })}
               />
             </div>
 
@@ -87,8 +58,7 @@ export default function Login() {
 
             <Button
               className="bg-[#F55266] hover:bg-[#F2223B] w-full p-3 text-xl font-light dark:text-white rounded-2xl mt-6"
-              type="submit"
-              formMethod="POST"
+              formAction={login}
             >
               Sign in
             </Button>

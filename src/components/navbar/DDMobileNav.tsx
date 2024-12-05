@@ -1,36 +1,12 @@
-"use client";
-import {
-  ChevronDown,
-  ChevronRight,
-  ChevronUp,
-  Heart,
-  Home,
-  LayoutGrid,
-  User,
-} from "lucide-react";
-import { links } from "./CategoriesLinks";
+import { ChevronRight, LayoutGrid } from "lucide-react";
 import Link from "next/link";
-import React, { useState } from "react";
-import { SheetClose } from "../ui/sheet";
 import { Accordion, AccordionItem, AccordionTrigger } from "../ui/accordion";
 import { AccordionContent } from "@radix-ui/react-accordion";
 import MobileCategoriesAccordion from "./MobileCategoriesAccordion";
 import MobileNavLinks from "./MobileNavLinks";
 import MobileFooter from "./MobileFooter";
 
-type DDMobileNavProps = {
-  handleClickNav: (e: React.MouseEvent<HTMLButtonElement>) => void;
-};
-
-export default function DDMobileNav({ handleClickNav }: DDMobileNavProps) {
-  const [openCategories, setOpenCategories] = useState<boolean>(false);
-  const [heading, setHeading] = useState<string>("");
-
-  const handleClickCategories = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    setOpenCategories(!openCategories);
-  };
-
+export default function DDMobileNav() {
   return (
     <>
       <div className="dark:bg-[#181D25] dark:text-[white]">

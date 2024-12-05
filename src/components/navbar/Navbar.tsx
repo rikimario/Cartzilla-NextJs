@@ -1,16 +1,5 @@
-// "use client";
-import {
-  Heart,
-  LogOut,
-  Menu,
-  ShoppingCart,
-  User,
-  UserCheck,
-} from "lucide-react";
-
+import { Heart, Menu, ShoppingCart, User, UserCheck } from "lucide-react";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
-
 import Theme from "../Theme";
 import DDMobileNav from "./DDMobileNav";
 import MobileSearch from "./MobileSearch";
@@ -24,45 +13,13 @@ import {
 } from "../ui/sheet";
 import { ScrollArea } from "../ui/scroll-area";
 import MobileFooter from "./MobileFooter";
-// import supabase from "@/config/supabaseClient";
-import { redirect, useRouter } from "next/navigation";
 import { createClient } from "../../../utils/supabase/server";
 import LogoutBtn from "./LogoutBtn";
 
-type userData = {
-  email: string;
-};
-
 export default async function Navbar() {
-  // const [openNav, setOpenNav] = useState<boolean>(false);
-  // const [user, setUser] = useState<userData | null>(null);
-  // const router = useRouter();
   const supabase = await createClient();
 
   const { data, error } = await supabase.auth.getUser();
-  // if (error || !data?.user) {
-  //   redirect("/");
-  // }
-
-  // useEffect(() => {
-  //   const getUser = async () => {
-  //     const {
-  //       data: { user },
-  //     } = await supabase.auth.getUser();
-  //     setUser(user as userData);
-  //   };
-  //   getUser();
-  // }, []);
-
-  // const handleLogout = async () => {
-  //   await supabase.auth.signOut();
-  //   redirect("/");
-  // };
-
-  // const handleClickNav = (e: React.MouseEvent<HTMLButtonElement>) => {
-  //   e.preventDefault();
-  //   setOpenNav(!openNav);
-  // };
 
   return (
     <nav>
@@ -83,7 +40,7 @@ export default async function Navbar() {
                   <SheetTitle className="text-start text-xl">
                     Browse Cartzilla
                   </SheetTitle>
-                  {/* <DDMobileNav handleClickNav={handleClickNav} /> */}
+                  <DDMobileNav />
                 </SheetHeader>
               </ScrollArea>
               <MobileFooter />
@@ -160,7 +117,7 @@ export default async function Navbar() {
         </div>
       </div>
 
-      {/* <DesktopNav /> */}
+      <DesktopNav />
     </nav>
   );
 }

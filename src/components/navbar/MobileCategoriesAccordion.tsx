@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import { Accordion, AccordionContent, AccordionTrigger } from "../ui/accordion";
 import { AccordionItem } from "@radix-ui/react-accordion";

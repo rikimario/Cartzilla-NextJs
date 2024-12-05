@@ -1,15 +1,24 @@
-"use client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
+import { signup } from "../../../utils/supabase/actions";
+import { createClient } from "../../../utils/supabase/server";
+import { redirect } from "next/navigation";
 
-export default function Register() {
+export default async function Register() {
+  const supabase = await createClient();
+
+  const { data, error } = await supabase.auth.getUser();
+
+  if (data?.user) {
+    redirect("/");
+  }
   return (
     <div className="my-10 mx-2 md:mx-12 lg:mx-52 xl:mx-96 2xl:my-20 2xl:mx-[35rem] dark:bg-[#181D25]">
       <Card className="flex flex-col items-center justify-center p-2 dark:bg-[#181D25]">
         <CardContent className="w-full">
-          <form className="flex flex-col gap-2 xl:p-6" action="#">
+          <form className="flex flex-col gap-2 xl:p-6">
             <div className="my-4">
               <h1 className="text-3xl text-gray-900 dark:text-white mb-4 font-semibold">
                 Create and account
@@ -57,8 +66,8 @@ export default function Register() {
             </div>
 
             <Button
+              formAction={signup}
               className="bg-[#F55266] hover:bg-[#F2223B] w-full p-3 text-xl font-light dark:text-white rounded-2xl mt-6"
-              type="submit"
             >
               Create an account
             </Button>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { login } from "../../../utils/supabase/actions";
 import { createClient } from "../../../utils/supabase/server";
 import { redirect } from "next/navigation";
+import SignInWithGoogleButton from "../../components/SignInWithGoogle";
 
 export default async function Login() {
   const supabase = await createClient();
@@ -37,6 +38,7 @@ export default async function Login() {
                 type="email"
                 id="email"
                 name="email"
+                required
               />
               <input
                 className="border border-gray-300 w-full p-3 rounded-2xl"
@@ -44,6 +46,7 @@ export default async function Login() {
                 type="password"
                 id="password"
                 name="password"
+                required
               />
             </div>
 
@@ -62,6 +65,16 @@ export default async function Login() {
             >
               Sign in
             </Button>
+
+            <div className="flex items-center justify-center">
+              <hr className="w-full h-px bg-gray-200 border-0 dark:bg-gray-700" />
+              <p className="w-full text-center my-4 text-gray-700 dark:text-gray-400">
+                or continue with
+              </p>
+              <hr className="w-full h-px bg-gray-200 border-0 dark:bg-gray-700" />
+            </div>
+
+            <SignInWithGoogleButton />
           </form>
         </CardContent>
       </Card>

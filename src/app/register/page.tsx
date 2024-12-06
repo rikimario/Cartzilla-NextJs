@@ -5,6 +5,7 @@ import Link from "next/link";
 import { signup } from "../../../utils/supabase/actions";
 import { createClient } from "../../../utils/supabase/server";
 import { redirect } from "next/navigation";
+import SignInWithGoogleButton from "@/components/SignInWithGoogle";
 
 export default async function Register() {
   const supabase = await createClient();
@@ -21,7 +22,7 @@ export default async function Register() {
           <form className="flex flex-col gap-2 xl:p-6">
             <div className="my-4">
               <h1 className="text-3xl text-gray-900 dark:text-white mb-4 font-semibold">
-                Create and account
+                Create an account
               </h1>
               <p className="text-sm text-gray-500 dark:text-gray-400 ml-2">
                 I already have an account{" "}
@@ -37,6 +38,7 @@ export default async function Register() {
                 type="email"
                 id="email"
                 name="email"
+                required
               />
               <input
                 className="border border-gray-300 w-full p-3 rounded-2xl"
@@ -44,6 +46,7 @@ export default async function Register() {
                 type="password"
                 id="password"
                 name="password"
+                required
               />
             </div>
             <p className="text-sm text-gray-400 ml-2">
@@ -71,6 +74,15 @@ export default async function Register() {
             >
               Create an account
             </Button>
+
+            <div className="flex items-center justify-center">
+              <hr className="w-full h-px bg-gray-200 border-0 dark:bg-gray-700" />
+              <p className="w-full text-center my-4 text-gray-700 dark:text-gray-400">
+                or continue with
+              </p>
+              <hr className="w-full h-px bg-gray-200 border-0 dark:bg-gray-700" />
+            </div>
+            <SignInWithGoogleButton />
           </form>
         </CardContent>
       </Card>

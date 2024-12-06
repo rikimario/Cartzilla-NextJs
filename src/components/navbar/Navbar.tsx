@@ -87,7 +87,7 @@ export default async function Navbar() {
 
           {data.user ? (
             <div className="flex gap-1 items-center">
-              <Link href="/profile">
+              <Link href={`/profile/${data.user?.id}`}>
                 <button className="hidden lg:block hover:bg-[#333D4C] p-3 hover:rounded-full">
                   <UserCheck
                     className="h-5 w-5 hidden lg:block"

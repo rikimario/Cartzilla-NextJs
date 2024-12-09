@@ -86,14 +86,13 @@ export default async function Navbar() {
           </button>
 
           {data.user ? (
-            <div className="flex gap-1 items-center">
+            <div className="flex justify-center text-center gap-1 items-center">
               <Link href={`/profile/${data.user?.id}`}>
-                <button className="hidden lg:block hover:bg-[#333D4C] p-3 hover:rounded-full">
-                  <UserCheck
-                    className="h-5 w-5 hidden lg:block"
-                    strokeWidth={1}
-                  />
-                </button>
+                <div className="flex justify-center items-center">
+                  <p className="hidden lg:block size-10 text-lg bg-[#333D4C] p-2 rounded-full">
+                    {data.user?.email?.charAt(0).toUpperCase()}
+                  </p>
+                </div>
               </Link>
               <span className="text-gray-600 hidden lg:block">|</span>
               <LogoutBtn />

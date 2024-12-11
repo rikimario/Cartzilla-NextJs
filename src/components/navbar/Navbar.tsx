@@ -94,8 +94,6 @@ export default async function Navbar() {
                   </p>
                 </div>
               </Link>
-              <span className="text-gray-600 hidden lg:block">|</span>
-              <LogoutBtn />
             </div>
           ) : (
             <Link href="/login">

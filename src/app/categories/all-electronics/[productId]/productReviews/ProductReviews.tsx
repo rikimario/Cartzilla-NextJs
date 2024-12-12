@@ -103,7 +103,7 @@ export default function ProductReviews({ product }: ReviewsOptionsProps) {
           {Array.from({ length: 1 }).map((_, i) => (
             <div className="h-full w-full flex flex-col justify-between py-2">
               {stars.map((star) => (
-                <span className="flex gap-3 items-center">
+                <span key={star.rating} className="flex gap-3 items-center">
                   <p className="flex p-1 items-center justify-center">
                     <span className="size-5 text-center">{star.rating}</span>
                     <span>

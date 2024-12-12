@@ -15,23 +15,21 @@ import ProductFavorite from "./ProductFavorite";
 import ShippingOptions from "./ShippingOptions";
 import ProductReviews from "./productReviews/ProductReviews";
 import ProductSizes from "./ProductSizes";
+import { useParams } from "next/navigation";
 
-export default function ProductDetails({
-  params,
-}: {
-  params: { productId: string };
-}) {
+export default function ProductDetails() {
+  const { productId } = useParams();
   const [product, setProduct] = useState<Product | null>(null);
   const [thumbImage, setThumbImage] = useState<string>("");
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const data = await getProductById(Number(params.productId));
+      const data = await getProductById(Number(productId));
       setProduct(data);
       setThumbImage(data.images[0]);
     };
     fetchProduct();
-  }, [params.productId]);
+  }, [productId]);
 
   if (!product) return <div>Loading...</div>;
   return (

@@ -95,17 +95,14 @@ export default function Profile() {
         {/* User Dashboard */}
         {userDashboard.map((tab) => (
           <div
+            onClick={() => setActiveTab(tab.title)}
             key={tab.title}
-            className={`flex items-center gap-2 ml-4 p-2 rounded-lg hover:bg-gray-200${
+            className={`flex items-center cursor-pointer gap-2 ml-4 p-2 rounded-lg hover:bg-gray-200${
               tab.title === activeTab ? " bg-gray-200" : ""
             }`}
           >
             <span>{tab.icon}</span>
-            <button
-              onClick={() => setActiveTab(tab.title)}
-              key={tab.title}
-              className="text-gray-900 cursor-pointer w-full text-start"
-            >
+            <button key={tab.title} className="text-gray-900 w-full text-start">
               {tab.title}
             </button>
           </div>
@@ -115,17 +112,14 @@ export default function Profile() {
         <span className="text-gray-900 font-semibold mt-2">Manage Account</span>
         {manageAccount.map((tab) => (
           <div
+            onClick={() => setActiveTab(tab.title)}
             key={tab.title}
-            className={`flex items-center gap-2 ml-4 p-2 rounded-lg hover:bg-gray-200${
+            className={`flex items-center cursor-pointer gap-2 ml-4 p-2 rounded-lg hover:bg-gray-200${
               tab.title === activeTab ? " bg-gray-200" : ""
             }`}
           >
             <span>{tab.icon}</span>
-            <button
-              onClick={() => setActiveTab(tab.title)}
-              key={tab.title}
-              className="text-gray-900 cursor-pointer w-full text-start"
-            >
+            <button key={tab.title} className="text-gray-900 w-full text-start">
               {tab.title}
             </button>
           </div>

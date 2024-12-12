@@ -29,6 +29,7 @@
     "embla-carousel-react": "^8.1.5",
     "lucide-react": "^0.395.0",
     "next": "^15.0.3",
+    "nextjs-toploader": "^3.7.15",
     "react": "^18",
     "react-dom": "^18",
     "react-slider": "^2.0.6",

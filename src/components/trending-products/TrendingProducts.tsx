@@ -19,8 +19,11 @@ export default function TrendingProducts() {
       </div>
 
       <div className="px-2 lg:px-20 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 lg:gap-2 lg:pt-4 items-center justify-center justify-items-center text-center">
-        {products.slice(28, 36).map((item: Product) => (
-          <div className="p-1 grid grid-cols-1 grid-rows-1 h-full w-full">
+        {products.slice(28, 36).map((item: Product, index) => (
+          <div
+            key={index}
+            className="p-1 grid grid-cols-1 grid-rows-1 h-full w-full"
+          >
             <Card className="dark:bg-[#181D25] h-full w-full">
               <CardContent className="relative flex flex-col aspect-square items-center justify-center p-2">
                 <div className="absolute top-2 right-4">
@@ -52,7 +55,7 @@ export default function TrendingProducts() {
                           strokeWidth={0}
                         />
                       ) : item.rating > index && item.rating < index + 1 ? (
-                        <div style={{ position: "relative" }}>
+                        <div key={index} style={{ position: "relative" }}>
                           <Star
                             key={index}
                             className="text-[#FC9231] lg:w-5 lg:h-5"

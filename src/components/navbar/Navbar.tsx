@@ -1,4 +1,4 @@
-import { Heart, Menu, ShoppingCart, User, UserCheck } from "lucide-react";
+import { Heart, Menu, ShoppingCart, User } from "lucide-react";
 import Link from "next/link";
 import Theme from "../Theme";
 import DDMobileNav from "./DDMobileNav";

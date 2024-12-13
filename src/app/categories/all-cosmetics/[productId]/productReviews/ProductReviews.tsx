@@ -53,7 +53,7 @@ export default function ProductReviews({ product }: ReviewsOptionsProps) {
                       strokeWidth={0}
                     />
                   ) : product.rating > index && product.rating < index + 1 ? (
-                    <div style={{ position: "relative" }}>
+                    <div key={index} style={{ position: "relative" }}>
                       <Star
                         key={index}
                         className="text-[#FC9231] lg:w-5 lg:h-5"
@@ -101,9 +101,12 @@ export default function ProductReviews({ product }: ReviewsOptionsProps) {
         {/* Progress */}
         <div className="w-full flex flex-col justify-center">
           {Array.from({ length: 1 }).map((_, i) => (
-            <div className="h-full w-full flex flex-col justify-between py-2">
-              {stars.map((star) => (
-                <span className="flex gap-3 items-center">
+            <div
+              key={i}
+              className="h-full w-full flex flex-col justify-between py-2"
+            >
+              {stars.map((star, index) => (
+                <span key={index} className="flex gap-3 items-center">
                   <p className="flex p-1 items-center justify-center">
                     <span className="size-5 text-center">{star.rating}</span>
                     <span>

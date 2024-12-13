@@ -79,8 +79,8 @@ export default function ProductComments({ product }: ReviewsOptionsProps) {
   };
   return (
     <div className="mt-10">
-      {product.reviews.slice(0, 2).map((review) => (
-        <div className="p-2 border-b-2 border-gray-200">
+      {product.reviews.slice(0, 2).map((review, index) => (
+        <div key={index} className="p-2 border-b-2 border-gray-200">
           <div className="flex justify-between py-4">
             <div>
               <p className="text-gray-900 dark:text-white text-lg font-semibold">
@@ -97,7 +97,7 @@ export default function ProductComments({ product }: ReviewsOptionsProps) {
                       strokeWidth={0}
                     />
                   ) : review.rating > index && review.rating < index + 1 ? (
-                    <div style={{ position: "relative" }}>
+                    <div key={index} style={{ position: "relative" }}>
                       <Star
                         key={index}
                         className="text-[#FC9231] lg:w-5 lg:h-5"
@@ -169,8 +169,8 @@ export default function ProductComments({ product }: ReviewsOptionsProps) {
       ))}
       <Collapsible open={isOpen} onOpenChange={setIsOpen}>
         <CollapsibleContent className="space-y-2">
-          {product.reviews.slice(2).map((review) => (
-            <div className="p-2 border-b-2 border-gray-200">
+          {product.reviews.slice(2).map((review, index) => (
+            <div key={index} className="p-2 border-b-2 border-gray-200">
               <div className="flex justify-between py-4">
                 <div>
                   <p className="text-gray-900 text-lg font-semibold">
@@ -187,7 +187,7 @@ export default function ProductComments({ product }: ReviewsOptionsProps) {
                           strokeWidth={0}
                         />
                       ) : review.rating > index && review.rating < index + 1 ? (
-                        <div style={{ position: "relative" }}>
+                        <div key={index} style={{ position: "relative" }}>
                           <Star
                             key={index}
                             className="text-[#FC9231] lg:w-5 lg:h-5"

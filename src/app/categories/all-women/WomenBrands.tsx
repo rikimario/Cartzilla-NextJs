@@ -22,7 +22,7 @@ export default function WomenBrands({
       <div className="relative flex flex-col items-start gap-2 mt-4">
         {Array.from(new Set(products.map((item) => item.brand))).map(
           (brand) => (
-            <button
+            <span
               key={brand}
               onClick={() => handleBrandClick(brand)}
               className="flex items-center space-x-2"
@@ -33,7 +33,7 @@ export default function WomenBrands({
                 key={brand}
               />
               <Label htmlFor={brand}>{brand}</Label>
-            </button>
+            </span>
           )
         )}
       </div>

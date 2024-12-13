@@ -56,7 +56,7 @@ export default function ProductDetails() {
                     strokeWidth={0}
                   />
                 ) : product.rating > index && product.rating < index + 1 ? (
-                  <div style={{ position: "relative" }}>
+                  <div key={index} style={{ position: "relative" }}>
                     <Star
                       key={index}
                       className="text-[#FC9231] lg:w-5 lg:h-5"
@@ -195,7 +195,7 @@ export default function ProductDetails() {
                       strokeWidth={0}
                     />
                   ) : product.rating > index && product.rating < index + 1 ? (
-                    <div style={{ position: "relative" }}>
+                    <div key={index} style={{ position: "relative" }}>
                       <Star
                         key={index}
                         className="text-[#FC9231] lg:w-5 lg:h-5"

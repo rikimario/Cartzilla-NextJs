@@ -30,8 +30,11 @@ export default function WomenProducts({ products }: WomenProductsProps) {
           ? Array.from({ length: 8 }).map((_, index) => (
               <ProductSkeleton key={index} />
             ))
-          : products.map((item: any) => (
-              <div className="p-1 grid grid-cols-1 grid-rows-1 h-full w-full">
+          : products.map((item: any, index) => (
+              <div
+                key={index}
+                className="p-1 grid grid-cols-1 grid-rows-1 h-full w-full"
+              >
                 <Card className="dark:bg-[#181D25] h-full w-full">
                   <CardContent className="relative flex flex-col aspect-square items-center justify-center p-2">
                     <div className="absolute top-2 right-4">
@@ -63,7 +66,7 @@ export default function WomenProducts({ products }: WomenProductsProps) {
                               strokeWidth={0}
                             />
                           ) : item.rating > index && item.rating < index + 1 ? (
-                            <div style={{ position: "relative" }}>
+                            <div key={index} style={{ position: "relative" }}>
                               <Star
                                 key={index}
                                 className="text-[#FC9231] lg:w-5 lg:h-5"

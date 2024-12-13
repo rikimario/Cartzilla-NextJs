@@ -45,7 +45,7 @@ export default function ProductDetails() {
             <p className="text-2xl text-gray-900 dark:text-white font-bold mt-2">
               ${product.price}
             </p>
-            <a href="#reviews" className="flex items-center text-center mt-4">
+            <span className="flex items-center text-center mt-4">
               {Array.from({ length: 5 }).map((_, index) =>
                 product.rating >= index + 1 ? (
                   <Star
@@ -56,7 +56,7 @@ export default function ProductDetails() {
                     strokeWidth={0}
                   />
                 ) : product.rating > index && product.rating < index + 1 ? (
-                  <div style={{ position: "relative" }}>
+                  <div key={index} style={{ position: "relative" }}>
                     <Star
                       key={index}
                       className="text-[#FC9231] lg:w-5 lg:h-5"
@@ -95,7 +95,7 @@ export default function ProductDetails() {
               <p className="pl-2 text-xs md:text-sm text-gray-400 flex items-center">
                 ({product.reviews.length}) reviews
               </p>
-            </a>
+            </span>
           </div>
         </div>
         {/* Product Images */}
@@ -184,7 +184,7 @@ export default function ProductDetails() {
               <p className="text-2xl text-gray-900 dark:text-white font-bold mt-4">
                 ${product.price}
               </p>
-              <a href="#reviews" className="flex items-center text-center mt-4">
+              <span className="flex items-center text-center mt-4">
                 {Array.from({ length: 5 }).map((_, index) =>
                   product.rating >= index + 1 ? (
                     <Star
@@ -195,7 +195,7 @@ export default function ProductDetails() {
                       strokeWidth={0}
                     />
                   ) : product.rating > index && product.rating < index + 1 ? (
-                    <div style={{ position: "relative" }}>
+                    <div key={index} style={{ position: "relative" }}>
                       <Star
                         key={index}
                         className="text-[#FC9231] lg:w-5 lg:h-5"
@@ -234,7 +234,7 @@ export default function ProductDetails() {
                 <p className="pl-2 text-xs md:text-sm text-gray-400 flex items-center">
                   ({product.reviews.length}) reviews
                 </p>
-              </a>
+              </span>
             </div>
             <ProductSizes product={product} />
             <div className="flex flex-col md:flex-row justify-center items-center gap-4 mt-8">

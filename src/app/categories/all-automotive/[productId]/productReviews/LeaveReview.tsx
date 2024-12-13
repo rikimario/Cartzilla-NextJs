@@ -33,7 +33,7 @@ export default function LeaveReview() {
                 {[...Array(5)].map((_, index) => {
                   const currentRating = index + 1;
                   return (
-                    <label>
+                    <label key={index}>
                       <input
                         required
                         className="hidden"

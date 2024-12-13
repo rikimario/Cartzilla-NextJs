@@ -66,12 +66,15 @@ export default function FilterBtnCategories({
       <h2 className="text-start text-xl text-gray-700 dark:text-white font-semibold">
         Categories
       </h2>
-      {links.map((link) => (
-        <>
+      {links.map((link, index) => (
+        <div key={index}>
           {link.name === currentCategory ? (
-            <div className="relative flex flex-col items-start gap-2 mt-4">
+            <div
+              key={index}
+              className="relative flex flex-col items-start gap-2 mt-4"
+            >
               {link.sublinks.map((sublink) => (
-                <button
+                <span
                   key={sublink.name}
                   className="flex items-center justify-between gap-2 p-2"
                   onClick={() => handleCategoryClick(sublink.sortLink || "")}
@@ -90,11 +93,11 @@ export default function FilterBtnCategories({
                       totalProducts}
                     )
                   </p>
-                </button>
+                </span>
               ))}
             </div>
           ) : null}
-        </>
+        </div>
       ))}
     </div>
   );

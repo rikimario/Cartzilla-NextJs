@@ -14,6 +14,7 @@ import {
 import { ScrollArea } from "../ui/scroll-area";
 import MobileFooter from "./MobileFooter";
 import { getUser } from "../../../utils/supabase/actions";
+import Image from "next/image";
 
 export default async function Navbar() {
   const user = await getUser();
@@ -46,7 +47,7 @@ export default async function Navbar() {
           <Link href="/">
             <div className="flex gap-2 items-center">
               <div className="hidden lg:block">
-                <img src="logo.svg" alt="" />
+                <Image width={40} height={40} src="logo.svg" alt="" />
               </div>
               <h1 className="text-white font-semibold text-xl leading-loose">
                 Cartzilla

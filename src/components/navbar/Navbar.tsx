@@ -13,13 +13,10 @@ import {
 } from "../ui/sheet";
 import { ScrollArea } from "../ui/scroll-area";
 import MobileFooter from "./MobileFooter";
-import { createClient } from "../../../utils/supabase/server";
-import LogoutBtn from "./LogoutBtn";
+import { getUser } from "../../../utils/supabase/actions";
 
 export default async function Navbar() {
-  const supabase = await createClient();
-
-  const { data, error } = await supabase.auth.getUser();
+  const user = await getUser();
 
   return (
     <nav>
@@ -85,12 +82,14 @@ export default async function Navbar() {
             <Heart className="h-5 w-5 hidden lg:block" strokeWidth={1} />
           </button>
 
-          {data.user ? (
+          {user ? (
             <div className="flex justify-center text-center gap-1 items-center">
-              <Link href={`/profile/${data.user?.id}`}>
-                <div className="flex justify-center items-center">
-                  <p className="hidden lg:block size-10 text-lg bg-[#333D4C] p-2 rounded-full">
-                    {data.user?.email?.charAt(0).toUpperCase()}
+              <Link href={`/profile/${user?.id}`}>
+                <div className="flex items-center">
+                  <p className="hidden lg:block size-10 text-lg text-center bg-[#333D4C] p-2 rounded-full">
+                    <span className="text-xl">
+                      {user?.user_metadata?.full_name.charAt(0).toUpperCase()}
+                    </span>
                   </p>
                 </div>
               </Link>

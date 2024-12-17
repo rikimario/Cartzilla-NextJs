@@ -14,10 +14,11 @@ import {
 } from "../ui/dropdown-menu";
 import Link from "next/link";
 import { links } from "./CategoriesLinks";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 export default function DesktopNav() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<boolean>(false);
+  const dropdownMenuSubTriggerRef = useRef(null);
   const closeDropdown = () => {
     setOpen(false);
   };
@@ -46,17 +47,17 @@ export default function DesktopNav() {
               </Link>
             </div>
           </DropdownMenuItem>
-          {links.map((link) => (
-            <DropdownMenuSub key={link.name}>
-              <DropdownMenuSubTrigger>
+          {links.map((link, index) => (
+            <DropdownMenuSub key={index}>
+              <DropdownMenuSubTrigger ref={dropdownMenuSubTriggerRef}>
                 <Link href={link.href ?? "/"} onClick={closeDropdown}>
                   {link.name}
                 </Link>
               </DropdownMenuSubTrigger>
               <DropdownMenuPortal>
                 <DropdownMenuSubContent>
-                  {link.sublinks.map((sublink) => (
-                    <DropdownMenuItem key={link.name} onClick={closeDropdown}>
+                  {link.sublinks.map((sublink, index) => (
+                    <DropdownMenuItem key={index} onClick={closeDropdown}>
                       <Link href={sublink.link}>{sublink.name}</Link>
                     </DropdownMenuItem>
                   ))}

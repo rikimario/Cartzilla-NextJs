@@ -46,21 +46,6 @@ export function getProductsMen() {
 
     fetchProducts();
   }, [productsData]);
-  // useEffect(() => {
-  //   const fetchProducts = async () => {
-  //     const products = [];
-  //     for (const category of categories) {
-  //       const res = await fetch(
-  //         `https://dummyjson.com/products/category/${category}`
-  //       );
-  //       const data = await res.json();
-  //       products.push(...data.products);
-  //     }
-  //     setProducts(products);
-  //   };
-
-  //   fetchProducts();
-  // }, []);
 
   return products;
 }
@@ -244,8 +229,3 @@ export async function getProductById(id: number) {
   const updatedProduct = productsData.find((product) => product.id === id);
   return { ...data, ...updatedProduct };
 }
-// export async function getProductById(id: number) {
-//   const res = await fetch(`https://dummyjson.com/products/${id}`);
-//   const data = await res.json();
-//   return data;
-// }

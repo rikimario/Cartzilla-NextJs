@@ -241,7 +241,7 @@ export default function ProductDetails() {
               <ProductCount />
               <div className="flex gap-4">
                 <ProductAddToCart />
-                <ProductFavorite />
+                <ProductFavorite product={product} />
               </div>
             </div>
             <p className="max-w-fit mt-6 text-gray-600 dark:text-gray-300 font-medium  leading-relaxed">

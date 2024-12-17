@@ -47,7 +47,7 @@ export default async function Navbar() {
           <Link href="/">
             <div className="flex gap-2 items-center">
               <div className="hidden lg:block">
-                <Image width={40} height={40} src="logo.svg" alt="" />
+                <Image width={40} height={40} src="/logo.svg" alt="" />
               </div>
               <h1 className="text-white font-semibold text-xl leading-loose">
                 Cartzilla

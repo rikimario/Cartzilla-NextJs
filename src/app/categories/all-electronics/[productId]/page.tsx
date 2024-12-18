@@ -11,11 +11,11 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import ProductCount from "./ProductCount";
 import ProductAddToCart from "./ProductAddToCart";
-import ProductFavorite from "./ProductFavorite";
 import ShippingOptions from "./ShippingOptions";
 import ProductReviews from "./productReviews/ProductReviews";
 import ProductSizes from "./ProductSizes";
 import { useParams } from "next/navigation";
+import ProductFavorite from "@/app/utils/ProductFavorite";
 
 export default function ProductDetails() {
   const { productId } = useParams();
@@ -240,7 +240,7 @@ export default function ProductDetails() {
               <ProductCount />
               <div className="flex gap-4">
                 <ProductAddToCart />
-                <ProductFavorite />
+                <ProductFavorite product={product} />
               </div>
             </div>
             <p className="max-w-fit mt-6 text-gray-600 dark:text-gray-300 font-medium  leading-relaxed">

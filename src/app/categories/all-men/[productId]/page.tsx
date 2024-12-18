@@ -11,11 +11,11 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import ProductCount from "./ProductCount";
 import ProductAddToCart from "./ProductAddToCart";
-import ProductFavorite from "./ProductFavorite";
 import ShippingOptions from "./ShippingOptions";
 import ProductReviews from "./productReviews/ProductReviews";
 import ProductSizes from "./ProductSizes";
 import { useParams } from "next/navigation";
+import ProductFavorite from "@/app/utils/ProductFavorite";
 
 export default function ProductDetails() {
   const { productId } = useParams();

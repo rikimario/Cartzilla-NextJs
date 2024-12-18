@@ -6,7 +6,7 @@ import { createClient } from "../../../utils/supabase/client";
 import { Product } from "./products";
 
 interface FavoriteOptionsProps {
-  product: Product;
+  product: Product | null;
 }
 
 export function handleFavoriteBtn({ product }: FavoriteOptionsProps) {
@@ -21,13 +21,18 @@ export function handleFavoriteBtn({ product }: FavoriteOptionsProps) {
         return;
       }
 
+      if (!product) {
+        console.log("Product is null");
+        return;
+      }
+
       if (isFavorite) {
         // Remove from favorites
         const { error } = await supabase
           .from("favorites")
           .delete()
           .eq("user_id", user.id)
-          .eq("product_id", product.id);
+          .eq("product_id", product?.id);
 
         if (error) throw new Error("Failed to remove from favorites");
         setIsFavorite(false);
@@ -36,10 +41,10 @@ export function handleFavoriteBtn({ product }: FavoriteOptionsProps) {
         const { error } = await supabase.from("favorites").insert([
           {
             user_id: user.id,
-            product_id: product.id,
-            title: product.title,
-            price: product.price,
-            thumbnail: product.thumbnail,
+            product_id: product?.id,
+            title: product?.title,
+            price: product?.price,
+            thumbnail: product?.thumbnail,
           },
         ]);
 
@@ -55,16 +60,17 @@ export function handleFavoriteBtn({ product }: FavoriteOptionsProps) {
     const checkFavoriteStatus = async () => {
       try {
         const user = await getUser();
-        const supabase = await createClient();
 
         if (!user) return;
 
+        const supabase = await createClient();
+
         const { data, error } = await supabase
           .from("favorites")
-          .select("id")
+          .select()
           .eq("user_id", user.id)
-          .eq("product_id", product.id)
-          .single();
+          .eq("product_id", product?.id)
+          .maybeSingle();
 
         if (error && error.code !== "PGRST116") throw error;
 
@@ -74,7 +80,7 @@ export function handleFavoriteBtn({ product }: FavoriteOptionsProps) {
       }
     };
 
-    checkFavoriteStatus();
+    if (product) checkFavoriteStatus();
   }, [product]);
 
   return { isFavorite, toggleFavorite };

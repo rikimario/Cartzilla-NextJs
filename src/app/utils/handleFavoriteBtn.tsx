@@ -45,6 +45,7 @@ export function handleFavoriteBtn({ product }: FavoriteOptionsProps) {
             title: product?.title,
             price: product?.price,
             thumbnail: product?.thumbnail,
+            category: product?.category,
           },
         ]);
 

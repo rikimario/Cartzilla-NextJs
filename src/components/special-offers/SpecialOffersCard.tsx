@@ -28,7 +28,7 @@ export default function SpecialOffersCard({ product }: FavoriteOptionsProps) {
             />
           </button>
         </div>
-        <Link href={`categories/sports-accessories/${product.id}`}>
+        <Link href={`/categories/${product.id}`}>
           <Image
             className="lg:w-[200px] lg:h-[200px]"
             src={product.thumbnail}

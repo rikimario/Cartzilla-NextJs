@@ -32,7 +32,7 @@ export default function TrendingProductsCard({
               />
             </button>
           </div>
-          <Link href={`categories/all-electronics/${product.id}`}>
+          <Link href={`/categories/${product.id}`}>
             <Image
               className="lg:w-[200px] lg:h-[200px]"
               src={product.thumbnail}

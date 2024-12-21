@@ -10,7 +10,7 @@ export default function NewArrivalsList({}) {
   return (
     <div className="md:grid md:grid-cols-2">
       {product.slice(0, 8).map((item: Product) => (
-        <Link key={item.id} href={`categories/all-electronics/${item.id}`}>
+        <Link key={item.id} href={`/categories/${item.id}`}>
           <div className="flex text-center items-center gap-2" key={item.id}>
             <Image
               src={item.thumbnail}

@@ -33,7 +33,7 @@ export default function ProductCard({ product }: FavoriteOptionsProps) {
               />
             </button>
           </div>
-          <Link href={`all-men/${product.id}`}>
+          <Link href={`/categories/${product.id}`}>
             <Image
               className="lg:w-[200px] lg:h-[200px]"
               src={product.thumbnail}

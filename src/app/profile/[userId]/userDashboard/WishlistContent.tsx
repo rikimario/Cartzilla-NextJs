@@ -4,15 +4,23 @@ import React, { useEffect, useState } from "react";
 import { createClient } from "../../../../../utils/supabase/client";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
-import { ShoppingCart } from "lucide-react";
+import { ShoppingCart, Trash2 } from "lucide-react";
 import Link from "next/link";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Button } from "@/components/ui/button";
+import { getUser } from "../../../../../utils/supabase/actions";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 export default function WishlistContent() {
   const [favorites, setFavorites] = useState<
     Array<{
       title: string;
-      product_id: string;
+      product_id: number;
       thumbnail: string;
       price: number;
       category: string;
@@ -37,9 +45,35 @@ export default function WishlistContent() {
     };
     fetchFavorites();
   }, []);
+
+  const handleRemove = async (productId: number) => {
+    const user = await getUser();
+    const supabase = await createClient();
+    try {
+      const { error } = await supabase
+        .from("favorites")
+        .delete()
+        .eq("user_id", user?.id)
+        .eq("product_id", productId);
+
+      if (error && error.code !== "PGRST116") throw error;
+
+      const { data: updatedFavorites, error: fetchError } = await supabase
+        .from("favorites")
+        .select("title, product_id, thumbnail, price, category");
+
+      if (fetchError) throw fetchError;
+
+      setFavorites(updatedFavorites.reverse());
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="p-2">
-      <h1 className="text-4xl font-bold text-gray-700 mb-2">Wishlist</h1>
+      <h1 className="text-4xl font-bold text-gray-700 mb-4 pb-2 border-b-[1px]">
+        Wishlist
+      </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {favorites.map((favorite, index) => (
           <div key={index} className="relative">
@@ -67,12 +101,41 @@ export default function WishlistContent() {
             <button className="absolute bottom-2 right-4 bg-gray-200 dark:bg-gray-700 p-2 md:p-3 rounded-xl">
               <ShoppingCart className="h-3 w-3 md:h-4 md:w-4" strokeWidth={1} />
             </button>
-            <span className="absolute top-2 right-5">
-              <Checkbox className="h-3 w-3 md:h-4 md:w-4 border-gray-400" />
-            </span>
+            <Dialog>
+              <DialogTrigger className="absolute top-2 right-3.5" asChild>
+                <span className="p-2 hover:bg-red-200 rounded-full cursor-pointer">
+                  <Trash2
+                    className="h-3 w-3 md:h-5 md:w-5 text-red-800"
+                    strokeWidth={1}
+                  />
+                </span>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogTitle className="text-center">
+                  Are you sure you want to remove this item?
+                </DialogTitle>
+                <DialogClose className="w-full flex justify-center gap-2">
+                  <Button
+                    className="w-full"
+                    variant={"outline"}
+                    onClick={() => handleRemove(favorite.product_id)}
+                  >
+                    Yes
+                  </Button>
+                  <Button className="w-full" variant={"destructive"}>
+                    No
+                  </Button>
+                </DialogClose>
+              </DialogContent>
+            </Dialog>
           </div>
         ))}
       </div>
+      {favorites.length === 0 && (
+        <p className="text-center text-gray-600 text-5xl my-10">
+          Wishlist is empty
+        </p>
+      )}
     </div>
   );
 }

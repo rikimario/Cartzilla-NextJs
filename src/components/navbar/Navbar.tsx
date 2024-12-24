@@ -1,4 +1,4 @@
-import { Heart, Menu, ShoppingCart, User } from "lucide-react";
+import { Menu, ShoppingCart, User } from "lucide-react";
 import Link from "next/link";
 import Theme from "../Theme";
 import DDMobileNav from "./DDMobileNav";
@@ -15,6 +15,7 @@ import { ScrollArea } from "../ui/scroll-area";
 import MobileFooter from "./MobileFooter";
 import { getUser } from "../../../utils/supabase/actions";
 import Image from "next/image";
+import NavFavoriteBtn from "./_components/NavFavoriteBtn";
 
 export default async function Navbar() {
   const user = await getUser();
@@ -79,13 +80,11 @@ export default async function Navbar() {
             <MobileSearch />
           </div>
           <Theme />
-          <button className="hidden lg:block hover:bg-[#333D4C] p-3 hover:rounded-full">
-            <Heart className="h-5 w-5 hidden lg:block" strokeWidth={1} />
-          </button>
+          <NavFavoriteBtn />
 
           {user ? (
             <div className="flex justify-center text-center gap-1 items-center">
-              <Link href={`/profile/${user?.id}`}>
+              <Link href={`/profile`}>
                 <div className="flex items-center">
                   <p className="hidden lg:block size-10 text-lg text-center bg-[#333D4C] p-2 rounded-full">
                     <span className="text-xl">

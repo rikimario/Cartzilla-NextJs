@@ -6,14 +6,14 @@ export default function FooterBottom() {
     <div className="md:flex md:flex-row-reverse items-center justify-between py-4 border-t-[1px] border-gray-700">
       <div className="flex items-center justify-center">
         <div>
-          <Image src="/visa-dark-mode.svg" alt="visa" width={70} height={70} />
+          <Image src="/visa-dark-mode.svg" alt="visa" width={70} height={35} />
         </div>
         <div>
           <Image
             src="/mastercard.svg"
             alt="mastercard"
             width={70}
-            height={70}
+            height={35}
           />
         </div>
         <div>
@@ -21,7 +21,7 @@ export default function FooterBottom() {
             src="/paypal-dark-mode.svg"
             alt="paypal"
             width={70}
-            height={70}
+            height={35}
           />
         </div>
         <div>
@@ -29,7 +29,7 @@ export default function FooterBottom() {
             src="/google-pay-dark-mode.svg"
             alt="google-pay"
             width={70}
-            height={70}
+            height={35}
           />
         </div>
         <div>
@@ -37,7 +37,7 @@ export default function FooterBottom() {
             src="/apple-pay-dark-mode.svg"
             alt="apple-pay"
             width={70}
-            height={70}
+            height={35}
           />
         </div>
       </div>

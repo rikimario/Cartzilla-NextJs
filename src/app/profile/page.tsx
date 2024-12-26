@@ -22,6 +22,7 @@ import PersonalInfo from "./[userId]/manageAccount/PersonalInfo";
 import Addresses from "./[userId]/manageAccount/Addresses";
 import Notifications from "./[userId]/manageAccount/Notifications";
 import { getUser } from "../../../utils/supabase/actions";
+import Link from "next/link";
 
 type Tab = {
   title: string;
@@ -30,8 +31,8 @@ type Tab = {
 };
 
 export default function Profile() {
-  const CurrTab = useSearchParams().get("tabs");
-  const [activeTab, setActiveTab] = useState(CurrTab || "Orders");
+  const searchParams = useSearchParams();
+  const activeTab = searchParams.get("tab");
   const [user, setUser] = useState<User | null>(null);
 
   const userDashboard: Tab[] = [
@@ -84,10 +85,6 @@ export default function Profile() {
     fetchUser();
   }, []);
 
-  useEffect(() => {
-    window.history.pushState(null, "", `?tabs=${activeTab}`);
-  }, [activeTab]);
-
   return (
     <div className="flex justify-center gap-8 max-w-[89rem] w-full mx-auto py-10">
       <div className="flex flex-col gap-2 w-1/4">
@@ -104,35 +101,35 @@ export default function Profile() {
 
         {/* User Dashboard */}
         {userDashboard.map((tab) => (
-          <div
-            onClick={() => setActiveTab(tab.title)}
+          <Link
+            href={`?tab=${tab.title}`}
             key={tab.title}
             className={`flex items-center cursor-pointer gap-2 ml-2 p-1 rounded-lg hover:bg-gray-200${
-              tab.title === activeTab ? " bg-gray-200" : ""
+              activeTab === tab.title ? " bg-gray-200" : ""
             }`}
           >
             <span>{tab.icon}</span>
-            <button key={tab.title} className="text-gray-900 w-full text-start">
+            <span key={tab.title} className="text-gray-900 w-full text-start">
               {tab.title}
-            </button>
-          </div>
+            </span>
+          </Link>
         ))}
 
         {/* Manage Account */}
         <span className="text-gray-900 font-semibold mt-2">Manage Account</span>
         {manageAccount.map((tab) => (
-          <div
-            onClick={() => setActiveTab(tab.title)}
+          <Link
+            href={`?tab=${tab.title}`}
             key={tab.title}
             className={`flex items-center cursor-pointer gap-2 ml-2 p-1 rounded-lg hover:bg-gray-200${
-              tab.title === activeTab ? " bg-gray-200" : ""
+              activeTab === tab.title ? " bg-gray-200" : ""
             }`}
           >
             <span>{tab.icon}</span>
-            <button key={tab.title} className="text-gray-900 w-full text-start">
+            <span key={tab.title} className="text-gray-900 w-full text-start">
               {tab.title}
-            </button>
-          </div>
+            </span>
+          </Link>
         ))}
 
         {/* Customer Support */}

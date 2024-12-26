@@ -84,7 +84,7 @@ export default async function Navbar() {
 
           {user ? (
             <div className="flex justify-center text-center gap-1 items-center">
-              <Link href={`/profile`}>
+              <Link href={`/profile?tab=Orders`}>
                 <div className="flex items-center">
                   <p className="hidden lg:block size-10 text-lg text-center bg-[#333D4C] p-2 rounded-full">
                     <span className="text-xl">

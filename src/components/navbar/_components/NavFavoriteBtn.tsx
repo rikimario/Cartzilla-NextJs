@@ -58,7 +58,7 @@ export default function NavFavoriteBtn() {
     <div className="relative">
       {user ? (
         <Link
-          href={`/profile?tabs=Wishlist`}
+          href={`/profile?tab=Wishlist`}
           className="hidden lg:block hover:bg-[#333D4C] p-3 hover:rounded-full"
         >
           <Heart className="h-5 w-5 hidden lg:block" strokeWidth={1} />

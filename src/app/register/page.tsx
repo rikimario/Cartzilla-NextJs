@@ -6,30 +6,13 @@ import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
 import { signup } from "../../../utils/supabase/actions";
 import SignInWithGoogleButton from "@/components/SignInWithGoogle";
-// import { useState } from "react";
 
 export default function Register() {
-  // const [error, setError] = useState<string | null>(null);
-
-  // const handleSubmit = async (event: React.SyntheticEvent) => {
-  //   event.preventDefault();
-  //   setError(null); // Reset error before submission
-
-  //   const formData = new FormData(event.target as HTMLFormElement);
-  //   const result = await signup(formData);
-
-  //   if (result?.error) {
-  //     setError(result.error); // Display error from signup
-  //   }
-  // };
   return (
     <div className="my-10 mx-2 md:mx-12 lg:mx-52 xl:mx-96 2xl:my-20 2xl:mx-[35rem] dark:bg-[#181D25]">
       <Card className="flex flex-col items-center justify-center p-2 dark:bg-[#181D25]">
         <CardContent className="w-full">
-          <form
-            //  onSubmit={handleSubmit}
-            className="flex flex-col gap-2 xl:p-6"
-          >
+          <form className="flex flex-col gap-2 xl:p-6">
             <div className="my-4">
               {/* {error && (
                 <p className="text-sm text-red-500 dark:text-gray-400 ml-2">

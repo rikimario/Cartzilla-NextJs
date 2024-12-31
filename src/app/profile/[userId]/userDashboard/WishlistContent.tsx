@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { createClient } from "../../../../../utils/supabase/client";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
-import { ShoppingCart, Trash2 } from "lucide-react";
+import { Trash2 } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { getUser } from "../../../../../utils/supabase/actions";
@@ -98,9 +98,6 @@ export default function WishlistContent() {
                 </CardContent>
               </Link>
             </Card>
-            <button className="absolute bottom-2 right-4 bg-gray-200 dark:bg-gray-700 p-2 md:p-3 rounded-xl">
-              <ShoppingCart className="h-3 w-3 md:h-4 md:w-4" strokeWidth={1} />
-            </button>
             <Dialog>
               <DialogTrigger className="absolute top-2 right-3.5" asChild>
                 <span className="p-2 hover:bg-red-200 rounded-full cursor-pointer">

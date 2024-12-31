@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, CardContent } from "../ui/card";
-import { Heart, ShoppingCart, Star } from "lucide-react";
+import { Heart, Star } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { handleFavoriteBtn } from "@/app/utils/handleFavoriteBtn";
@@ -100,12 +100,6 @@ export default function TrendingProductsCard({
               <p className="text-xs lg:text-2xl text-gray-900 dark:text-white font-semibold">
                 ${product.price}
               </p>
-              <button className="bg-gray-200 dark:bg-gray-700 p-2 md:p-3 rounded-xl">
-                <ShoppingCart
-                  className="h-3 w-3 md:h-4 md:w-4"
-                  strokeWidth={1}
-                />
-              </button>
             </div>
             <p className="flex text-xs md:text-base gap-2 text-gray-400">
               Available:{" "}

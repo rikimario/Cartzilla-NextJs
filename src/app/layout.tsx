@@ -23,7 +23,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <NextTopLoader />
         <Navbar />
-        {children}
+        <div className="dark:bg-[#181D25]">{children}</div>
         <NewsLetter />
         <Footer />
       </body>

@@ -70,14 +70,14 @@ export default function WishlistContent() {
     }
   };
   return (
-    <div className="p-2">
-      <h1 className="text-4xl font-bold text-gray-700 mb-4 pb-2 border-b-[1px]">
+    <div className="p-2 dark:text-white">
+      <h1 className="text-4xl font-bold text-gray-700 mb-4 pb-2 border-b-[1px] dark:text-white">
         Wishlist
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {favorites.map((favorite, index) => (
           <div key={index} className="relative">
-            <Card>
+            <Card className="bg-inherit">
               <Link href={`/categories/${favorite.product_id}`}>
                 <CardContent className="flex flex-col p-2">
                   <Image

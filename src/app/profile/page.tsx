@@ -89,12 +89,12 @@ export default function Profile() {
     <div className="flex justify-center gap-8 max-w-[89rem] w-full mx-auto py-10">
       <div className="flex flex-col gap-2 w-1/4">
         <div className="flex items-center gap-2">
-          <p className="hidden lg:block text-lg border border-gray-900 p-2 size-12 rounded-full text-center">
+          <p className="hidden lg:block text-lg border border-gray-900 dark:border-gray-400 p-2 size-12 rounded-full text-center">
             <span className="text-2xl">
               {user?.user_metadata.full_name?.charAt(0).toUpperCase()}
             </span>
           </p>
-          <p className="text-lg font-semibold text-gray-900">
+          <p className="text-lg font-semibold text-gray-900 dark:text-white">
             {user?.user_metadata.full_name}
           </p>
         </div>
@@ -108,15 +108,20 @@ export default function Profile() {
               activeTab === tab.title ? " bg-gray-200" : ""
             }`}
           >
-            <span>{tab.icon}</span>
-            <span key={tab.title} className="text-gray-900 w-full text-start">
+            <span className="dark:text-gray-500">{tab.icon}</span>
+            <span
+              key={tab.title}
+              className="text-gray-900 dark:text-gray-400 w-full text-start"
+            >
               {tab.title}
             </span>
           </Link>
         ))}
 
         {/* Manage Account */}
-        <span className="text-gray-900 font-semibold mt-2">Manage Account</span>
+        <span className="text-gray-900 dark:text-white font-semibold mt-2">
+          Manage Account
+        </span>
         {manageAccount.map((tab) => (
           <Link
             href={`?tab=${tab.title}`}
@@ -125,39 +130,44 @@ export default function Profile() {
               activeTab === tab.title ? " bg-gray-200" : ""
             }`}
           >
-            <span>{tab.icon}</span>
-            <span key={tab.title} className="text-gray-900 w-full text-start">
+            <span className="dark:text-gray-500">{tab.icon}</span>
+            <span
+              key={tab.title}
+              className="text-gray-900 dark:text-gray-400 w-full text-start"
+            >
               {tab.title}
             </span>
           </Link>
         ))}
 
         {/* Customer Support */}
-        <span className="text-gray-900 font-semibold mt-2">
+        <span className="text-gray-900 dark:text-white font-semibold mt-2">
           Customer Service
         </span>
         <div className="flex flex-col gap-2 ml-2">
           <div className="flex items-center gap-2 p-1">
-            <span>
+            <span className="dark:text-gray-500">
               <CircleHelp width={18} height={18} strokeWidth={1} />
             </span>
-            <p className="text-gray-900 cursor-pointer hover:text-gray-400">
+            <p className="text-gray-900 dark:text-gray-400 cursor-pointer hover:text-gray-400">
               Help Center
             </p>
           </div>
           <div className="flex items-center gap-2 p-1">
-            <span>
+            <span className="dark:text-gray-500">
               <Info width={18} height={18} strokeWidth={1} />
             </span>
-            <p className="text-gray-900 cursor-pointer hover:text-gray-400">
+            <p className="text-gray-900 dark:text-gray-400 cursor-pointer hover:text-gray-400">
               Terms and Conditions
             </p>
           </div>
         </div>
 
         {/* Logout */}
-        <div className="text-gray-900 cursor-pointer hover:text-gray-400 mt-6 p-1">
-          <LogoutBtn />
+        <div className="text-gray-900 cursor-pointer dark:text-gray-400 hover:text-gray-400 mt-6 p-1">
+          <span className="dark:text-gray-500">
+            <LogoutBtn />
+          </span>
         </div>
       </div>
 

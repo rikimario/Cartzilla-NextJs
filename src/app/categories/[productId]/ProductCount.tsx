@@ -7,7 +7,7 @@ export default function ProductCount() {
   const [count, setCount] = useState<number>(1);
   return (
     <div className="flex gap-4 text-xl font-medium">
-      <Card className="flex items-center gap-8 p-4">
+      <Card className="flex items-center gap-8 p-4 bg-inherit">
         <button
           className="disabled:opacity-40"
           onClick={() => setCount(count - 1)}

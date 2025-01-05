@@ -84,3 +84,15 @@ export async function getUser() {
   } = await supabase.auth.getUser();
   return user;
 }
+
+// * get products */
+export async function getProducts() {
+  const supabase = await createClient();
+  const { data: products, error } = await supabase
+    .from("products")
+    .select("title, product_id, thumbnail, price, category, size");
+
+  if (error) throw error;
+
+  return products;
+}

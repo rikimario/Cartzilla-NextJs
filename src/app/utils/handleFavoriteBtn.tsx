@@ -3,13 +3,14 @@
 import React, { useEffect, useState } from "react";
 import { getUser } from "../../../utils/supabase/actions";
 import { createClient } from "../../../utils/supabase/client";
-import { Product } from "./products";
+import { Product } from "@/lib/types";
+// import { Product } from "./products";
 
-interface FavoriteOptionsProps {
-  product: Product | null;
-}
+// interface FavoriteOptionsProps {
+//   product: Product | null;
+// }
 
-export function handleFavoriteBtn({ product }: FavoriteOptionsProps) {
+export function handleFavoriteBtn({ product }: { product: Product | null }) {
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
   const toggleFavorite = async () => {
     try {
@@ -32,7 +33,7 @@ export function handleFavoriteBtn({ product }: FavoriteOptionsProps) {
           .from("favorites")
           .delete()
           .eq("user_id", user.id)
-          .eq("product_id", product?.id);
+          .eq("product_id", product.product_id);
 
         if (error) throw new Error("Failed to remove from favorites");
         setIsFavorite(false);
@@ -41,7 +42,7 @@ export function handleFavoriteBtn({ product }: FavoriteOptionsProps) {
         const { error } = await supabase.from("favorites").insert([
           {
             user_id: user.id,
-            product_id: product?.id,
+            product_id: product.product_id,
             title: product?.title,
             price: product?.price,
             thumbnail: product?.thumbnail,
@@ -70,7 +71,7 @@ export function handleFavoriteBtn({ product }: FavoriteOptionsProps) {
           .from("favorites")
           .select()
           .eq("user_id", user.id)
-          .eq("product_id", product?.id)
+          .eq("product_id", product?.product_id)
           .maybeSingle();
 
         if (error && error.code !== "PGRST116") throw error;

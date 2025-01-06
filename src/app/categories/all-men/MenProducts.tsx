@@ -1,14 +1,10 @@
 "use client";
 import ProductCard from "@/app/utils/ProductCard";
-import { Product } from "@/app/utils/products";
 import ProductSkeleton from "@/app/utils/ProductSkeleton";
+import { Product } from "@/lib/types";
 import { useEffect, useState } from "react";
 
-interface MenProductsProps {
-  products: Product[];
-}
-
-export default function MenProducts({ products }: MenProductsProps) {
+export default function MenProducts({ products }: { products: Product[] }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -27,8 +23,8 @@ export default function MenProducts({ products }: MenProductsProps) {
           ? Array.from({ length: 8 }).map((_, index) => (
               <ProductSkeleton key={index} />
             ))
-          : products.map((item, index) => (
-              <ProductCard key={item.id} product={item} />
+          : products.map((product, index) => (
+              <ProductCard key={product.product_id} product={product} />
             ))}
       </div>
     </div>

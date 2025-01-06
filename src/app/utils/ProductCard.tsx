@@ -1,20 +1,16 @@
 import { handleFavoriteBtn } from "@/app/utils/handleFavoriteBtn";
-import { Product } from "@/app/utils/products";
 import { Card, CardContent } from "@/components/ui/card";
+import { Product } from "@/lib/types";
 import { Heart, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-interface FavoriteOptionsProps {
-  product: Product;
-}
-
-export default function ProductCard({ product }: FavoriteOptionsProps) {
+export default function ProductCard({ product }: { product: Product }) {
   const { isFavorite, toggleFavorite } = handleFavoriteBtn({ product });
   return (
     <div
-      key={product.id}
+      key={product.product_id}
       className="p-1 grid grid-cols-1 grid-rows-1 h-full w-full"
     >
       <Card className="dark:bg-[#181D25] h-full w-full">
@@ -33,7 +29,7 @@ export default function ProductCard({ product }: FavoriteOptionsProps) {
               />
             </button>
           </div>
-          <Link href={`/categories/${product.id}`}>
+          <Link href={`/categories/${product.product_id}`}>
             <Image
               className="lg:w-[200px] lg:h-[200px]"
               src={product.thumbnail}

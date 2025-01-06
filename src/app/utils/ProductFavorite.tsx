@@ -1,13 +1,9 @@
-import { Product } from "@/app/utils/products";
 import { Heart } from "lucide-react";
 import { handleFavoriteBtn } from "@/app/utils/handleFavoriteBtn";
+import { Product } from "@/lib/types";
 
-interface FavoriteOptionsProps {
-  product: Product;
-}
-
-export default function ProductFavorite(product: FavoriteOptionsProps) {
-  const { isFavorite, toggleFavorite } = handleFavoriteBtn(product);
+export default function ProductFavorite({ product }: { product: Product }) {
+  const { isFavorite, toggleFavorite } = handleFavoriteBtn({ product });
 
   return (
     <div>

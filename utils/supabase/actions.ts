@@ -90,7 +90,9 @@ export async function getProducts() {
   const supabase = await createClient();
   const { data: products, error } = await supabase
     .from("products")
-    .select("title, product_id, thumbnail, price, category, size");
+    .select(
+      " title, product_id, thumbnail, price, category, size, images, description, brand, rating, stock, reviews, warrantyInformation, returnPolicy"
+    );
 
   if (error) throw error;
 

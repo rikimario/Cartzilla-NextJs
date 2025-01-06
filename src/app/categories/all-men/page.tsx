@@ -1,12 +1,13 @@
 "use client";
 import MenProducts from "./MenProducts";
 import SortProductsBtn from "../../utils/SortingUtils/SortProductsBtn";
-import { getProductsMen, Product } from "@/app/utils/products";
 import { useEffect, useState } from "react";
 import FilterBtnCategories from "../../utils/SortingUtils/FilterBtnCategories";
 import FilterBtnPrice from "../../utils/SortingUtils/FilterBtnPrice";
 import MenBrands from "./MenBrands";
 import FilterButton from "../../utils/SortingUtils/FilterButton";
+import { getProducts } from "../../../../utils/supabase/actions";
+import { Product } from "@/lib/types";
 
 enum SortOrder {
   Relevance = "relevance",
@@ -16,7 +17,18 @@ enum SortOrder {
 }
 
 export default function page() {
-  const products = getProductsMen();
+  const [products, setProducts] = useState<Product[]>([]);
+
+  const category: string[] = ["mens-shirts", "mens-shoes", "mens-watches"];
+
+  useEffect(() => {
+    getProducts().then((products) => {
+      const filteredProducts = products.filter((product) =>
+        category.includes(product.category)
+      );
+      setProducts(filteredProducts);
+    });
+  }, []);
 
   const [sort, setSort] = useState(products);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -31,7 +43,7 @@ export default function page() {
   ) => {
     switch (sortOrder) {
       case SortOrder.Relevance:
-        return filteredProducts.sort((a, b) => a.id - b.id);
+        return filteredProducts.sort((a, b) => a.product_id - b.product_id);
       case SortOrder.Name:
         return filteredProducts.sort((a, b) => a.title.localeCompare(b.title));
       case SortOrder.Low:
@@ -83,7 +95,7 @@ export default function page() {
       );
       setSortOrder(SortOrder.Name);
     } else if (value === "relevance") {
-      setSort((prev) => [...prev].sort((a, b) => a.id - b.id));
+      setSort((prev) => [...prev].sort((a, b) => a.product_id - b.product_id));
       setSortOrder(SortOrder.Relevance);
     }
   };

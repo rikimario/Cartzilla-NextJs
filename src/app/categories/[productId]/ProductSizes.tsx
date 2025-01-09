@@ -1,10 +1,7 @@
-import { Product } from "@/app/utils/products";
+import { Product } from "@/lib/types";
 import { useRouter, useSearchParams } from "next/navigation";
 
-interface SizesOptionsProps {
-  product: Product;
-}
-export default function ProductSizes({ product }: SizesOptionsProps) {
+export default function ProductSizes({ product }: { product: Product }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const selectedSize = searchParams.get("size");

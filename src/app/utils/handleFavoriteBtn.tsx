@@ -4,11 +4,6 @@ import React, { useEffect, useState } from "react";
 import { getUser } from "../../../utils/supabase/actions";
 import { createClient } from "../../../utils/supabase/client";
 import { Product } from "@/lib/types";
-// import { Product } from "./products";
-
-// interface FavoriteOptionsProps {
-//   product: Product | null;
-// }
 
 export function handleFavoriteBtn({ product }: { product: Product | null }) {
   const [isFavorite, setIsFavorite] = useState<boolean>(false);

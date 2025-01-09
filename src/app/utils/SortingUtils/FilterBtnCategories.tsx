@@ -1,102 +1,82 @@
-import {
-  getProductsAutomotive,
-  getProductsCosmetics,
-  getProductsElectronics,
-  getProductsHomeAndKitchen,
-  getProductsMen,
-  getProductsSportsAccessories,
-  getProductsSunglasses,
-  getProductsWomen,
-} from "@/app/utils/products";
-import { links } from "@/components/navbar/CategoriesLinks";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import { Product } from "@/lib/types";
+import { useEffect, useMemo } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
-interface SortByCategoryBtnProps {
-  handleCategoryClick: (category: string) => void;
-  selectedCategories: string[];
-  currentCategory: string;
-}
 export default function FilterBtnCategories({
-  handleCategoryClick,
-  selectedCategories,
-  currentCategory,
-}: SortByCategoryBtnProps) {
-  // const products = getProductsMen();
-  let products;
-  if (currentCategory === "Men") {
-    products = getProductsMen();
-  } else if (currentCategory === "Women") {
-    products = getProductsWomen();
-  } else if (currentCategory === "Electronics") {
-    products = getProductsElectronics();
-  } else if (currentCategory === "Home & Kitchen") {
-    products = getProductsHomeAndKitchen();
-  } else if (currentCategory === "Cosmetics") {
-    products = getProductsCosmetics();
-  } else if (currentCategory === "Automotive") {
-    products = getProductsAutomotive();
-  } else if (currentCategory === "Sports Accessories") {
-    products = getProductsSportsAccessories();
-  } else if (currentCategory === "Sunglasses") {
-    products = getProductsSunglasses();
-  } else {
-    // Handle other categories or default to one of the above
-    products = getProductsMen(); // or getProductsWomen()
-  }
+  products = [],
+  category,
+  onFilteredProducts,
+  handleCategoryChange,
+}: {
+  products?: Product[];
+  category: string[];
+  onFilteredProducts: (filteredProducts: Product[]) => void;
+  handleCategoryChange: (selectedCategories: string[]) => void;
+}) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const selectedCategory = useMemo(
+    () => searchParams.getAll("category"),
+    [searchParams]
+  );
 
-  const productsByCategory = products.reduce(
-    (acc: { [key: string]: number }, product) => {
-      const category = product.category;
-      if (!acc[category]) {
-        acc[category] = 0;
-      }
-      acc[category]++;
-      return acc;
-    },
-    {}
-  );
-  const totalProducts = Object.values(productsByCategory).reduce(
-    (acc, count) => acc + count,
-    0
-  );
+  const filteredProducts = useMemo(() => {
+    return selectedCategory.length === 0
+      ? products ?? []
+      : products?.filter((product) =>
+          selectedCategory.includes(product.category || "")
+        );
+  }, [products, selectedCategory]);
+
+  useEffect(() => {
+    onFilteredProducts(filteredProducts);
+  }, [filteredProducts, onFilteredProducts]);
+
+  const handleCategoryClick = (category: string) => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentCategories = urlParams.getAll("category");
+
+    if (currentCategories.includes(category)) {
+      const updatedCategories = currentCategories.filter(
+        (cat) => cat !== category
+      );
+      urlParams.delete("category");
+      updatedCategories.forEach((cat) => urlParams.append("category", cat));
+    } else {
+      urlParams.append("category", category);
+    }
+
+    router.replace(`${window.location.pathname}?${urlParams.toString()}`);
+
+    const newSelectedCategories = urlParams.getAll("category");
+    handleCategoryChange(newSelectedCategories);
+  };
 
   return (
     <div className="p-6 border border-gray-200 rounded-xl text-gray-700 dark:text-white mt-10">
       <h2 className="text-start text-xl text-gray-700 dark:text-white font-semibold">
         Categories
       </h2>
-      {links.map((link, index) => (
+      {category.map((cat, index) => (
         <div key={index}>
-          {link.name === currentCategory ? (
-            <div
-              key={index}
-              className="relative flex flex-col items-start gap-2 mt-4"
-            >
-              {link.sublinks.map((sublink) => (
-                <span
-                  key={sublink.name}
-                  className="flex items-center justify-between gap-2 p-2"
-                  onClick={() => handleCategoryClick(sublink.sortLink || "")}
-                >
-                  <Checkbox
-                    id={sublink.name}
-                    key={sublink.name}
-                    checked={selectedCategories.includes(
-                      sublink.sortLink || ""
-                    )}
-                  />
-                  <Label htmlFor={sublink.name}>{sublink.name}</Label>
-                  <p className="text-sm text-gray-400">
-                    (
-                    {productsByCategory[sublink.sortLink || ""] ||
-                      totalProducts}
-                    )
-                  </p>
-                </span>
-              ))}
-            </div>
-          ) : null}
+          <span
+            onClick={() => handleCategoryClick(cat)}
+            key={index}
+            className="relative flex flex-col items-start gap-2 mt-4 cursor-pointer"
+          >
+            <span className="flex items-center justify-between gap-2 p-2 cursor-pointer">
+              <Checkbox
+                id={cat}
+                key={cat}
+                checked={selectedCategory.includes(cat)}
+              />
+              <Label className="cursor-pointer" htmlFor={cat}>
+                {cat}
+              </Label>
+            </span>
+          </span>
         </div>
       ))}
     </div>

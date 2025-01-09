@@ -21,3 +21,10 @@ export type Product = {
   warrantyInformation: string;
   returnPolicy: string;
 };
+
+export enum SortOrder {
+  Relevance = "relevance",
+  Name = "name",
+  Low = "low",
+  High = "high",
+}

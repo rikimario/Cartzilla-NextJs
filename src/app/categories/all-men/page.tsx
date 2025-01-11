@@ -1,13 +1,13 @@
 "use client";
-import MenProducts from "./MenProducts";
 import SortProductsBtn from "../../utils/SortingUtils/SortProductsBtn";
 import { useEffect, useState } from "react";
 import FilterBtnCategories from "../../utils/SortingUtils/FilterBtnCategories";
 import FilterBtnPrice from "../../utils/SortingUtils/FilterBtnPrice";
-import MenBrands from "./MenBrands";
 import FilterButton from "../../utils/SortingUtils/FilterButton";
 import { getProducts } from "../../../../utils/supabase/actions";
 import { Product, SortOrder } from "@/lib/types";
+import ProductsMain from "@/app/utils/ProductsMain";
+import Brands from "@/app/utils/Brands";
 
 export default function page() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -101,15 +101,15 @@ export default function page() {
               setSortedProducts(filteredProducts)
             }
           />
-          <MenBrands
+          <Brands
             products={products}
             selectedBrands={selectedBrands}
-            onFilteredProducts={(filteredProducts) => setSort(filteredProducts)}
             onBrandChange={handleBrandChange}
+            onFilteredProducts={(filteredProducts) => setSort(filteredProducts)}
           />
         </div>
         <div className="md:flex-1">
-          <MenProducts products={sortedProducts} />
+          <ProductsMain products={sortedProducts} />
         </div>
         {/* <div className="lg:hidden">
           <FilterButton

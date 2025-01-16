@@ -14,67 +14,63 @@ export default function page() {
   const [sortedProducts, setSortedProducts] = useState<Product[]>([]);
   const [sortOrder, setSortOrder] = useState<SortOrder>(SortOrder.Relevance);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [sort, setSort] = useState(products);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [value, setValue] = useState<[number, number]>([0, 40000]);
 
   const category: string[] = ["mens-shirts", "mens-shoes", "mens-watches"];
 
   useEffect(() => {
-    getProducts().then((products) => {
-      const filteredProducts = products.filter((product) =>
+    const fetchProducts = async () => {
+      const fetchedProducts = (await getProducts()).filter((product) =>
         category.includes(product.category)
       );
-      setProducts(filteredProducts);
-    });
+      setProducts(fetchedProducts);
+      setSortedProducts(fetchedProducts);
+    };
+
+    fetchProducts();
   }, []);
 
   const handleSortedProductsChange = (newSortOrder: SortOrder) => {
     setSortOrder(newSortOrder);
   };
 
-  const handleCategoryChange = (selected: string[]) => {
-    setSelectedCategories(selected);
-  };
-
-  const handleBrandChange = (brands: string[]) => {
-    setSelectedBrands(brands);
-  };
-
-  const applySorting = (filteredProducts: Product[]) => {
-    const sorted = [...filteredProducts];
-    switch (sortOrder) {
-      case SortOrder.Relevance:
-        sorted.sort((a, b) => a.product_id - b.product_id);
-        break;
-      case SortOrder.Name:
-        sorted.sort((a, b) => a.title.localeCompare(b.title));
-        break;
-      case SortOrder.Low:
-        sorted.sort((a, b) => a.price - b.price);
-        break;
-      case SortOrder.High:
-        sorted.sort((a, b) => b.price - a.price);
-        break;
-      default:
-        break;
-    }
-    setSortedProducts(sorted);
-  };
-
   useEffect(() => {
-    const filteredProducts = products.filter(
-      (product) =>
-        (selectedCategories.length === 0 ||
-          selectedCategories.includes(product.category)) &&
-        (selectedBrands.length === 0 ||
-          selectedBrands.includes(product.brand?.toString() || "")) &&
-        product.price >= value[0] &&
-        product.price <= value[1]
-    );
-    applySorting(filteredProducts);
-  }, [selectedCategories, selectedBrands, value, products, sortOrder]);
+    if (!products.length) return;
 
+    let updatedProducts = [...products];
+
+    if (selectedCategories.length)
+      updatedProducts = updatedProducts.filter((p) =>
+        selectedCategories.includes(p.category)
+      );
+
+    if (selectedBrands.length)
+      updatedProducts = updatedProducts.filter((p) =>
+        selectedBrands.includes(p.brand?.toString() || "")
+      );
+
+    updatedProducts = updatedProducts.filter(
+      (p) => p.price >= value[0] && p.price <= value[1]
+    );
+
+    setSortedProducts(sortProducts(updatedProducts, sortOrder));
+  }, [selectedCategories, selectedBrands, value, sortOrder, products]);
+
+  const sortProducts = (products: Product[], order: SortOrder) => {
+    return [...products].sort((a, b) => {
+      switch (order) {
+        case SortOrder.Name:
+          return a.title.localeCompare(b.title);
+        case SortOrder.Low:
+          return a.price - b.price;
+        case SortOrder.High:
+          return b.price - a.price;
+        default:
+          return a.product_id - b.product_id;
+      }
+    });
+  };
   return (
     <div className="p-4 xl:px-[5.4rem] 2xl:px-[7.7rem] dark:bg-[#181D25]">
       <h1 className="text-4xl font-semibold mt-10">Men</h1>
@@ -87,9 +83,8 @@ export default function page() {
         <div className="lg:block hidden">
           <FilterBtnCategories
             products={products}
-            handleCategoryChange={handleCategoryChange}
-            onFilteredProducts={(filteredProducts) => setSort(filteredProducts)}
-            category={category}
+            handleCategoryChange={setSelectedCategories}
+            selectedCategories={selectedCategories}
           />
           <FilterBtnPrice
             products={products}
@@ -97,19 +92,15 @@ export default function page() {
             selectedBrands={selectedBrands}
             values={value}
             setValue={setValue}
-            onFilteredProducts={(filteredProducts) =>
-              setSortedProducts(filteredProducts)
-            }
           />
           <Brands
             products={products}
             selectedBrands={selectedBrands}
-            onBrandChange={handleBrandChange}
-            onFilteredProducts={(filteredProducts) => setSort(filteredProducts)}
+            onBrandChange={setSelectedBrands}
           />
         </div>
         <div className="md:flex-1">
-          <ProductsMain products={sortedProducts} />
+          <ProductsMain product={sortedProducts} />
         </div>
         {/* <div className="lg:hidden">
           <FilterButton

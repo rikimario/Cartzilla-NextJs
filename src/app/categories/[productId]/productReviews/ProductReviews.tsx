@@ -1,15 +1,11 @@
-import { Product } from "@/app/utils/products";
 import { Progress } from "@/components/ui/progress";
 import { Star } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import ProductComments from "./ProductComments";
 import LeaveReview from "./LeaveReview";
+import { Product } from "@/lib/types";
 
-interface ReviewsOptionsProps {
-  product: Product;
-}
-
-export default function ProductReviews({ product }: ReviewsOptionsProps) {
+export default function ProductReviews({ product }: { product: Product }) {
   const [stars, setStars] = useState([
     { rating: 5, count: 0 },
     { rating: 4, count: 0 },
@@ -21,7 +17,9 @@ export default function ProductReviews({ product }: ReviewsOptionsProps) {
   useEffect(() => {
     const updatedStars = stars.map((star) => {
       const count = product.reviews.reduce((acc, review) => {
-        return review.rating === star.rating ? acc + 1 : acc;
+        return (review.rating as number) === star.rating
+          ? Number(acc) + 1
+          : acc;
       }, 0);
       return { ...star, count };
     });

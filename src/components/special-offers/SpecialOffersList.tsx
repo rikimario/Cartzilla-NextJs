@@ -1,3 +1,4 @@
+import { Product } from "@/lib/types";
 import {
   Carousel,
   CarouselContent,
@@ -5,11 +6,20 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "../ui/carousel";
-import { getProductsSportsAccessories, Product } from "@/app/utils/products";
 import SpecialOffersCard from "./SpecialOffersCard";
+import { useEffect, useState } from "react";
+import { getProducts } from "../../../utils/supabase/actions";
 
 export default function SpecialOffersList() {
-  const products = getProductsSportsAccessories();
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const products = await getProducts();
+      setProducts(products);
+    };
+    fetchProducts();
+  }, []);
 
   return (
     <>
@@ -21,10 +31,13 @@ export default function SpecialOffersList() {
         className="w-full relative p-4 lg:px-10"
       >
         <CarouselContent>
-          {products.map((item: Product) => (
-            <CarouselItem key={item.id} className="md:basis-1/2 lg:basis-1/4">
+          {products.slice(137, 153).map((item) => (
+            <CarouselItem
+              key={item.product_id}
+              className="md:basis-1/2 lg:basis-1/4"
+            >
               <div className="p-1">
-                <SpecialOffersCard key={item.id} product={item} />
+                <SpecialOffersCard key={item.product_id} product={item} />
               </div>
             </CarouselItem>
           ))}

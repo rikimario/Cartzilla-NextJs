@@ -3,34 +3,17 @@ import { Slider } from "@/components/ui/slider";
 import { Product } from "@/lib/types";
 
 export default function FilterBtnPrice({
-  products,
-  selectedCategories,
-  selectedBrands,
   values,
   setValue,
-  onFilteredProducts,
 }: {
   products: Product[];
   selectedCategories: string[];
   selectedBrands: string[];
   values: [number, number];
   setValue: (newValue: [number, number]) => void;
-  onFilteredProducts: (filteredProducts: Product[]) => void;
 }) {
   const handlePriceChange = (newValues: [number, number]) => {
     setValue(newValues);
-
-    const filteredProducts = products.filter(
-      (product) =>
-        (selectedCategories.length === 0 ||
-          selectedCategories.includes(product.category)) &&
-        (selectedBrands.length === 0 ||
-          selectedBrands.includes(product.brand?.toString() || "")) &&
-        product.price >= newValues[0] &&
-        product.price <= newValues[1]
-    );
-
-    onFilteredProducts(filteredProducts);
   };
   return (
     <div className="p-6 border border-gray-200 rounded-xl text-gray-700 dark:text-white mt-6">

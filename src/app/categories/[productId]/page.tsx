@@ -1,5 +1,4 @@
 "use client";
-import { getProductById, Product } from "@/app/utils/products";
 import { Card } from "@/components/ui/card";
 import {
   Carousel,
@@ -16,9 +15,11 @@ import ProductReviews from "./productReviews/ProductReviews";
 import ProductSizes from "./ProductSizes";
 import { useParams } from "next/navigation";
 import ProductFavorite from "@/app/utils/ProductFavorite";
+import { getProductById } from "../../../../utils/supabase/actions";
+import { Product } from "@/lib/types";
 
 export default function ProductDetails() {
-  const { productId } = useParams();
+  const { productId } = useParams() as { productId: string };
   const [product, setProduct] = useState<Product | null>(null);
   const [thumbImage, setThumbImage] = useState<string>("");
 

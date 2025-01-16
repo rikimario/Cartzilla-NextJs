@@ -1,17 +1,29 @@
-import { getProductsElectronics, Product } from "@/app/utils/products";
 import { Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { getProducts } from "../../../utils/supabase/actions";
+import { Product } from "@/lib/types";
 
-export default function NewArrivalsList({}) {
-  const product = getProductsElectronics();
+export default function NewArrivalsList() {
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const products = await getProducts();
+      setProducts(products);
+    };
+    fetchProducts();
+  }, []);
 
   return (
     <div className="md:grid md:grid-cols-2">
-      {product.slice(0, 8).map((item: Product) => (
-        <Link key={item.id} href={`/categories/${item.id}`}>
-          <div className="flex text-center items-center gap-2" key={item.id}>
+      {products.slice(77, 85).map((item) => (
+        <Link key={item.product_id} href={`/categories/${item.product_id}`}>
+          <div
+            className="flex text-center items-center gap-2"
+            key={item.product_id}
+          >
             <Image
               src={item.thumbnail}
               alt={item.title}

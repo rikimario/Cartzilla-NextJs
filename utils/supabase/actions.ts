@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createClient } from "./server";
+import { cache } from "react";
 
 //* Login
 export async function login(formData: FormData) {
@@ -86,15 +87,30 @@ export async function getUser() {
 }
 
 // * get products */
-export async function getProducts() {
+export const getProducts = cache(async () => {
   const supabase = await createClient();
   const { data: products, error } = await supabase
     .from("products")
     .select(
-      " title, product_id, thumbnail, price, category, size, images, description, brand, rating, stock, reviews, warrantyInformation, returnPolicy"
+      "title, product_id, thumbnail, price, category, size, images, description, brand, rating, stock, reviews, warrantyInformation, returnPolicy"
     );
 
   if (error) throw error;
 
   return products;
-}
+});
+
+// * get product by id */
+export const getProductById = async (id: number) => {
+  const supabase = await createClient();
+  const { data: product, error } = await supabase
+    .from("products")
+    .select(
+      "title, product_id, thumbnail, price, category, size, images, description, brand, rating, stock, reviews, warrantyInformation, returnPolicy"
+    )
+    .eq("product_id", id);
+
+  if (error) throw error;
+
+  return product[0];
+};

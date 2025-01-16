@@ -1,38 +1,18 @@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Product } from "@/lib/types";
-import { useEffect, useMemo } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function FilterBtnCategories({
   products = [],
-  category,
-  onFilteredProducts,
+  selectedCategories,
   handleCategoryChange,
 }: {
   products?: Product[];
-  category: string[];
-  onFilteredProducts: (filteredProducts: Product[]) => void;
+  selectedCategories: string[];
   handleCategoryChange: (selectedCategories: string[]) => void;
 }) {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const selectedCategory = useMemo(
-    () => searchParams.getAll("category"),
-    [searchParams]
-  );
-
-  const filteredProducts = useMemo(() => {
-    return selectedCategory.length === 0
-      ? products ?? []
-      : products?.filter((product) =>
-          selectedCategory.includes(product.category || "")
-        );
-  }, [products, selectedCategory]);
-
-  useEffect(() => {
-    onFilteredProducts(filteredProducts);
-  }, [filteredProducts, onFilteredProducts]);
 
   const handleCategoryClick = (category: string) => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -59,26 +39,24 @@ export default function FilterBtnCategories({
       <h2 className="text-start text-xl text-gray-700 dark:text-white font-semibold">
         Categories
       </h2>
-      {category.map((cat, index) => (
-        <div key={index}>
-          <span
-            onClick={() => handleCategoryClick(cat)}
-            key={index}
-            className="relative flex flex-col items-start gap-2 mt-4 cursor-pointer"
-          >
-            <span className="flex items-center justify-between gap-2 p-2 cursor-pointer">
+      <div className="relative flex flex-col items-start gap-3 mt-4">
+        {Array.from(new Set(products?.map((item) => item.category))).map(
+          (cat) => (
+            <span
+              key={cat}
+              onClick={() => handleCategoryClick(cat ?? "")}
+              className="flex items-center space-x-2"
+            >
               <Checkbox
+                checked={selectedCategories.includes(cat ?? "")}
                 id={cat}
                 key={cat}
-                checked={selectedCategory.includes(cat)}
               />
-              <Label className="cursor-pointer" htmlFor={cat}>
-                {cat}
-              </Label>
+              <Label htmlFor={cat}>{cat}</Label>
             </span>
-          </span>
-        </div>
-      ))}
+          )
+        )}
+      </div>
     </div>
   );
 }

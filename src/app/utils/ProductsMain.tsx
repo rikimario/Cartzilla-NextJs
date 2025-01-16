@@ -4,18 +4,18 @@ import ProductSkeleton from "@/app/utils/ProductSkeleton";
 import { Product } from "@/lib/types";
 import { useEffect, useState } from "react";
 
-export default function ProductsMain({ products }: { products: Product[] }) {
+export default function ProductsMain({ product }: { product: Product[] }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (products) {
+    if (product) {
       setIsLoading(false);
     }
-  }, [products]);
+  }, [product]);
   return (
     <div className="py-10 dark:bg-[#181D25]">
       <p className="text-lg ml-1 text-gray-600 dark:text-gray-300 font-light">
-        Found <span className="font-bold text-gray-700">{products.length}</span>{" "}
+        Found <span className="font-bold text-gray-700">{product.length}</span>{" "}
         items
       </p>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-4 lg:gap-2 lg:pt-4 items-center justify-center justify-items-center text-center grid-auto-columns">
@@ -23,7 +23,7 @@ export default function ProductsMain({ products }: { products: Product[] }) {
           ? Array.from({ length: 8 }).map((_, index) => (
               <ProductSkeleton key={index} />
             ))
-          : products.map((product, index) => (
+          : product.map((product, index) => (
               <ProductCard key={product.product_id} product={product} />
             ))}
       </div>

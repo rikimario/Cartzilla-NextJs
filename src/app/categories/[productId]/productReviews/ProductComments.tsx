@@ -1,10 +1,10 @@
 "use client";
-import { Product } from "@/app/utils/products";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
+import { Product } from "@/lib/types";
 import {
   ChevronRight,
   CornerDownRight,
@@ -14,10 +14,6 @@ import {
 } from "lucide-react";
 import React, { useState } from "react";
 
-interface ReviewsOptionsProps {
-  product: Product;
-}
-
 interface ReviewState {
   [reviewerEmail: string]: {
     thumbsUp: number;
@@ -25,7 +21,7 @@ interface ReviewState {
   };
 }
 
-export default function ProductComments({ product }: ReviewsOptionsProps) {
+export default function ProductComments({ product }: { product: Product }) {
   const [reviewState, setReviewState] = useState<ReviewState>({});
   const [isOpen, setIsOpen] = useState<boolean>(false);
 

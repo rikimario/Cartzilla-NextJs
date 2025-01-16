@@ -2,38 +2,18 @@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Product } from "@/lib/types";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useMemo } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Brands({
   products = [],
   selectedBrands,
   onBrandChange,
-  onFilteredProducts,
 }: {
   products?: Product[];
   selectedBrands: string[];
   onBrandChange: (selectedBrands: string[]) => void;
-  onFilteredProducts: (filteredProducts: Product[]) => void;
 }) {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const selectedBrand = useMemo(
-    () => searchParams.getAll("brand"),
-    [searchParams]
-  );
-
-  const filteredProducts = useMemo(() => {
-    return selectedBrand.length === 0
-      ? products
-      : products?.filter((product) =>
-          selectedBrand.includes(product.brand || "")
-        );
-  }, [products, selectedBrand]);
-
-  useEffect(() => {
-    onFilteredProducts(filteredProducts);
-  }, [filteredProducts, onFilteredProducts]);
 
   const handleBrandClick = (brand: string) => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -57,7 +37,7 @@ export default function Brands({
       <h2 className="text-start text-xl text-gray-700 dark:text-white font-semibold">
         Brand
       </h2>
-      <div className="relative flex flex-col items-start gap-2 mt-4">
+      <div className="relative flex flex-col items-start gap-3 mt-4">
         {Array.from(new Set(products?.map((item) => item.brand))).map(
           (brand) => (
             <span

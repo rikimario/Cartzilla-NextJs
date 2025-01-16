@@ -1,17 +1,13 @@
-import { Product } from "@/app/utils/products";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Product } from "@/lib/types";
 import React from "react";
 
-interface ShippingOptionsProps {
-  product: Product;
-}
-
-export default function ShippingOptions({ product }: ShippingOptionsProps) {
+export default function ShippingOptions({ product }: { product: Product }) {
   return (
     <div className="mt-6">
       <Accordion type="single" collapsible className="w-full">

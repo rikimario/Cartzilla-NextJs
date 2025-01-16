@@ -1,10 +1,20 @@
 "use client";
-import { getProductsElectronics, Product } from "@/app/utils/products";
 import { ChevronRight } from "lucide-react";
 import TrendingProductsCard from "./TrendingProductsCard";
+import { useEffect, useState } from "react";
+import { Product } from "@/lib/types";
+import { getProducts } from "../../../utils/supabase/actions";
 
 export default function TrendingProducts() {
-  const products = getProductsElectronics();
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const products = await getProducts();
+      setProducts(products);
+    };
+    fetchProducts();
+  }, []);
   return (
     <div className="p-4 dark:bg-[#181D25]">
       <div className="flex items-center justify-between border-b-[1px] border-gray-200">
@@ -17,7 +27,7 @@ export default function TrendingProducts() {
       </div>
 
       <div className="px-2 lg:px-20 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 lg:gap-2 lg:pt-4 items-center justify-center justify-items-center text-center">
-        {products.slice(28, 36).map((item: Product, index) => (
+        {products.slice(100, 108).map((item, index) => (
           <TrendingProductsCard key={index} product={item} />
         ))}
       </div>

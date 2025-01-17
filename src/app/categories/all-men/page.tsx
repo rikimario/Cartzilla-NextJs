@@ -3,11 +3,19 @@ import SortProductsBtn from "../../utils/SortingUtils/SortProductsBtn";
 import { useEffect, useState } from "react";
 import FilterBtnCategories from "../../utils/SortingUtils/FilterBtnCategories";
 import FilterBtnPrice from "../../utils/SortingUtils/FilterBtnPrice";
-import FilterButton from "../../utils/SortingUtils/FilterButton";
 import { getProducts } from "../../../../utils/supabase/actions";
 import { Product, SortOrder } from "@/lib/types";
 import ProductsMain from "@/app/utils/ProductsMain";
 import Brands from "@/app/utils/Brands";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { Filter } from "lucide-react";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 export default function page() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -102,18 +110,48 @@ export default function page() {
         <div className="md:flex-1">
           <ProductsMain product={sortedProducts} />
         </div>
-        {/* <div className="lg:hidden">
-          <FilterButton
-            handleCategoryClick={handleCategoryClick}
-            selectedCategories={selectedCategories}
-            values={value}
-            setValue={setValue}
-            onChange={handlePriceChange}
-            handleBrandClick={handleBrandClick}
-            selectedBrands={selectedBrands}
-            currentCategory="Men"
-          />
-        </div> */}
+        {/* Mobile Filter */}
+        <div className="lg:hidden">
+          <Sheet>
+            <SheetTrigger asChild>
+              <button className="fixed flex bottom-0 left-0 right-0 bg-[#222934] text-white py-6 border-t-[1px] border-opacity-20 border-white items-center justify-center gap-2">
+                <span>
+                  <Filter className="h-6 w-6" />
+                </span>
+                Filters
+              </button>
+            </SheetTrigger>
+            <SheetContent
+              side="left"
+              className="dark:bg-[#181D25] dark:text-[white] mb-4"
+            >
+              <ScrollArea className="h-full">
+                <SheetHeader>
+                  <SheetTitle className="text-start text-xl">
+                    Filters and sort
+                  </SheetTitle>
+                </SheetHeader>
+                <FilterBtnCategories
+                  products={products}
+                  handleCategoryChange={setSelectedCategories}
+                  selectedCategories={selectedCategories}
+                />
+                <FilterBtnPrice
+                  products={products}
+                  selectedCategories={selectedCategories}
+                  selectedBrands={selectedBrands}
+                  values={value}
+                  setValue={setValue}
+                />
+                <Brands
+                  products={products}
+                  selectedBrands={selectedBrands}
+                  onBrandChange={setSelectedBrands}
+                />
+              </ScrollArea>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </div>
   );

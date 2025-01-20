@@ -1,180 +1,161 @@
 "use client";
 import SortProductsBtn from "../../utils/SortingUtils/SortProductsBtn";
-import { getProductsElectronics, Product } from "@/app/utils/products";
 import { useEffect, useState } from "react";
 import FilterBtnCategories from "../../utils/SortingUtils/FilterBtnCategories";
 import FilterBtnPrice from "../../utils/SortingUtils/FilterBtnPrice";
-import FilterButton from "../../utils/SortingUtils/FilterButton";
-import ElectronicsBrands from "./ElectronicsBrands";
-import ElectronicsProducts from "./ElectronicsProducts";
-
-enum SortOrder {
-  Relevance = "relevance",
-  Name = "name",
-  Low = "low",
-  High = "high",
-}
+import { getProducts } from "../../../../utils/supabase/actions";
+import { Product, SortOrder } from "@/lib/types";
+import ProductsMain from "@/app/utils/ProductsMain";
+import Brands from "@/app/utils/Brands";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { Filter } from "lucide-react";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 export default function page() {
-  const products = getProductsElectronics();
-
-  const [sort, setSort] = useState(products);
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [categories, setCategories] = useState<string[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [sortedProducts, setSortedProducts] = useState<Product[]>([]);
   const [sortOrder, setSortOrder] = useState<SortOrder>(SortOrder.Relevance);
-  const [brands, setBrands] = useState<string[]>([]);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [value, setValue] = useState<[number, number]>([0, 40000]);
-  const getSortedProducts = (
-    filteredProducts: Product[],
-    sortOrder: SortOrder
-  ) => {
-    switch (sortOrder) {
-      case SortOrder.Relevance:
-        return filteredProducts.sort((a, b) => a.id - b.id);
-      case SortOrder.Name:
-        return filteredProducts.sort((a, b) => a.title.localeCompare(b.title));
-      case SortOrder.Low:
-        return filteredProducts.sort((a, b) => a.price - b.price);
-      case SortOrder.High:
-        return filteredProducts.sort((a, b) => b.price - a.price);
-      default:
-        return filteredProducts;
-    }
-  };
+
+  const category: string[] = [
+    "laptops",
+    "tablets",
+    "smartphones",
+    "mobile-accessories",
+  ];
 
   useEffect(() => {
-    setSort(products);
-  }, [products]);
-
-  useEffect(() => {
-    setSelectedCategories(categories);
-  }, [categories]);
-
-  useEffect(() => {
-    setSelectedBrands(brands);
-  }, [brands]);
-
-  useEffect(() => {
-    if (selectedCategories.length === 0 && selectedBrands.length === 0) {
-      setSort(products);
-    } else {
-      const filteredProducts = products.filter(
-        (product) =>
-          (selectedCategories.length === 0 ||
-            selectedCategories.includes(product.category)) &&
-          (selectedBrands.length === 0 ||
-            selectedBrands.includes(product.brand?.toString() || ""))
+    const fetchProducts = async () => {
+      const fetchedProducts = (await getProducts()).filter((product) =>
+        category.includes(product.category)
       );
-      setSort(filteredProducts);
-    }
-  }, [selectedCategories, selectedBrands]);
+      setProducts(fetchedProducts);
+      setSortedProducts(fetchedProducts);
+    };
 
-  const handleChange = (value: string) => {
-    if (value === "low") {
-      setSort((prev) => [...prev].sort((a, b) => a.price - b.price));
-      setSortOrder(SortOrder.Low);
-    } else if (value === "high") {
-      setSort((prev) => [...prev].sort((a, b) => b.price - a.price));
-      setSortOrder(SortOrder.High);
-    } else if (value === "name") {
-      setSort((prev) =>
-        [...prev].sort((a, b) => a.title.localeCompare(b.title))
+    fetchProducts();
+  }, []);
+
+  const handleSortedProductsChange = (newSortOrder: SortOrder) => {
+    setSortOrder(newSortOrder);
+  };
+
+  useEffect(() => {
+    if (!products.length) return;
+
+    let updatedProducts = [...products];
+
+    if (selectedCategories.length)
+      updatedProducts = updatedProducts.filter((p) =>
+        selectedCategories.includes(p.category)
       );
-      setSortOrder(SortOrder.Name);
-    } else if (value === "relevance") {
-      setSort((prev) => [...prev].sort((a, b) => a.id - b.id));
-      setSortOrder(SortOrder.Relevance);
-    }
-  };
 
-  const handleCategoryClick = (category: string) => {
-    const isSelected = categories.includes(category);
+    if (selectedBrands.length)
+      updatedProducts = updatedProducts.filter((p) =>
+        selectedBrands.includes(p.brand?.toString() || "")
+      );
 
-    if (isSelected) {
-      setCategories((prev) => prev.filter((c) => c !== category));
-    } else {
-      setCategories((prev) => [...prev, category]);
-    }
-
-    setSelectedCategories(categories);
-
-    const sortedProducts = getSortedProducts(products, sortOrder);
-    const filteredProducts = sortedProducts.filter((product) =>
-      categories.includes(product.category)
+    updatedProducts = updatedProducts.filter(
+      (p) => p.price >= value[0] && p.price <= value[1]
     );
-    setSort(filteredProducts);
+
+    setSortedProducts(sortProducts(updatedProducts, sortOrder));
+  }, [selectedCategories, selectedBrands, value, sortOrder, products]);
+
+  const sortProducts = (products: Product[], order: SortOrder) => {
+    return [...products].sort((a, b) => {
+      switch (order) {
+        case SortOrder.Name:
+          return a.title.localeCompare(b.title);
+        case SortOrder.Low:
+          return a.price - b.price;
+        case SortOrder.High:
+          return b.price - a.price;
+        default:
+          return a.product_id - b.product_id;
+      }
+    });
   };
-
-  const handleBrandClick = (brand: string) => {
-    const isSelected = brands.includes(brand);
-
-    if (isSelected) {
-      setBrands((prev) => prev.filter((c) => c !== brand));
-      setSelectedBrands((prev) => prev.filter((c) => c !== brand));
-    } else {
-      setBrands((prev) => [...prev, brand]);
-      setSelectedBrands((prev) => [...prev, brand]);
-    }
-
-    const sortedProducts = getSortedProducts(products, sortOrder);
-    const filteredProducts = sortedProducts.filter((product) =>
-      selectedBrands.includes(product.brand?.toString() || "")
-    );
-    setSort(filteredProducts);
-  };
-
-  const handlePriceChange = (values: [number, number]) => {
-    const filteredProducts = products.filter(
-      (product) =>
-        (selectedCategories.length === 0 ||
-          selectedCategories.includes(product.category)) &&
-        (selectedBrands.length === 0 ||
-          selectedBrands.includes(product.brand?.toString() || "")) &&
-        product.price >= values[0] &&
-        product.price <= values[1]
-    );
-    setSort(filteredProducts);
-  };
-
   return (
     <div className="p-4 xl:px-[5.4rem] 2xl:px-[7.7rem] dark:bg-[#181D25]">
       <h1 className="text-4xl font-semibold mt-10">Electronics</h1>
 
-      <SortProductsBtn handleChange={handleChange} />
+      <SortProductsBtn
+        handleSortedProductsChange={handleSortedProductsChange}
+      />
 
       <div className="flex lg:gap-4 md:justify-start w-full">
         <div className="lg:block hidden">
           <FilterBtnCategories
-            handleCategoryClick={handleCategoryClick}
+            products={products}
+            handleCategoryChange={setSelectedCategories}
             selectedCategories={selectedCategories}
-            currentCategory="Electronics"
           />
           <FilterBtnPrice
+            products={products}
+            selectedCategories={selectedCategories}
+            selectedBrands={selectedBrands}
             values={value}
             setValue={setValue}
-            onChange={handlePriceChange}
           />
-          <ElectronicsBrands
-            handleBrandClick={handleBrandClick}
+          <Brands
+            products={products}
             selectedBrands={selectedBrands}
-            currentCategory="Electronics"
+            onBrandChange={setSelectedBrands}
           />
         </div>
         <div className="md:flex-1">
-          <ElectronicsProducts products={sort} />
+          <ProductsMain product={sortedProducts} />
         </div>
+        {/* Mobile Filter */}
         <div className="lg:hidden">
-          <FilterButton
-            handleCategoryClick={handleCategoryClick}
-            selectedCategories={selectedCategories}
-            values={value}
-            setValue={setValue}
-            onChange={handlePriceChange}
-            handleBrandClick={handleBrandClick}
-            selectedBrands={selectedBrands}
-            currentCategory="Electronics"
-          />
+          <Sheet>
+            <SheetTrigger asChild>
+              <button className="fixed flex bottom-0 left-0 right-0 bg-[#222934] text-white py-6 border-t-[1px] border-opacity-20 border-white items-center justify-center gap-2">
+                <span>
+                  <Filter className="h-6 w-6" />
+                </span>
+                Filters
+              </button>
+            </SheetTrigger>
+            <SheetContent
+              side="left"
+              className="dark:bg-[#181D25] dark:text-[white] mb-4"
+            >
+              <ScrollArea className="h-full">
+                <SheetHeader>
+                  <SheetTitle className="text-start text-xl">
+                    Filters and sort
+                  </SheetTitle>
+                </SheetHeader>
+                <FilterBtnCategories
+                  products={products}
+                  handleCategoryChange={setSelectedCategories}
+                  selectedCategories={selectedCategories}
+                />
+                <FilterBtnPrice
+                  products={products}
+                  selectedCategories={selectedCategories}
+                  selectedBrands={selectedBrands}
+                  values={value}
+                  setValue={setValue}
+                />
+                <Brands
+                  products={products}
+                  selectedBrands={selectedBrands}
+                  onBrandChange={setSelectedBrands}
+                />
+              </ScrollArea>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </div>

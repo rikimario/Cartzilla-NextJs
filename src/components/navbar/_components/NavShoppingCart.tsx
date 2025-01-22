@@ -6,10 +6,15 @@ import React, { useEffect, useState } from "react";
 import { getUser } from "../../../../utils/supabase/actions";
 import { createClient } from "../../../../utils/supabase/client";
 import Link from "next/link";
+import { Product } from "@/lib/types";
 
 export default function NavShoppingCart() {
-  const [product, setProduct] = useState<Array<object>>([{}]);
+  const [product, setProduct] = useState<Product[]>([]);
   const [user, setUser] = useState<User | null>(null);
+  const totalQuantity = product.reduce(
+    (acc, current) => acc + (current.quantity || 0),
+    0
+  );
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -56,14 +61,14 @@ export default function NavShoppingCart() {
       {user ? (
         <Link href={"/cart"} className="bg-[#333D4C] p-3 rounded-full flex">
           <ShoppingCart className="h-5 w-5" strokeWidth={1} />
-          <span className="absolute bg-[#33B36B] text-xs top-0 right-[-5px] border-2 border-[#222934] rounded-full h-6 w-6 items-center justify-center flex text-white">
-            {product.length}
+          <span className="absolute bg-[#33B36B] text-xs top-0 right-[-12px] border-2 border-[#222934] rounded-full h-6 w-6 items-center justify-center flex text-white">
+            {totalQuantity}
           </span>
         </Link>
       ) : (
         <Link href={"/login"} className="bg-[#333D4C] p-3 rounded-full flex">
           <ShoppingCart className="h-5 w-5" strokeWidth={1} />
-          <span className="absolute bg-[#33B36B] text-sm top-0 right-[-5px] border-2 border-[#222934] rounded-full h-6 w-6 items-center justify-center flex">
+          <span className="absolute bg-[#33B36B] text-sm top-0 right-[-12px] border-2 border-[#222934] rounded-full h-6 w-6 items-center justify-center flex">
             0
           </span>
         </Link>

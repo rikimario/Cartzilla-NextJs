@@ -1,10 +1,13 @@
-"use client";
 import { Card } from "@/components/ui/card";
 import { Minus, Plus } from "lucide-react";
-import React, { useState } from "react";
 
-export default function ProductCount() {
-  const [count, setCount] = useState<number>(1);
+export default function ProductCount({
+  count,
+  setCount,
+}: {
+  count: number;
+  setCount: (count: number) => void;
+}) {
   return (
     <div className="flex gap-4 text-xl font-medium">
       <Card className="flex items-center gap-8 p-4 bg-inherit">

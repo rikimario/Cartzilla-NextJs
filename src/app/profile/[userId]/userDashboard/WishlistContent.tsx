@@ -34,7 +34,7 @@ export default function WishlistContent() {
 
         const { data: favorites, error } = await supabase
           .from("favorites")
-          .select("title, product_id, thumbnail, price, category");
+          .select("*");
 
         if (error) throw error;
 

@@ -21,6 +21,7 @@ import { Product } from "@/lib/types";
 export default function ProductDetails() {
   const { productId } = useParams() as { productId: string };
   const [product, setProduct] = useState<Product | null>(null);
+  const [count, setCount] = useState<number>(1);
   const [thumbImage, setThumbImage] = useState<string>("");
 
   useEffect(() => {
@@ -239,9 +240,9 @@ export default function ProductDetails() {
             </div>
             <ProductSizes product={product} />
             <div className="flex flex-col md:flex-row justify-center items-center gap-4 mt-8">
-              <ProductCount />
+              <ProductCount count={count} setCount={setCount} />
               <div className="flex gap-4">
-                <ProductAddToCart />
+                <ProductAddToCart product={product} count={count} />
                 <ProductFavorite product={product} />
               </div>
             </div>

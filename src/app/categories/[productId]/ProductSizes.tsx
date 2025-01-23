@@ -1,7 +1,13 @@
 import { Product } from "@/lib/types";
 import { useRouter, useSearchParams } from "next/navigation";
 
-export default function ProductSizes({ product }: { product: Product }) {
+export default function ProductSizes({
+  product,
+  setSelectedSize,
+}: {
+  product: Product;
+  setSelectedSize: (size: string) => void;
+}) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const selectedSize = searchParams.get("size");
@@ -10,6 +16,8 @@ export default function ProductSizes({ product }: { product: Product }) {
     const url = new URLSearchParams(window.location.search);
     url.set("size", size);
     router.replace(`${window.location.pathname}?${url.toString()}`, undefined);
+
+    setSelectedSize(size);
   };
 
   return (

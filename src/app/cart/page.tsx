@@ -20,7 +20,8 @@ export default function Cart() {
 
         const groupedProducts = product.reduce((acc, product) => {
           const existingProduct = acc.find(
-            (p: Product) => p.product_id === product.product_id
+            (p: Product) =>
+              p.product_id === product.product_id && p.size === product.size
           );
           if (existingProduct) {
             existingProduct.quantity += product.quantity;

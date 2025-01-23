@@ -7,9 +7,11 @@ import { createClient } from "../../../../utils/supabase/client";
 export default function ProductAddToCart({
   product,
   count,
+  size,
 }: {
   product: Product | null;
   count: number;
+  size: string | null;
 }) {
   const handleAddToCart = async () => {
     const user = await getUser();
@@ -17,6 +19,11 @@ export default function ProductAddToCart({
 
     if (!user) {
       console.log("User is not logged in");
+      return;
+    }
+
+    if (product?.size && !size) {
+      console.log("Please select a size");
       return;
     }
 
@@ -30,6 +37,7 @@ export default function ProductAddToCart({
         thumbnail: product?.thumbnail,
         category: product?.category,
         quantity: count,
+        size: size,
       },
     ]);
 
@@ -38,7 +46,6 @@ export default function ProductAddToCart({
 
       throw new Error("Failed to add to cart");
     }
-    // setAddToCart(true);
     console.log("Product added to cart");
   };
 

@@ -23,6 +23,7 @@ export default function ProductDetails() {
   const [product, setProduct] = useState<Product | null>(null);
   const [count, setCount] = useState<number>(1);
   const [thumbImage, setThumbImage] = useState<string>("");
+  const [selectedSize, setSelectedSize] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -126,7 +127,6 @@ export default function ProductDetails() {
                   />
                 </button>
                 <Image
-                  // className="w-full md:w-[400px] md:h-[400px] lg:w-[350px] lg:h-[350px] xl:w-[500px] xl:h-[500px]"
                   className="w-full"
                   src={thumbImage}
                   alt={product.title}
@@ -238,11 +238,15 @@ export default function ProductDetails() {
                 </p>
               </span>
             </div>
-            <ProductSizes product={product} />
+            <ProductSizes product={product} setSelectedSize={setSelectedSize} />
             <div className="flex flex-col md:flex-row justify-center items-center gap-4 mt-8">
               <ProductCount count={count} setCount={setCount} />
               <div className="flex gap-4">
-                <ProductAddToCart product={product} count={count} />
+                <ProductAddToCart
+                  product={product}
+                  count={count}
+                  size={selectedSize}
+                />
                 <ProductFavorite product={product} />
               </div>
             </div>

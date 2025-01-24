@@ -28,7 +28,7 @@ export default function ProductDetails() {
   useEffect(() => {
     const fetchProduct = async () => {
       const data = await getProductById(Number(productId));
-      setProduct(data);
+      setProduct(data as Product);
       setThumbImage(data.images[0]);
     };
     fetchProduct();

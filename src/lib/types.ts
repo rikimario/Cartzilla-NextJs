@@ -20,7 +20,7 @@ export type Product = {
   ];
   warrantyInformation: string;
   returnPolicy: string;
-  quantity?: number;
+  quantity: number;
 };
 
 export enum SortOrder {

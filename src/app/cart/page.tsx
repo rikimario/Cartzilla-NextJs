@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import CartCountBtn from "./_components/CartCountBtn";
 import CartRemoveBtn from "./_components/CartRemoveBtn";
+import ClearCartBtn from "./_components/ClearCartBtn";
 
 export default function Cart() {
   const [product, setProduct] = useState<Product[]>([]);
@@ -96,7 +97,7 @@ export default function Cart() {
               <p className="w-full">Price</p>
               <p className="w-full">Quantity</p>
               <p className="w-full">Total</p>
-              <p className="w-full">clear cart</p>
+              <ClearCartBtn setProduct={setProduct} />
             </div>
           </div>
           {product.map((product, index) => (

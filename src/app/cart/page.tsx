@@ -4,9 +4,9 @@ import React, { useEffect, useState } from "react";
 import { createClient } from "../../../utils/supabase/client";
 import { Product } from "@/lib/types";
 import Image from "next/image";
-import { Trash2 } from "lucide-react";
 import Link from "next/link";
 import CartCountBtn from "./_components/CartCountBtn";
+import CartRemoveBtn from "./_components/CartRemoveBtn";
 
 export default function Cart() {
   const [product, setProduct] = useState<Product[]>([]);
@@ -131,12 +131,9 @@ export default function Cart() {
                   <p className="w-full">
                     ${(product.price * product.quantity).toFixed(2)}
                   </p>
-                  <button className="text-red-500 w-full flex items-center justify-center">
-                    <Trash2
-                      className="h-3 w-3 md:h-5 md:w-5 text-red-800"
-                      strokeWidth={1}
-                    />
-                  </button>
+
+                  {/* remove button */}
+                  <CartRemoveBtn product={product} setProduct={setProduct} />
                 </div>
               </div>
             </div>

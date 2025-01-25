@@ -6,9 +6,50 @@ import { Product } from "@/lib/types";
 import Image from "next/image";
 import { Trash2 } from "lucide-react";
 import Link from "next/link";
+import CartCountBtn from "./_components/CartCountBtn";
 
 export default function Cart() {
   const [product, setProduct] = useState<Product[]>([]);
+
+  const handleUpdateQuantity = async (
+    currentProduct: Product,
+    quantity: number
+  ) => {
+    const updatedProduct = { ...currentProduct, quantity };
+    const updatedProducts = [...product];
+    const index = updatedProducts.findIndex(
+      (p) =>
+        p.product_id === currentProduct.product_id &&
+        p.size === currentProduct.size
+    );
+    if (index !== -1) {
+      updatedProducts[index] = updatedProduct;
+    }
+    setProduct(updatedProducts);
+
+    try {
+      const supabase = createClient();
+
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+
+      if (!user) {
+        throw new Error("User not authenticated");
+      }
+
+      const { error } = await supabase
+        .from("cart")
+        .update({ quantity: quantity })
+        .eq("user_id", user.id)
+        .eq("product_id", currentProduct.product_id)
+        .eq("size", currentProduct.size);
+
+      if (error) throw error;
+    } catch (error) {
+      console.error("Error updating cart quantity:", error);
+    }
+  };
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -22,19 +63,19 @@ export default function Cart() {
         if (error) throw error;
 
         const groupedProducts = product.reduce((acc, product) => {
-          const existingProduct = acc.find(
-            (p: Product) =>
-              p.product_id === product.product_id && p.size === product.size
-          );
+          const key = `${product.product_id}-${product.size}`;
+          const existingProduct = acc[key];
           if (existingProduct) {
             existingProduct.quantity += product.quantity;
           } else {
-            acc.push(product);
+            acc[key] = product;
           }
           return acc;
-        }, [] as Product[]);
+        }, {});
 
-        setProduct(groupedProducts.reverse());
+        const products = Object.values(groupedProducts) as Product[];
+
+        setProduct(products.reverse());
       } catch (error) {
         console.error("Error fetching cart:", error);
       }
@@ -60,7 +101,7 @@ export default function Cart() {
           </div>
           {product.map((product, index) => (
             <div className="border-t border-gray-200" key={index}>
-              <div className="flex items-center justify-between gap-6">
+              <div className="flex items-center justify-between gap-3">
                 <div className="flex items-center gap-2 p-2 w-full">
                   <Link href={`/categories/${product.product_id}`}>
                     <Image
@@ -80,8 +121,16 @@ export default function Cart() {
                 </div>
                 <div className="flex justify-between items-center w-full">
                   <p className="w-full">${product.price}</p>
-                  <p className="w-full">{product.quantity}</p>
-                  <p className="w-full">${product.price * product.quantity}</p>
+                  <CartCountBtn
+                    product={product}
+                    initialCount={product.quantity}
+                    onUpdateQuantity={(quantity) =>
+                      handleUpdateQuantity(product, quantity)
+                    }
+                  />
+                  <p className="w-full">
+                    ${(product.price * product.quantity).toFixed(2)}
+                  </p>
                   <button className="text-red-500 w-full flex items-center justify-center">
                     <Trash2
                       className="h-3 w-3 md:h-5 md:w-5 text-red-800"

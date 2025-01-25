@@ -12,6 +12,7 @@ import {
   Dialog,
   DialogClose,
   DialogContent,
+  DialogDescription,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
@@ -111,6 +112,10 @@ export default function WishlistContent() {
                 <DialogTitle className="text-center">
                   Are you sure you want to remove this item?
                 </DialogTitle>
+                <DialogDescription className="text-center">
+                  This action will permanently remove the item from your
+                  wishlist.
+                </DialogDescription>
                 <DialogClose className="w-full flex justify-center gap-2">
                   <Button
                     className="w-full"

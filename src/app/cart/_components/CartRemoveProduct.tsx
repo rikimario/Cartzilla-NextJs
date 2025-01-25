@@ -1,6 +1,4 @@
-import { Product } from "@/lib/types";
-import React from "react";
-import { createClient } from "../../../../utils/supabase/client";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogClose,
@@ -9,14 +7,19 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
+import { Trash2 } from "lucide-react";
+import React from "react";
+import { createClient } from "../../../../utils/supabase/client";
+import { Product } from "@/lib/types";
 
-export default function ClearCartBtn({
+export default function CartRemoveProduct({
+  product,
   setProduct,
 }: {
+  product: Product;
   setProduct: (product: Product[]) => void;
 }) {
-  const handleRemove = async () => {
+  const handleRemove = async (productId: number) => {
     const supabase = await createClient();
     const {
       data: { user },
@@ -30,7 +33,9 @@ export default function ClearCartBtn({
       const { error } = await supabase
         .from("cart")
         .delete()
-        .eq("user_id", user?.id);
+        .eq("user_id", user?.id)
+        .eq("product_id", productId)
+        .eq("size", product.size);
 
       if (error && error.code !== "PGRST116") throw error;
 
@@ -40,7 +45,7 @@ export default function ClearCartBtn({
 
       if (fetchError) throw fetchError;
 
-      setProduct(updatedFavorites);
+      setProduct(updatedFavorites.reverse());
     } catch (error) {
       console.log(error);
     }
@@ -49,22 +54,25 @@ export default function ClearCartBtn({
     <>
       <Dialog>
         <DialogTrigger asChild>
-          <span className="w-full text-gray-700 hover:text-gray-600 font-medium underline underline-offset-4 hover:no-underline cursor-pointer">
-            Clear cart
+          <span className="text-red-500 w-full flex items-center justify-center">
+            <Trash2
+              className="h-3 w-3 md:h-5 md:w-5 text-red-800 cursor-pointer"
+              strokeWidth={1}
+            />
           </span>
         </DialogTrigger>
         <DialogContent>
           <DialogTitle className="text-center">
-            Are you sure you want to remove all items?
+            Are you sure you want to remove this item?
           </DialogTitle>
           <DialogDescription className="text-center">
-            This action will permanently remove all items from your cart.
+            This action will permanently remove the item from your cart.
           </DialogDescription>
           <DialogClose className="w-full flex justify-center gap-2">
             <Button
               className="w-full"
               variant={"outline"}
-              onClick={handleRemove}
+              onClick={() => handleRemove(product.product_id)}
             >
               Yes
             </Button>

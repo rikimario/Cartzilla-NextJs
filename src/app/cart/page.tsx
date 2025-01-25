@@ -6,8 +6,8 @@ import { Product } from "@/lib/types";
 import Image from "next/image";
 import Link from "next/link";
 import CartCountBtn from "./_components/CartCountBtn";
-import CartRemoveBtn from "./_components/CartRemoveBtn";
-import ClearCartBtn from "./_components/ClearCartBtn";
+import CartRemoveProduct from "./_components/CartRemoveProduct";
+import CartRemoveAllProducts from "./_components/CartRemoveAllProducts";
 
 export default function Cart() {
   const [product, setProduct] = useState<Product[]>([]);
@@ -97,7 +97,7 @@ export default function Cart() {
               <p className="w-full">Price</p>
               <p className="w-full">Quantity</p>
               <p className="w-full">Total</p>
-              <ClearCartBtn setProduct={setProduct} />
+              <CartRemoveAllProducts setProduct={setProduct} />
             </div>
           </div>
           {product.map((product, index) => (
@@ -134,7 +134,10 @@ export default function Cart() {
                   </p>
 
                   {/* remove button */}
-                  <CartRemoveBtn product={product} setProduct={setProduct} />
+                  <CartRemoveProduct
+                    product={product}
+                    setProduct={setProduct}
+                  />
                 </div>
               </div>
             </div>

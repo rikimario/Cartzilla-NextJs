@@ -49,7 +49,7 @@ export default function CartRemoveAllProducts({
     <>
       <Dialog>
         <DialogTrigger asChild>
-          <span className="w-full text-gray-700 hover:text-gray-600 font-medium underline underline-offset-4 hover:no-underline cursor-pointer">
+          <span className="w-full text-right md:text-left text-gray-700 hover:text-gray-600 font-medium underline underline-offset-4 hover:no-underline cursor-pointer">
             Clear cart
           </span>
         </DialogTrigger>

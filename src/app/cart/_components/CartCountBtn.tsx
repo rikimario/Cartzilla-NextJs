@@ -24,7 +24,7 @@ export default function CartCountBtn({
   };
 
   return (
-    <div className="flex mr-10">
+    <div className="md:flex mr-10">
       <Card className="flex gap-4 items-center p-1 bg-inherit">
         <button
           className="disabled:opacity-40"

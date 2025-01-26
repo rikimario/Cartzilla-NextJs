@@ -1,4 +1,4 @@
-import { Menu, ShoppingCart, User } from "lucide-react";
+import { Menu, User } from "lucide-react";
 import Link from "next/link";
 import Theme from "../Theme";
 import DDMobileNav from "./DDMobileNav";
@@ -76,7 +76,7 @@ export default async function Navbar() {
           </div>
         </div>
 
-        <div className="flex gap-4 text-[#E0E5EB] items-center">
+        <div className="flex items-center gap-2 lg:gap-4 text-[#E0E5EB]">
           <div className="z-50 flex">
             <MobileSearch />
           </div>
@@ -84,7 +84,7 @@ export default async function Navbar() {
           <NavFavoriteBtn />
 
           {user ? (
-            <div className="flex justify-center text-center gap-1 items-center">
+            <div className="hidden lg:flex justify-center text-center gap-1 items-center">
               <Link href={`/profile?tab=Orders`}>
                 <div className="flex items-center">
                   <p className="hidden lg:block size-10 text-lg text-center bg-[#333D4C] p-2 rounded-full">

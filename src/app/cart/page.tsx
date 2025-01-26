@@ -87,19 +87,19 @@ export default function Cart() {
   }, []);
 
   return (
-    <div className="py-10 md:px-12 lg:px-[5rem] xl:px-[7.5rem]">
+    <div className="py-10 p-4 md:px-12 lg:px-4 xl:px-[7.5rem]">
       <h1 className="text-3xl text-gray-900 dark:text-white font-semibold mb-10">
         Shopping Cart
       </h1>
       {product.length > 0 ? (
-        <div className="flex justify-between">
-          <div className="flex flex-col w-2/3 pr-8">
+        <div className="flex flex-col lg:flex-row justify-between">
+          <div className="flex flex-col w-full lg:w-2/3 lg:pr-8">
             <div className="flex items-center text-gray-500 py-4 gap-6">
               <p className="w-1/2 pl-2">Product</p>
               <div className="flex items-center w-1/2">
-                <p className="w-full">Price</p>
-                <p className="w-full">Quantity</p>
-                <p className="w-full">Total</p>
+                <p className="w-full hidden xl:block">Price</p>
+                <p className="w-full hidden md:block">Quantity</p>
+                <p className="w-full ml-4 hidden md:block">Total</p>
                 <CartRemoveAllProducts setProduct={setProduct} />
               </div>
             </div>
@@ -109,30 +109,46 @@ export default function Cart() {
                   <div className="flex items-center gap-2 p-2 w-full">
                     <Link href={`/categories/${product.product_id}`}>
                       <Image
+                        className="w-40 h-40 object-cover"
                         width={150}
                         height={150}
                         src={product.thumbnail}
                         alt={product.title}
                       />
                     </Link>
-                    <div className="max-w-56">
+                    <div className="max-w-56 space-y-1">
                       <h2>{product.title}</h2>
                       <p className="text-sm flex gap-1">
                         <span className="text-gray-400">Size:</span>{" "}
                         {product.size}
                       </p>
+                      <p className="text-sm flex gap-1 xl:hidden">
+                        <span className="text-gray-400">Price:</span>{" "}
+                        {product.price}
+                      </p>
+                      <div className="md:hidden flex">
+                        <CartCountBtn
+                          product={product}
+                          initialCount={product.quantity}
+                          onUpdateQuantity={(quantity) =>
+                            handleUpdateQuantity(product, quantity)
+                          }
+                        />
+                      </div>
                     </div>
                   </div>
-                  <div className="flex justify-between items-center w-full">
-                    <p className="w-full">${product.price}</p>
-                    <CartCountBtn
-                      product={product}
-                      initialCount={product.quantity}
-                      onUpdateQuantity={(quantity) =>
-                        handleUpdateQuantity(product, quantity)
-                      }
-                    />
-                    <p className="w-full">
+                  <div className="flex justify-between items-center md:w-full">
+                    <p className="w-full hidden xl:block">${product.price}</p>
+                    <div className="hidden md:block">
+                      <CartCountBtn
+                        product={product}
+                        initialCount={product.quantity}
+                        onUpdateQuantity={(quantity) =>
+                          handleUpdateQuantity(product, quantity)
+                        }
+                      />
+                    </div>
+                    <p className="w-full hidden md:block">
                       ${(product.price * product.quantity).toFixed(2)}
                     </p>
 

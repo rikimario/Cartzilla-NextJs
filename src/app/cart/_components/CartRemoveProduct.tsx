@@ -56,7 +56,7 @@ export default function CartRemoveProduct({
         <DialogTrigger asChild>
           <span className="text-red-500 w-full flex items-center justify-center">
             <Trash2
-              className="h-3 w-3 md:h-5 md:w-5 text-red-800 cursor-pointer"
+              className="h-5 w-5 text-red-800 cursor-pointer"
               strokeWidth={1}
             />
           </span>

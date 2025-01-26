@@ -14,7 +14,7 @@ export default function OrderSummary({ product }: { product: Product[] }) {
     }, 0);
   };
   return (
-    <div className="w-1/3 max-h-[26rem] bg-gray-100 rounded-lg p-8">
+    <div className="lg:w-1/3 mt-6 lg:mt-0 max-h-[26rem] bg-gray-100 rounded-lg p-4 md:p-8">
       <h1 className="text-2xl font-semibold text-gray-900 mb-10">
         Order Summary
       </h1>

@@ -70,19 +70,20 @@ export default function WishlistContent() {
       console.log(error);
     }
   };
+
   return (
     <div className="p-2 dark:text-white">
       <h1 className="text-4xl font-bold text-gray-700 mb-4 pb-2 border-b-[1px] dark:text-white">
         Wishlist
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
         {favorites.map((favorite, index) => (
           <div key={index} className="relative">
             <Card className="bg-inherit">
               <Link href={`/categories/${favorite.product_id}`}>
                 <CardContent className="flex flex-col p-2">
                   <Image
-                    className="lg:w-[200px] lg:h-[200px] self-center"
+                    className="w-40 h-40 object-cover lg:w-[200px] lg:h-[200px] self-center p-2 md:p-0"
                     src={favorite.thumbnail}
                     alt={favorite.title}
                     width={160}
@@ -100,12 +101,12 @@ export default function WishlistContent() {
               </Link>
             </Card>
             <Dialog>
-              <DialogTrigger className="absolute top-2 right-3.5" asChild>
+              <DialogTrigger
+                className="absolute top-2 right-0.5 md:right-3.5"
+                asChild
+              >
                 <span className="p-2 hover:bg-red-200 rounded-full cursor-pointer">
-                  <Trash2
-                    className="h-3 w-3 md:h-5 md:w-5 text-red-800"
-                    strokeWidth={1}
-                  />
+                  <Trash2 className="h-5 w-5 text-red-800" strokeWidth={1} />
                 </span>
               </DialogTrigger>
               <DialogContent>

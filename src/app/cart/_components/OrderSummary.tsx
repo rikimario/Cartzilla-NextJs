@@ -14,21 +14,25 @@ export default function OrderSummary({ product }: { product: Product[] }) {
     }, 0);
   };
   return (
-    <div className="lg:w-1/3 mt-6 lg:mt-0 max-h-[26rem] bg-gray-100 rounded-lg p-4 md:p-8">
-      <h1 className="text-2xl font-semibold text-gray-900 mb-10">
+    <div className="lg:w-1/3 mt-6 lg:mt-0 max-h-[26rem] bg-gray-100 rounded-lg p-4 md:p-8 dark:bg-[#222934]">
+      <h1 className="text-2xl font-semibold text-gray-900 mb-10 dark:text-white">
         Order Summary
       </h1>
-      <div className="flex items-center justify-between text-gray-600 border-t py-6">
+      <div className="flex items-center justify-between text-gray-600 dark:text-gray-400 border-t dark:border-gray-500 py-6">
         <p>Subtotal ({totalQuantity} items):</p>
-        <p className="text-gray-900 font-medium">${getTotal().toFixed(2)}</p>
+        <p className="text-gray-900 font-medium dark:text-white">
+          ${getTotal().toFixed(2)}
+        </p>
       </div>
-      <div className="flex items-center justify-between text-gray-600 border-b pb-6">
+      <div className="flex items-center justify-between text-gray-600 dark:text-gray-400 border-b dark:border-gray-500 pb-6">
         <p>Shipping:</p>
-        <p className="text-gray-900 font-medium">Calculated at checkout</p>
+        <p className="text-gray-900 font-medium dark:text-white">
+          Calculated at checkout
+        </p>
       </div>
-      <div className="flex items-center justify-between text-gray-600 py-6">
+      <div className="flex items-center justify-between text-gray-600 dark:text-gray-400 py-6">
         <p>Estimated total:</p>
-        <p className="text-gray-900 text-2xl font-semibold">
+        <p className="text-gray-900 text-2xl font-semibold dark:text-white">
           ${getTotal().toFixed(2)}
         </p>
       </div>

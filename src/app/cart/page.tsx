@@ -94,7 +94,7 @@ export default function Cart() {
       {product.length > 0 ? (
         <div className="flex flex-col lg:flex-row justify-between">
           <div className="flex flex-col w-full lg:w-2/3 lg:pr-8">
-            <div className="flex items-center text-gray-500 py-4 gap-6">
+            <div className="flex items-center text-gray-500 dark:text-gray-200 py-4 gap-6">
               <p className="w-1/2 pl-2">Product</p>
               <div className="flex items-center w-1/2">
                 <p className="w-full hidden xl:block">Price</p>

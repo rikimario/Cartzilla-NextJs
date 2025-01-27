@@ -86,8 +86,8 @@ export default function Profile() {
   }, []);
 
   return (
-    <div className="flex justify-center gap-8 max-w-[89rem] w-full mx-auto py-10">
-      <div className="flex flex-col gap-2 w-1/4">
+    <div className="flex justify-center gap-8 max-w-[89rem] w-full mx-auto py-10 px-2">
+      <div className="hidden lg:flex lg:flex-col gap-2 w-1/3 xl:w-1/4">
         <div className="flex items-center gap-2">
           <p className="hidden lg:block text-lg border border-gray-900 dark:border-gray-400 p-2 size-12 rounded-full text-center">
             <span className="text-2xl">

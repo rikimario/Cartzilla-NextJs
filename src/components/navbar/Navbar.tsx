@@ -7,6 +7,7 @@ import DesktopNav from "./DesktopNav";
 import {
   Sheet,
   SheetContent,
+  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -31,6 +32,7 @@ export default async function Navbar() {
                 <Menu className="h-6 w-6" />
               </button>
             </SheetTrigger>
+            <SheetDescription></SheetDescription>
             <SheetContent
               side="left"
               className="dark:bg-[#181D25] dark:text-[white]"

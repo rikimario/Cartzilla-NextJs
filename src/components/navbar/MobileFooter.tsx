@@ -17,12 +17,12 @@ export default async function MobileFooter() {
         </Link>
       ) : (
         <Link href={"/login"}>
-          <button className="flex items-center justify-center w-full border-r-2 border-x-gray-200 p-2 gap-2">
+          <span className="flex items-center justify-center w-full border-r-2 border-x-gray-200 p-2 gap-2">
             <span>
               <User className="h-6 w-6" strokeWidth={1} />
             </span>
             Account
-          </button>
+          </span>
         </Link>
       )}
       <Link

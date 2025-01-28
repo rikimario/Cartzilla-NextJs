@@ -6,12 +6,13 @@ import {
   CreditCard,
   Heart,
   Info,
+  LogOut,
   MapPin,
+  PanelLeft,
   ShoppingBag,
   Star,
   UserRound,
 } from "lucide-react";
-import LogoutBtn from "@/components/navbar/LogoutBtn";
 import { useSearchParams } from "next/navigation";
 import { User } from "@supabase/supabase-js";
 import OrdersContent from "./[userId]/userDashboard/OrdersContent";
@@ -21,14 +22,18 @@ import MyReviews from "./[userId]/userDashboard/MyReviews";
 import PersonalInfo from "./[userId]/manageAccount/PersonalInfo";
 import Addresses from "./[userId]/manageAccount/Addresses";
 import Notifications from "./[userId]/manageAccount/Notifications";
-import { getUser } from "../../../utils/supabase/actions";
+import { getUser, logout } from "../../../utils/supabase/actions";
 import Link from "next/link";
-
-type Tab = {
-  title: string;
-  component: React.JSX.Element;
-  icon?: React.JSX.Element;
-};
+import { Tab } from "@/lib/types";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import ProfileDashBoardBtn from "./_components/ProfileDashBoard";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 export default function Profile() {
   const searchParams = useSearchParams();
@@ -85,90 +90,123 @@ export default function Profile() {
     fetchUser();
   }, []);
 
+  if (!user) return <div>Loading...</div>;
   return (
     <div className="flex justify-center gap-8 max-w-[89rem] w-full mx-auto py-10 px-2">
-      <div className="hidden lg:flex lg:flex-col gap-2 w-1/3 xl:w-1/4">
-        <div className="flex items-center gap-2">
-          <p className="hidden lg:block text-lg border border-gray-900 dark:border-gray-400 p-2 size-12 rounded-full text-center">
-            <span className="text-2xl">
-              {user?.user_metadata.full_name?.charAt(0).toUpperCase()}
-            </span>
-          </p>
-          <p className="text-lg font-semibold text-gray-900 dark:text-white">
-            {user?.user_metadata.full_name}
-          </p>
-        </div>
+      {/* Profile Dashboard */}
+      <ProfileDashBoardBtn />
 
-        {/* User Dashboard */}
-        {userDashboard.map((tab) => (
-          <Link
-            href={`?tab=${tab.title}`}
-            key={tab.title}
-            className={`flex items-center cursor-pointer gap-2 ml-2 p-1 rounded-lg hover:bg-gray-200${
-              activeTab === tab.title ? " bg-gray-200" : ""
-            }`}
+      {/* Small Screen Dashboard */}
+      <div className="lg:hidden fixed z-50">
+        <Sheet>
+          <SheetTrigger asChild>
+            <button className="fixed flex bottom-0 left-0 right-0 bg-[#222934] text-white py-6 border-t-[1px] border-opacity-20 border-white items-center justify-center gap-2">
+              <span>
+                <PanelLeft className="h-6 w-6" />
+              </span>
+              Account menu
+            </button>
+          </SheetTrigger>
+          <SheetDescription></SheetDescription>
+          <SheetContent
+            side="left"
+            className="dark:bg-[#181D25] dark:text-[white] mb-4"
           >
-            <span className="dark:text-gray-500">{tab.icon}</span>
-            <span
-              key={tab.title}
-              className="text-gray-900 dark:text-gray-400 w-full text-start"
-            >
-              {tab.title}
-            </span>
-          </Link>
-        ))}
+            <ScrollArea className="h-full">
+              <SheetTitle className="flex items-center gap-2">
+                <p className="text-lg border border-gray-900 dark:border-gray-400 p-2 size-12 rounded-full text-center">
+                  <span className="text-2xl">
+                    {user?.user_metadata.full_name?.charAt(0).toUpperCase()}
+                  </span>
+                </p>
+                <p className="text-gray-900 dark:text-white">
+                  {user?.user_metadata.full_name}
+                </p>
+              </SheetTitle>
 
-        {/* Manage Account */}
-        <span className="text-gray-900 dark:text-white font-semibold mt-2">
-          Manage Account
-        </span>
-        {manageAccount.map((tab) => (
-          <Link
-            href={`?tab=${tab.title}`}
-            key={tab.title}
-            className={`flex items-center cursor-pointer gap-2 ml-2 p-1 rounded-lg hover:bg-gray-200${
-              activeTab === tab.title ? " bg-gray-200" : ""
-            }`}
-          >
-            <span className="dark:text-gray-500">{tab.icon}</span>
-            <span
-              key={tab.title}
-              className="text-gray-900 dark:text-gray-400 w-full text-start"
-            >
-              {tab.title}
-            </span>
-          </Link>
-        ))}
+              {/* User Dashboard */}
+              <div className="space-y-2 my-4">
+                {userDashboard.map((tab) => (
+                  <Link
+                    href={`?tab=${tab.title}`}
+                    key={tab.title}
+                    className={`flex items-center cursor-pointer gap-2 ml-2 p-1 rounded-lg hover:bg-gray-200${
+                      activeTab === tab.title ? " bg-gray-200" : ""
+                    }`}
+                  >
+                    <span className="dark:text-gray-500">{tab.icon}</span>
+                    <span
+                      key={tab.title}
+                      className="text-gray-900 dark:text-gray-400 w-full text-start"
+                    >
+                      {tab.title}
+                    </span>
+                  </Link>
+                ))}
+              </div>
 
-        {/* Customer Support */}
-        <span className="text-gray-900 dark:text-white font-semibold mt-2">
-          Customer Service
-        </span>
-        <div className="flex flex-col gap-2 ml-2">
-          <div className="flex items-center gap-2 p-1">
-            <span className="dark:text-gray-500">
-              <CircleHelp width={18} height={18} strokeWidth={1} />
-            </span>
-            <p className="text-gray-900 dark:text-gray-400 cursor-pointer hover:text-gray-400">
-              Help Center
-            </p>
-          </div>
-          <div className="flex items-center gap-2 p-1">
-            <span className="dark:text-gray-500">
-              <Info width={18} height={18} strokeWidth={1} />
-            </span>
-            <p className="text-gray-900 dark:text-gray-400 cursor-pointer hover:text-gray-400">
-              Terms and Conditions
-            </p>
-          </div>
-        </div>
+              {/* Manage Account */}
+              <span className="text-gray-900 dark:text-white font-semibold">
+                Manage Account
+              </span>
+              <div className="space-y-2 my-4">
+                {manageAccount.map((tab) => (
+                  <Link
+                    href={`?tab=${tab.title}`}
+                    key={tab.title}
+                    className={`flex items-center cursor-pointer gap-2 ml-2 p-1 rounded-lg hover:bg-gray-200${
+                      activeTab === tab.title ? " bg-gray-200" : ""
+                    }`}
+                  >
+                    <span className="dark:text-gray-500">{tab.icon}</span>
+                    <span
+                      key={tab.title}
+                      className="text-gray-900 dark:text-gray-400 w-full text-start"
+                    >
+                      {tab.title}
+                    </span>
+                  </Link>
+                ))}
+              </div>
 
-        {/* Logout */}
-        <div className="text-gray-900 cursor-pointer dark:text-gray-400 hover:text-gray-400 mt-6 p-1">
-          <span className="dark:text-gray-500">
-            <LogoutBtn />
-          </span>
-        </div>
+              {/* Customer Support */}
+              <span className="text-gray-900 dark:text-white font-semibold">
+                Customer Service
+              </span>
+              <div className="flex flex-col gap-2 ml-2 my-4">
+                <div className="flex items-center gap-2 p-1">
+                  <span className="dark:text-gray-500">
+                    <CircleHelp width={18} height={18} strokeWidth={1} />
+                  </span>
+                  <p className="text-gray-900 dark:text-gray-400 cursor-pointer hover:text-gray-400">
+                    Help Center
+                  </p>
+                </div>
+                <div className="flex items-center gap-2 p-1">
+                  <span className="dark:text-gray-500">
+                    <Info width={18} height={18} strokeWidth={1} />
+                  </span>
+                  <p className="text-gray-900 dark:text-gray-400 cursor-pointer hover:text-gray-400">
+                    Terms and Conditions
+                  </p>
+                </div>
+              </div>
+
+              {/* Logout */}
+              <div className="text-gray-900 cursor-pointer dark:text-gray-400 hover:text-gray-400 mt-6 p-1">
+                <span className="dark:text-gray-500">
+                  <button
+                    className="flex gap-2 items-center ml-2"
+                    onClick={logout}
+                  >
+                    <LogOut className="h-5 w-5" strokeWidth={1} />
+                    Logout
+                  </button>
+                </span>
+              </div>
+            </ScrollArea>
+          </SheetContent>
+        </Sheet>
       </div>
 
       {/* Tab Content */}

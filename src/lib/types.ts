@@ -29,3 +29,9 @@ export enum SortOrder {
   Low = "low",
   High = "high",
 }
+
+export type Tab = {
+  title: string;
+  component: React.JSX.Element;
+  icon?: React.JSX.Element;
+};

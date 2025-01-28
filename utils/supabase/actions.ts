@@ -89,11 +89,7 @@ export async function getUser() {
 // * get products */
 export const getProducts = cache(async () => {
   const supabase = await createClient();
-  const { data: products, error } = await supabase
-    .from("products")
-    .select(
-      "title, product_id, thumbnail, price, category, size, images, description, brand, rating, stock, reviews, warrantyInformation, returnPolicy"
-    );
+  const { data: products, error } = await supabase.from("products").select("*");
 
   if (error) throw error;
 
@@ -105,9 +101,7 @@ export const getProductById = async (id: number) => {
   const supabase = await createClient();
   const { data: product, error } = await supabase
     .from("products")
-    .select(
-      "title, product_id, thumbnail, price, category, size, images, description, brand, rating, stock, reviews, warrantyInformation, returnPolicy"
-    )
+    .select("*")
     .eq("product_id", id);
 
   if (error) throw error;

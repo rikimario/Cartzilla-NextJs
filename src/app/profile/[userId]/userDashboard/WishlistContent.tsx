@@ -61,7 +61,7 @@ export default function WishlistContent() {
 
       const { data: updatedFavorites, error: fetchError } = await supabase
         .from("favorites")
-        .select("title, product_id, thumbnail, price, category");
+        .select("*");
 
       if (fetchError) throw fetchError;
 

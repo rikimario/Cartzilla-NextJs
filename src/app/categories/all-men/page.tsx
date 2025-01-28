@@ -10,6 +10,7 @@ import Brands from "@/app/utils/Brands";
 import {
   Sheet,
   SheetContent,
+  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -121,6 +122,7 @@ export default function page() {
                 Filters
               </button>
             </SheetTrigger>
+            <SheetDescription></SheetDescription>
             <SheetContent
               side="left"
               className="dark:bg-[#181D25] dark:text-[white] mb-4"

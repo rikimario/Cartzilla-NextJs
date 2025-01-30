@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Product } from "@/lib/types";
 import { ChevronRight } from "lucide-react";
+import Link from "next/link";
 import React from "react";
 
 export default function OrderSummary({ product }: { product: Product[] }) {
@@ -37,12 +38,14 @@ export default function OrderSummary({ product }: { product: Product[] }) {
         </p>
       </div>
 
-      <Button className="flex items-center w-full justify-center text-lg dark:text-white gap-2 h-[62px] rounded-lg bg-[#F55266] hover:bg-[#F2223B]">
-        Proceed to checkout{" "}
-        <span>
-          <ChevronRight className="h-5 w-5" />
-        </span>
-      </Button>
+      <Link href={"/order"}>
+        <Button className="flex items-center w-full justify-center text-lg dark:text-white gap-2 h-[62px] rounded-lg bg-[#F55266] hover:bg-[#F2223B]">
+          Proceed to checkout{" "}
+          <span>
+            <ChevronRight className="h-5 w-5" />
+          </span>
+        </Button>
+      </Link>
     </div>
   );
 }

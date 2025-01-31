@@ -26,8 +26,8 @@ export default function OrderLeftBlock() {
     <div>
       <DeliveryInfo
         currentStep={currentStep}
+        setCurrentStep={setCurrentStep}
         handleNextStep={handleNextStep}
-        deliveryInfo={deliveryInfo}
         setDeliveryInfo={setDeliveryInfo}
         displayedDeliveryInfo={displayedDeliveryInfo}
         setIsNextStepDisabled={setIsNextStepDisabled}

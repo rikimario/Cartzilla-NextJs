@@ -14,11 +14,17 @@ export default function OrderLeftBlock() {
   const [paymentMethod, setPaymentMethod] = useState("");
   const [displayedPaymentMethod, setDisplayedPaymentMethod] = useState("");
   const [isNextStepDisabled, setIsNextStepDisabled] = useState(true);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [postCode, setPostCode] = useState("");
+  const [city, setCity] = useState("");
 
   const handleNextStep = () => {
     setCurrentStep(currentStep + 1);
     setDisplayedDeliveryInfo(deliveryInfo);
-    setDisplayedAddress(address);
+    // setDisplayedAddress(address);
     setDisplayedPaymentMethod(paymentMethod);
   };
 
@@ -36,9 +42,22 @@ export default function OrderLeftBlock() {
 
       <Address
         currentStep={currentStep}
+        setCurrentStep={setCurrentStep}
         handleNextStep={handleNextStep}
         address={address}
         setAddress={setAddress}
+        firstName={firstName}
+        setFirstName={setFirstName}
+        lastName={lastName}
+        setLastName={setLastName}
+        email={email}
+        setEmail={setEmail}
+        phone={phone}
+        setPhone={setPhone}
+        postCode={postCode}
+        setPostCode={setPostCode}
+        city={city}
+        setCity={setCity}
         displayedAddress={displayedAddress}
         setIsNextStepDisabled={setIsNextStepDisabled}
         isNextStepDisabled={isNextStepDisabled}

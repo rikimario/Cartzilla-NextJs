@@ -10,7 +10,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Check, ChevronRight } from "lucide-react";
-import React, { useState } from "react";
 
 export default function Address({
   currentStep,
@@ -30,7 +29,7 @@ export default function Address({
   setPostCode,
   city,
   setCity,
-  displayedAddress,
+  // displayedAddress,
   setIsNextStepDisabled,
   isNextStepDisabled,
 }: {
@@ -51,7 +50,7 @@ export default function Address({
   setPhone: (phone: string) => void;
   setPostCode: (postCode: string) => void;
   setCity: (city: string) => void;
-  displayedAddress: string;
+  // displayedAddress: string;
   setIsNextStepDisabled: (isNextStepDisabled: boolean) => void;
   isNextStepDisabled: boolean;
 }) {
@@ -82,7 +81,7 @@ export default function Address({
       )}
 
       {currentStep === 2 && (
-        <div className="">
+        <>
           <div className="flex items-center gap-6 my-8">
             <span className="flex items-center justify-center w-6 h-6 p-4 text-lg bg-red-500 font-medium text-white rounded-full">
               2
@@ -204,7 +203,7 @@ export default function Address({
               <ChevronRight className="w-5 h-5" />
             </Button>
           </div>
-        </div>
+        </>
       )}
 
       {currentStep > 2 && (

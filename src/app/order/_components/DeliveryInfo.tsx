@@ -77,7 +77,7 @@ export default function DeliveryInfo({
   return (
     <>
       {currentStep === 1 && (
-        <div className="w-1/2">
+        <div>
           <div className="flex items-center gap-6 my-8">
             <span className="flex items-center justify-center w-6 h-6 p-4 text-lg bg-red-500 font-medium text-white rounded-full">
               1
@@ -144,7 +144,7 @@ export default function DeliveryInfo({
       )}
 
       {currentStep > 1 && (
-        <div className="w-1/2">
+        <div>
           <div className="flex items-center gap-6 my-8">
             <span className="flex items-center justify-center p-2 text-lg bg-gray-300 font-medium text-white rounded-full">
               <Check className="w-4 h-4" />

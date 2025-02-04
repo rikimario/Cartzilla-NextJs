@@ -59,7 +59,7 @@ export default function Payment({
   };
 
   return (
-    <div className="w-1/2">
+    <div>
       {currentStep !== 3 && (
         <div className="flex items-center gap-6 my-8">
           <span className="flex items-center justify-center w-6 h-6 p-4 text-lg bg-gray-300 font-medium text-white rounded-full">

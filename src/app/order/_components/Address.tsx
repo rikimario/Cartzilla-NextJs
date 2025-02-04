@@ -29,7 +29,6 @@ export default function Address({
   setPostCode,
   city,
   setCity,
-  // displayedAddress,
   setIsNextStepDisabled,
   isNextStepDisabled,
 }: {
@@ -50,7 +49,6 @@ export default function Address({
   setPhone: (phone: string) => void;
   setPostCode: (postCode: string) => void;
   setCity: (city: string) => void;
-  // displayedAddress: string;
   setIsNextStepDisabled: (isNextStepDisabled: boolean) => void;
   isNextStepDisabled: boolean;
 }) {
@@ -70,7 +68,7 @@ export default function Address({
     "Yambol",
   ];
   return (
-    <div className="w-1/2">
+    <div>
       {currentStep === 1 && (
         <div className="flex items-center gap-6 my-8">
           <span className="flex items-center justify-center w-6 h-6 p-4 text-lg bg-gray-300 font-medium text-white rounded-full">

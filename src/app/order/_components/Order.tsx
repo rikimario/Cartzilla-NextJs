@@ -72,8 +72,8 @@ export default function Order() {
           comment={comment}
         />
       ) : (
-        <div className="flex justify-between">
-          <div className="w-1/2">
+        <div className="lg:flex lg:justify-between lg:px-0 px-6">
+          <div className="lg:w-1/2">
             <DeliveryInfo
               currentStep={currentStep}
               setCurrentStep={setCurrentStep}

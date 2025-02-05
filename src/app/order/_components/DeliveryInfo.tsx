@@ -82,9 +82,11 @@ export default function DeliveryInfo({
             <span className="flex items-center justify-center w-6 h-6 p-4 text-lg bg-red-500 font-medium text-white rounded-full">
               1
             </span>
-            <h2 className="text-2xl font-medium">Delivery Information</h2>
+            <h2 className="text-xl md:text-2xl font-medium">
+              Delivery Information
+            </h2>
           </div>
-          <p className="text-gray-700 font-semibold text-lg ml-14 mb-5">
+          <p className="text-gray-700 font-semibold md:text-lg md:ml-14 mb-5">
             Choose shipping day and time
           </p>
           <div className="border-t border-gray-200 pt-8">
@@ -123,8 +125,8 @@ export default function DeliveryInfo({
                     </div>
                   ))}
                 </CarouselContent>
-                <CarouselPrevious />
-                <CarouselNext />
+                <CarouselPrevious className="ml-6" />
+                <CarouselNext className="mr-6" />
               </Carousel>
             </div>
 
@@ -150,7 +152,9 @@ export default function DeliveryInfo({
               <Check className="w-4 h-4" />
             </span>
             <div className="flex items-center justify-between w-full">
-              <h2 className="text-2xl font-medium">Delivery Information</h2>
+              <h2 className="md:text-2xl md:font-medium font-semibold">
+                Delivery Information
+              </h2>
               <button
                 onClick={() => setCurrentStep(1)}
                 className="text-gray-700 dark:text-gray-200 dark:hover:text-white hover:text-gray-600 font-medium underline underline-offset-4 hover:no-underline cursor-pointer"

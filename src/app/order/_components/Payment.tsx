@@ -78,7 +78,7 @@ export default function Payment({
             <h2 className="text-2xl font-medium">Payment</h2>
           </div>
 
-          <div className="w-full ml-14 mb-5">
+          <div className="w-full pl-14 mb-5">
             <Accordion type="single" collapsible>
               <RadioGroup
                 defaultValue={paymentMethod}
@@ -118,6 +118,7 @@ export default function Payment({
                       </Label>
                       {cards.map((card, index) => (
                         <Image
+                          className="hidden md:block"
                           key={index}
                           src={card}
                           alt="card"
@@ -127,7 +128,7 @@ export default function Payment({
                       ))}
                     </div>
                   </AccordionTrigger>
-                  <AccordionContent className="space-y-4 p-4">
+                  <AccordionContent className="space-y-4 py-4 pl-4">
                     <div className="relative">
                       <Input
                         type="text"
@@ -141,9 +142,9 @@ export default function Payment({
                         maxLength={19}
                         className="h-14 text-lg text-gray-500"
                       />
-                      <CreditCard className="absolute top-4 right-4 text-gray-400" />
+                      <CreditCard className="absolute hidden md:block top-4 right-4 text-gray-400" />
                     </div>
-                    <div className="flex gap-2">
+                    <div className="md:flex gap-4 space-y-4 md:space-y-0">
                       <Input
                         type="text"
                         placeholder="MM/YY"
@@ -213,7 +214,7 @@ export default function Payment({
               onChange={(e) => setComment(e.target.value)}
             />
           </div>
-          <div className="mt-8 ml-14 w-full">
+          <div className="mt-8 w-full">
             <Button
               className="w-full flex items-center gap-1 bg-[#F55266] hover:bg-[#F2223B] text-lg"
               type="button"

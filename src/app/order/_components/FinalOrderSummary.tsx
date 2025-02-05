@@ -24,7 +24,7 @@ export default function FinalOrderSummary({
   totalQuantity: number;
 }) {
   return (
-    <div className="w-1/2 lg:w-1/3 mt-6 lg:mt-0 max-h-[26rem] bg-gray-100 rounded-lg p-4 md:p-8 dark:bg-[#222934]">
+    <div className="lg:w-1/3 mt-6 lg:mt-0 max-h-[26rem] bg-gray-100 rounded-lg p-4 md:p-8 dark:bg-[#222934]">
       <div className="flex items-start justify-between">
         <h1 className="text-2xl font-semibold text-gray-900 mb-10 dark:text-white">
           Order Summary
@@ -52,7 +52,7 @@ export default function FinalOrderSummary({
             </div>
           ))}
           {product.length > 3 && (
-            <div className="flex items-center justify-center text-xl h-20 w-20 ml-8 bg-gray-200 dark:bg-gray-600 rounded-lg">
+            <div className="hidden md:flex items-center justify-center text-xl h-20 w-20 ml-8 bg-gray-200 dark:bg-gray-600 rounded-lg">
               +{product.length - 3}
             </div>
           )}
@@ -62,7 +62,7 @@ export default function FinalOrderSummary({
             <ChevronRight strokeWidth={1} className="cursor-pointer" />
           </SheetTrigger>
           <SheetDescription className="hidden"></SheetDescription>
-          <SheetContent>
+          <SheetContent className="dark:bg-[#181D25] dark:text-[white]">
             <ScrollArea className="h-full py-4">
               <SheetTitle className="text-2xl font-semibold text-gray-900 mb-10 dark:text-white">
                 Your Order

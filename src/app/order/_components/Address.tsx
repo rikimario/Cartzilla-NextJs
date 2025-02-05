@@ -86,7 +86,7 @@ export default function Address({
             </span>
             <h2 className="text-2xl font-medium">Shipping Address</h2>
           </div>
-          <ul className="grid grid-cols-2 gap-4 w-full ml-14 mb-5">
+          <ul className="md:grid md:grid-cols-2 md:gap-4 md:space-y-0 space-y-4 w-full mb-5">
             <li className="w-full space-y-2">
               <Label>
                 First Name <span className="text-red-500">*</span>
@@ -181,7 +181,7 @@ export default function Address({
             </li>
           </ul>
 
-          <div className="mt-8 ml-14 w-full">
+          <div className="mt-8 w-full">
             <Button
               className="w-full flex items-center gap-1 bg-[#F55266] hover:bg-[#F2223B] text-lg"
               type="button"
@@ -211,7 +211,9 @@ export default function Address({
               <Check className="w-4 h-4" />
             </span>
             <div className="flex items-center justify-between w-full">
-              <h2 className="text-2xl font-medium">Shipping Address</h2>
+              <h2 className="md:text-2xl md:font-medium font-semibold">
+                Shipping Address
+              </h2>
               <button
                 onClick={() => setCurrentStep(2)}
                 className="text-gray-700 dark:text-gray-200 dark:hover:text-white hover:text-gray-600 font-medium underline underline-offset-4 hover:no-underline cursor-pointer"

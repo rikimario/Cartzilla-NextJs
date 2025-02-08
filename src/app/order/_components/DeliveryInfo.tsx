@@ -86,7 +86,7 @@ export default function DeliveryInfo({
               Delivery Information
             </h2>
           </div>
-          <p className="text-gray-700 font-semibold md:text-lg md:ml-14 mb-5">
+          <p className="text-gray-700 dark:text-gray-400 font-semibold md:text-lg md:ml-14 mb-5">
             Choose shipping day and time
           </p>
           <div className="border-t border-gray-200 pt-8">
@@ -105,9 +105,9 @@ export default function DeliveryInfo({
                       <div className="flex flex-col gap-1 items-start">
                         {option.times.map((time, timeIndex) => (
                           <Button
-                            className={`my-1 rounded-full text-gray-700 ${
+                            className={`my-1 rounded-full text-gray-700 bg-inherit dark:text-gray-400 ${
                               selectedTime === `${option.date} | ${time}`
-                                ? "border-gray-950"
+                                ? "border-gray-950 dark:border-white"
                                 : ""
                             }`}
                             variant="outline"
@@ -125,14 +125,14 @@ export default function DeliveryInfo({
                     </div>
                   ))}
                 </CarouselContent>
-                <CarouselPrevious className="ml-6" />
-                <CarouselNext className="mr-6" />
+                <CarouselPrevious className="ml-6 dark:bg-inherit" />
+                <CarouselNext className="mr-6 dark:bg-inherit" />
               </Carousel>
             </div>
 
             <div className="mt-8">
               <Button
-                className="w-full flex items-center gap-1 bg-[#F55266] hover:bg-[#F2223B] text-lg"
+                className="w-full dark:text-white flex items-center gap-1 bg-[#F55266] hover:bg-[#F2223B] text-lg"
                 type="button"
                 onClick={handleNextStep}
                 disabled={isNextStepDisabled}
@@ -148,7 +148,7 @@ export default function DeliveryInfo({
       {currentStep > 1 && (
         <div>
           <div className="flex items-center gap-6 my-8">
-            <span className="flex items-center justify-center p-2 text-lg bg-gray-300 font-medium text-white rounded-full">
+            <span className="flex items-center justify-center p-2 text-lg bg-gray-300 dark:bg-gray-600 font-medium text-white rounded-full">
               <Check className="w-4 h-4" />
             </span>
             <div className="flex items-center justify-between w-full">
@@ -163,7 +163,7 @@ export default function DeliveryInfo({
               </button>
             </div>
           </div>
-          <p className="text-gray-700 font-semibold text-lg ml-14 mb-3">
+          <p className="text-gray-700 dark:text-gray-400 font-semibold text-lg ml-14 mb-3">
             Estimated delivery date
           </p>
           <p className="text-gray-500 ml-14 mb-5">{displayedDeliveryInfo}</p>

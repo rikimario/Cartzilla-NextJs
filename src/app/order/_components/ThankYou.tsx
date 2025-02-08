@@ -42,15 +42,17 @@ export default function ThankYou({
         <div className="space-y-4 border-t border-gray-200 pt-4">
           <div className="space-y-2">
             <h2 className="text-lg font-semibold">Delivery</h2>
-            <p className="text-gray-500">{`${address}, ${city} ${postCode}`}</p>
+            <p className="text-gray-500 dark:text-gray-400">{`${address}, ${city} ${postCode}`}</p>
           </div>
           <div className="space-y-2">
             <h2 className="text-lg font-semibold">Time</h2>
-            <p className="text-gray-500">{displayedDeliveryInfo}</p>
+            <p className="text-gray-500 dark:text-gray-400">
+              {displayedDeliveryInfo}
+            </p>
           </div>
           <div className="space-y-2">
             <h2 className="text-lg font-semibold">Payment</h2>
-            <p className="text-gray-500">
+            <p className="text-gray-500 dark:text-gray-400">
               {/\d/.test(paymentMethod)
                 ? `Card: **** **** **** ${paymentMethod.slice(-4)}`
                 : paymentMethod}
@@ -59,28 +61,28 @@ export default function ThankYou({
           {comment === "" ? null : (
             <div className="space-y-2">
               <h2 className="text-lg font-semibold">Comment</h2>
-              <p className="text-gray-500">{comment}</p>
+              <p className="text-gray-500 dark:text-gray-400">{comment}</p>
             </div>
           )}
         </div>
       </div>
 
-      <div className="lg:w-1/2 bg-emerald-100 text-center space-y-3 px-6 py-24 rounded-lg">
+      <div className="lg:w-1/2 bg-emerald-100 dark:bg-emerald-950 text-center space-y-3 px-6 py-24 rounded-lg">
         <h2 className="text-2xl font-semibold">
           🎉 Congratulations! 30% off your new purchase!
         </h2>
-        <p className="text-gray-500">
+        <p className="text-gray-500 dark:text-gray-400">
           Use your cupon now or look for it in your personal account.
         </p>
 
         <div className="flex flex-col lg:flex-row items-center justify-between lg:px-16 py-4 gap-4">
           <input
             type="text"
-            className="w-full p-2 text-gray-500 bg-white border border-gray-300 rounded-xl"
+            className="w-full p-2 text-gray-500 dark:text-gray-400 dark:bg-inherit bg-white border border-gray-300 rounded-xl"
             value="30%SALLOFF"
             readOnly={true}
           />
-          <Button className="dark:text-gray-200 dark:hover:text-white font-medium w-full">
+          <Button className="dark:text-gray-900 font-medium w-full">
             Copy cupon
           </Button>
         </div>

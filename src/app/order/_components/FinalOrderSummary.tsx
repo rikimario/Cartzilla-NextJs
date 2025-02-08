@@ -4,7 +4,6 @@ import {
   Sheet,
   SheetContent,
   SheetDescription,
-  SheetFooter,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
@@ -75,7 +74,7 @@ export default function FinalOrderSummary({
                   <div className="flex items-center">
                     <Link href={`/categories/${item.product_id}`}>
                       <Image
-                        className="w-30 h-30 object-cover"
+                        className="max-w-32 max-h-32 object-cover"
                         width={150}
                         height={150}
                         src={item.thumbnail}
@@ -99,7 +98,7 @@ export default function FinalOrderSummary({
               <Link href="/cart">
                 <Button
                   variant="outline"
-                  className="absolute bottom-0 w-full text-lg text-gray-500"
+                  className="absolute bottom-0 w-full text-lg text-gray-500 bg-inherit"
                 >
                   Edit cart
                 </Button>

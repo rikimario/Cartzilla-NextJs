@@ -71,7 +71,7 @@ export default function Address({
     <div>
       {currentStep === 1 && (
         <div className="flex items-center gap-6 my-8">
-          <span className="flex items-center justify-center w-6 h-6 p-4 text-lg bg-gray-300 font-medium text-white rounded-full">
+          <span className="flex items-center justify-center w-6 h-6 p-4 text-lg bg-gray-300 dark:bg-gray-600 font-medium text-white rounded-full">
             2
           </span>
           <h2 className="text-2xl font-medium">Shipping Address</h2>
@@ -92,7 +92,7 @@ export default function Address({
                 First Name <span className="text-red-500">*</span>
               </Label>
               <Input
-                className="h-14 text-lg text-gray-500"
+                className="h-14 text-lg text-gray-500 bg-inherit"
                 type="text"
                 value={firstName}
                 onChange={(event) => setFirstName(event.target.value)}
@@ -103,7 +103,7 @@ export default function Address({
                 Last Name <span className="text-red-500">*</span>
               </Label>
               <Input
-                className="h-14 text-lg text-gray-500"
+                className="h-14 text-lg text-gray-500 bg-inherit"
                 type="text"
                 value={lastName}
                 onChange={(event) => setLastName(event.target.value)}
@@ -114,7 +114,7 @@ export default function Address({
                 Email address <span className="text-red-500">*</span>
               </Label>
               <Input
-                className="h-14 text-lg text-gray-500"
+                className="h-14 text-lg text-gray-500 bg-inherit"
                 type="email"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
@@ -125,7 +125,7 @@ export default function Address({
                 Phone number <span className="text-red-500">*</span>
               </Label>
               <Input
-                className="h-14 text-lg text-gray-500"
+                className="h-14 text-lg text-gray-500 bg-inherit"
                 type="text"
                 value={phone}
                 onChange={(event) => setPhone(event.target.value)}
@@ -142,7 +142,7 @@ export default function Address({
                   setIsNextStepDisabled(false);
                 }}
               >
-                <SelectTrigger className="w-full h-14 text-lg text-gray-500">
+                <SelectTrigger className="w-full h-14 text-lg text-gray-500 bg-inherit">
                   <SelectValue placeholder="Select your city" />
                 </SelectTrigger>
                 <SelectContent>
@@ -161,7 +161,7 @@ export default function Address({
                 Postcode <span className="text-red-500">*</span>
               </Label>
               <Input
-                className="h-14 text-lg text-gray-500"
+                className="h-14 text-lg text-gray-500 bg-inherit"
                 type="text"
                 value={postCode}
                 onChange={(event) => setPostCode(event.target.value)}
@@ -173,7 +173,7 @@ export default function Address({
                 <span className="text-red-500">*</span>
               </Label>
               <Input
-                className="h-14 text-lg text-gray-500"
+                className="h-14 text-lg text-gray-500 bg-inherit"
                 type="text"
                 value={address}
                 onChange={(event) => setAddress(event.target.value)}
@@ -183,7 +183,7 @@ export default function Address({
 
           <div className="mt-8 w-full">
             <Button
-              className="w-full flex items-center gap-1 bg-[#F55266] hover:bg-[#F2223B] text-lg"
+              className="w-full flex items-center dark:text-white gap-1 bg-[#F55266] hover:bg-[#F2223B] text-lg"
               type="button"
               onClick={handleNextStep}
               disabled={
@@ -207,7 +207,7 @@ export default function Address({
       {currentStep > 2 && (
         <>
           <div className="flex items-center gap-6 my-8">
-            <span className="flex items-center justify-center p-2 text-lg bg-gray-300 font-medium text-white rounded-full">
+            <span className="flex items-center justify-center p-2 text-lg bg-gray-300 dark:bg-gray-600 font-medium text-white rounded-full">
               <Check className="w-4 h-4" />
             </span>
             <div className="flex items-center justify-between w-full">
@@ -222,7 +222,7 @@ export default function Address({
               </button>
             </div>
           </div>
-          <div className="text-gray-500 ml-14 mb-5 space-y-2">
+          <div className="text-gray-500 dark:text-gray-400 ml-14 mb-5 space-y-2">
             <p>
               {firstName} {lastName}
             </p>

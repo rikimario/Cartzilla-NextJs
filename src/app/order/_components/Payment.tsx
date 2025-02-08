@@ -62,7 +62,7 @@ export default function Payment({
     <div>
       {currentStep !== 3 && (
         <div className="flex items-center gap-6 my-8">
-          <span className="flex items-center justify-center w-6 h-6 p-4 text-lg bg-gray-300 font-medium text-white rounded-full">
+          <span className="flex items-center justify-center w-6 h-6 p-4 text-lg bg-gray-300 dark:bg-gray-600 font-medium text-white rounded-full">
             3
           </span>
           <h2 className="text-2xl font-medium">Payment</h2>
@@ -140,7 +140,7 @@ export default function Payment({
                           setIsNextStepDisabled(e.target.value.length < 19);
                         }}
                         maxLength={19}
-                        className="h-14 text-lg text-gray-500"
+                        className="h-14 text-lg text-gray-500 dark:text-gray-300 bg-inherit"
                       />
                       <CreditCard className="absolute hidden md:block top-4 right-4 text-gray-400" />
                     </div>
@@ -154,7 +154,7 @@ export default function Payment({
                           setIsNextStepDisabled(e.target.value.length < 5);
                         }}
                         maxLength={5}
-                        className="h-14 text-lg text-gray-500"
+                        className="h-14 text-lg text-gray-500 dark:text-gray-300 bg-inherit"
                       />
                       <Input
                         type="text"
@@ -165,7 +165,7 @@ export default function Payment({
                           setIsNextStepDisabled(e.target.value.length < 3);
                         }}
                         maxLength={3}
-                        className="h-14 text-lg text-gray-500"
+                        className="h-14 text-lg text-gray-500 dark:text-gray-300 bg-inherit"
                       />
                     </div>
                   </AccordionContent>
@@ -208,7 +208,7 @@ export default function Payment({
             </Accordion>
 
             <textarea
-              className="my-6 text-lg w-full min-h-32 border border-gray-300 rounded-lg p-4"
+              className="my-6 text-lg w-full min-h-32 border border-gray-300 dark:text-gray-300 bg-inherit rounded-lg p-4"
               placeholder="Additional comments"
               value={comment}
               onChange={(e) => setComment(e.target.value)}
@@ -216,7 +216,7 @@ export default function Payment({
           </div>
           <div className="mt-8 w-full">
             <Button
-              className="w-full flex items-center gap-1 bg-[#F55266] hover:bg-[#F2223B] text-lg"
+              className="w-full flex items-center dark:text-white gap-1 bg-[#F55266] hover:bg-[#F2223B] text-lg"
               type="button"
               onClick={handleNextStep}
               disabled={isNextStepDisabled || !paymentMethod}

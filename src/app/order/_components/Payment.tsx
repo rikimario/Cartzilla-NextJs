@@ -25,6 +25,7 @@ export default function Payment({
   setIsNextStepDisabled,
   isNextStepDisabled,
   total,
+  handleCheckout,
 }: {
   currentStep: number;
   handleNextStep: () => void;
@@ -35,6 +36,7 @@ export default function Payment({
   setIsNextStepDisabled: (isNextStepDisabled: boolean) => void;
   isNextStepDisabled: boolean;
   total: () => number;
+  handleCheckout: () => void;
 }) {
   const [cardNumber, setCardNumber] = useState<string>("");
   const [expiryDate, setExpiryDate] = useState<string>("");
@@ -218,7 +220,7 @@ export default function Payment({
             <Button
               className="w-full flex items-center dark:text-white gap-1 bg-[#F55266] hover:bg-[#F2223B] text-lg"
               type="button"
-              onClick={handleNextStep}
+              onClick={handleCheckout}
               disabled={isNextStepDisabled || !paymentMethod}
             >
               Pay ${total() + 16.5}

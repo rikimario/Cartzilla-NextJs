@@ -8,6 +8,7 @@ import { Product } from "@/lib/types";
 import { createClient } from "../../../../utils/supabase/client";
 import ThankYou from "./ThankYou";
 import FinalOrderSummary from "./FinalOrderSummary";
+import { getUser } from "../../../../utils/supabase/actions";
 
 export default function Order() {
   const [product, setProduct] = useState<Product[]>([]);
@@ -24,11 +25,16 @@ export default function Order() {
   const [postCode, setPostCode] = useState("");
   const [city, setCity] = useState("");
   const [comment, setComment] = useState("");
+  const [orderId, setOrderId] = useState(0);
 
   const handleNextStep = () => {
     setCurrentStep(currentStep + 1);
     setDisplayedDeliveryInfo(deliveryInfo);
   };
+
+  useEffect(() => {
+    setOrderId(Math.floor(Math.random() * 100000));
+  }, []);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -60,8 +66,50 @@ export default function Order() {
     }, 0);
   };
 
+  const handleCheckout = async () => {
+    const user = await getUser();
+    const supabase = await createClient();
+
+    if (!user) {
+      console.log("User is not logged in");
+      return;
+    }
+
+    const orderData = {
+      user_id: user.id,
+      products: JSON.stringify(
+        product.map((item) => ({
+          product_id: item.product_id,
+          title: item.title,
+          price: item.price,
+          thumbnail: item.thumbnail,
+          size: item.size,
+          quantity: item.quantity,
+        }))
+      ),
+      order_id: orderId,
+      delivery_date: deliveryInfo,
+      address: address,
+      city: city,
+      quantity: totalQuantity,
+      payment_method: paymentMethod,
+      order_total: getTotal(),
+      created_at: new Date(),
+    };
+
+    const { error } = await supabase.from("orders").insert([orderData]);
+
+    handleNextStep();
+
+    if (error) {
+      console.log(error);
+
+      throw new Error("Failed");
+    }
+  };
+
   return (
-    <div>
+    <>
       {currentStep > 3 ? (
         <ThankYou
           address={address}
@@ -70,6 +118,7 @@ export default function Order() {
           displayedDeliveryInfo={displayedDeliveryInfo}
           paymentMethod={paymentMethod}
           comment={comment}
+          orderId={orderId}
         />
       ) : (
         <div className="lg:flex lg:justify-between lg:px-0 px-6">
@@ -107,6 +156,7 @@ export default function Order() {
             />
 
             <Payment
+              handleCheckout={handleCheckout}
               total={getTotal}
               currentStep={currentStep}
               handleNextStep={handleNextStep}
@@ -125,6 +175,6 @@ export default function Order() {
           />
         </div>
       )}
-    </div>
+    </>
   );
 }

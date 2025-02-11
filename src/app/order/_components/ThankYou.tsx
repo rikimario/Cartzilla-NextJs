@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
-import React from "react";
 
 export default function ThankYou({
   address,
@@ -9,6 +8,7 @@ export default function ThankYou({
   displayedDeliveryInfo,
   paymentMethod,
   comment,
+  orderId,
 }: {
   address: string;
   city: string;
@@ -16,6 +16,7 @@ export default function ThankYou({
   displayedDeliveryInfo: string;
   paymentMethod: string;
   comment: string;
+  orderId: number;
 }) {
   return (
     <div className="lg:flex items-center justify-between gap-10 lg:gap-16 space-y-8 lg:space-y-0 px-2 lg:px-0">
@@ -26,9 +27,7 @@ export default function ThankYou({
           </span>
           <div className="md:flex items-center justify-between w-full space-y-4">
             <div>
-              <p className="text-gray-500">
-                Order #{Math.floor(Math.random() * 1000000)}
-              </p>
+              <p className="text-gray-500">Order #{orderId}</p>
               <h2 className="lg:text-3xl text-xl md:font-medium font-semibold">
                 Thank you for your order!
               </h2>

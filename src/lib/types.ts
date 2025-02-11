@@ -35,3 +35,24 @@ export type Tab = {
   component: React.JSX.Element;
   icon?: React.JSX.Element;
 };
+
+export type Orders = {
+  order_id: number;
+  quantity: string;
+  order_total: number;
+  delivery_date: string;
+  address: string;
+  city: string;
+  payment_method: string;
+  created_at: string;
+  products: [
+    {
+      product_id: number;
+      title: string;
+      price: number;
+      thumbnail: string;
+      size: string;
+      quantity: number;
+    }
+  ];
+};

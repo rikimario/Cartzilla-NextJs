@@ -33,7 +33,7 @@ export default function Order() {
   };
 
   useEffect(() => {
-    setOrderId(Math.floor(Math.random() * 100000));
+    setOrderId(Math.floor(Math.random() * 10000000));
   }, []);
 
   useEffect(() => {

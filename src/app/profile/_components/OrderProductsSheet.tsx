@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Sheet,
@@ -44,7 +45,7 @@ export default function OrderProductsSheet({ order }: { order: Orders }) {
             <SheetTitle className="text-xl">
               Order # {order.order_id}
             </SheetTitle>
-            <div className="mt-12">
+            <div className="my-12">
               {order.products.map((product, index) => (
                 <div className="flex" key={index}>
                   <Image
@@ -112,6 +113,12 @@ export default function OrderProductsSheet({ order }: { order: Orders }) {
                 </span>
               </div>
             </div>
+            <Button
+              variant="outline"
+              className="absolute bottom-0 w-full text-lg text-gray-700 bg-gray-200"
+            >
+              Change the delivery time
+            </Button>
           </ScrollArea>
         </SheetContent>
       </Sheet>

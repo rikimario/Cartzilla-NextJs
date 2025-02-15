@@ -73,7 +73,7 @@ export default function WishlistContent() {
 
   return (
     <div className="p-2 dark:text-white">
-      <h1 className="text-4xl font-bold text-gray-700 mb-4 pb-2 border-b-[1px] dark:text-white">
+      <h1 className="text-4xl font-bold text-gray-700 mb-4 pb-2 dark:text-white">
         Wishlist
       </h1>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">

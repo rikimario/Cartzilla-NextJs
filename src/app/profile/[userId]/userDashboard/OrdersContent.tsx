@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { createClient } from "../../../../../utils/supabase/client";
 import { Orders } from "@/lib/types";
-import Image from "next/image";
+import OrderProductsSheet from "../../_components/OrderProductsSheet";
 
 export default function OrdersContent() {
   const [orders, setOrders] = useState<Orders[]>([]);
@@ -28,55 +28,42 @@ export default function OrdersContent() {
             : order.products || [],
       }));
 
-      setOrders(formattedOrders ?? []);
+      setOrders(formattedOrders.reverse() ?? []);
     };
     fetchOrders();
   }, []);
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">Your Orders</h2>
+      <h1 className="text-4xl font-bold text-gray-700 mb-8 pb-2 dark:text-white">
+        Orders
+      </h1>
+      <div className="flex text-gray-500 pb-4 border-b border-gray-200 dark:border-gray-600">
+        <span className="w-52">Order #</span>
+        <span className="w-52">Order date</span>
+        <span className="w-52">Total</span>
+      </div>
       {orders.length === 0 ? (
         <p>No orders found.</p>
       ) : (
         orders.map((order, index) => (
-          <div key={index} className="border p-4 mb-4 rounded-lg shadow">
-            <h3 className="font-semibold text-lg">
-              Order #{order.order_id} -{" "}
-              {new Date(order.created_at).toLocaleDateString()}
-            </h3>
-            <p>
-              <strong>Delivery Info:</strong> {order.delivery_date}
-            </p>
-            <p>
-              <strong>Address:</strong> {order.address}, {order.city}
-            </p>
-            <p>
-              <strong>Payment Method:</strong> {order.payment_method}
-            </p>
-            <p>{order.order_total}</p>
+          <div
+            key={index}
+            className="flex items-center justify-between py-4 border-b border-gray-200 dark:border-gray-600"
+          >
+            <div className="flex">
+              <h3 className="w-52">{order.order_id}</h3>
+              <p className="w-52">
+                {new Date(order.created_at).toLocaleDateString("en-US", {
+                  month: "short",
+                  day: "numeric",
+                  year: "numeric",
+                })}
+              </p>
+              <p>${order.order_total.toFixed(2)}</p>
+            </div>
 
-            <h4 className="mt-2 font-medium">Products:</h4>
-            <ul className="ml-4 list-disc">
-              {order.products.map((product, index) => (
-                <li key={index}>
-                  <div className="flex items-center">
-                    <Image
-                      src={product.thumbnail}
-                      alt={product.title}
-                      width={50}
-                      height={50}
-                      className="w-12 h-12 object-cover mr-2"
-                    />
-                    <div>
-                      <p>{product.title}</p>
-                      <p>${product.price}</p>
-                      <p>Qty:{product.quantity}</p>
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ul>
+            <OrderProductsSheet order={order} />
           </div>
         ))
       )}

@@ -120,7 +120,7 @@ export default function FinalOrderSummary({
       <div className="flex items-center justify-between text-gray-600 dark:text-gray-400 py-6">
         <p>Estimated total:</p>
         <p className="text-gray-900 text-2xl font-semibold dark:text-white">
-          ${total() + 16.5}
+          ${(total() + 16.5).toFixed(2)}
         </p>
       </div>
     </div>

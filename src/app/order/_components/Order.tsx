@@ -106,6 +106,37 @@ export default function Order() {
 
       throw new Error("Failed");
     }
+
+    const handleRemove = async () => {
+      const supabase = await createClient();
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+
+      if (!user) {
+        throw new Error("User not authenticated");
+      }
+
+      try {
+        const { error } = await supabase
+          .from("cart")
+          .delete()
+          .eq("user_id", user?.id);
+
+        if (error && error.code !== "PGRST116") throw error;
+
+        const { data: updatedFavorites, error: fetchError } = await supabase
+          .from("cart")
+          .select("*");
+
+        if (fetchError) throw fetchError;
+
+        setProduct(updatedFavorites);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    handleRemove();
   };
 
   return (

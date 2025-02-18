@@ -1,22 +1,34 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { createClient } from "../../../../../utils/supabase/client";
 import { Orders } from "@/lib/types";
 import OrderProductsSheet from "../../_components/OrderProductsSheet";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationPrevious,
+  PaginationNext,
+  PaginationLink,
+} from "@/components/ui/pagination";
+
+const ITEMS_PER_PAGE = 4;
 
 export default function OrdersContent() {
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const router = useRouter();
+  const currentPage = parseInt(searchParams.get("page") || "1");
   const [orders, setOrders] = useState<Orders[]>([]);
 
   useEffect(() => {
     const fetchOrders = async () => {
       const supabase = await createClient();
-
       const { data: ordersData, error } = await supabase
         .from("orders")
         .select("*");
-
-      console.log("Raw order data:", ordersData);
 
       if (error) throw error;
 
@@ -33,6 +45,18 @@ export default function OrdersContent() {
     fetchOrders();
   }, []);
 
+  const totalPages = Math.ceil(orders.length / ITEMS_PER_PAGE);
+  const paginatedOrders = orders.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
+  );
+
+  const handlePageChange = (newPage: number) => {
+    const params = new URLSearchParams(searchParams);
+    params.set("page", newPage.toString());
+    router.push(`${pathname}?${params.toString()}`);
+  };
+
   return (
     <div className="p-2 md:p-6">
       <h1 className="text-4xl font-bold text-gray-700 mb-8 pb-2 dark:text-white">
@@ -43,10 +67,10 @@ export default function OrdersContent() {
         <span className="hidden md:block xl:w-52 w-44">Order date</span>
         <span className="hidden md:block xl:w-52 w-44">Total</span>
       </div>
-      {orders.length === 0 ? (
+      {paginatedOrders.length === 0 ? (
         <p>No orders found.</p>
       ) : (
-        orders.map((order, index) => (
+        paginatedOrders.map((order, index) => (
           <div
             key={index}
             className="flex items-center justify-between py-4 border-b border-gray-200 dark:border-gray-600"
@@ -62,10 +86,39 @@ export default function OrdersContent() {
               </p>
               <p>${(order.order_total + 16.5).toFixed(2)}</p>
             </div>
-
             <OrderProductsSheet order={order} />
           </div>
         ))
+      )}
+      {totalPages > 1 && (
+        <Pagination className="mt-6">
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationPrevious
+                onClick={() => handlePageChange(Math.max(currentPage - 1, 1))}
+                isActive={currentPage !== 1}
+              />
+            </PaginationItem>
+            {[...Array(totalPages)].map((_, index) => (
+              <PaginationItem key={index}>
+                <PaginationLink
+                  isActive={currentPage === index + 1}
+                  onClick={() => handlePageChange(index + 1)}
+                >
+                  {index + 1}
+                </PaginationLink>
+              </PaginationItem>
+            ))}
+            <PaginationItem>
+              <PaginationNext
+                onClick={() =>
+                  handlePageChange(Math.min(currentPage + 1, totalPages))
+                }
+                isActive={currentPage !== totalPages}
+              />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
       )}
     </div>
   );

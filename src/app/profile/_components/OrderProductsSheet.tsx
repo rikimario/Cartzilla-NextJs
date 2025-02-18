@@ -25,7 +25,7 @@ export default function OrderProductsSheet({ order }: { order: Orders }) {
                     alt={product.title}
                     width={100}
                     height={100}
-                    className="w-20 h-20 object-cover mr-2"
+                    className="md:w-20 md:h-20 object-cover mr-2"
                   />
                 </div>
               </li>
@@ -109,7 +109,7 @@ export default function OrderProductsSheet({ order }: { order: Orders }) {
               <div className="flex justify-between items-center mt-10 ml-6">
                 <h3 className="text-lg text-gray-500">Estimated total:</h3>
                 <span className="text-2xl font-semibold mr-6">
-                  ${order.order_total.toFixed(2)}
+                  ${(order.order_total + 16.5).toFixed(2)}
                 </span>
               </div>
             </div>

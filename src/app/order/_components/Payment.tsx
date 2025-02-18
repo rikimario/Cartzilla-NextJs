@@ -223,7 +223,7 @@ export default function Payment({
               onClick={handleCheckout}
               disabled={isNextStepDisabled || !paymentMethod}
             >
-              Pay ${total() + 16.5}
+              Pay ${(total() + 16.5).toFixed(2)}
             </Button>
           </div>
         </>

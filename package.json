@@ -32,6 +32,7 @@
     "nextjs-toploader": "^3.7.15",
     "react": "^18",
     "react-dom": "^18",
+    "react-hot-toast": "^2.5.2",
     "react-slider": "^2.0.6",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7"

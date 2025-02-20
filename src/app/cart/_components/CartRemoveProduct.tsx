@@ -11,6 +11,7 @@ import { Trash2 } from "lucide-react";
 import React from "react";
 import { createClient } from "../../../../utils/supabase/client";
 import { Product } from "@/lib/types";
+import toast from "react-hot-toast";
 
 export default function CartRemoveProduct({
   product,
@@ -46,6 +47,7 @@ export default function CartRemoveProduct({
       if (fetchError) throw fetchError;
 
       setProduct(updatedFavorites.reverse());
+      toast.success("Item removed from cart");
     } catch (error) {
       console.log(error);
     }

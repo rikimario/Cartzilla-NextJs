@@ -5,6 +5,7 @@ import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
 import NewsLetter from "@/components/newsletter/NewsLetter";
 import NextTopLoader from "nextjs-toploader";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <NextTopLoader />
+        <Toaster position="top-center" />
         <Navbar />
         <div className="dark:bg-[#181D25]">{children}</div>
         <NewsLetter />

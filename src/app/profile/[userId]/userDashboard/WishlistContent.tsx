@@ -16,6 +16,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import toast from "react-hot-toast";
 
 export default function WishlistContent() {
   const [favorites, setFavorites] = useState<
@@ -66,6 +67,7 @@ export default function WishlistContent() {
       if (fetchError) throw fetchError;
 
       setFavorites(updatedFavorites.reverse());
+      toast.success("Item removed from wishlist");
     } catch (error) {
       console.log(error);
     }

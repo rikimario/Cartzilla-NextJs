@@ -10,6 +10,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import toast from "react-hot-toast";
 
 export default function CartRemoveAllProducts({
   setProduct,
@@ -41,6 +42,7 @@ export default function CartRemoveAllProducts({
       if (fetchError) throw fetchError;
 
       setProduct(updatedFavorites);
+      toast.success("All items removed from cart");
     } catch (error) {
       console.log(error);
     }

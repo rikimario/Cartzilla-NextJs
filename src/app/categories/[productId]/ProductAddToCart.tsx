@@ -3,6 +3,7 @@ import { Product } from "@/lib/types";
 import { ShoppingCart } from "lucide-react";
 import { getUser } from "../../../../utils/supabase/actions";
 import { createClient } from "../../../../utils/supabase/client";
+import toast from "react-hot-toast";
 
 export default function ProductAddToCart({
   product,
@@ -23,7 +24,7 @@ export default function ProductAddToCart({
     }
 
     if (product?.size && !size) {
-      console.log("Please select a size");
+      toast.error("Please select a size");
       return;
     }
 
@@ -46,7 +47,7 @@ export default function ProductAddToCart({
 
       throw new Error("Failed to add to cart");
     }
-    console.log("Product added to cart");
+    toast.success("Product added to cart");
   };
 
   return (

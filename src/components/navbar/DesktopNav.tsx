@@ -49,9 +49,11 @@ export default function DesktopNav() {
           </DropdownMenuItem>
           {links.map((link, index) => (
             <DropdownMenuSub key={index}>
-              <DropdownMenuSubTrigger ref={dropdownMenuSubTriggerRef}>
+              <DropdownMenuSubTrigger
+              //  ref={dropdownMenuSubTriggerRef}
+              >
                 <Link href={link.href ?? "/"} onClick={closeDropdown}>
-                  {link.name}
+                  <span>{link.name}</span>
                 </Link>
               </DropdownMenuSubTrigger>
               <DropdownMenuPortal>
@@ -70,29 +72,19 @@ export default function DesktopNav() {
 
       <ul className="flex text-[#E0E5EB] gap-6">
         <li className="hover:bg-gray-700 p-2 rounded-md">
-          <button>
-            <Link href="/best-sellers">Best Sellers</Link>
-          </button>
+          <Link href="/best-sellers">Best Sellers</Link>
         </li>
         <li className="hover:bg-gray-700 p-2 rounded-md">
-          <button>
-            <Link href="/today-deals">Today's Deals</Link>
-          </button>
+          <Link href="/today-deals">Today's Deals</Link>
         </li>
         <li className="hover:bg-gray-700 p-2 rounded-md">
-          <button>
-            <Link href="/new-arrivals">New Arrivals</Link>
-          </button>
+          <Link href="/new-arrivals">New Arrivals</Link>
         </li>
         <li className="hover:bg-gray-700 p-2 rounded-md">
-          <button>
-            <Link href="/about">About</Link>
-          </button>
+          <Link href="/about">About</Link>
         </li>
         <li className="hover:bg-gray-700 p-2 rounded-md">
-          <button>
-            <Link href="/contact">Contact</Link>
-          </button>
+          <Link href="/contact">Contact</Link>
         </li>
       </ul>
 

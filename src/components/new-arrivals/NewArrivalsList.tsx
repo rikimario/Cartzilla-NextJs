@@ -17,13 +17,10 @@ export default function NewArrivalsList() {
   }, []);
 
   return (
-    <div className="md:grid md:grid-cols-2">
+    <div className="md:grid md:grid-cols-2 gap-x-32">
       {products.slice(77, 85).map((item) => (
         <Link key={item.product_id} href={`/categories/${item.product_id}`}>
-          <div
-            className="flex text-center items-center gap-2"
-            key={item.product_id}
-          >
+          <div className="flex text-center items-center" key={item.product_id}>
             <Image
               src={item.thumbnail}
               alt={item.title}

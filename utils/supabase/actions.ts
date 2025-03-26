@@ -108,3 +108,20 @@ export const getProductById = async (id: number) => {
 
   return product[0];
 };
+
+export const searchProducts = async (query: string) => {
+  const supabase = await createClient();
+  const { data: products, error } = await supabase
+    .from("products")
+    .select("*")
+    .textSearch("title, brand, category", query, {
+      type: "websearch",
+      config: "english",
+    });
+
+  // .ilike("title", `%${query}%`);
+
+  if (error) throw error;
+
+  return products;
+};

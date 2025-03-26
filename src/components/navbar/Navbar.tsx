@@ -18,6 +18,7 @@ import { getUser } from "../../../utils/supabase/actions";
 import Image from "next/image";
 import NavFavoriteBtn from "./_components/NavFavoriteBtn";
 import NavShoppingCart from "./_components/NavShoppingCart";
+import Search from "./_components/Search";
 
 export default async function Navbar() {
   const user = await getUser();
@@ -61,22 +62,7 @@ export default async function Navbar() {
         </div>
 
         {/* Search  */}
-        <div className="hidden lg:flex gap-8">
-          <input
-            className="h-10 max-w-96 text-lg overflow-auto bg-[#333e4e] outline-none border-none text-[#E0E5EB] rounded-full pl-4 pr-12"
-            type="text"
-            placeholder="Search"
-          />
-          <div className="flex gap-2 items-center">
-            <div className="bg-[#333D4C] p-3 h-10 w-10 rounded-full flex items-center justify-center">
-              <span className="text-[#F55266]">%</span>
-            </div>
-            <div>
-              <p className="text-gray-400 text-xs">Only this month</p>
-              <h2 className="text-[#E0E5EB]">Super sale 20%</h2>
-            </div>
-          </div>
-        </div>
+        <Search />
 
         <div className="flex items-center gap-2 lg:gap-4 text-[#E0E5EB]">
           <div className="z-50 flex">

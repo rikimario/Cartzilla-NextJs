@@ -114,7 +114,7 @@ export const searchProducts = async (query: string) => {
   const { data: products, error } = await supabase
     .from("products")
     .select("*")
-    .textSearch("title", query, {
+    .textSearch("search_vector", query, {
       type: "websearch",
       config: "english",
     });

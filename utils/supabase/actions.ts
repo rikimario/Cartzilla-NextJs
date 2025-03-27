@@ -114,12 +114,10 @@ export const searchProducts = async (query: string) => {
   const { data: products, error } = await supabase
     .from("products")
     .select("*")
-    .textSearch("title, brand, category", query, {
+    .textSearch("title", query, {
       type: "websearch",
       config: "english",
     });
-
-  // .ilike("title", `%${query}%`);
 
   if (error) throw error;
 

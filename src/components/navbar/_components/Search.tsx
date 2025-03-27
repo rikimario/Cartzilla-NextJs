@@ -26,7 +26,7 @@ export default function Search() {
     <div className="hidden lg:flex gap-8">
       <div className="felx flex-col">
         <input
-          className="h-10 max-w-96 text-lg overflow-auto bg-[#333e4e] outline-none border-none text-[#E0E5EB] rounded-full pl-4 pr-12"
+          className="h-10 min-w-96 text-lg overflow-auto bg-[#333e4e] outline-none border-none text-[#E0E5EB] rounded-full pl-4 pr-12"
           type="text"
           placeholder="Search"
           value={searchQuery}
@@ -36,19 +36,31 @@ export default function Search() {
         <div className="absolute top-16 z-50">
           {searchResults.length > 0 && (
             <ScrollArea className="bg-white rounded-lg">
-              <div className="p-4 w-72 h-96">
+              <div className="p-4 w-72 h-[600px] min-w-96">
                 <h2 className="text-lg font-bold mb-2">Search Results</h2>
                 <ul>
                   {searchResults.map((result) => (
-                    <li key={result.product_id}>
-                      <Link href={`/categories/${result.product_id}`}>
-                        <span>{result.title}</span>
+                    <li
+                      className="border border-gray-100 hover:border-gray-300 p-2 mb-1"
+                      key={result.product_id}
+                    >
+                      <Link
+                        className="flex items-center gap-2"
+                        href={`/categories/${result.product_id}`}
+                      >
                         <Image
+                          className="bg-gray-100"
                           width={100}
                           height={100}
                           src={result.thumbnail}
                           alt={result.title}
                         />
+                        <div className="flex flex-col gap-2">
+                          <span>{result.title}</span>
+                          <span className="text-gray-900 font-semibold">
+                            ${result.price}
+                          </span>
+                        </div>
                       </Link>
                     </li>
                   ))}
@@ -58,7 +70,7 @@ export default function Search() {
           )}
         </div>
       </div>
-      <div className="flex gap-2 items-center">
+      {/* <div className="flex gap-2 items-center">
         <div className="bg-[#333D4C] p-3 h-10 w-10 rounded-full flex items-center justify-center">
           <span className="text-[#F55266]">%</span>
         </div>
@@ -66,7 +78,7 @@ export default function Search() {
           <p className="text-gray-400 text-xs">Only this month</p>
           <h2 className="text-[#E0E5EB]">Super sale 20%</h2>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

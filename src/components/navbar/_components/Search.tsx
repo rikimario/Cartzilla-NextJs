@@ -45,6 +45,7 @@ export default function Search() {
                       key={result.product_id}
                     >
                       <Link
+                        onClick={() => setSearchQuery("")}
                         className="flex items-center gap-2"
                         href={`/categories/${result.product_id}`}
                       >

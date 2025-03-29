@@ -24,8 +24,8 @@ export default async function Navbar() {
   const user = await getUser();
 
   return (
-    <nav>
-      <div className="h-20 px-4 md:px-12 lg:px-0 flex items-center justify-between lg:justify-around bg-[#222934]">
+    <nav className="bg-[#222934]">
+      <div className="h-20 max-w-[83rem] mx-auto flex items-center justify-between bg-[#222934]">
         <div className="flex gap-2 items-center">
           <Sheet>
             <SheetTrigger asChild>

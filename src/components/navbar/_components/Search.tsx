@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Product } from "@/lib/types";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { SearchIcon, X } from "lucide-react";
 
 export default function Search() {
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -23,20 +24,32 @@ export default function Search() {
     fetchSearchResults();
   }, [searchQuery]);
   return (
-    <div className="hidden lg:flex gap-8">
+    <div className="hidden relative lg:flex gap-8">
       <div className="felx flex-col">
         <input
-          className="h-10 min-w-96 text-lg overflow-auto bg-[#333e4e] outline-none border-none text-[#E0E5EB] rounded-full pl-4 pr-12"
+          className="h-10 min-w-96 text-lg overflow-auto border border-white bg-[#333e4e] outline-none text-[#E0E5EB] rounded-full pl-4 pr-12"
           type="text"
           placeholder="Search"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
 
-        <div className="absolute top-16 z-50">
+        {searchQuery.trim() !== "" ? (
+          <X
+            onClick={() => setSearchQuery("")}
+            className="h-8 w-8 absolute top-1 right-4 cursor-pointer text-[#E0E5EB]"
+            strokeWidth={1}
+          />
+        ) : (
+          <SearchIcon
+            className="h-8 w-8 absolute top-1 right-4 cursor-pointer text-[#E0E5EB]"
+            strokeWidth={1}
+          />
+        )}
+        <div className="absolute top-12 z-50">
           {searchResults.length > 0 && (
             <ScrollArea className="bg-white rounded-lg">
-              <div className="p-4 w-72 h-[600px] min-w-96">
+              <div className="p-4 w-72 max-h-[600px] min-w-96">
                 <h2 className="text-lg font-bold mb-2">Search Results</h2>
                 <ul>
                   {searchResults.map((result) => (

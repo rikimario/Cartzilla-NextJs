@@ -87,7 +87,7 @@ export default function Cart() {
   }, []);
 
   return (
-    <div className="py-10 p-4 md:px-12 lg:px-4 xl:px-[7.5rem]">
+    <div className="py-10">
       <h1 className="text-3xl text-gray-900 dark:text-white font-semibold mb-10">
         Shopping Cart
       </h1>

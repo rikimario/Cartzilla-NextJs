@@ -4,8 +4,8 @@ import React from "react";
 
 export default function Philanthropy() {
   return (
-    <div className="p-4 md:flex md:gap-8">
-      <div className="py-8 w-full md:w-1/2 md:py-0 md:px-0">
+    <div className="py-4 md:flex md:gap-8">
+      <div className="py-8 w-full md:w-1/2 md:py-0">
         <Image
           className="rounded-xl h-full w-full object-cover"
           src="/about-video-cover.jpg"

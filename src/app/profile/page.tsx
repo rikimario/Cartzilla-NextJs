@@ -92,7 +92,7 @@ export default function Profile() {
 
   if (!user) return <div>Loading...</div>;
   return (
-    <div className="flex justify-center gap-8 max-w-[89rem] w-full mx-auto py-10 px-2">
+    <div className="flex justify-center gap-8 w-full py-10">
       {/* Profile Dashboard */}
       <ProfileDashBoardBtn />
 

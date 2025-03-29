@@ -19,12 +19,12 @@ export default function Hero() {
     Autoplay({ delay: 3000, stopOnInteraction: true })
   );
   return (
-    <div className="dark:bg-[#181D25] items-center justify-center flex">
+    <div className="items-center justify-center flex">
       <Carousel
         plugins={[plugin.current]}
         opts={{ loop: true }}
         onMouseLeave={plugin.current.reset}
-        className="w-full p-4 md:px-12 lg:px-[5rem] xl:px-[7.5rem]"
+        className="w-full py-4"
       >
         <CarouselContent>
           {heroImages.map((hero) => (

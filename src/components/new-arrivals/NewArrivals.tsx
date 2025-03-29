@@ -7,11 +7,11 @@ import Link from "next/link";
 
 export default function NewArrivals() {
   return (
-    <div className="p-4 w-full dark:bg-[#181D25] lg:px-10">
-      <h1 className="text-2xl lg:pl-[4rem] xl:pl-[6.5rem] text-gray-900 dark:text-white font-semibold pb-6">
+    <div className="py-4 w-full">
+      <h1 className="text-2xl text-gray-900 dark:text-white font-semibold pb-2">
         New Arrivals
       </h1>
-      <div className="lg:flex lg:justify-around items-center">
+      <div className="lg:flex lg:justify-between items-center">
         <div className="relative h-[500px] lg:w-1/3 w-full py-4 px-4 bg-[url('/NewArrivalsBg.jpg')] bg-cover rounded-xl flex flex-col items-center justify-end">
           <div className="text-center flex flex-col items-center gap-4 pb-14">
             <Image

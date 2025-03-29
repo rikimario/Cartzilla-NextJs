@@ -18,7 +18,7 @@ import React from "react";
 
 export default function AboutValues() {
   return (
-    <div className="md:flex md:px-10 xl:px-20 overflow-hidden">
+    <div className="md:flex overflow-hidden">
       <div className="px-4 md:px-0 pt-8 w-full">
         <p className="px-4 pt-4 text-gray-600 dark:text-gray-300">Values</p>
         <h1 className="text-3xl md:text-4xl font-semibold text-gray-900 dark:text-white p-4">

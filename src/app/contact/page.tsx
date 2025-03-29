@@ -13,7 +13,7 @@ import React from "react";
 
 export default function page() {
   return (
-    <div className="py-6 px-4 xl:px-20 2xl:px-[7.8rem] dark:bg-[#181D25]">
+    <div className="py-6">
       <div className="text-center py-6">
         <h1 className="text-3xl lg:text-4xl text-gray-900 dark:text-white font-semibold py-4">
           Contact Us

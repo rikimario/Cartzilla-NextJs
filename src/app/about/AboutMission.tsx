@@ -3,7 +3,7 @@ import React from "react";
 
 export default function AboutMission() {
   return (
-    <div className="lg:px-20 xl:px-36 py-14">
+    <div className="py-14">
       <div
         id="mission"
         className="flex flex-col justify-center items-center py-14 lg:px-20 xl:px-36"

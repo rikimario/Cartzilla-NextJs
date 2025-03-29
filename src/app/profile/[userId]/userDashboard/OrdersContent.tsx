@@ -58,7 +58,7 @@ export default function OrdersContent() {
   };
 
   return (
-    <div className="p-2 md:p-6">
+    <div className="p-2">
       <h1 className="text-4xl font-bold text-gray-700 mb-8 pb-2 dark:text-white">
         Orders
       </h1>

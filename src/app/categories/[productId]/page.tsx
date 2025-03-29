@@ -36,7 +36,7 @@ export default function ProductDetails() {
 
   if (!product) return <div>Loading...</div>;
   return (
-    <div className="p-4 xl:px-[5.4rem] 2xl:px-[7.7rem] dark:bg-[#181D25]">
+    <div className="py-4">
       <div className="lg:flex gap-10 mt-14">
         {/* Mobile Title view */}
         <div className="flex flex-col justify-center items-center">

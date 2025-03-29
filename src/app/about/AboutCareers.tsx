@@ -10,7 +10,7 @@ import React from "react";
 
 export default function AboutCareers() {
   return (
-    <div className="px-4 overflow-hidden">
+    <div className=" overflow-hidden">
       <div className="pt-8 w-full">
         <p className="pt-4 text-gray-600 dark:text-gray-300">Careers</p>
         <h1 className="text-3xl md:text-4xl font-semibold text-gray-900 dark:text-white py-4">

@@ -28,7 +28,7 @@ export default function SpecialOffersList() {
           align: "start",
           loop: true,
         }}
-        className="w-full relative p-4 lg:px-10"
+        className="w-full relative py-4"
       >
         <CarouselContent>
           {products.slice(137, 153).map((item) => (
@@ -43,8 +43,8 @@ export default function SpecialOffersList() {
           ))}
         </CarouselContent>
         <div className="absolute text-gray-900 dark:text-white bottom-[-20px] left-1/2">
-          <CarouselPrevious className="dark:bg-[#181D25]" />
-          <CarouselNext className="dark:bg-[#181D25]" />
+          <CarouselPrevious className="bg-inherit" />
+          <CarouselNext className="bg-inherit" />
         </div>
       </Carousel>
     </>

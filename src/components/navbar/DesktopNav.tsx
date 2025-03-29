@@ -23,7 +23,7 @@ export default function DesktopNav() {
     setOpen(false);
   };
   return (
-    <div className="hidden font-light lg:flex px-4 md:px-12 lg:px-0 justify-around bg-[#222934]">
+    <div className="hidden font-light lg:flex max-w-[83rem] mx-auto justify-between bg-[#222934]">
       <DropdownMenu open={open} onOpenChange={setOpen}>
         <DropdownMenuTrigger className="text-[#E0E5EB] min-w-[15rem] bg-gray-700 py-2 px-4 rounded-md flex justify-between">
           Categories{" "}

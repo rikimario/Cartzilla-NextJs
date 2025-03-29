@@ -21,11 +21,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} dark:bg-[#181D25]`}>
         <NextTopLoader />
         <Toaster position="top-center" />
         <Navbar />
-        <div className="dark:bg-[#181D25]">{children}</div>
+        <div className="dark:bg-[#181D25] max-w-[83rem] mx-auto">
+          {children}
+        </div>
         <NewsLetter />
         <Footer />
       </body>

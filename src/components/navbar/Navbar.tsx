@@ -24,7 +24,7 @@ export default async function Navbar() {
   const user = await getUser();
 
   return (
-    <nav className="bg-[#222934]">
+    <nav className="bg-[#222934] w-full px-4 md:px-0">
       <div className="h-20 max-w-[83rem] mx-auto flex items-center justify-between bg-[#222934]">
         <div className="flex gap-2 items-center">
           <Sheet>

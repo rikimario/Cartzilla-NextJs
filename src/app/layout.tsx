@@ -25,7 +25,7 @@ export default function RootLayout({
         <NextTopLoader />
         <Toaster position="top-center" />
         <Navbar />
-        <div className="dark:bg-[#181D25] max-w-[83rem] mx-auto">
+        <div className="dark:bg-[#181D25] max-w-[83rem] mx-2 md:mx-auto">
           {children}
         </div>
         <NewsLetter />

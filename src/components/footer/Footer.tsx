@@ -12,7 +12,7 @@ import FooterBottom from "./FooterBottom";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#222934] dark:bg-[#181D25] px-4 md:px-0">
+    <footer className="bg-[#222934] dark:bg-[#181D25] px-3 xl:px-0">
       <div className="max-w-[83rem] mx-auto bg-[#222934] dark:bg-[#181D25] text-white">
         <div className="flex gap-2">
           <div className="pt-16 pb-10 flex flex-col gap-4">

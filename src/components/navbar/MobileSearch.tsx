@@ -91,7 +91,7 @@ export default function MobileSearch() {
           </div>
         </div>
       ) : (
-        <button className="" onClick={handleClickSearch}>
+        <button className="p-3" onClick={handleClickSearch}>
           <Search className="h-5 w-5 lg:hidden" strokeWidth={1} />
         </button>
       )}

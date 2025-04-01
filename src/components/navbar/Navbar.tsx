@@ -24,9 +24,9 @@ export default async function Navbar() {
   const user = await getUser();
 
   return (
-    <nav className="bg-[#222934] w-full px-4 md:px-0">
+    <nav className="bg-[#222934] w-full px-3 xl:px-0">
       <div className="h-20 max-w-[83rem] mx-auto flex items-center justify-between bg-[#222934]">
-        <div className="flex gap-2 items-center">
+        <div className="flex gap-2">
           <Sheet>
             <SheetTrigger asChild>
               <button className="lg:hidden text-[#E0E5EB]">
@@ -52,7 +52,7 @@ export default async function Navbar() {
           <Link href="/">
             <div className="flex gap-2 items-center">
               <div className="hidden lg:block">
-                <Image width={40} height={40} src="/logo.svg" alt="" />
+                <Image width={40} height={40} src="/logo.svg" alt="cartzilla" />
               </div>
               <h1 className="text-white font-semibold text-xl leading-loose">
                 Cartzilla

@@ -24,7 +24,7 @@ export default function WeeklySaleBanner() {
           </span>{" "}
           to get the best offer
         </p>
-        <div className="md:absolute right-0 md:right-[-2rem] xl:right-10 bottom-[-2rem]">
+        <div className="md:absolute right-0 md:right-0 xl:right-10 bottom-[-2rem]">
           <Image
             className="w-full md:h-[140px] lg:h-[180px] xl:h-[200px]"
             src="/weekly-sale-cam.png"

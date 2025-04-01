@@ -49,7 +49,7 @@ export default function Search() {
         <div className="absolute top-12 z-50">
           {searchResults.length > 0 && (
             <ScrollArea className="bg-white rounded-lg">
-              <div className="p-4 w-72 max-h-[600px] min-w-96">
+              <div className="p-4 w-72 max-h-[600px] min-w-96 dark:text-gray-900">
                 <h2 className="text-lg font-bold mb-2">Search Results</h2>
                 <ul>
                   {searchResults.map((result) => (

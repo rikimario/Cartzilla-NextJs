@@ -18,10 +18,10 @@ export default function NewArrivalsList() {
 
   return (
     <div className="md:grid md:grid-cols-2 gap-x-32 gap-y-2">
-      {products.slice(77, 85).map((item) => (
+      {products.slice(79, 87).map((item) => (
         <Link key={item.product_id} href={`/categories/${item.product_id}`}>
           <div
-            className="flex text-center items-center hover:outline hover:outline-1 hover:outline-[#e0dcdc]"
+            className="flex text-center items-center hover:outline hover:outline-1 hover:outline-gray-300"
             key={item.product_id}
           >
             <Image

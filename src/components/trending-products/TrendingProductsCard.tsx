@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, CardContent } from "../ui/card";
 import { Heart, Star } from "lucide-react";
 import Link from "next/link";
@@ -12,24 +12,33 @@ export default function TrendingProductsCard({
   product: Product;
 }) {
   const { isFavorite, toggleFavorite } = handleFavoriteBtn({ product });
+  const [isHeartVisible, setIsHeartVisible] = useState(false);
   return (
     <div className="p-1 grid grid-cols-1 grid-rows-1 h-full w-full">
-      <Card className="dark:bg-[#181D25] h-full w-full">
+      <Card
+        className="dark:bg-[#181D25] h-full w-full"
+        onMouseEnter={() => setIsHeartVisible(true)}
+        onMouseLeave={() => setIsHeartVisible(false)}
+      >
         <CardContent className="relative flex flex-col aspect-square items-center justify-center p-2">
-          <div className="absolute top-2 right-4">
-            <button
-              onClick={toggleFavorite}
-              className="bg-gray-100 dark:bg-gray-700 p-1 md:p-2 rounded-lg"
-            >
-              <Heart
-                className={`h-3 w-3 lg:w-5 lg:h-5 ${
-                  isFavorite ? "text-red-500" : "text-gray-900 dark:text-white"
-                } `}
-                strokeWidth={1}
-                fill={isFavorite ? "currentColor" : "none"}
-              />
-            </button>
-          </div>
+          {isHeartVisible && (
+            <div className="absolute top-2 right-4">
+              <button
+                onClick={toggleFavorite}
+                className="bg-gray-100 dark:bg-gray-700 p-1 md:p-2 rounded-lg"
+              >
+                <Heart
+                  className={`h-3 w-3 lg:w-5 lg:h-5 ${
+                    isFavorite
+                      ? "text-red-500"
+                      : "text-gray-900 dark:text-white"
+                  } `}
+                  strokeWidth={1}
+                  fill={isFavorite ? "currentColor" : "none"}
+                />
+              </button>
+            </div>
+          )}
           <Link href={`/categories/${product.product_id}`}>
             <Image
               className="lg:w-[200px] lg:h-[200px]"

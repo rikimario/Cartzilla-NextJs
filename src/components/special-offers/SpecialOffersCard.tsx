@@ -4,26 +4,34 @@ import Link from "next/link";
 import Image from "next/image";
 import { handleFavoriteBtn } from "@/app/utils/handleFavoriteBtn";
 import { Product } from "@/lib/types";
+import { useState } from "react";
 
 export default function SpecialOffersCard({ product }: { product: Product }) {
   const { isFavorite, toggleFavorite } = handleFavoriteBtn({ product });
+  const [isHeartVisible, setIsHeartVisible] = useState(false);
   return (
-    <Card className="h-full dark:bg-[#181D25]">
+    <Card
+      onMouseEnter={() => setIsHeartVisible(true)}
+      onMouseLeave={() => setIsHeartVisible(false)}
+      className="h-full dark:bg-[#181D25]"
+    >
       <CardContent className="relative flex flex-col aspect-square items-center justify-center p-2">
-        <div className="absolute top-2 right-4">
-          <button
-            onClick={toggleFavorite}
-            className="bg-gray-100 dark:bg-gray-700 p-2 rounded-lg"
-          >
-            <Heart
-              className={`h-3 w-3 lg:w-5 lg:h-5 ${
-                isFavorite ? "text-red-500" : "text-gray-900 dark:text-white"
-              } `}
-              strokeWidth={1}
-              fill={isFavorite ? "currentColor" : "none"}
-            />
-          </button>
-        </div>
+        {isHeartVisible && (
+          <div className="absolute top-2 right-4">
+            <button
+              onClick={toggleFavorite}
+              className="bg-gray-100 dark:bg-gray-700 p-2 rounded-lg"
+            >
+              <Heart
+                className={`h-3 w-3 lg:w-5 lg:h-5 ${
+                  isFavorite ? "text-red-500" : "text-gray-900 dark:text-white"
+                } `}
+                strokeWidth={1}
+                fill={isFavorite ? "currentColor" : "none"}
+              />
+            </button>
+          </div>
+        )}
         <Link href={`/categories/${product.product_id}`}>
           <Image
             className="lg:w-[200px] lg:h-[200px]"

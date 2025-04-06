@@ -85,7 +85,7 @@ export default function page() {
     });
   };
   return (
-    <div className="p-4 xl:px-[5.4rem] 2xl:px-[7.7rem] dark:bg-[#181D25]">
+    <div className="py-4 dark:bg-[#181D25]">
       <h1 className="text-4xl font-semibold mt-10">Electronics</h1>
 
       <SortProductsBtn

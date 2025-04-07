@@ -10,10 +10,67 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { PenLine, Star } from "lucide-react";
 import React, { useState } from "react";
+import { getUser } from "../../../../../utils/supabase/actions";
+import { createClient } from "../../../../../utils/supabase/client";
+import toast from "react-hot-toast";
+import { Product } from "@/lib/types";
 
-export default function LeaveReview() {
+export default function LeaveReview({ product }: { product: Product | null }) {
   const [rating, setRating] = useState<number>(1);
   const [hover, setHover] = useState<number>(0);
+  const [comment, setComment] = useState<string>("");
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+
+  const handleReview = async () => {
+    if (!product?.product_id) {
+      console.log("No product ID found");
+      toast.error("Missing product information.");
+      return;
+    }
+
+    const user = await getUser();
+    const supabase = await createClient();
+
+    if (!user) {
+      console.log("User is not logged in");
+      return;
+    }
+
+    const { data: productData, error: fetchError } = await supabase
+      .from("products")
+      .select("reviews")
+      .eq("product_id", product?.product_id)
+      .single();
+
+    if (fetchError) {
+      console.log(fetchError);
+      return;
+    }
+
+    const newReview = {
+      user_id: user.id,
+      rating,
+      comment,
+      reviewerName: name,
+      reviewerEmail: email,
+      date: new Date().toISOString(),
+    };
+
+    const updatedReviews = [...(productData?.reviews || []), newReview];
+
+    const { error: updateError } = await supabase
+      .from("products")
+      .update({ reviews: updatedReviews })
+      .eq("product_id", product?.product_id);
+
+    if (updateError) {
+      console.log(updateError);
+      throw new Error("Failed to add review");
+    }
+
+    toast.success("Review added successfully");
+  };
 
   return (
     <div className="flex gap-2">
@@ -66,6 +123,8 @@ export default function LeaveReview() {
                 type="text"
                 id="name"
                 maxLength={50}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 placeholder="Maximum 50 characters"
                 className="text-gray-900 dark:text-white font-semibold placeholder:text-gray-350"
               />
@@ -76,6 +135,8 @@ export default function LeaveReview() {
                 required
                 type="text"
                 id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="example@me.com"
                 className="text-gray-900 dark:text-white font-semibold placeholder:text-gray-350"
               />
@@ -86,6 +147,8 @@ export default function LeaveReview() {
                 required
                 id="review"
                 maxLength={3000}
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
                 placeholder="Maximum 3000 characters"
                 className="text-gray-900 dark:text-white dark:bg-[#020817] font-semibold w-full px-3 py-2 rounded-md border border-input min-h-32"
               />
@@ -93,7 +156,7 @@ export default function LeaveReview() {
           </div>
           <DialogFooter>
             <Button
-              type="submit"
+              onClick={handleReview}
               className="bg-gray-200 text-gray-900 hover:bg-gray-300 font-semibold"
             >
               Submit review

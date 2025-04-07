@@ -73,9 +73,15 @@ export default function ProductComments({ product }: { product: Product }) {
     };
     return date.toLocaleDateString("en-US", options);
   };
+
+  const sortedReviews = [...(product.reviews || [])].sort((a, b) => {
+    const dateA = new Date(a.date || 0).getTime();
+    const dateB = new Date(b.date || 0).getTime();
+    return dateB - dateA;
+  });
   return (
     <div className="mt-10">
-      {product.reviews.slice(0, 2).map((review, index) => (
+      {sortedReviews.slice(0, 2).map((review, index) => (
         <div key={index} className="p-2 border-b-2 border-gray-200">
           <div className="flex justify-between py-4">
             <div>
@@ -165,7 +171,7 @@ export default function ProductComments({ product }: { product: Product }) {
       ))}
       <Collapsible open={isOpen} onOpenChange={setIsOpen}>
         <CollapsibleContent className="space-y-2">
-          {product.reviews.slice(2).map((review, index) => (
+          {sortedReviews.slice(2).map((review, index) => (
             <div key={index} className="p-2 border-b-2 border-gray-200">
               <div className="flex justify-between py-4">
                 <div>

@@ -31,7 +31,7 @@ export default function ProductReviews({ product }: { product: Product }) {
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold">Reviews</h1>
         <div className="hidden md:flex">
-          <LeaveReview />
+          <LeaveReview product={product} />
         </div>
       </div>
       <div className="mt-8 flex-col md:flex md:flex-row gap-4">

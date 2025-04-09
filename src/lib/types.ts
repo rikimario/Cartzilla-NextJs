@@ -11,13 +11,7 @@ export type Product = {
   brand?: string;
   rating: number;
   stock: number;
-  reviews: [
-    rating: number,
-    comment: string,
-    date: string,
-    reviewerName: string,
-    reviewerEmail: string
-  ];
+  reviews: Review[];
   warrantyInformation: string;
   returnPolicy: string;
   quantity: number;
@@ -56,3 +50,11 @@ export type Orders = {
     }
   ];
 };
+
+export interface Review {
+  reviewerName: string;
+  reviewerEmail: string;
+  rating: number;
+  comment: string;
+  date: string;
+}

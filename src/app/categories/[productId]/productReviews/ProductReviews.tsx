@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import ProductComments from "./ProductComments";
 import LeaveReview from "./LeaveReview";
 import { Product } from "@/lib/types";
+import { createClient } from "../../../../../utils/supabase/client";
 
 export default function ProductReviews({ product }: { product: Product }) {
   const [stars, setStars] = useState([
@@ -14,17 +15,51 @@ export default function ProductReviews({ product }: { product: Product }) {
     { rating: 1, count: 0 },
   ]);
 
+  const [reviews, setReviews] = useState<any[]>([]);
+
   useEffect(() => {
     const updatedStars = stars.map((star) => {
       const count = product.reviews.reduce((acc, review) => {
-        return (review.rating as number) === star.rating
-          ? Number(acc) + 1
-          : acc;
+        return review.rating === star.rating ? Number(acc) + 1 : acc;
       }, 0);
-      return { ...star, count };
+      return { ...star, count: parseInt(count.toString()) };
     });
     setStars(updatedStars);
   }, [product]);
+
+  useEffect(() => {
+    const supabase = createClient();
+    const fetchReviews = async () => {
+      const { data: review, error } = await supabase
+        .from("products")
+        .select("reviews")
+        .eq("product_id", product?.product_id);
+
+      if (error) {
+        console.error("Error fetching reviews:", error);
+      } else {
+        setReviews(review[0]?.reviews || []);
+      }
+    };
+
+    fetchReviews();
+
+    const subscription = supabase
+      .channel("realtime:products")
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "products" },
+        (payload) => {
+          console.log("New review added:", payload);
+          fetchReviews();
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(subscription);
+    };
+  }, []);
 
   return (
     <div id="reviews" className="p-4 mt-14 lg:w-1/2">
@@ -124,11 +159,11 @@ export default function ProductReviews({ product }: { product: Product }) {
           ))}
         </div>
         <div className="md:hidden flex justify-center mt-6">
-          <LeaveReview />
+          <LeaveReview product={product} />
         </div>
       </div>
       {/* Comments */}
-      <ProductComments product={product} />
+      <ProductComments reviews={reviews} />
     </div>
   );
 }

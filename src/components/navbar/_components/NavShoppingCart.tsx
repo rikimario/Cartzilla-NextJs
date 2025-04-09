@@ -38,7 +38,6 @@ export default function NavShoppingCart() {
 
     fetchFavorites();
 
-    // Set up real-time subscription for changes to the "cart" table
     const subscription = supabase
       .channel("realtime:cart")
       .on(
@@ -51,7 +50,6 @@ export default function NavShoppingCart() {
       )
       .subscribe();
 
-    // Cleanup subscription on unmount
     return () => {
       supabase.removeChannel(subscription);
     };

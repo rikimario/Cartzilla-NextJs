@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogFooter,
   DialogTitle,
   DialogTrigger,
@@ -14,6 +15,7 @@ import { getUser } from "../../../../../utils/supabase/actions";
 import { createClient } from "../../../../../utils/supabase/client";
 import toast from "react-hot-toast";
 import { Product } from "@/lib/types";
+import { DialogClose } from "@radix-ui/react-dialog";
 
 export default function LeaveReview({ product }: { product: Product | null }) {
   const [rating, setRating] = useState<number>(1);
@@ -23,9 +25,9 @@ export default function LeaveReview({ product }: { product: Product | null }) {
   const [email, setEmail] = useState<string>("");
 
   const handleReview = async () => {
-    if (!product?.product_id) {
-      console.log("No product ID found");
-      toast.error("Missing product information.");
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      toast.error("Please enter a valid email address.");
       return;
     }
 
@@ -70,6 +72,11 @@ export default function LeaveReview({ product }: { product: Product | null }) {
     }
 
     toast.success("Review added successfully");
+
+    setName("");
+    setEmail("");
+    setComment("");
+    setRating(1);
   };
 
   return (
@@ -82,6 +89,7 @@ export default function LeaveReview({ product }: { product: Product | null }) {
           </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
+          <DialogDescription></DialogDescription>
           <DialogTitle>Create a review</DialogTitle>
           <div className="mt-4">
             <div className="flex flex-col gap-2">
@@ -155,12 +163,15 @@ export default function LeaveReview({ product }: { product: Product | null }) {
             </div>
           </div>
           <DialogFooter>
-            <Button
-              onClick={handleReview}
-              className="bg-gray-200 text-gray-900 hover:bg-gray-300 font-semibold"
-            >
-              Submit review
-            </Button>
+            <DialogClose asChild>
+              <Button
+                onClick={handleReview}
+                disabled={!name || !email || !comment}
+                className="bg-gray-200 text-gray-900 hover:bg-gray-300 font-semibold"
+              >
+                Submit review
+              </Button>
+            </DialogClose>
           </DialogFooter>
           <span className="text-gray-500 text-sm font-light">
             * Required fields

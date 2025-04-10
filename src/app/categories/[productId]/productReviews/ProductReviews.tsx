@@ -125,7 +125,7 @@ export default function ProductReviews({ product }: { product: Product }) {
               </div>
               <div>
                 <p className="text-xs md:text-sm text-gray-500 flex items-center">
-                  {product.reviews.length} reviews
+                  {reviews.length} reviews
                 </p>
               </div>
             </div>

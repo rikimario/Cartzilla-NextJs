@@ -17,6 +17,7 @@ import { useParams } from "next/navigation";
 import ProductFavorite from "@/app/utils/ProductFavorite";
 import { getProductById } from "../../../../utils/supabase/actions";
 import { Product } from "@/lib/types";
+import { createClient } from "../../../../utils/supabase/client";
 
 export default function ProductDetails() {
   const { productId } = useParams() as { productId: string };
@@ -24,6 +25,7 @@ export default function ProductDetails() {
   const [count, setCount] = useState<number>(1);
   const [thumbImage, setThumbImage] = useState<string>("");
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
+  const [reviews, setReviews] = useState<any[]>([]);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -33,6 +35,40 @@ export default function ProductDetails() {
     };
     fetchProduct();
   }, [productId]);
+
+  useEffect(() => {
+    const supabase = createClient();
+    const fetchReviews = async () => {
+      const { data: review, error } = await supabase
+        .from("products")
+        .select("reviews")
+        .eq("product_id", product?.product_id);
+
+      if (error) {
+        console.error("Error fetching reviews:", error);
+      } else {
+        setReviews(review[0]?.reviews || []);
+      }
+    };
+
+    fetchReviews();
+
+    const subscription = supabase
+      .channel("realtime:products")
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "products" },
+        (payload) => {
+          console.log("New review added:", payload);
+          fetchReviews();
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(subscription);
+    };
+  }, []);
 
   if (!product) return <div>Loading...</div>;
   return (
@@ -96,7 +132,7 @@ export default function ProductDetails() {
                 )
               )}
               <p className="pl-2 text-xs md:text-sm text-gray-400 flex items-center">
-                ({product.reviews.length}) reviews
+                ({reviews.length}) reviews
               </p>
             </span>
           </div>

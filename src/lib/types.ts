@@ -52,8 +52,11 @@ export type Orders = {
 };
 
 export interface Review {
+  user_id?: string;
   reviewerName: string;
   reviewerEmail: string;
+  productImage: string;
+  productName: string;
   rating: number;
   comment: string;
   date: string;

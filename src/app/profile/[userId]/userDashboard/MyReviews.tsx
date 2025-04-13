@@ -2,8 +2,24 @@ import React, { useEffect, useState } from "react";
 import { createClient } from "../../../../../utils/supabase/client";
 import Image from "next/image";
 import { Product, Review } from "@/lib/types";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+import Link from "next/link";
+
+const ITEMS_PER_PAGE = 4;
 
 export default function MyReviews() {
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const router = useRouter();
+  const currentPage = parseInt(searchParams.get("page") || "1");
   const [myReviews, setMyReviews] = useState<Review[]>([]);
 
   useEffect(() => {
@@ -38,6 +54,7 @@ export default function MyReviews() {
               ...review,
               productImage: product.images?.[0],
               productName: product.title,
+              product_id: product.product_id,
             }));
         }
       );
@@ -52,32 +69,48 @@ export default function MyReviews() {
     fetchReviews();
   }, []);
 
+  const totalPages = Math.ceil(myReviews.length / ITEMS_PER_PAGE);
+  const paginatedReviews = myReviews.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
+  );
+
+  const handlePageChange = (newPage: number) => {
+    const params = new URLSearchParams(searchParams);
+    params.set("page", newPage.toString());
+    router.push(`${pathname}?${params.toString()}`);
+  };
+
   return (
-    <div>
+    <>
       <h1 className="text-4xl font-bold text-gray-700 mb-4 pb-2 dark:text-white">
         My reviews
       </h1>
-      {myReviews.length === 0 ? (
+      {paginatedReviews.length === 0 ? (
         <p>No reviews yet.</p>
       ) : (
-        myReviews.map((review, index) => (
+        paginatedReviews.map((review, index) => (
           <div
             key={index}
-            className="border p-4 my-3 bg-gray-50 rounded-lg flex items-start gap-4"
+            className="flex py-4 border-b border-gray-200 dark:border-gray-600"
           >
-            <Image
-              width={100}
-              height={100}
-              src={review.productImage}
-              alt={review.productName}
-              className="w-24 h-24 object-cover rounded-md"
-            />
+            <Link href={`/categories/${review.product_id}`}>
+              <Image
+                width={100}
+                height={100}
+                src={review.productImage}
+                alt={review.productName}
+                className="w-24 h-24 object-cover rounded-md"
+              />
+            </Link>
             <div>
               <h3 className="text-lg font-bold">{review.productName}</h3>
               <p className="text-yellow-600 font-semibold">
                 Rating: {review.rating}/5
               </p>
-              <p className="text-gray-800">{review.comment}</p>
+              <p className="text-gray-800 dark:text-gray-200">
+                {review.comment}
+              </p>
               <p className="text-xs text-gray-400">
                 {new Date(review.date).toLocaleDateString()}
               </p>
@@ -85,6 +118,36 @@ export default function MyReviews() {
           </div>
         ))
       )}
-    </div>
+      {totalPages > 1 && (
+        <Pagination className="mt-6">
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationPrevious
+                onClick={() => handlePageChange(Math.max(currentPage - 1, 1))}
+                isActive={currentPage !== 1}
+              />
+            </PaginationItem>
+            {[...Array(totalPages)].map((_, index) => (
+              <PaginationItem key={index}>
+                <PaginationLink
+                  isActive={currentPage === index + 1}
+                  onClick={() => handlePageChange(index + 1)}
+                >
+                  {index + 1}
+                </PaginationLink>
+              </PaginationItem>
+            ))}
+            <PaginationItem>
+              <PaginationNext
+                onClick={() =>
+                  handlePageChange(Math.min(currentPage + 1, totalPages))
+                }
+                isActive={currentPage !== totalPages}
+              />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
+      )}
+    </>
   );
 }

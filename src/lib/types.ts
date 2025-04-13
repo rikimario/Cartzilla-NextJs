@@ -53,6 +53,7 @@ export type Orders = {
 
 export interface Review {
   user_id?: string;
+  product_id: number;
   reviewerName: string;
   reviewerEmail: string;
   productImage: string;

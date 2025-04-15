@@ -9,7 +9,7 @@ import SignInWithGoogleButton from "@/components/SignInWithGoogle";
 
 export default function Register() {
   return (
-    <div className="my-10 mx-2 md:mx-12 lg:mx-52 xl:mx-96 2xl:my-20 2xl:mx-[35rem] dark:bg-[#181D25]">
+    <div className="my-10 dark:bg-[#181D25]">
       <Card className="flex flex-col items-center justify-center p-2 dark:bg-[#181D25]">
         <CardContent className="w-full">
           <form className="flex flex-col gap-2 xl:p-6">

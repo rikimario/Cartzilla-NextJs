@@ -91,34 +91,43 @@ export default function OrdersContent() {
         ))
       )}
       {totalPages > 1 && (
-        <Pagination className="mt-6">
-          <PaginationContent>
-            <PaginationItem>
-              <PaginationPrevious
-                onClick={() => handlePageChange(Math.max(currentPage - 1, 1))}
-                isActive={currentPage !== 1}
-              />
-            </PaginationItem>
-            {[...Array(totalPages)].map((_, index) => (
-              <PaginationItem key={index}>
-                <PaginationLink
-                  isActive={currentPage === index + 1}
-                  onClick={() => handlePageChange(index + 1)}
-                >
-                  {index + 1}
-                </PaginationLink>
-              </PaginationItem>
-            ))}
-            <PaginationItem>
-              <PaginationNext
-                onClick={() =>
-                  handlePageChange(Math.min(currentPage + 1, totalPages))
-                }
-                isActive={currentPage !== totalPages}
-              />
-            </PaginationItem>
-          </PaginationContent>
-        </Pagination>
+        <div className="overflow-x-auto w-full">
+          <Pagination className="mt-6 flex justify-center">
+            <PaginationContent className="flex flex-col items-center gap-2">
+              <div className="flex gap-2">
+                {[...Array(totalPages)].map((_, index) => (
+                  <PaginationItem key={index}>
+                    <PaginationLink
+                      isActive={currentPage === index + 1}
+                      onClick={() => handlePageChange(index + 1)}
+                    >
+                      {index + 1}
+                    </PaginationLink>
+                  </PaginationItem>
+                ))}
+              </div>
+
+              <div className="flex gap-2">
+                <PaginationItem>
+                  <PaginationPrevious
+                    onClick={() =>
+                      handlePageChange(Math.max(currentPage - 1, 1))
+                    }
+                    isActive={currentPage !== 1}
+                  />
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationNext
+                    onClick={() =>
+                      handlePageChange(Math.min(currentPage + 1, totalPages))
+                    }
+                    isActive={currentPage !== totalPages}
+                  />
+                </PaginationItem>
+              </div>
+            </PaginationContent>
+          </Pagination>
+        </div>
       )}
     </div>
   );

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogTitle,
@@ -24,6 +25,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Image from "next/image";
+import toast from "react-hot-toast";
 
 export default function PaymentMethods() {
   const [cardNumber, setCardNumber] = useState<string>("");
@@ -33,9 +35,9 @@ export default function PaymentMethods() {
   const [brand, setBrand] = useState<string>("");
   const [card, setCard] = useState<Cards[]>([]);
 
+  const supabase = createClient();
   const fetchCards = async () => {
     const user = await getUser();
-    const supabase = createClient();
 
     const { data: cards, error } = await supabase
       .from("payment_methods")
@@ -45,13 +47,29 @@ export default function PaymentMethods() {
     if (error) {
       console.log(error);
       return;
+    } else {
+      setCard(cards.reverse() as Cards[]);
     }
-
-    setCard(cards.reverse() as Cards[]);
   };
 
   useEffect(() => {
     fetchCards();
+
+    const subscription = supabase
+      .channel("custom-all-channel")
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "payment_methods" },
+        (payload) => {
+          console.log("Change received!", payload);
+          fetchCards();
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(subscription);
+    };
   }, []);
 
   const handleAddCard = async () => {
@@ -75,7 +93,7 @@ export default function PaymentMethods() {
       return;
     }
 
-    setCard(cards);
+    setCard((prev) => [...cards, ...prev]);
 
     setCardNumber("");
     setNameOnCard("");
@@ -86,7 +104,6 @@ export default function PaymentMethods() {
 
   const handleRemoveCard = async (id: string) => {
     const user = await getUser();
-    const supabase = createClient();
 
     const { error } = await supabase
       .from("payment_methods")
@@ -98,6 +115,8 @@ export default function PaymentMethods() {
       console.log(error);
       return;
     }
+
+    toast.success("Card removed from wishlist");
   };
 
   const formatCardNumber = (value: string) => {
@@ -130,7 +149,7 @@ export default function PaymentMethods() {
                 key={index}
                 className="min-w-[300px] h-[220px] flex flex-col p-3"
               >
-                {c.brand === "visa" ? (
+                {c.brand.toLowerCase() === "visa" ? (
                   <Image
                     width={50}
                     height={50}
@@ -156,9 +175,12 @@ export default function PaymentMethods() {
                 </p>
 
                 <div className="flex gap-2 mt-auto">
+                  {/* Edit */}
                   <Button variant={"outline"} className="">
                     Edit
                   </Button>
+
+                  {/* Remove */}
                   <Button
                     onClick={() => handleRemoveCard(c.id)}
                     variant={"outline"}
@@ -272,13 +294,15 @@ export default function PaymentMethods() {
                 <Button className="w-full bg-gray-100 text-gray-700 hover:bg-gray-200">
                   Cancle
                 </Button>
-                <Button
-                  onClick={handleAddCard}
-                  variant={"destructive"}
-                  className="w-full"
-                >
-                  Add card
-                </Button>
+                <DialogClose className="w-full">
+                  <Button
+                    className="w-full"
+                    onClick={handleAddCard}
+                    variant={"destructive"}
+                  >
+                    Add card
+                  </Button>
+                </DialogClose>
               </div>
             </DialogContent>
           </Dialog>

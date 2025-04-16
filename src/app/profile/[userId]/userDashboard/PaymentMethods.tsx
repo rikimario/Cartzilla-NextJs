@@ -23,6 +23,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import Image from "next/image";
 
 export default function PaymentMethods() {
   const [cardNumber, setCardNumber] = useState<string>("");
@@ -83,6 +84,22 @@ export default function PaymentMethods() {
     setBrand("");
   };
 
+  const handleRemoveCard = async (id: string) => {
+    const user = await getUser();
+    const supabase = createClient();
+
+    const { error } = await supabase
+      .from("payment_methods")
+      .delete()
+      .eq("user_id", user?.id)
+      .eq("id", id);
+
+    if (error) {
+      console.log(error);
+      return;
+    }
+  };
+
   const formatCardNumber = (value: string) => {
     return value
       .replace(/\D/g, "")
@@ -100,7 +117,7 @@ export default function PaymentMethods() {
   };
 
   return (
-    <div className="p-2 dark:text-white">
+    <div className="py-2 dark:text-white">
       <h1 className="text-4xl font-bold text-gray-700 mb-4 pb-2 dark:text-white">
         Payment methods
       </h1>
@@ -111,23 +128,50 @@ export default function PaymentMethods() {
           : card.map((c, index) => (
               <Card
                 key={index}
-                className="min-w-[290px] h-[200px] flex flex-col"
+                className="min-w-[300px] h-[220px] flex flex-col p-3"
               >
-                <p>
-                  <strong>Card:</strong>
-                  {c.card_number}
+                {c.brand === "visa" ? (
+                  <Image
+                    width={50}
+                    height={50}
+                    src="/visa.svg"
+                    alt="visa"
+                    className="w-20"
+                  />
+                ) : (
+                  <Image
+                    width={50}
+                    height={50}
+                    src="/mastercard-svgrepo.svg"
+                    alt="mastercard"
+                    className="w-20"
+                  />
+                )}
+                <p className="font-semibold">
+                  **** **** **** {c.card_number.slice(-4)}
                 </p>
-                <p>
-                  <strong>Name:</strong> {c.name_on_card}
+
+                <p className="text-sm text-gray-400 mt-2">
+                  Expiration {c.expiry_date}
                 </p>
-                <p>
-                  <strong>Expiry:</strong> {c.expiry_date}
-                </p>
+
+                <div className="flex gap-2 mt-auto">
+                  <Button variant={"outline"} className="">
+                    Edit
+                  </Button>
+                  <Button
+                    onClick={() => handleRemoveCard(c.id)}
+                    variant={"outline"}
+                    className=""
+                  >
+                    Remove
+                  </Button>
+                </div>
               </Card>
             ))}
         <div>
           <Dialog>
-            <Card className="min-w-[290px] h-[200px] flex justify-center items-center border-dashed border-gray-300">
+            <Card className="min-w-[300px] h-[220px] flex justify-center items-center border-dashed border-gray-300">
               <DialogTrigger className="hover:underline underline-offset-4">
                 <span className="flex items-center gap-2">
                   <Plus className="w-5 h-5" strokeWidth={1} />
@@ -150,13 +194,14 @@ export default function PaymentMethods() {
                 }
                 value={cardNumber}
                 placeholder="xxxx xxxx xxxx xxxx"
+                className="placeholder:text-lg"
               />
               <Label>Name on card</Label>
               <Input
                 required
                 pattern="[a-zA-Z\s]+"
                 onChange={(e) => {
-                  const inputValue = e.target.value.trim();
+                  const inputValue = e.target.value;
                   if (/^[a-zA-Z\s]+$/.test(inputValue)) {
                     setNameOnCard(inputValue);
                   } else {
@@ -165,6 +210,7 @@ export default function PaymentMethods() {
                 }}
                 value={nameOnCard}
                 placeholder="Full name"
+                className="placeholder:text-lg"
               />
               <div className="flex gap-2">
                 <div className="space-y-3 w-full">
@@ -176,6 +222,7 @@ export default function PaymentMethods() {
                     }
                     value={expiryDate}
                     placeholder="MM/YY"
+                    className="placeholder:text-lg"
                   />
                 </div>
                 <div className="space-y-3 w-full">
@@ -187,6 +234,7 @@ export default function PaymentMethods() {
                     }}
                     value={cvc}
                     placeholder="xxx"
+                    className="placeholder:text-lg"
                   />
                 </div>
               </div>

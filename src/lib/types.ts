@@ -64,7 +64,9 @@ export interface Review {
 }
 
 export interface Cards {
+  id: string;
   card_number: string;
   name_on_card: string;
   expiry_date: string;
+  brand: string;
 }

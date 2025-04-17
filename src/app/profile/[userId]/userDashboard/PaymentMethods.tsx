@@ -18,7 +18,6 @@ import { ChevronDown, Plus } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuLabel,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuSeparator,
@@ -73,6 +72,31 @@ export default function PaymentMethods() {
   }, []);
 
   const handleAddCard = async () => {
+    if (cardNumber.replace(/\s/g, "").length !== 16) {
+      toast.error("Card number must be 16 digits.");
+      return;
+    }
+
+    if (!/^[a-zA-Z\s]+$/.test(nameOnCard) || nameOnCard.trim() === "") {
+      toast.error("Name on card is required and must be letters only.");
+      return;
+    }
+
+    if (!/^\d{2}\/\d{2}$/.test(expiryDate)) {
+      toast.error("Expiry date must be in MM/YY format.");
+      return;
+    }
+
+    if (cvc.length !== 3 || !/^\d{3}$/.test(cvc)) {
+      toast.error("CVC must be exactly 3 digits.");
+      return;
+    }
+
+    if (!brand) {
+      toast.error("Please select a card brand.");
+      return;
+    }
+
     const user = await getUser();
     const supabase = createClient();
 
@@ -290,20 +314,18 @@ export default function PaymentMethods() {
                 </DropdownMenu>
               </div>
 
-              <div className="flex gap-2">
+              <DialogClose className="w-full flex gap-2">
                 <Button className="w-full bg-gray-100 text-gray-700 hover:bg-gray-200">
                   Cancle
                 </Button>
-                <DialogClose className="w-full">
-                  <Button
-                    className="w-full"
-                    onClick={handleAddCard}
-                    variant={"destructive"}
-                  >
-                    Add card
-                  </Button>
-                </DialogClose>
-              </div>
+                <Button
+                  className="w-full"
+                  onClick={handleAddCard}
+                  variant={"destructive"}
+                >
+                  Add card
+                </Button>
+              </DialogClose>
             </DialogContent>
           </Dialog>
         </div>

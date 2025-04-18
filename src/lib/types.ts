@@ -69,4 +69,5 @@ export interface Cards {
   name_on_card: string;
   expiry_date: string;
   brand: string;
+  cvc: string;
 }

@@ -33,6 +33,7 @@ export default function PaymentMethods() {
   const [cvc, setCvc] = useState<string>("");
   const [brand, setBrand] = useState<string>("");
   const [card, setCard] = useState<Cards[]>([]);
+  const [editingCard, setEditingCard] = useState<Cards | null>(null);
 
   const supabase = createClient();
   const fetchCards = async () => {
@@ -126,6 +127,35 @@ export default function PaymentMethods() {
     setBrand("");
   };
 
+  const handleEditCard = async (id: string) => {
+    const user = await getUser();
+
+    const { error } = await supabase
+      .from("payment_methods")
+      .update({
+        card_number: cardNumber,
+        name_on_card: nameOnCard,
+        expiry_date: expiryDate,
+        cvc: cvc,
+        brand: brand,
+      })
+      .eq("user_id", user?.id)
+      .eq("id", id);
+
+    if (error) {
+      console.log("Error updating card:", error.message);
+      return;
+    }
+
+    toast.success("Card updated successfully");
+    setEditingCard(null);
+    setCardNumber("");
+    setNameOnCard("");
+    setExpiryDate("");
+    setCvc("");
+    setBrand("");
+  };
+
   const handleRemoveCard = async (id: string) => {
     const user = await getUser();
 
@@ -200,21 +230,127 @@ export default function PaymentMethods() {
 
                 <div className="flex gap-2 mt-auto">
                   {/* Edit */}
-                  <Button variant={"outline"} className="">
-                    Edit
-                  </Button>
+                  <Dialog>
+                    <DialogTrigger>
+                      <Button variant={"outline"}>Edit</Button>
+                    </DialogTrigger>
+                    <DialogContent>
+                      <DialogDescription className="text-xl text-gray-900 font-semibold pb-4  border-b border-gray-400">
+                        Edit payment method
+                      </DialogDescription>
+                      <DialogTitle className="text-lg text-gray-700 text-center font-medium">
+                        Card
+                      </DialogTitle>
+                      <Label>Card number</Label>
+                      <Input
+                        required
+                        onChange={(e) =>
+                          setCardNumber(formatCardNumber(e.target.value))
+                        }
+                        value={cardNumber}
+                        placeholder="xxxx xxxx xxxx xxxx"
+                        className="placeholder:text-lg"
+                      />
+                      <Input
+                        required
+                        pattern="[a-zA-Z\s]+"
+                        onChange={(e) => {
+                          const inputValue = e.target.value;
+                          if (/^[a-zA-Z\s]+$/.test(inputValue)) {
+                            setNameOnCard(inputValue);
+                          } else {
+                            setNameOnCard("");
+                          }
+                        }}
+                        value={nameOnCard}
+                        placeholder="Full name"
+                        className="placeholder:text-lg"
+                      />
+                      <div className="flex gap-2">
+                        <div className="space-y-3 w-full">
+                          <Label>Expiration date</Label>
+                          <Input
+                            required
+                            onChange={(e) =>
+                              setExpiryDate(formatExpiryDate(e.target.value))
+                            }
+                            value={expiryDate}
+                            placeholder="MM/YY"
+                            className="placeholder:text-lg"
+                          />
+                        </div>
+                        <div className="space-y-3 w-full">
+                          <Label>CVV</Label>
+                          <Input
+                            required
+                            onChange={(e) => {
+                              setCvc(
+                                e.target.value.replace(/\D/g, "").slice(0, 3)
+                              );
+                            }}
+                            value={cvc}
+                            placeholder="xxx"
+                            className="placeholder:text-lg"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="space-y-3 w-1/3">
+                        <Label>Brand</Label>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button
+                              variant="outline"
+                              className="w-full justify-between"
+                            >
+                              {brand ? brand : "Select brand"}
+                              <ChevronDown className="ml-2 h-4 w-4" />
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuRadioGroup
+                              value={brand}
+                              onValueChange={setBrand}
+                            >
+                              <DropdownMenuRadioItem value="Visa">
+                                Visa
+                              </DropdownMenuRadioItem>
+                              <DropdownMenuRadioItem value="Mastercard">
+                                Mastercard
+                              </DropdownMenuRadioItem>
+                            </DropdownMenuRadioGroup>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </div>
+
+                      <DialogClose className="w-full flex gap-2">
+                        <Button className="w-full bg-gray-100 text-gray-700 hover:bg-gray-200">
+                          Cancle
+                        </Button>
+                        <Button
+                          className="w-full"
+                          onClick={() => handleEditCard(c.id)}
+                          variant={"destructive"}
+                        >
+                          Edit card
+                        </Button>
+                      </DialogClose>
+                    </DialogContent>
+                  </Dialog>
+                  {/* <Button variant={"outline"}>Edit</Button> */}
 
                   {/* Remove */}
                   <Button
                     onClick={() => handleRemoveCard(c.id)}
                     variant={"outline"}
-                    className=""
                   >
                     Remove
                   </Button>
                 </div>
               </Card>
             ))}
+
         <div>
           <Dialog>
             <Card className="min-w-[300px] h-[220px] flex justify-center items-center border-dashed border-gray-300">

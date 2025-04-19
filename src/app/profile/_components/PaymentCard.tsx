@@ -96,7 +96,7 @@ export default function PaymentCard({
         : card.map((c, index) => (
             <Card
               key={index}
-              className="min-w-[300px] h-[220px] flex flex-col p-3"
+              className="min-w-[300px] h-[220px] flex flex-col p-3 dark:bg-inherit"
             >
               {c.brand.toLowerCase() === "visa" ? (
                 <Image
@@ -127,13 +127,15 @@ export default function PaymentCard({
                 {/* Edit */}
                 <Dialog>
                   <DialogTrigger>
-                    <Button variant={"outline"}>Edit</Button>
+                    <Button className="dark:bg-inherit" variant={"outline"}>
+                      Edit
+                    </Button>
                   </DialogTrigger>
-                  <DialogContent>
-                    <DialogDescription className="text-xl text-gray-900 font-semibold pb-4  border-b border-gray-400">
+                  <DialogContent className="dark:bg-inherit">
+                    <DialogDescription className="text-xl text-gray-900 font-semibold pb-4  border-b border-gray-400 dark:text-white">
                       Edit payment method
                     </DialogDescription>
-                    <DialogTitle className="text-lg text-gray-700 text-center font-medium">
+                    <DialogTitle className="text-lg text-gray-700 text-center font-medium dark:text-white">
                       Card
                     </DialogTitle>
                     <Label>Card number</Label>
@@ -144,7 +146,7 @@ export default function PaymentCard({
                       }
                       value={cardNumber}
                       placeholder="xxxx xxxx xxxx xxxx"
-                      className="placeholder:text-lg"
+                      className="placeholder:text-lg dark:bg-inherit"
                     />
                     <Input
                       required
@@ -159,7 +161,7 @@ export default function PaymentCard({
                       }}
                       value={nameOnCard}
                       placeholder="Full name"
-                      className="placeholder:text-lg"
+                      className="placeholder:text-lg dark:bg-inherit"
                     />
                     <div className="flex gap-2">
                       <div className="space-y-3 w-full">
@@ -171,7 +173,7 @@ export default function PaymentCard({
                           }
                           value={expiryDate}
                           placeholder="MM/YY"
-                          className="placeholder:text-lg"
+                          className="placeholder:text-lg dark:bg-inherit"
                         />
                       </div>
                       <div className="space-y-3 w-full">
@@ -185,7 +187,7 @@ export default function PaymentCard({
                           }}
                           value={cvc}
                           placeholder="xxx"
-                          className="placeholder:text-lg"
+                          className="placeholder:text-lg dark:bg-inherit"
                         />
                       </div>
                     </div>
@@ -196,7 +198,7 @@ export default function PaymentCard({
                         <DropdownMenuTrigger asChild>
                           <Button
                             variant="outline"
-                            className="w-full justify-between"
+                            className="w-full justify-between dark:bg-inherit"
                           >
                             {brand ? brand : "Select brand"}
                             <ChevronDown className="ml-2 h-4 w-4" />
@@ -233,10 +235,10 @@ export default function PaymentCard({
                     </DialogClose>
                   </DialogContent>
                 </Dialog>
-                {/* <Button variant={"outline"}>Edit</Button> */}
 
                 {/* Remove */}
                 <Button
+                  className="dark:bg-inherit"
                   onClick={() => handleRemoveCard(c.id)}
                   variant={"outline"}
                 >

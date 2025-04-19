@@ -98,7 +98,7 @@ export default function AddNewCard({
   return (
     <div>
       <Dialog>
-        <Card className="min-w-[300px] h-[220px] flex justify-center items-center border-dashed border-gray-300">
+        <Card className="min-w-[300px] h-[220px] flex justify-center items-center border-dashed border-gray-300 dark:bg-inherit">
           <DialogTrigger className="hover:underline underline-offset-4">
             <span className="flex items-center gap-2">
               <Plus className="w-5 h-5" strokeWidth={1} />
@@ -106,11 +106,11 @@ export default function AddNewCard({
             </span>{" "}
           </DialogTrigger>
         </Card>
-        <DialogContent>
-          <DialogDescription className="text-xl text-gray-900 font-semibold pb-4  border-b border-gray-400">
+        <DialogContent className="dark:bg-inherit">
+          <DialogDescription className="text-xl text-gray-900 dark:text-white font-semibold pb-4  border-b border-gray-400">
             Add new payment method
           </DialogDescription>
-          <DialogTitle className="text-lg text-gray-700 text-center font-medium">
+          <DialogTitle className="text-lg text-gray-700 dark:text-white text-center font-medium">
             Card
           </DialogTitle>
           <Label>Card number</Label>
@@ -119,7 +119,7 @@ export default function AddNewCard({
             onChange={(e) => setCardNumber(formatCardNumber(e.target.value))}
             value={cardNumber}
             placeholder="xxxx xxxx xxxx xxxx"
-            className="placeholder:text-lg"
+            className="placeholder:text-lg dark:bg-inherit"
           />
           <Label>Name on card</Label>
           <Input
@@ -135,7 +135,7 @@ export default function AddNewCard({
             }}
             value={nameOnCard}
             placeholder="Full name"
-            className="placeholder:text-lg"
+            className="placeholder:text-lg dark:bg-inherit"
           />
           <div className="flex gap-2">
             <div className="space-y-3 w-full">
@@ -147,7 +147,7 @@ export default function AddNewCard({
                 }
                 value={expiryDate}
                 placeholder="MM/YY"
-                className="placeholder:text-lg"
+                className="placeholder:text-lg dark:bg-inherit"
               />
             </div>
             <div className="space-y-3 w-full">
@@ -159,7 +159,7 @@ export default function AddNewCard({
                 }}
                 value={cvc}
                 placeholder="xxx"
-                className="placeholder:text-lg"
+                className="placeholder:text-lg dark:bg-inherit"
               />
             </div>
           </div>
@@ -168,7 +168,10 @@ export default function AddNewCard({
             <Label>Brand</Label>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="outline" className="w-full justify-between">
+                <Button
+                  variant="outline"
+                  className="w-full justify-between dark:bg-inherit"
+                >
                   {brand ? brand : "Select brand"}
                   <ChevronDown className="ml-2 h-4 w-4" />
                 </Button>

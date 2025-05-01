@@ -102,12 +102,14 @@ export default function BasicInfo() {
         <AccordionItem value="item-1">
           <div className="flex justify-between items-center">
             <h1 className="mb-4 font-semibold">Basic info</h1>
-            <AccordionTrigger
-              className="[&>svg]:hidden"
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              <span className="text-sm font-medium underline">Edit</span>
-            </AccordionTrigger>
+            {personalInfo && (
+              <AccordionTrigger
+                className="[&>svg]:hidden"
+                onClick={() => setIsOpen(!isOpen)}
+              >
+                <span className="text-sm font-medium underline">Edit</span>
+              </AccordionTrigger>
+            )}
           </div>
           <AccordionContent>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -153,7 +155,7 @@ export default function BasicInfo() {
                 </Select>
               </div>
 
-              <BasicInfoBtns addNewInfo={addNewInfo} />
+              <BasicInfoBtns addNewInfo={addNewInfo} setIsOpen={setIsOpen} />
             </div>
           </AccordionContent>
           {isOpen !== true && personalInfo && (

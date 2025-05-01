@@ -71,3 +71,11 @@ export interface Cards {
   brand: string;
   cvc: string;
 }
+
+export interface PersonalInfo {
+  id: string;
+  first_name: string;
+  last_name: string;
+  language: string;
+  date_of_birth: Date;
+}

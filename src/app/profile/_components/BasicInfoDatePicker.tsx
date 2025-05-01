@@ -11,10 +11,14 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { useState } from "react";
 
-export default function BasicInfoDatePicker() {
-  const [date, setDate] = useState<Date>();
+export default function BasicInfoDatePicker({
+  birthDate,
+  setBirthDate,
+}: {
+  birthDate: Date | null;
+  setBirthDate: (date: Date | null) => void;
+}) {
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -22,18 +26,18 @@ export default function BasicInfoDatePicker() {
           variant={"outline"}
           className={cn(
             "w-full justify-between text-left font-normal px-3",
-            !date && "text-muted-foreground"
+            !birthDate && "text-muted-foreground"
           )}
         >
-          {date ? format(date, "PPP") : <span>Pick a date</span>}
+          {birthDate ? format(birthDate, "PPP") : <span>Pick a date</span>}
           <CalendarIcon />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0" align="start">
         <Calendar
           mode="single"
-          selected={date}
-          onSelect={setDate}
+          selected={birthDate ?? undefined}
+          onSelect={(date) => setBirthDate(date ?? null)}
           initialFocus
         />
       </PopoverContent>

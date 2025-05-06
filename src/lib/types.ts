@@ -72,10 +72,16 @@ export interface Cards {
   cvc: string;
 }
 
-export interface PersonalInfo {
+export interface PersonalInformation {
   id: string;
   first_name: string;
   last_name: string;
   language: string;
   date_of_birth: Date;
+}
+
+export interface ContactInformation {
+  id: string;
+  email: string;
+  phone: string;
 }

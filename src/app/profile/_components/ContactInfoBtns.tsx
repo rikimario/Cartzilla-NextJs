@@ -12,7 +12,8 @@ export default function ContactInfoBtns({
   contact: ContactInformation | null;
 }) {
   const isContactInfoEmpty =
-    contact === null || Object.keys(contact).length === 0;
+    !contact?.email || !contact.phone || Object.keys(contact).length === 0;
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-2 my-8 w-1/2">
       <Button

@@ -11,15 +11,20 @@ export default function BasicInfoBtns({
   setIsOpen: (isOpen: boolean) => void;
   personalInfo: PersonalInformation | null;
 }) {
-  const isContactInfoEmpty =
-    personalInfo === null || Object.keys(personalInfo).length === 0;
+  const isBasicInfoEmpty =
+    !personalInfo?.date_of_birth ||
+    !personalInfo.language ||
+    !personalInfo.first_name ||
+    !personalInfo.last_name ||
+    Object.keys(personalInfo).length === 0;
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-8">
       <Button onClick={addNewInfo} variant={"destructive"} className="w-full">
         Save changes
       </Button>
       <Button
-        onClick={() => !isContactInfoEmpty && setIsOpen(false)}
+        onClick={() => !isBasicInfoEmpty && setIsOpen(false)}
         variant={"outline"}
         className="w-full bg-gray-200"
       >

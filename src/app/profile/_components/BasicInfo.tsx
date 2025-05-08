@@ -56,7 +56,10 @@ export default function BasicInfo({
         <AccordionItem value="item-1">
           <div className="flex justify-between items-center">
             <h1 className="mb-4 font-semibold">Basic info</h1>
-            {personalInfo && (
+            {!personalInfo?.date_of_birth ||
+            !personalInfo?.first_name ||
+            !personalInfo?.last_name ||
+            !personalInfo?.language ? null : (
               <AccordionTrigger
                 className="[&>svg]:hidden"
                 onClick={() => setIsOpen(!isOpen)}

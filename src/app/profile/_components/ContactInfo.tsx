@@ -31,8 +31,21 @@ export default function ContactInfo({
   contact: ContactInformation | null;
 }) {
   const handleContact = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^\d{10}$/;
+
     if (!email.trim() || !phone.trim()) {
       toast.error("Please fill in all fields.");
+      return;
+    }
+
+    if (!emailRegex.test(email)) {
+      toast.error("Invalid email format.");
+      return;
+    }
+
+    if (!phoneRegex.test(phone)) {
+      toast.error("Phone number must be 10 digits.");
       return;
     }
 
@@ -85,6 +98,7 @@ export default function ContactInfo({
                     placeholder="+91 123456789"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
+                    maxLength={10}
                   />
                 </div>
               </div>

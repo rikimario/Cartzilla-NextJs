@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label";
 import { ContactInformation } from "@/lib/types";
 import React from "react";
 import ContactInfoBtns from "./ContactInfoBtns";
+import toast from "react-hot-toast";
 
 export default function ContactInfo({
   email,
@@ -29,6 +30,15 @@ export default function ContactInfo({
   setIsOpen: (isOpen: boolean) => void;
   contact: ContactInformation | null;
 }) {
+  const handleContact = () => {
+    if (!email.trim() || !phone.trim()) {
+      toast.error("Please fill in all fields.");
+      return;
+    }
+
+    addContactInfo();
+    setIsOpen(false);
+  };
   return (
     <>
       <Accordion
@@ -80,9 +90,9 @@ export default function ContactInfo({
               </div>
 
               <ContactInfoBtns
-                contact={contact}
                 setIsOpen={setIsOpen}
-                addContactInfo={addContactInfo}
+                addContactInfo={handleContact}
+                contact={contact}
               />
             </AccordionContent>
           )}

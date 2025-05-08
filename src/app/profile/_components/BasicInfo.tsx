@@ -47,12 +47,7 @@ export default function BasicInfo({
   setBirthDate: (birthDate: Date | null) => void;
 }) {
   const handleAddNewInfo = () => {
-    if (
-      !firstName.trim() ||
-      !lastName.trim() ||
-      !language.trim() ||
-      !birthDate
-    ) {
+    if (!firstName || !lastName || !language || !birthDate) {
       toast.error("Please fill in all fields.");
       return;
     }

@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/accordion";
 import { PersonalInformation } from "@/lib/types";
 import { formatDate } from "date-fns";
+import toast from "react-hot-toast";
 
 export default function BasicInfo({
   addNewInfo,
@@ -45,6 +46,20 @@ export default function BasicInfo({
   birthDate: Date | null;
   setBirthDate: (birthDate: Date | null) => void;
 }) {
+  const handleAddNewInfo = () => {
+    if (
+      !firstName.trim() ||
+      !lastName.trim() ||
+      !language.trim() ||
+      !birthDate
+    ) {
+      toast.error("Please fill in all fields.");
+      return;
+    }
+
+    addNewInfo();
+    setIsOpen(false);
+  };
   return (
     <>
       <Accordion
@@ -111,7 +126,7 @@ export default function BasicInfo({
                 <div className="space-y-2">
                   <Label htmlFor="language">Language</Label>
                   <Select
-                    value={language}
+                    value={language || undefined}
                     onValueChange={(value) => setLanguage(value)}
                   >
                     <SelectTrigger>
@@ -128,7 +143,7 @@ export default function BasicInfo({
 
                 <BasicInfoBtns
                   personalInfo={personalInfo}
-                  addNewInfo={addNewInfo}
+                  addNewInfo={handleAddNewInfo}
                   setIsOpen={setIsOpen}
                 />
               </div>

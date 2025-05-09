@@ -4,6 +4,7 @@ import ContactInfo from "../../_components/ContactInfo";
 import { ContactInformation, PersonalInformation } from "@/lib/types";
 import { createClient } from "../../../../../utils/supabase/client";
 import { getUser } from "../../../../../utils/supabase/actions";
+import DeleteAccount from "../../_components/DeleteAccount";
 
 export default function PersonalInfo() {
   const [isBasicOpen, setIsBasicOpen] = useState<boolean>(false);
@@ -181,6 +182,8 @@ export default function PersonalInfo() {
         setIsOpen={setIsContactOpen}
         contact={contact}
       />
+
+      <DeleteAccount />
     </>
   );
 }

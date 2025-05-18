@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/select";
 import { Plus } from "lucide-react";
 import React, { useState } from "react";
+import AddressBtns from "./AddressBtns";
 
 const countries = [
   { value: "USA", label: "United States" },
@@ -62,7 +63,7 @@ export default function AddAddress() {
             Add Address
           </span>{" "}
         </DialogTrigger>
-        <DialogContent className="dark:bg-inherit">
+        <DialogContent className="dark:bg-inherit min-w-[50rem]">
           <DialogDescription className="text-xl text-gray-900 dark:text-white font-semibold pb-4  border-b border-gray-400">
             Add new address
           </DialogDescription>
@@ -115,7 +116,7 @@ export default function AddAddress() {
                   onChange={(e) => setZip(e.target.value)}
                 />
               </div>
-              <div className="space-y-2">
+              <div className="space-y-2 w-full">
                 <Label htmlFor="address">Address</Label>
                 <Input
                   placeholder=""
@@ -125,6 +126,7 @@ export default function AddAddress() {
               </div>
             </div>
           </div>
+          <AddressBtns />
         </DialogContent>
       </Dialog>
     </div>

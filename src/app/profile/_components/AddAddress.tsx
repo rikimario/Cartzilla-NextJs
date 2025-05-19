@@ -15,7 +15,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Plus } from "lucide-react";
-import React, { useState } from "react";
 import AddressBtns from "./AddressBtns";
 
 const countries = [
@@ -49,11 +48,25 @@ const cities = [
   { value: "Boston", label: "Boston" },
 ];
 
-export default function AddAddress() {
-  const [country, setCountry] = useState<string | undefined>(undefined);
-  const [city, setCity] = useState<string | undefined>(undefined);
-  const [zip, setZip] = useState<string | undefined>(undefined);
-  const [address, setAddress] = useState<string | undefined>(undefined);
+export default function AddAddress({
+  country,
+  setCountry,
+  city,
+  setCity,
+  zip,
+  setZip,
+  address,
+  setAddress,
+}: {
+  country: string | undefined;
+  setCountry: (country: string | undefined) => void;
+  city: string | undefined;
+  setCity: (city: string | undefined) => void;
+  zip: string | undefined;
+  setZip: (zip: string | undefined) => void;
+  address: string | undefined;
+  setAddress: (address: string | undefined) => void;
+}) {
   return (
     <div>
       <Dialog>
@@ -110,16 +123,11 @@ export default function AddAddress() {
             <div className="flex gap-4">
               <div className="space-y-2">
                 <Label htmlFor="zip">ZIP Code</Label>
-                <Input
-                  placeholder=""
-                  value={zip}
-                  onChange={(e) => setZip(e.target.value)}
-                />
+                <Input value={zip} onChange={(e) => setZip(e.target.value)} />
               </div>
               <div className="space-y-2 w-full">
                 <Label htmlFor="address">Address</Label>
                 <Input
-                  placeholder=""
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
                 />

@@ -85,3 +85,11 @@ export interface ContactInformation {
   email: string;
   phone: string;
 }
+
+export interface AddressInfo {
+  id: string;
+  country: string;
+  city: string;
+  zip: string;
+  address: string;
+}

@@ -16,6 +16,9 @@ import {
 } from "@/components/ui/select";
 import { Plus } from "lucide-react";
 import AddressBtns from "./AddressBtns";
+import { getUser } from "../../../../utils/supabase/actions";
+import { createClient } from "../../../../utils/supabase/client";
+import { AddressInfo } from "@/lib/types";
 
 const countries = [
   { value: "USA", label: "United States" },
@@ -48,6 +51,8 @@ const cities = [
   { value: "Boston", label: "Boston" },
 ];
 
+const supabase = createClient();
+
 export default function AddAddress({
   country,
   setCountry,
@@ -57,16 +62,44 @@ export default function AddAddress({
   setZip,
   address,
   setAddress,
+  addressInfo,
 }: {
-  country: string | undefined;
-  setCountry: (country: string | undefined) => void;
-  city: string | undefined;
-  setCity: (city: string | undefined) => void;
-  zip: string | undefined;
-  setZip: (zip: string | undefined) => void;
-  address: string | undefined;
-  setAddress: (address: string | undefined) => void;
+  country: string;
+  setCountry: (country: string) => void;
+  city: string;
+  setCity: (city: string) => void;
+  zip: string;
+  setZip: (zip: string) => void;
+  address: string;
+  setAddress: (address: string) => void;
+  addressInfo: AddressInfo | null;
 }) {
+  const addNewAddress = async () => {
+    const user = await getUser();
+    if (!user) {
+      console.error("No user found");
+      return;
+    }
+
+    const payload = {
+      user_id: user.id,
+      country: country,
+      city: city,
+      zip: zip,
+      address: address,
+    };
+
+    const query = addressInfo
+      ? supabase.from("personal_info").update(payload).eq("id", addressInfo.id)
+      : supabase.from("personal_info").insert(payload);
+
+    const { error } = await query.select().single();
+
+    if (error) {
+      console.error(error);
+      return;
+    }
+  };
   return (
     <div>
       <Dialog>
@@ -134,7 +167,9 @@ export default function AddAddress({
               </div>
             </div>
           </div>
-          <AddressBtns />
+
+          {/* Buttons */}
+          <AddressBtns addNewAddress={addNewAddress} />
         </DialogContent>
       </Dialog>
     </div>

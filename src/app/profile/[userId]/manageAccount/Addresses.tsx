@@ -46,6 +46,19 @@ export default function Addresses() {
         Addresses
       </h1>
 
+      {addressInfo ? (
+        <div className="flex flex-col text-gray-600 my-2 space-y-2 mb-6 border-b pb-4 dark:text-gray-400">
+          <div className="flex gap-1">
+            <span className=""></span> {addressInfo?.city}
+            <span className=""></span> {addressInfo?.zip},
+            <span className=""></span> {addressInfo?.country}
+          </div>
+          <div className="flex gap-1">
+            <span className=""></span> {addressInfo?.address}
+          </div>
+        </div>
+      ) : null}
+
       <AddAddress
         country={country}
         setCountry={setCountry}
@@ -56,6 +69,7 @@ export default function Addresses() {
         address={address}
         setAddress={setAddress}
         addressInfo={addressInfo}
+        setAddressInfo={setAddressInfo}
       />
     </div>
   );

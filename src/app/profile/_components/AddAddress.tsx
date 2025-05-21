@@ -1,5 +1,6 @@
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogTitle,
@@ -19,6 +20,7 @@ import AddressBtns from "./AddressBtns";
 import { getUser } from "../../../../utils/supabase/actions";
 import { createClient } from "../../../../utils/supabase/client";
 import { AddressInfo } from "@/lib/types";
+import { useState } from "react";
 
 const countries = [
   { value: "USA", label: "United States" },
@@ -63,6 +65,7 @@ export default function AddAddress({
   address,
   setAddress,
   addressInfo,
+  setAddressInfo,
 }: {
   country: string;
   setCountry: (country: string) => void;
@@ -71,9 +74,11 @@ export default function AddAddress({
   zip: string;
   setZip: (zip: string) => void;
   address: string;
+  setAddressInfo: (addressInfo: AddressInfo | null) => void;
   setAddress: (address: string) => void;
   addressInfo: AddressInfo | null;
 }) {
+  const [open, setOpen] = useState<boolean>(false);
   const addNewAddress = async () => {
     const user = await getUser();
     if (!user) {
@@ -93,16 +98,23 @@ export default function AddAddress({
       ? supabase.from("personal_info").update(payload).eq("id", addressInfo.id)
       : supabase.from("personal_info").insert(payload);
 
-    const { error } = await query.select().single();
+    const { data, error } = await query.select().single();
 
     if (error) {
       console.error(error);
       return;
     }
+
+    setAddressInfo(data);
+    setCountry("");
+    setCity("");
+    setZip("");
+    setAddress("");
+    setOpen(false);
   };
   return (
     <div>
-      <Dialog>
+      <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger className="hover:underline underline-offset-4">
           <span className="flex items-center gap-2">
             <Plus className="w-5 h-5" strokeWidth={1} />
@@ -169,7 +181,10 @@ export default function AddAddress({
           </div>
 
           {/* Buttons */}
-          <AddressBtns addNewAddress={addNewAddress} />
+          <AddressBtns
+            closeDialog={() => setOpen(false)}
+            addNewAddress={addNewAddress}
+          />
         </DialogContent>
       </Dialog>
     </div>

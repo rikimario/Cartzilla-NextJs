@@ -13,7 +13,9 @@ export default function TermsAndConditions() {
         <div className="space-y-4 my-10">
           <p className="text-gray-500">
             Last updated:{" "}
-            <span className="font-semibold text-gray-900">May 26, 2025</span>
+            <span className="font-semibold text-gray-900 dark:text-white">
+              May 26, 2025
+            </span>
           </p>
           <p className="text-gray-500">
             Welcome to Cartzilla! These Terms and Conditions ("Terms") govern
@@ -25,7 +27,7 @@ export default function TermsAndConditions() {
         </div>
         {/* Overview */}
         <div className="text-gray-500 my-4">
-          <h2 className="text-2xl text-gray-900 font-semibold mb-4">
+          <h2 className="text-2xl text-gray-900 font-semibold mb-4 dark:text-white">
             1. Overview
           </h2>
           <p>
@@ -55,7 +57,7 @@ export default function TermsAndConditions() {
         </div>
         {/* Use of the site */}
         <div className="text-gray-500 my-4">
-          <h2 className="text-2xl text-gray-900 font-semibold mb-4">
+          <h2 className="text-2xl text-gray-900 font-semibold mb-4 dark:text-white">
             2. Your use of the Cartzilla Sites
           </h2>
           <p className="mt-4">
@@ -82,7 +84,7 @@ export default function TermsAndConditions() {
           </p>
 
           <div className="my-4">
-            <p className="font-semibold text-gray-900">
+            <p className="font-semibold text-gray-900 dark:text-white">
               In connection with the Cartzilla Sites, you will not:
             </p>
             <ul className="mt-4 space-y-4">
@@ -141,7 +143,7 @@ export default function TermsAndConditions() {
         </div>
         {/* Ordering and delivery */}
         <div className="text-gray-500 my-4">
-          <h2 className="text-2xl text-gray-900 font-semibold mb-4">
+          <h2 className="text-2xl text-gray-900 font-semibold mb-4 dark:text-white">
             3. Ordering and delivery
           </h2>
           <p>
@@ -179,7 +181,7 @@ export default function TermsAndConditions() {
         </div>
         {/* Payment */}
         <div className="text-gray-500 my-4">
-          <h2 className="text-2xl text-gray-900 font-semibold mb-4">
+          <h2 className="text-2xl text-gray-900 font-semibold mb-4 dark:text-white">
             4. Payments
           </h2>
           <p>
@@ -193,7 +195,7 @@ export default function TermsAndConditions() {
         </div>
         {/* User conduct */}
         <div className="text-gray-500 my-4">
-          <h2 className="text-2xl text-gray-900 font-semibold mb-4">
+          <h2 className="text-2xl text-gray-900 font-semibold mb-4 dark:text-white">
             5. User conduct
           </h2>
           <p>
@@ -205,7 +207,9 @@ export default function TermsAndConditions() {
           </p>
 
           <div className="my-4 space-y-4">
-            <p className="font-semibold text-gray-900">Intellectual property</p>
+            <p className="font-semibold text-gray-900 dark:text-white">
+              Intellectual property
+            </p>
             <p>
               All content on the Cartzilla Platform, including but not limited
               to text, graphics, logos, and software, is the property of
@@ -216,7 +220,7 @@ export default function TermsAndConditions() {
             </p>
           </div>
           <div className="my-4 space-y-4">
-            <p className="font-semibold text-gray-900">
+            <p className="font-semibold text-gray-900 dark:text-white">
               Third-party links and content
             </p>
             <p>
@@ -228,7 +232,7 @@ export default function TermsAndConditions() {
             </p>
           </div>
           <div className="my-4 space-y-4">
-            <p className="font-semibold text-gray-900">
+            <p className="font-semibold text-gray-900 dark:text-white">
               Disclaimer of warranties
             </p>
             <p>
@@ -240,7 +244,7 @@ export default function TermsAndConditions() {
             </p>
           </div>
           <div className="my-4 space-y-4">
-            <p className="font-semibold text-gray-900">
+            <p className="font-semibold text-gray-900 dark:text-white">
               Limitation of liability
             </p>
             <p>
@@ -254,7 +258,7 @@ export default function TermsAndConditions() {
         </div>
         {/* Entire agreement and severability */}
         <div className="text-gray-500 my-4">
-          <h2 className="text-2xl text-gray-900 font-semibold mb-4">
+          <h2 className="text-2xl text-gray-900 font-semibold mb-4 dark:text-white">
             6. Entire agreement and severability
           </h2>
           <p>
@@ -274,7 +278,7 @@ export default function TermsAndConditions() {
         </div>
         {/* Contact information */}
         <div className="text-gray-500 my-4">
-          <h2 className="text-2xl text-gray-900 font-semibold mb-4">
+          <h2 className="text-2xl text-gray-900 font-semibold mb-4 dark:text-white">
             7. Contact information
           </h2>
           <p>

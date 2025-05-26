@@ -186,9 +186,12 @@ export default function Profile() {
                   <span className="dark:text-gray-500">
                     <Info width={18} height={18} strokeWidth={1} />
                   </span>
-                  <p className="text-gray-900 dark:text-gray-400 cursor-pointer hover:text-gray-400">
+                  <Link
+                    href="/terms-and-conditions"
+                    className="text-gray-900 dark:text-gray-400 cursor-pointer hover:text-gray-400"
+                  >
                     Terms and Conditions
-                  </p>
+                  </Link>
                 </div>
               </div>
 

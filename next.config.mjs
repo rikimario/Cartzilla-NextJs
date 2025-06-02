@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+import createNextIntlPlugin from "next-intl/plugin";
 const nextConfig = {
   images: {
     domains: ["cdn.dummyjson.com"],
@@ -9,4 +10,5 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+const withNextIntl = createNextIntlPlugin(nextConfig);
+export default withNextIntl(nextConfig);

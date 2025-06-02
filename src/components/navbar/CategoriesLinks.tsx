@@ -1,187 +1,181 @@
-export const links: {
-  name: string;
-  submenu: boolean;
-  href?: string;
-  sublinks: {
-    name: string;
-    link: string;
-    sortLink?: string;
-  }[];
-}[] = [
-  {
-    name: "Men",
-    submenu: true,
-    href: "/categories/all-men",
-    sublinks: [
-      {
-        name: "Mens Shirts",
-        link: "/categories/all-men",
-        sortLink: "mens-shirts",
-      },
-      {
-        name: "Mens Shoes",
-        link: "/categories/all-men",
-        sortLink: "mens-shoes",
-      },
-      {
-        name: "Mens Watches",
-        link: "/categories/all-men",
-        sortLink: "mens-watches",
-      },
-    ],
-  },
-  {
-    name: "Women",
-    submenu: true,
-    href: "/categories/all-women",
-    sublinks: [
-      {
-        name: "Tops",
-        link: "/categories/all-women",
-        sortLink: "tops",
-      },
-      {
-        name: "Dresses",
-        link: "/categories/all-women",
-        sortLink: "womens-dresses",
-      },
-      {
-        name: "Women Shoes",
-        link: "/categories/all-women",
-        sortLink: "womens-shoes",
-      },
-      {
-        name: "Women Bags",
-        link: "/categories/all-women",
-        sortLink: "womens-bags",
-      },
-      {
-        name: "Women Watches",
-        link: "/categories/all-women",
-        sortLink: "womens-watches",
-      },
-      {
-        name: "Jewelry",
-        link: "/categories/all-women",
-        sortLink: "womens-jewellery",
-      },
-    ],
-  },
-  {
-    name: "Electronics",
-    submenu: true,
-    href: "/categories/all-electronics",
-    sublinks: [
-      {
-        name: "Laptops",
-        link: "/categories/all-electronics",
-        sortLink: "laptops",
-      },
-      {
-        name: "Tablets",
-        link: "/categories/all-electronics",
-        sortLink: "tablets",
-      },
-      {
-        name: "Smartphones",
-        link: "/categories/all-electronics",
-        sortLink: "smartphones",
-      },
-      {
-        name: "Mobile Accessories",
-        link: "/categories/all-electronics",
-        sortLink: "mobile-accessories",
-      },
-    ],
-  },
-  {
-    name: "Home & Kitchen",
-    submenu: true,
-    href: "/categories/all-groceries",
-    sublinks: [
-      {
-        name: "Furniture",
-        link: "/categories/all-groceries",
-        sortLink: "furniture",
-      },
-      {
-        name: "Kitchen",
-        link: "/categories/all-groceries",
-        sortLink: "kitchen",
-      },
-      {
-        name: "Decorations",
-        link: "/categories/all-groceries",
-        sortLink: "decorations",
-      },
-      {
-        name: "Groceries",
-        link: "/categories/all-groceries",
-        sortLink: "groceries",
-      },
-    ],
-  },
-  {
-    name: "Cosmetics",
-    submenu: true,
-    href: "/categories/all-cosmetics",
-    sublinks: [
-      {
-        name: "Beauty",
-        link: "/categories/all-cosmetics",
-        sortLink: "beauty",
-      },
-      {
-        name: "Skin Care",
-        link: "/categories/all-cosmetics",
-        sortLink: "skin-care",
-      },
-      {
-        name: "Fragrances",
-        link: "/categories/all-cosmetics",
-        sortLink: "fragrances",
-      },
-    ],
-  },
-  {
-    name: "Automotive",
-    submenu: true,
-    href: "/categories/all-automotive",
-    sublinks: [
-      {
-        name: "Cars",
-        link: "/categories/all-automotive",
-        sortLink: "cars",
-      },
-      {
-        name: "Motorcycles",
-        link: "/categories/all-automotive",
-        sortLink: "motorcycles",
-      },
-    ],
-  },
-  {
-    name: "Sports Accessories",
-    submenu: true,
-    href: "/categories/sports-accessories",
-    sublinks: [
-      {
-        name: "Sports Accessories",
-        link: "/categories/sports-accessories",
-        sortLink: "sports-accessories",
-      },
-    ],
-  },
-  {
-    name: "Sunglasses",
-    submenu: true,
-    href: "/categories/sunglasses",
-    sublinks: [
-      {
-        name: "Sunglasses",
-        link: "/categories/sunglasses",
-        sortLink: "sunglasses",
-      },
-    ],
-  },
-];
+// hooks/useCategoryLinks.ts
+import { useTranslations } from "next-intl";
+
+export function useCategoryLinks() {
+  const t = useTranslations("Navigation");
+
+  return [
+    {
+      name: t("men"),
+      submenu: true,
+      href: "/categories/all-men",
+      sublinks: [
+        {
+          name: t("mensShirts"),
+          link: "/categories/all-men",
+          sortLink: "mens-shirts",
+        },
+        {
+          name: t("mensShoes"),
+          link: "/categories/all-men",
+          sortLink: "mens-shoes",
+        },
+        {
+          name: t("mensWatches"),
+          link: "/categories/all-men",
+          sortLink: "mens-watches",
+        },
+      ],
+    },
+    {
+      name: t("women"),
+      submenu: true,
+      href: "/categories/all-women",
+      sublinks: [
+        { name: t("tops"), link: "/categories/all-women", sortLink: "tops" },
+        {
+          name: t("dresses"),
+          link: "/categories/all-women",
+          sortLink: "womens-dresses",
+        },
+        {
+          name: t("womenShoes"),
+          link: "/categories/all-women",
+          sortLink: "womens-shoes",
+        },
+        {
+          name: t("womenBags"),
+          link: "/categories/all-women",
+          sortLink: "womens-bags",
+        },
+        {
+          name: t("womenWatches"),
+          link: "/categories/all-women",
+          sortLink: "womens-watches",
+        },
+        {
+          name: t("jewelry"),
+          link: "/categories/all-women",
+          sortLink: "womens-jewellery",
+        },
+      ],
+    },
+    {
+      name: t("electronics"),
+      submenu: true,
+      href: "/categories/all-electronics",
+      sublinks: [
+        {
+          name: t("laptops"),
+          link: "/categories/all-electronics",
+          sortLink: "laptops",
+        },
+        {
+          name: t("tablets"),
+          link: "/categories/all-electronics",
+          sortLink: "tablets",
+        },
+        {
+          name: t("smartphones"),
+          link: "/categories/all-electronics",
+          sortLink: "smartphones",
+        },
+        {
+          name: t("mobileAccessories"),
+          link: "/categories/all-electronics",
+          sortLink: "mobile-accessories",
+        },
+      ],
+    },
+    {
+      name: t("homeKitchen"),
+      submenu: true,
+      href: "/categories/all-groceries",
+      sublinks: [
+        {
+          name: t("furniture"),
+          link: "/categories/all-groceries",
+          sortLink: "furniture",
+        },
+        {
+          name: t("kitchen"),
+          link: "/categories/all-groceries",
+          sortLink: "kitchen",
+        },
+        {
+          name: t("decorations"),
+          link: "/categories/all-groceries",
+          sortLink: "decorations",
+        },
+        {
+          name: t("groceries"),
+          link: "/categories/all-groceries",
+          sortLink: "groceries",
+        },
+      ],
+    },
+    {
+      name: t("cosmetics"),
+      submenu: true,
+      href: "/categories/all-cosmetics",
+      sublinks: [
+        {
+          name: t("beauty"),
+          link: "/categories/all-cosmetics",
+          sortLink: "beauty",
+        },
+        {
+          name: t("skinCare"),
+          link: "/categories/all-cosmetics",
+          sortLink: "skin-care",
+        },
+        {
+          name: t("fragrances"),
+          link: "/categories/all-cosmetics",
+          sortLink: "fragrances",
+        },
+      ],
+    },
+    {
+      name: t("automotive"),
+      submenu: true,
+      href: "/categories/all-automotive",
+      sublinks: [
+        {
+          name: t("cars"),
+          link: "/categories/all-automotive",
+          sortLink: "cars",
+        },
+        {
+          name: t("motorcycles"),
+          link: "/categories/all-automotive",
+          sortLink: "motorcycles",
+        },
+      ],
+    },
+    {
+      name: t("sportsAccessories"),
+      submenu: true,
+      href: "/categories/sports-accessories",
+      sublinks: [
+        {
+          name: t("sportsAccessories"),
+          link: "/categories/sports-accessories",
+          sortLink: "sports-accessories",
+        },
+      ],
+    },
+    {
+      name: t("sunglasses"),
+      submenu: true,
+      href: "/categories/sunglasses",
+      sublinks: [
+        {
+          name: t("sunglasses"),
+          link: "/categories/sunglasses",
+          sortLink: "sunglasses",
+        },
+      ],
+    },
+  ];
+}

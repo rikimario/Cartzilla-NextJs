@@ -1,7 +1,9 @@
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import React from "react";
 
 export default function FooterBottom() {
+  const t = useTranslations("FooterBottom");
   return (
     <div className="md:flex md:flex-row-reverse items-center justify-between py-4 border-t-[1px] border-gray-700">
       <div className="flex items-center justify-center">
@@ -44,7 +46,7 @@ export default function FooterBottom() {
 
       <div className="text-xs md:text-sm text-center pt-2 text-gray-300">
         <p>
-          &copy; All rights reserved. Made by{" "}
+          &copy; {t("allRightsReserved")}{" "}
           <span className="text-white">Mario</span>
         </p>
       </div>

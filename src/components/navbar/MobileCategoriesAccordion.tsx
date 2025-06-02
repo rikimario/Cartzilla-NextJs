@@ -4,9 +4,10 @@ import { Accordion, AccordionContent, AccordionTrigger } from "../ui/accordion";
 import { AccordionItem } from "@radix-ui/react-accordion";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
-import { links } from "./CategoriesLinks";
+import { useCategoryLinks } from "./CategoriesLinks";
 
 export default function MobileCategoriesAccordion() {
+  const links = useCategoryLinks();
   const [heading, setHeading] = useState<string>("");
   return (
     <div className="py-4 pl-6">
@@ -37,7 +38,7 @@ export default function MobileCategoriesAccordion() {
             </AccordionContent>
           </AccordionItem>
         ))}
-        <AccordionContent className="py-4">
+        {/* <AccordionContent className="py-4">
           <Link
             className="flex items-center justify-between gap-2 text-gray-700 dark:text-white"
             href="/sports-accessories"
@@ -58,7 +59,7 @@ export default function MobileCategoriesAccordion() {
               <ChevronRight className="h-4 w-4" />
             </span>
           </Link>
-        </AccordionContent>
+        </AccordionContent> */}
       </Accordion>
     </div>
   );

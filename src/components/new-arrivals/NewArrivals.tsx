@@ -4,12 +4,14 @@ import { Button } from "../ui/button";
 import { ArrowUpRight } from "lucide-react";
 import NewArrivalsList from "./NewArrivalsList";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 export default function NewArrivals() {
+  const t = useTranslations("Home");
   return (
     <div className="py-4 w-full">
       <h1 className="text-2xl text-gray-900 dark:text-white font-semibold pb-2">
-        New Arrivals
+        {t("NewArrivals")}
       </h1>
       <div className="lg:flex lg:justify-between items-center">
         <div className="relative h-[500px] lg:w-1/3 w-full py-4 px-4 bg-[url('/NewArrivalsBg.jpg')] bg-cover rounded-xl flex flex-col items-center justify-end">

@@ -5,8 +5,10 @@ import { AccordionContent } from "@radix-ui/react-accordion";
 import MobileCategoriesAccordion from "./MobileCategoriesAccordion";
 import MobileNavLinks from "./MobileNavLinks";
 import MobileFooter from "./MobileFooter";
+import { useTranslations } from "next-intl";
 
 export default function DDMobileNav() {
+  const t = useTranslations("Navigation");
   return (
     <>
       <div className="dark:bg-[#181D25] dark:text-[white]">
@@ -17,7 +19,7 @@ export default function DDMobileNav() {
                 <span className="absolute left-4 top-[1.2rem]">
                   <LayoutGrid className="  h-5 w-5" />
                 </span>
-                Categories
+                {t("categories")}
               </AccordionTrigger>
               <AccordionContent className="text-start text-sm p-4 pr-8  border border-gray-100 mt-2">
                 <Link
@@ -27,7 +29,7 @@ export default function DDMobileNav() {
                   <span>
                     <LayoutGrid className="h-5 w-5 text-gray-400" />
                   </span>
-                  All Categories
+                  {t("allCategories")}
                   <span className="absolute right-0">
                     <ChevronRight className=" h-4 w-4" />
                   </span>

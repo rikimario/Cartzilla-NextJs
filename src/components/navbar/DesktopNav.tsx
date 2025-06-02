@@ -5,7 +5,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuPortal,
   DropdownMenuSub,
   DropdownMenuSubContent,
@@ -13,12 +12,15 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import Link from "next/link";
-import { links } from "./CategoriesLinks";
-import { useRef, useState } from "react";
+import { useCategoryLinks } from "./CategoriesLinks";
+import { useState } from "react";
+import NavLanguageChange from "./_components/NavLanguageChange";
+import { useTranslations } from "next-intl";
 
 export default function DesktopNav() {
   const [open, setOpen] = useState<boolean>(false);
-  const dropdownMenuSubTriggerRef = useRef(null);
+  const t = useTranslations("Navigation");
+  const links = useCategoryLinks();
   const closeDropdown = () => {
     setOpen(false);
   };
@@ -26,7 +28,7 @@ export default function DesktopNav() {
     <div className="hidden font-light lg:flex max-w-[83rem] mx-auto justify-between bg-[#222934]">
       <DropdownMenu open={open} onOpenChange={setOpen}>
         <DropdownMenuTrigger className="text-[#E0E5EB] min-w-[15rem] bg-gray-700 py-2 px-4 rounded-md flex justify-between">
-          Categories{" "}
+          {t("categories")}{" "}
           <span>
             <ChevronDown strokeWidth={1} />
           </span>
@@ -40,7 +42,7 @@ export default function DesktopNav() {
                 href="/all-categories"
                 onClick={closeDropdown}
               >
-                All Categories{" "}
+                {t("allCategories")}{" "}
                 <span>
                   <ChevronRight className="h-4 w-4" strokeWidth={2} />
                 </span>
@@ -72,49 +74,23 @@ export default function DesktopNav() {
 
       <ul className="flex text-[#E0E5EB] gap-6">
         <li className="hover:bg-gray-700 p-2 rounded-md">
-          <Link href="/best-sellers">Best Sellers</Link>
+          <Link href="/best-sellers">{t("bestSellers")}</Link>
         </li>
         <li className="hover:bg-gray-700 p-2 rounded-md">
-          <Link href="/today-deals">Today's Deals</Link>
+          <Link href="/today-deals">{t("todayDeals")}</Link>
         </li>
         <li className="hover:bg-gray-700 p-2 rounded-md">
-          <Link href="/new-arrivals">New Arrivals</Link>
+          <Link href="/new-arrivals">{t("newArrivals")}</Link>
         </li>
         <li className="hover:bg-gray-700 p-2 rounded-md">
-          <Link href="/about">About</Link>
+          <Link href="/about">{t("about")}</Link>
         </li>
         <li className="hover:bg-gray-700 p-2 rounded-md">
-          <Link href="/contact">Contact</Link>
+          <Link href="/contact">{t("contact")}</Link>
         </li>
       </ul>
 
-      <div className="flex text-[#E0E5EB] gap-6 p-2">
-        <DropdownMenu>
-          <DropdownMenuTrigger className="text-[#E0E5EB] text-xs items-center flex">
-            Eng{" "}
-            <span>
-              <ChevronDown strokeWidth={1} size={16} />
-            </span>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            <DropdownMenuLabel>Bg</DropdownMenuLabel>
-            <DropdownMenuLabel>Eng</DropdownMenuLabel>
-          </DropdownMenuContent>
-        </DropdownMenu>
-
-        <DropdownMenu>
-          <DropdownMenuTrigger className="text-[#E0E5EB] text-xs items-center flex">
-            USD($){" "}
-            <span>
-              <ChevronDown strokeWidth={1} size={16} />
-            </span>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            <DropdownMenuLabel>USD($)</DropdownMenuLabel>
-            <DropdownMenuLabel>BG(lv)</DropdownMenuLabel>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </div>
+      <NavLanguageChange />
     </div>
   );
 }

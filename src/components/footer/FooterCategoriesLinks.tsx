@@ -1,103 +1,108 @@
-export const footerLinks = [
-  {
-    name: "Mans T-Shirts",
-    link: "/man-t-shirts",
-  },
-  {
-    name: "Mans Shoes",
-    link: "/man-shoes",
-  },
-  {
-    name: "Mans Watches",
-    link: "/man-watches",
-  },
+import { useTranslations } from "next-intl";
 
-  {
-    name: "Tops",
-    link: "/women-tops",
-  },
-  {
-    name: "Dresses",
-    link: "/women-dresses",
-  },
-  {
-    name: "Women Shoes",
-    link: "/women-shoes",
-  },
-  {
-    name: "Women Bags",
-    link: "/women-bags",
-  },
-  {
-    name: "Women Watches",
-    link: "/women-watches",
-  },
-  {
-    name: "Jewelry",
-    link: "/women-jewelry",
-  },
+export function footerLinks() {
+  const t = useTranslations("FooterLinks");
+  return [
+    {
+      name: t("mansTShirts"),
+      link: "/man-t-shirts",
+    },
+    {
+      name: t("mansShoes"),
+      link: "/man-shoes",
+    },
+    {
+      name: t("mansWatches"),
+      link: "/man-watches",
+    },
 
-  {
-    name: "Laptops",
-    link: "/laptops",
-  },
-  {
-    name: "Tablets",
-    link: "/tablets",
-  },
-  {
-    name: "Smartphones",
-    link: "/smartphones",
-  },
-  {
-    name: "Mobile Accessories",
-    link: "/mobile-accessories",
-  },
+    {
+      name: t("tops"),
+      link: "/women-tops",
+    },
+    {
+      name: t("dresses"),
+      link: "/women-dresses",
+    },
+    {
+      name: t("womenShoes"),
+      link: "/women-shoes",
+    },
+    {
+      name: t("womenBags"),
+      link: "/women-bags",
+    },
+    {
+      name: t("womenWatches"),
+      link: "/women-watches",
+    },
+    {
+      name: t("jewelry"),
+      link: "/women-jewelry",
+    },
 
-  {
-    name: "Furniture",
-    link: "/furniture",
-  },
-  {
-    name: "Kitchen",
-    link: "/kitchen",
-  },
-  {
-    name: "Decorations",
-    link: "/decorations",
-  },
-  {
-    name: "Groceries",
-    link: "/groceries",
-  },
+    {
+      name: t("laptops"),
+      link: "/laptops",
+    },
+    {
+      name: t("tablets"),
+      link: "/tablets",
+    },
+    {
+      name: t("smartphones"),
+      link: "/smartphones",
+    },
+    {
+      name: t("mobileAccessories"),
+      link: "/mobile-accessories",
+    },
 
-  {
-    name: "Beauty",
-    link: "/beauty",
-  },
-  {
-    name: "Skin Care",
-    link: "/skin-care",
-  },
-  {
-    name: "Fragrances",
-    link: "/fragrances",
-  },
+    {
+      name: t("furniture"),
+      link: "/furniture",
+    },
+    {
+      name: t("kitchen"),
+      link: "/kitchen",
+    },
+    {
+      name: t("decorations"),
+      link: "/decorations",
+    },
+    {
+      name: t("groceries"),
+      link: "/groceries",
+    },
 
-  {
-    name: "Cars",
-    link: "/cars",
-  },
-  {
-    name: "Motorcycles",
-    link: "/motorcycles",
-  },
-  {
-    name: "Sports Accessories",
-    link: "/sports-accessories",
-  },
-  {
-    name: "Sunglasses",
-    link: "/sunglasses",
-  },
-];
+    {
+      name: t("beauty"),
+      link: "/beauty",
+    },
+    {
+      name: t("skinCare"),
+      link: "/skin-care",
+    },
+    {
+      name: t("fragrances"),
+      link: "/fragrances",
+    },
+
+    {
+      name: t("cars"),
+      link: "/cars",
+    },
+    {
+      name: t("motorcycles"),
+      link: "/motorcycles",
+    },
+    {
+      name: t("sportsAccessories"),
+      link: "/sports-accessories",
+    },
+    {
+      name: t("sunglasses"),
+      link: "/sunglasses",
+    },
+  ];
+}

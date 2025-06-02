@@ -3,7 +3,7 @@ import { Card, CardContent } from "../ui/card";
 import { Heart, Star } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { handleFavoriteBtn } from "@/app/utils/handleFavoriteBtn";
+import { handleFavoriteBtn } from "@/app/[locale]/utils/handleFavoriteBtn";
 import { Product } from "@/lib/types";
 
 export default function TrendingProductsCard({

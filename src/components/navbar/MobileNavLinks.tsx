@@ -7,8 +7,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "../ui/accordion";
+import { useTranslations } from "next-intl";
+import MobileLanguageChange from "./_components/MobileLanguageChange";
 
 export default function MobileNavLinks() {
+  const t = useTranslations("Navigation");
   return (
     <>
       <div className="pt-4 text-left px-2 border-b-2 border-gray-200">
@@ -18,7 +21,7 @@ export default function MobileNavLinks() {
               className="flex justify-between items-center pr-4"
               href="/best-sellers"
             >
-              Best Sellers{" "}
+              {t("bestSellers")}{" "}
               <span>
                 <ChevronRight strokeWidth={2} size={16} />
               </span>
@@ -29,7 +32,7 @@ export default function MobileNavLinks() {
               className="flex justify-between items-center pr-4"
               href="/today-deals"
             >
-              Today's Deals{" "}
+              {t("todayDeals")}{" "}
               <span>
                 <ChevronRight strokeWidth={2} size={16} />
               </span>
@@ -40,7 +43,7 @@ export default function MobileNavLinks() {
               className="flex justify-between items-center pr-4"
               href="/new-arrivals"
             >
-              New Arrivals{" "}
+              {t("newArrivals")}{" "}
               <span>
                 <ChevronRight strokeWidth={2} size={16} />
               </span>
@@ -51,7 +54,7 @@ export default function MobileNavLinks() {
               className="flex justify-between items-center pr-4"
               href="/about"
             >
-              About{" "}
+              {t("about")}{" "}
               <span>
                 <ChevronRight strokeWidth={2} size={16} />
               </span>
@@ -62,7 +65,7 @@ export default function MobileNavLinks() {
               className="flex justify-between items-center pr-4"
               href="/contact"
             >
-              Contact{" "}
+              {t("contact")}{" "}
               <span>
                 <ChevronRight strokeWidth={2} size={16} />
               </span>
@@ -71,35 +74,7 @@ export default function MobileNavLinks() {
         </ul>
       </div>
 
-      <div className="pt-4 mb-44 pl-4 pr-8">
-        <Accordion type="single" collapsible className="w-full">
-          <AccordionItem className="border-none" value="item-1">
-            <AccordionTrigger className="text-gray-700 dark:text-white text-sm">
-              Eng
-            </AccordionTrigger>
-            <AccordionContent className="text-start text-sm p-2 border border-gray-200">
-              <div className="py-2 flex flex-col gap-2 text-gray-500 dark:text-gray-300">
-                <p>English</p>
-                <p>Bulgarian</p>
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
-
-        <Accordion type="single" collapsible className="w-full">
-          <AccordionItem className="border-none" value="item-1">
-            <AccordionTrigger className="text-gray-700 dark:text-white text-sm">
-              USD($)
-            </AccordionTrigger>
-            <AccordionContent className="text-start text-sm p-2 border border-gray-200">
-              <div className="py-2 flex flex-col gap-2 text-gray-500 dark:text-gray-300">
-                <p>USD($)</p>
-                <p>LV(lv)</p>
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
-      </div>
+      <MobileLanguageChange />
     </>
   );
 }

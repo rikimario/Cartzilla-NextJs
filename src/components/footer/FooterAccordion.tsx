@@ -5,65 +5,71 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "../ui/accordion";
+import { useTranslations } from "next-intl";
 
 export default function FooterAccordion() {
+  const t = useTranslations("FooterMenus");
   return (
     <div>
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="item-1">
-          <AccordionTrigger>Company</AccordionTrigger>
+          <AccordionTrigger>{t("company")}</AccordionTrigger>
           <AccordionContent className="text-gray-300">
-            About company
+            {t("aboutCompany")}
           </AccordionContent>
           <AccordionContent className="text-gray-300">
-            Our team
+            {t("ourTeam")}
           </AccordionContent>
-          <AccordionContent className="text-gray-300">Careers</AccordionContent>
           <AccordionContent className="text-gray-300">
-            Contact us
+            {t("careers")}
           </AccordionContent>
-          <AccordionContent className="text-gray-300">News</AccordionContent>
+          <AccordionContent className="text-gray-300">
+            {t("contactUs")}
+          </AccordionContent>
+          <AccordionContent className="text-gray-300">
+            {t("news")}
+          </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-2">
-          <AccordionTrigger>Account</AccordionTrigger>
+          <AccordionTrigger>{t("account")}</AccordionTrigger>
           <AccordionContent className="text-gray-300">
-            Your account
+            {t("yourAccount")}
           </AccordionContent>
           <AccordionContent className="text-gray-300">
-            Shipping rates & policies
+            {t("shippingPolicies")}
           </AccordionContent>
           <AccordionContent className="text-gray-300">
-            Refunds & replacements
+            {t("refundReplacements")}
           </AccordionContent>
           <AccordionContent className="text-gray-300">
-            Delivery info
+            {t("deliveryInfo")}
           </AccordionContent>
           <AccordionContent className="text-gray-300">
-            Order tracking
+            {t("orderTracking")}
           </AccordionContent>
           <AccordionContent className="text-gray-300">
-            Taxes & fees
+            {t("taxesFees")}
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-3">
-          <AccordionTrigger>Customer service</AccordionTrigger>
+          <AccordionTrigger>{t("customerService")}</AccordionTrigger>
           <AccordionContent className="text-gray-300">
-            Payment methods
+            {t("paymentMethods")}
           </AccordionContent>
           <AccordionContent className="text-gray-300">
-            Money back guarantee
+            {t("moneyBackGuarantee")}
           </AccordionContent>
           <AccordionContent className="text-gray-300">
-            Product returns
+            {t("productReturns")}
           </AccordionContent>
           <AccordionContent className="text-gray-300">
-            Support center
+            {t("supportCenter")}
           </AccordionContent>
           <AccordionContent className="text-gray-300">
-            Shipping
+            {t("shipping")}
           </AccordionContent>
           <AccordionContent className="text-gray-300">
-            Terms & conditions
+            {t("termsConditions")}
           </AccordionContent>
         </AccordionItem>
       </Accordion>

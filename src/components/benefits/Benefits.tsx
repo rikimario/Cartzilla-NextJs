@@ -1,6 +1,8 @@
 import { CreditCard, MessageCircle, RefreshCcw, Truck } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export default function Benefits() {
+  const t = useTranslations("Home");
   return (
     <div className="py-4 lg:py-8 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 lg:gap-2 items-center justify-center text-center">
       <div className="flex flex-col lg:flex-row gap-2 items-center lg:justify-center">
@@ -9,10 +11,10 @@ export default function Benefits() {
         </div>
         <div className="lg:flex-col">
           <p className="text-gray-900 dark:text-white font-semibold">
-            Free Shipping & Returns
+            {t("freeShipping")}
           </p>
           <p className="text-sm text-gray-600 dark:text-gray-400">
-            For all orders over 199.00$
+            {t("freeShippingDescription")}
           </p>
         </div>
       </div>
@@ -23,10 +25,10 @@ export default function Benefits() {
         </div>
         <div className="lg:flex-col">
           <p className="text-gray-900 font-semibold dark:text-white">
-            Secure Payment Method
+            {t("securePayment")}
           </p>
           <p className="text-sm text-gray-600 dark:text-gray-400">
-            We ensure secure payment
+            {t("securePaymentDescription")}
           </p>
         </div>
       </div>
@@ -37,10 +39,10 @@ export default function Benefits() {
         </div>
         <div className="lg:flex-col">
           <p className="text-gray-900 font-semibold dark:text-white">
-            Money Back Guarantee
+            {t("moneyBackGuarantee")}
           </p>
           <p className="text-sm text-gray-600 dark:text-gray-400">
-            30 day money back guarantee
+            {t("moneyBackGuaranteeDescription")}
           </p>
         </div>
       </div>
@@ -51,10 +53,10 @@ export default function Benefits() {
         </div>
         <div className="lg:flex-col">
           <p className="text-gray-900 font-semibold dark:text-white">
-            24/7 Customer Support
+            {t("24/7CustomerSupport")}
           </p>
           <p className="text-sm text-gray-600 dark:text-gray-400">
-            Friendly customer support
+            {t("24/7CustomerSupportDescription")}
           </p>
         </div>
       </div>

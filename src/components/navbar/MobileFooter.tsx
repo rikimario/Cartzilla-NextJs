@@ -1,10 +1,11 @@
 import { Heart, User } from "lucide-react";
-import React from "react";
 import { createClient } from "../../../utils/supabase/server";
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 
 export default async function MobileFooter() {
   const supabase = await createClient();
+  const t = await getTranslations("MobileFooter");
 
   const { data, error } = await supabase.auth.getUser();
   return (
@@ -12,7 +13,7 @@ export default async function MobileFooter() {
       {data.user ? (
         <Link href={`/profile?tab=Orders`}>
           <button className="flex items-center justify-center w-full p-2 gap-2">
-            Account
+            {t("account")}
           </button>
         </Link>
       ) : (
@@ -21,7 +22,7 @@ export default async function MobileFooter() {
             <span>
               <User className="h-6 w-6" strokeWidth={1} />
             </span>
-            Account
+            {t("account")}
           </span>
         </Link>
       )}
@@ -32,7 +33,7 @@ export default async function MobileFooter() {
         <span>
           <Heart className="h-6 w-6" strokeWidth={1} />
         </span>
-        Wishlist
+        {t("wishlist")}
       </Link>
     </div>
   );

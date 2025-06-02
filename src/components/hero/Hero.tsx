@@ -13,8 +13,10 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 export default function Hero() {
+  const t = useTranslations("Home");
   const plugin = React.useRef(
     Autoplay({ delay: 3000, stopOnInteraction: true })
   );
@@ -42,7 +44,7 @@ export default function Hero() {
                       <Link href="/categories/all-electronics">
                         <div className="pt-4 lg:pt-8 flex gap-4 items-center justify-center lg:justify-start">
                           <Button className="bg-[#F55266] hover:bg-[#F2223B] flex gap-1 items-center justify-center font-normal dark:text-white">
-                            Shop now{" "}
+                            {t("shopNow")}{" "}
                             <span>
                               <ArrowUpRight
                                 className="h-5 w-5"

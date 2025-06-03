@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { handleFavoriteBtn } from "@/app/[locale]/utils/handleFavoriteBtn";
 import { Product } from "@/lib/types";
+import { useTranslations } from "next-intl";
 
 export default function TrendingProductsCard({
   product,
@@ -13,6 +14,7 @@ export default function TrendingProductsCard({
 }) {
   const { isFavorite, toggleFavorite } = handleFavoriteBtn({ product });
   const [isHeartVisible, setIsHeartVisible] = useState(false);
+  const t = useTranslations("Home");
   return (
     <div className="p-1 grid grid-cols-1 grid-rows-1 h-full w-full">
       <Card
@@ -109,7 +111,7 @@ export default function TrendingProductsCard({
               </p>
             </div>
             <p className="flex text-xs md:text-base gap-2 text-gray-400">
-              Available:{" "}
+              {t("Available")}:{" "}
               <span className="text-gray-900 dark:text-white text-xs md:text-base">
                 {product.stock}
               </span>

@@ -5,10 +5,12 @@ import Image from "next/image";
 import { handleFavoriteBtn } from "@/app/[locale]/utils/handleFavoriteBtn";
 import { Product } from "@/lib/types";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 export default function SpecialOffersCard({ product }: { product: Product }) {
   const { isFavorite, toggleFavorite } = handleFavoriteBtn({ product });
   const [isHeartVisible, setIsHeartVisible] = useState(false);
+  const t = useTranslations("Home");
   return (
     <Card
       onMouseEnter={() => setIsHeartVisible(true)}
@@ -102,7 +104,7 @@ export default function SpecialOffersCard({ product }: { product: Product }) {
             </p>
           </div>
           <p className="flex gap-2 text-gray-400">
-            Available:{" "}
+            {t("Available")}:{" "}
             <span className="text-gray-900 dark:text-white">
               {product.stock}
             </span>

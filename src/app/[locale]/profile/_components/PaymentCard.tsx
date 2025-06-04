@@ -25,6 +25,7 @@ import React, { useState } from "react";
 import { createClient } from "../../../../../utils/supabase/client";
 import toast from "react-hot-toast";
 import { getUser } from "../../../../../utils/supabase/actions";
+import { useTranslations } from "next-intl";
 
 export default function PaymentCard({
   card,
@@ -40,6 +41,7 @@ export default function PaymentCard({
   const [expiryDate, setExpiryDate] = useState<string>("");
   const [cvc, setCvc] = useState<string>("");
   const [brand, setBrand] = useState<string>("");
+  const t = useTranslations("Profile");
 
   const supabase = createClient();
 
@@ -120,7 +122,7 @@ export default function PaymentCard({
               </p>
 
               <p className="text-sm text-gray-400 mt-2">
-                Expiration {c.expiry_date}
+                {t("expiration")} {c.expiry_date}
               </p>
 
               <div className="flex gap-2 mt-auto">
@@ -128,17 +130,17 @@ export default function PaymentCard({
                 <Dialog>
                   <DialogTrigger>
                     <Button className="dark:bg-inherit" variant={"outline"}>
-                      Edit
+                      {t("edit")}
                     </Button>
                   </DialogTrigger>
                   <DialogContent className="dark:bg-inherit">
                     <DialogDescription className="text-xl text-gray-900 font-semibold pb-4  border-b border-gray-400 dark:text-white">
-                      Edit payment method
+                      {t("editDescription")}
                     </DialogDescription>
                     <DialogTitle className="text-lg text-gray-700 text-center font-medium dark:text-white">
-                      Card
+                      {t("editTitle")}
                     </DialogTitle>
-                    <Label>Card number</Label>
+                    <Label>{t("cardNumber")}</Label>
                     <Input
                       required
                       onChange={(e) =>
@@ -148,6 +150,7 @@ export default function PaymentCard({
                       placeholder="xxxx xxxx xxxx xxxx"
                       className="placeholder:text-lg dark:bg-inherit"
                     />
+                    <Label>{t("cardHolderName")}</Label>
                     <Input
                       required
                       pattern="[a-zA-Z\s]+"
@@ -160,24 +163,24 @@ export default function PaymentCard({
                         }
                       }}
                       value={nameOnCard}
-                      placeholder="Full name"
+                      placeholder={t("namePlaceholder")}
                       className="placeholder:text-lg dark:bg-inherit"
                     />
                     <div className="flex gap-2">
                       <div className="space-y-3 w-full">
-                        <Label>Expiration date</Label>
+                        <Label>{t("expiryDate")}</Label>
                         <Input
                           required
                           onChange={(e) =>
                             setExpiryDate(formatExpiryDate(e.target.value))
                           }
                           value={expiryDate}
-                          placeholder="MM/YY"
+                          placeholder={t("datePlaceholder")}
                           className="placeholder:text-lg dark:bg-inherit"
                         />
                       </div>
                       <div className="space-y-3 w-full">
-                        <Label>CVV</Label>
+                        <Label>{t("cvv")}</Label>
                         <Input
                           required
                           onChange={(e) => {
@@ -193,14 +196,14 @@ export default function PaymentCard({
                     </div>
 
                     <div className="space-y-3 w-1/3">
-                      <Label>Brand</Label>
+                      <Label>{t("brand")}</Label>
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                           <Button
                             variant="outline"
                             className="w-full justify-between dark:bg-inherit"
                           >
-                            {brand ? brand : "Select brand"}
+                            {brand ? brand : t("brandSelect")}
                             <ChevronDown className="ml-2 h-4 w-4" />
                           </Button>
                         </DropdownMenuTrigger>
@@ -223,14 +226,14 @@ export default function PaymentCard({
 
                     <DialogClose className="w-full flex gap-2">
                       <Button className="w-full bg-gray-100 text-gray-700 hover:bg-gray-200">
-                        Cancle
+                        {t("cancle")}
                       </Button>
                       <Button
                         className="w-full"
                         onClick={() => handleEditCard(c.id)}
                         variant={"destructive"}
                       >
-                        Edit card
+                        {t("editCard")}
                       </Button>
                     </DialogClose>
                   </DialogContent>
@@ -242,7 +245,7 @@ export default function PaymentCard({
                   onClick={() => handleRemoveCard(c.id)}
                   variant={"outline"}
                 >
-                  Remove
+                  {t("remove")}
                 </Button>
               </div>
             </Card>

@@ -24,6 +24,7 @@ import toast from "react-hot-toast";
 import { getUser } from "../../../../../utils/supabase/actions";
 import { createClient } from "../../../../../utils/supabase/client";
 import { Cards } from "@/lib/types";
+import { useTranslations } from "next-intl";
 
 export default function AddNewCard({
   setCard,
@@ -39,6 +40,7 @@ export default function AddNewCard({
   const [expiryDate, setExpiryDate] = useState<string>("");
   const [cvc, setCvc] = useState<string>("");
   const [brand, setBrand] = useState<string>("");
+  const t = useTranslations("Profile");
 
   const handleAddCard = async () => {
     if (cardNumber.replace(/\s/g, "").length !== 16) {
@@ -102,18 +104,18 @@ export default function AddNewCard({
           <DialogTrigger className="hover:underline underline-offset-4">
             <span className="flex items-center gap-2">
               <Plus className="w-5 h-5" strokeWidth={1} />
-              Add payment method
+              {t("addPayment")}
             </span>{" "}
           </DialogTrigger>
         </Card>
         <DialogContent className="dark:bg-inherit">
           <DialogDescription className="text-xl text-gray-900 dark:text-white font-semibold pb-4  border-b border-gray-400">
-            Add new payment method
+            {t("dialogDescriptioon")}
           </DialogDescription>
           <DialogTitle className="text-lg text-gray-700 dark:text-white text-center font-medium">
-            Card
+            {t("dialogTitle")}
           </DialogTitle>
-          <Label>Card number</Label>
+          <Label>{t("cardNumber")}</Label>
           <Input
             required
             onChange={(e) => setCardNumber(formatCardNumber(e.target.value))}
@@ -121,7 +123,7 @@ export default function AddNewCard({
             placeholder="xxxx xxxx xxxx xxxx"
             className="placeholder:text-lg dark:bg-inherit"
           />
-          <Label>Name on card</Label>
+          <Label>{t("cardHolderName")}</Label>
           <Input
             required
             pattern="[a-zA-Z\s]+"
@@ -134,24 +136,24 @@ export default function AddNewCard({
               }
             }}
             value={nameOnCard}
-            placeholder="Full name"
+            placeholder={t("namePlaceholder")}
             className="placeholder:text-lg dark:bg-inherit"
           />
           <div className="flex gap-2">
             <div className="space-y-3 w-full">
-              <Label>Expiration date</Label>
+              <Label>{t("expiryDate")}</Label>
               <Input
                 required
                 onChange={(e) =>
                   setExpiryDate(formatExpiryDate(e.target.value))
                 }
                 value={expiryDate}
-                placeholder="MM/YY"
+                placeholder={t("datePlaceholder")}
                 className="placeholder:text-lg dark:bg-inherit"
               />
             </div>
             <div className="space-y-3 w-full">
-              <Label>CVV</Label>
+              <Label>{t("cvv")}</Label>
               <Input
                 required
                 onChange={(e) => {
@@ -165,14 +167,14 @@ export default function AddNewCard({
           </div>
 
           <div className="space-y-3 w-1/3">
-            <Label>Brand</Label>
+            <Label>{t("brand")}</Label>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
                   variant="outline"
                   className="w-full justify-between dark:bg-inherit"
                 >
-                  {brand ? brand : "Select brand"}
+                  {brand ? brand : t("brandSelect")}
                   <ChevronDown className="ml-2 h-4 w-4" />
                 </Button>
               </DropdownMenuTrigger>
@@ -192,14 +194,14 @@ export default function AddNewCard({
 
           <DialogClose className="w-full flex gap-2">
             <Button className="w-full bg-gray-100 text-gray-700 hover:bg-gray-200">
-              Cancle
+              {t("cancle")}
             </Button>
             <Button
               className="w-full"
               onClick={handleAddCard}
               variant={"destructive"}
             >
-              Add card
+              {t("addCard")}
             </Button>
           </DialogClose>
         </DialogContent>

@@ -18,6 +18,7 @@ import {
 import { PersonalInformation } from "@/lib/types";
 import { formatDate } from "date-fns";
 import toast from "react-hot-toast";
+import { useTranslations } from "next-intl";
 
 export default function BasicInfo({
   addNewInfo,
@@ -46,6 +47,7 @@ export default function BasicInfo({
   birthDate: Date | null;
   setBirthDate: (birthDate: Date | null) => void;
 }) {
+  const t = useTranslations("Profile");
   const handleAddNewInfo = () => {
     if (!firstName || !lastName || !language || !birthDate) {
       toast.error("Please fill in all fields.");
@@ -65,7 +67,7 @@ export default function BasicInfo({
       >
         <AccordionItem value="item-1">
           <div className="flex justify-between items-center">
-            <h1 className="mb-4 font-semibold">Basic info</h1>
+            <h1 className="mb-4 font-semibold">{t("basicInfo")}</h1>
             {!personalInfo?.date_of_birth ||
             !personalInfo?.first_name ||
             !personalInfo?.last_name ||
@@ -74,7 +76,9 @@ export default function BasicInfo({
                 className="[&>svg]:hidden"
                 onClick={() => setIsOpen(!isOpen)}
               >
-                <span className="text-sm font-medium underline">Edit</span>
+                <span className="text-sm font-medium underline">
+                  {t("edit")}
+                </span>
               </AccordionTrigger>
             )}
           </div>
@@ -95,7 +99,7 @@ export default function BasicInfo({
             <AccordionContent>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="firstName">First Name</Label>
+                  <Label htmlFor="firstName">{t("firstName")}</Label>
                   <Input
                     placeholder="John"
                     value={firstName}
@@ -104,7 +108,7 @@ export default function BasicInfo({
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="lastName">Last Name</Label>
+                  <Label htmlFor="lastName">{t("lastName")}</Label>
                   <Input
                     placeholder="Doe"
                     value={lastName}
@@ -112,26 +116,28 @@ export default function BasicInfo({
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="dob">Date of Birth</Label>
+                  <Label htmlFor="dob">{t("birthDate")}</Label>
                   <BasicInfoDatePicker
                     birthDate={birthDate}
                     setBirthDate={setBirthDate}
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="language">Language</Label>
+                  <Label htmlFor="language">{t("language")}</Label>
                   <Select
                     value={language || undefined}
                     onValueChange={(value) => setLanguage(value)}
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="Select language" />
+                      <SelectValue placeholder={t("selectLanguage")} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="English">English</SelectItem>
-                      <SelectItem value="Bulgarian">Bulgarian</SelectItem>
-                      <SelectItem value="French">French</SelectItem>
-                      <SelectItem value="Spanish">Spanish</SelectItem>
+                      <SelectItem value="English">{t("english")}</SelectItem>
+                      <SelectItem value="Bulgarian">
+                        {t("bulgarian")}
+                      </SelectItem>
+                      <SelectItem value="French">{t("french")}</SelectItem>
+                      <SelectItem value="Spanish">{t("spanish")}</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>

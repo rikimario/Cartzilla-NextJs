@@ -5,6 +5,7 @@ import { ContactInformation, PersonalInformation } from "@/lib/types";
 import { createClient } from "../../../../../../utils/supabase/client";
 import { getUser } from "../../../../../../utils/supabase/actions";
 import DeleteAccount from "../../_components/DeleteAccount";
+import { useTranslations } from "next-intl";
 
 export default function PersonalInfo() {
   const [isBasicOpen, setIsBasicOpen] = useState<boolean>(false);
@@ -19,6 +20,7 @@ export default function PersonalInfo() {
   const [birthDate, setBirthDate] = useState<Date | null>(null);
   const [email, setEmail] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
+  const t = useTranslations("Profile");
 
   const supabase = createClient();
 
@@ -155,7 +157,7 @@ export default function PersonalInfo() {
   return (
     <>
       <h1 className="text-4xl font-bold text-gray-700 mb-4 pb-2 dark:text-white">
-        Persianal info
+        {t("personalInfo")}
       </h1>
 
       <BasicInfo

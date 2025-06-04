@@ -11,6 +11,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { useTranslations } from "next-intl";
 
 export default function BasicInfoDatePicker({
   birthDate,
@@ -19,6 +20,7 @@ export default function BasicInfoDatePicker({
   birthDate: Date | null;
   setBirthDate: (date: Date | null) => void;
 }) {
+  const t = useTranslations("Profile");
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -29,7 +31,7 @@ export default function BasicInfoDatePicker({
             !birthDate && "text-muted-foreground"
           )}
         >
-          {birthDate ? format(birthDate, "PPP") : <span>Pick a date</span>}
+          {birthDate ? format(birthDate, "PPP") : <span>{t("pickDate")}</span>}
           <CalendarIcon />
         </Button>
       </PopoverTrigger>

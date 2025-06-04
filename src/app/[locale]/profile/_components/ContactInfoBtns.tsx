@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ContactInformation } from "@/lib/types";
-import React from "react";
+import { useTranslations } from "next-intl";
+import React, { use } from "react";
 
 export default function ContactInfoBtns({
   addContactInfo,
@@ -11,6 +12,7 @@ export default function ContactInfoBtns({
   setIsOpen: (isOpen: boolean) => void;
   contact: ContactInformation | null;
 }) {
+  const t = useTranslations("Profile");
   const isContactInfoEmpty =
     !contact?.email || !contact.phone || Object.keys(contact).length === 0;
 
@@ -21,14 +23,14 @@ export default function ContactInfoBtns({
         variant={"destructive"}
         className="w-full"
       >
-        Save changes
+        {t("save")}
       </Button>
       <Button
         onClick={() => !isContactInfoEmpty && setIsOpen(false)}
         variant={"outline"}
         className="w-full bg-gray-200"
       >
-        Close
+        {t("close")}
       </Button>
     </div>
   );

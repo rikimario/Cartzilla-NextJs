@@ -10,6 +10,7 @@ import { ContactInformation } from "@/lib/types";
 import React from "react";
 import ContactInfoBtns from "./ContactInfoBtns";
 import toast from "react-hot-toast";
+import { useTranslations } from "next-intl";
 
 export default function ContactInfo({
   email,
@@ -30,6 +31,7 @@ export default function ContactInfo({
   setIsOpen: (isOpen: boolean) => void;
   contact: ContactInformation | null;
 }) {
+  const t = useTranslations("Profile");
   const handleContact = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^\d{10}$/;
@@ -63,13 +65,15 @@ export default function ContactInfo({
       >
         <AccordionItem value="item-2">
           <div className="flex justify-between items-center">
-            <h1 className="mb-4 font-semibold">Contact</h1>
+            <h1 className="mb-4 font-semibold">{t("contact")}</h1>
             {!contact?.email || !contact?.phone ? null : (
               <AccordionTrigger
                 className="[&>svg]:hidden"
                 onClick={() => setIsOpen(!isOpen)}
               >
-                <span className="text-sm font-medium underline">Edit</span>
+                <span className="text-sm font-medium underline">
+                  {t("edit")}
+                </span>
               </AccordionTrigger>
             )}
           </div>
@@ -93,7 +97,7 @@ export default function ContactInfo({
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="Phone">Phone</Label>
+                  <Label htmlFor="Phone">{t("phone")}</Label>
                   <Input
                     placeholder="+91 123456789"
                     value={phone}

@@ -12,6 +12,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 const ITEMS_PER_PAGE = 4;
 
@@ -21,6 +22,7 @@ export default function MyReviews() {
   const router = useRouter();
   const currentPage = parseInt(searchParams.get("page") || "1");
   const [myReviews, setMyReviews] = useState<Review[]>([]);
+  const t = useTranslations("Profile");
 
   useEffect(() => {
     const supabase = createClient();
@@ -84,7 +86,7 @@ export default function MyReviews() {
   return (
     <>
       <h1 className="text-4xl font-bold text-gray-700 mb-4 pb-2 dark:text-white">
-        My reviews
+        {t("myReviews")}
       </h1>
       {paginatedReviews.length === 0 ? (
         <p>No reviews yet.</p>

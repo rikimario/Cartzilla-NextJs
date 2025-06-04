@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { createClient } from "../../../../../../utils/supabase/client";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
@@ -17,8 +17,10 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import toast from "react-hot-toast";
+import { useTranslations } from "next-intl";
 
 export default function WishlistContent() {
+  const t = useTranslations("Profile");
   const [favorites, setFavorites] = useState<
     Array<{
       title: string;
@@ -76,7 +78,7 @@ export default function WishlistContent() {
   return (
     <div className="p-2 dark:text-white">
       <h1 className="text-4xl font-bold text-gray-700 mb-4 pb-2 dark:text-white">
-        Wishlist
+        {t("wishlist")}
       </h1>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
         {favorites.map((favorite, index) => (
@@ -113,11 +115,10 @@ export default function WishlistContent() {
               </DialogTrigger>
               <DialogContent>
                 <DialogTitle className="text-center">
-                  Are you sure you want to remove this item?
+                  {t("deleteDialogTitle")}
                 </DialogTitle>
                 <DialogDescription className="text-center">
-                  This action will permanently remove the item from your
-                  wishlist.
+                  {t("deleteDialogDescription")}
                 </DialogDescription>
                 <DialogClose className="w-full flex justify-center gap-2">
                   <Button
@@ -125,10 +126,10 @@ export default function WishlistContent() {
                     variant={"outline"}
                     onClick={() => handleRemove(favorite.product_id)}
                   >
-                    Yes
+                    {t("yes")}
                   </Button>
                   <Button className="w-full" variant={"destructive"}>
-                    No
+                    {t("no")}
                   </Button>
                 </DialogClose>
               </DialogContent>
@@ -137,9 +138,7 @@ export default function WishlistContent() {
         ))}
       </div>
       {favorites.length === 0 && (
-        <p className="text-center text-gray-600 text-5xl my-10">
-          Wishlist is empty
-        </p>
+        <p className="text-center text-gray-600 text-5xl my-10">{t("empty")}</p>
       )}
     </div>
   );

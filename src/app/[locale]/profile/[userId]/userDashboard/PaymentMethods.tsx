@@ -5,9 +5,11 @@ import { Cards } from "@/lib/types";
 
 import PaymentCard from "../../_components/PaymentCard";
 import AddNewCard from "../../_components/AddNewCard";
+import { useTranslations } from "next-intl";
 
 export default function PaymentMethods() {
   const [card, setCard] = useState<Cards[]>([]);
+  const t = useTranslations("Profile");
 
   const supabase = createClient();
   const fetchCards = async () => {
@@ -65,7 +67,7 @@ export default function PaymentMethods() {
   return (
     <div className="py-2 dark:text-white">
       <h1 className="text-4xl font-bold text-gray-700 mb-4 pb-2 dark:text-white">
-        Payment methods
+        {t("paymentMethods")}
       </h1>
 
       <div className="md:flex md:flex-row flex flex-col flex-wrap gap-4">

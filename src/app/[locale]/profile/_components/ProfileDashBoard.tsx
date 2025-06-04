@@ -23,31 +23,33 @@ import MyReviews from "../[userId]/userDashboard/MyReviews";
 import PersonalInfo from "../[userId]/manageAccount/PersonalInfo";
 import Addresses from "../[userId]/manageAccount/Addresses";
 import Notifications from "../[userId]/manageAccount/Notifications";
+import { useTranslations } from "next-intl";
 
 export default function ProfileDashBoard() {
   const searchParams = useSearchParams();
   const activeTab = searchParams.get("tab");
   const [user, setUser] = useState<User | null>(null);
+  const t = useTranslations("Profile");
 
   const userDashboard: Tab[] = [
     {
-      title: "Orders",
+      title: t("orders"),
       component: <OrdersContent />,
       icon: <ShoppingBag width={18} height={18} strokeWidth={1} />,
     },
 
     {
-      title: "Wishlist",
+      title: t("wishlist"),
       component: <WishlistContent />,
       icon: <Heart width={18} height={18} strokeWidth={1} />,
     },
     {
-      title: "Payment Methods",
+      title: t("paymentMethods"),
       component: <PaymentMethods />,
       icon: <CreditCard width={18} height={18} strokeWidth={1} />,
     },
     {
-      title: "My Reviews",
+      title: t("myReviews"),
       component: <MyReviews />,
       icon: <Star width={18} height={18} strokeWidth={1} />,
     },
@@ -55,17 +57,17 @@ export default function ProfileDashBoard() {
 
   const manageAccount: Tab[] = [
     {
-      title: "Personal Info",
+      title: t("personalInfo"),
       component: <PersonalInfo />,
       icon: <UserRound width={18} height={18} strokeWidth={1} />,
     },
     {
-      title: "Addresses",
+      title: t("addresses"),
       component: <Addresses />,
       icon: <MapPin width={18} height={18} strokeWidth={1} />,
     },
     {
-      title: "Notifications",
+      title: t("notifications"),
       component: <Notifications />,
       icon: <Bell width={18} height={18} strokeWidth={1} />,
     },
@@ -112,7 +114,7 @@ export default function ProfileDashBoard() {
 
       {/* Manage Account */}
       <span className="text-gray-900 dark:text-white font-semibold mt-2">
-        Manage Account
+        {t("manageAccount")}
       </span>
       {manageAccount.map((tab) => (
         <Link
@@ -134,7 +136,7 @@ export default function ProfileDashBoard() {
 
       {/* Customer Support */}
       <span className="text-gray-900 dark:text-white font-semibold mt-2">
-        Customer Service
+        {t("customerService")}
       </span>
       <div className="flex flex-col gap-2 ml-2">
         <div className="flex items-center gap-2 p-1">
@@ -142,7 +144,7 @@ export default function ProfileDashBoard() {
             <CircleHelp width={18} height={18} strokeWidth={1} />
           </span>
           <p className="text-gray-900 dark:text-gray-400 cursor-pointer hover:text-gray-400">
-            Help Center
+            {t("helpCenter")}
           </p>
         </div>
         <Link
@@ -153,7 +155,7 @@ export default function ProfileDashBoard() {
             <Info width={18} height={18} strokeWidth={1} />
           </span>
           <p className="text-gray-900 dark:text-gray-400 cursor-pointer hover:text-gray-400">
-            Terms and Conditions
+            {t("terms")}
           </p>
         </Link>
       </div>

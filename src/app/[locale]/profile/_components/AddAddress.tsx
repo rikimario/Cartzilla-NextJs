@@ -21,6 +21,7 @@ import { getUser } from "../../../../../utils/supabase/actions";
 import { createClient } from "../../../../../utils/supabase/client";
 import { AddressInfo } from "@/lib/types";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 const countries = [
   { value: "USA", label: "United States" },
@@ -78,6 +79,7 @@ export default function AddAddress({
   setAddress: (address: string) => void;
   addressInfo: AddressInfo | null;
 }) {
+  const t = useTranslations("Profile");
   const [open, setOpen] = useState<boolean>(false);
   const addNewAddress = async () => {
     const user = await getUser();
@@ -118,24 +120,24 @@ export default function AddAddress({
         <DialogTrigger className="hover:underline underline-offset-4">
           <span className="flex items-center gap-2">
             <Plus className="w-5 h-5" strokeWidth={1} />
-            Add Address
+            {t("addAddress")}
           </span>{" "}
         </DialogTrigger>
         <DialogContent className="dark:bg-inherit min-w-[50rem]">
           <DialogDescription className="text-xl text-gray-900 dark:text-white font-semibold pb-4  border-b border-gray-400">
-            Add new address
+            {t("addNewAddress")}
           </DialogDescription>
           <DialogTitle></DialogTitle>
           <div className="space-y-4">
             <div className="flex gap-4">
               <div className="w-full space-y-2">
-                <Label htmlFor="Country">Country</Label>
+                <Label htmlFor="Country">{t("country")}</Label>
                 <Select
                   value={country || undefined}
                   onValueChange={(value) => setCountry(value)}
                 >
                   <SelectTrigger>
-                    <SelectValue placeholder="Select country..." />
+                    <SelectValue placeholder={t("selectCountry")} />
                   </SelectTrigger>
                   <SelectContent>
                     {countries.map((country) => (
@@ -147,13 +149,13 @@ export default function AddAddress({
                 </Select>
               </div>
               <div className="w-full space-y-2">
-                <Label htmlFor="City">City</Label>
+                <Label htmlFor="City">{t("city")}</Label>
                 <Select
                   value={city || undefined}
                   onValueChange={(value) => setCity(value)}
                 >
                   <SelectTrigger>
-                    <SelectValue placeholder="Select city..." />
+                    <SelectValue placeholder={t("selectCity")} />
                   </SelectTrigger>
                   <SelectContent>
                     {cities.map((city) => (
@@ -167,11 +169,11 @@ export default function AddAddress({
             </div>
             <div className="flex gap-4">
               <div className="space-y-2">
-                <Label htmlFor="zip">ZIP Code</Label>
+                <Label htmlFor="zip">{t("zip")}</Label>
                 <Input value={zip} onChange={(e) => setZip(e.target.value)} />
               </div>
               <div className="space-y-2 w-full">
-                <Label htmlFor="address">Address</Label>
+                <Label htmlFor="address">{t("address")}</Label>
                 <Input
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}

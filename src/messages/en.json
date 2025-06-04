@@ -195,7 +195,15 @@
     "contact": "Contact",
     "phone": "Phone",
     "deleteAccount": "Delete account",
-    "deleteAccountDescription": "When you delete your account, your public profile will be deactivated immediately. If you change your mind before the 14 days are up, sign in with your email and password, and we'll send you a link to reactivate your account."
+    "deleteAccountDescription": "When you delete your account, your public profile will be deactivated immediately. If you change your mind before the 14 days are up, sign in with your email and password, and we'll send you a link to reactivate your account.",
+    "addAddress": "Add address",
+    "addNewAddress": "Add new address",
+    "country": "Country",
+    "city": "City",
+    "zip": "Zip Code",
+    "address": "Address",
+    "selectCity": "Select city...",
+    "selectCountry": "Select country..."
   },
   "About": {
     "title": "Cartzilla - More than a retailer",

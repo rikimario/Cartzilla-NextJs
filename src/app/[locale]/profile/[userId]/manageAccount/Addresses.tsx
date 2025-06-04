@@ -3,6 +3,7 @@ import AddAddress from "../../_components/AddAddress";
 import { createClient } from "../../../../../../utils/supabase/client";
 import { getUser } from "../../../../../../utils/supabase/actions";
 import { AddressInfo } from "@/lib/types";
+import { useTranslations } from "next-intl";
 
 export default function Addresses() {
   const [country, setCountry] = useState<string>("");
@@ -10,6 +11,7 @@ export default function Addresses() {
   const [zip, setZip] = useState<string>("");
   const [address, setAddress] = useState<string>("");
   const [addressInfo, setAddressInfo] = useState<AddressInfo | null>(null);
+  const t = useTranslations("Profile");
 
   const supabase = createClient();
 
@@ -43,7 +45,7 @@ export default function Addresses() {
   return (
     <div>
       <h1 className="text-4xl font-bold text-gray-700 mb-4 pb-2 dark:text-white">
-        Addresses
+        {t("addresses")}
       </h1>
 
       {addressInfo ? (

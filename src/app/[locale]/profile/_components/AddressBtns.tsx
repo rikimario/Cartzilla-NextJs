@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { DialogClose } from "@/components/ui/dialog";
+import { useTranslations } from "next-intl";
 import React from "react";
 
 export default function AddressBtns({
@@ -9,6 +10,7 @@ export default function AddressBtns({
   addNewAddress: () => void;
   closeDialog: () => void;
 }) {
+  const t = useTranslations("Profile");
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-8 w-1/2">
       <Button
@@ -16,14 +18,14 @@ export default function AddressBtns({
         variant={"destructive"}
         className="w-full"
       >
-        Add address
+        {t("addAddress")}
       </Button>
       <Button
         onClick={closeDialog}
         variant={"outline"}
         className="w-full bg-gray-200"
       >
-        Close
+        {t("close")}
       </Button>
     </div>
   );

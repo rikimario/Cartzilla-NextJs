@@ -13,6 +13,7 @@ import {
   PaginationNext,
   PaginationLink,
 } from "@/components/ui/pagination";
+import { useTranslations } from "next-intl";
 
 const ITEMS_PER_PAGE = 4;
 
@@ -22,6 +23,7 @@ export default function OrdersContent() {
   const router = useRouter();
   const currentPage = parseInt(searchParams.get("page") || "1");
   const [orders, setOrders] = useState<Orders[]>([]);
+  const t = useTranslations("Profile");
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -60,15 +62,15 @@ export default function OrdersContent() {
   return (
     <div className="p-2">
       <h1 className="text-4xl font-bold text-gray-700 mb-8 pb-2 dark:text-white">
-        Orders
+        {t("orders")}
       </h1>
       <div className="flex text-gray-500 pb-4 border-b border-gray-200 dark:border-gray-600">
-        <span className="xl:w-52 w-44">Order #</span>
-        <span className="hidden md:block xl:w-52 w-44">Order date</span>
-        <span className="hidden md:block xl:w-52 w-44">Total</span>
+        <span className="xl:w-52 w-44">{t("order")} #</span>
+        <span className="hidden md:block xl:w-52 w-44">{t("oderDate")}</span>
+        <span className="hidden md:block xl:w-52 w-44">{t("orderTotal")}</span>
       </div>
       {paginatedOrders.length === 0 ? (
-        <p>No orders found.</p>
+        <p>{t("noOrdersFound")}.</p>
       ) : (
         paginatedOrders.map((order, index) => (
           <div

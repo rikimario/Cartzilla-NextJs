@@ -1,13 +1,15 @@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
+import { useTranslations } from "next-intl";
 import React from "react";
 
 export default function Notifications() {
+  const t = useTranslations("Profile");
   return (
     <div>
       <h1 className="text-4xl font-bold text-gray-700 mb-4 pb-2 dark:text-white">
-        Notifications
+        {t("notifications")}
       </h1>
 
       <div className="py-4 space-y-6">
@@ -18,11 +20,10 @@ export default function Notifications() {
               className="text-gray-900 dark:text-white text-lg font-semibold"
               htmlFor="exclusive-offers"
             >
-              Exclusive offers
+              {t("exclusiveOffers")}
             </Label>
             <p className="text-gray-600 dark:text-gray-400">
-              Receive alerts about exclusive discounts, promotions, and special
-              offers tailored just for you.
+              {t("exclusiveOffersDescription")}
             </p>
           </div>
         </div>
@@ -33,11 +34,10 @@ export default function Notifications() {
               className="text-gray-900 dark:text-white text-lg font-semibold"
               htmlFor="order-updates"
             >
-              Order updates
+              {t("orderUpdates")}
             </Label>
             <p className="text-gray-600 dark:text-gray-400">
-              Stay informed about the status of your orders, including
-              confirmations, shipping updates, and delivery notifications.
+              {t("orderUpadatesDescription")}
             </p>
           </div>
         </div>
@@ -48,11 +48,10 @@ export default function Notifications() {
               className="text-gray-900 dark:text-white text-lg font-semibold"
               htmlFor="product-recommendations"
             >
-              Product recommendations
+              {t("productRecommendations")}
             </Label>
             <p className="text-gray-600 dark:text-gray-400">
-              Get personalized recommendations based on your browsing and
-              purchase history to discover new products you'll love.
+              {t("productRecommendationsDescription")}
             </p>
           </div>
         </div>
@@ -63,11 +62,10 @@ export default function Notifications() {
               className="text-gray-900 dark:text-white text-lg font-semibold"
               htmlFor="restock-notifications"
             >
-              Restock notifications
+              {t("restockNotifications")}
             </Label>
             <p className="text-gray-600 dark:text-gray-400">
-              Be the first to know when out-of-stock items are back in
-              inventory, ensuring you never miss out on your favorite products.
+              {t("restockNotificationsDescription")}
             </p>
           </div>
         </div>
@@ -78,11 +76,10 @@ export default function Notifications() {
               className="text-gray-900 dark:text-white text-lg font-semibold"
               htmlFor="event-reminders"
             >
-              Event reminders
+              {t("eventReminders")}
             </Label>
             <p className="text-gray-600 dark:text-gray-400">
-              Receive reminders about upcoming sales events, flash sales, or
-              product launches to make sure you're always in the loop.
+              {t("eventRemindersDescription")}{" "}
             </p>
           </div>
         </div>
@@ -93,11 +90,10 @@ export default function Notifications() {
               className="text-gray-900 dark:text-white text-lg font-semibold"
               htmlFor="account-security-alerts"
             >
-              Account security alerts
+              {t("accSecurityAlerts")}
             </Label>
             <p className="text-gray-600 dark:text-gray-400">
-              Receive notifications about any suspicious account activity or
-              changes to your login credentials for enhanced security.
+              {t("accSecurityAlertsDescription")}
             </p>
           </div>
         </div>
@@ -108,11 +104,10 @@ export default function Notifications() {
               className="text-gray-900 dark:text-white text-lg font-semibold"
               htmlFor="customer-support-updates"
             >
-              Customer support updates
+              {t("customerSupportUpdates")}
             </Label>
             <p className="text-gray-600 dark:text-gray-400">
-              Get updates on any inquiries or support tickets you've submitted,
-              ensuring timely resolution of any issues.
+              {t("customerSupportUpdatesDescription")}
             </p>
           </div>
         </div>
@@ -120,7 +115,7 @@ export default function Notifications() {
 
       <div>
         <h2 className="font-bold text-gray-700 mt-8 pb-2 dark:text-white">
-          Communication channels
+          {t("comunicationChannels")}
         </h2>
 
         <div className="flex flex-col gap-5 mt-4">
@@ -133,7 +128,7 @@ export default function Notifications() {
           <div className="flex items-center gap-2">
             <Checkbox id="messages-in-whatsApp" />
             <Label className="text-gray-500" htmlFor="messages-in-whatsApp">
-              Messages in WhatsApp
+              {t("messagesInWhatsApp")}
             </Label>
           </div>
           <div className="flex items-center gap-2">
@@ -145,7 +140,7 @@ export default function Notifications() {
           <div className="flex items-center gap-2">
             <Checkbox id="app-push-notifications" />
             <Label className="text-gray-500" htmlFor="app-push-notifications">
-              App push notifications
+              {t("appPushNotifications")}
             </Label>
           </div>
         </div>

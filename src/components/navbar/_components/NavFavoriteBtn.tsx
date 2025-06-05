@@ -7,7 +7,13 @@ import Link from "next/link";
 import { getUser } from "../../../../utils/supabase/actions";
 import { User } from "@supabase/supabase-js";
 
-export default function NavFavoriteBtn() {
+export default function NavFavoriteBtn({
+  profileLinks,
+}: {
+  profileLinks: {
+    wishlist: string;
+  };
+}) {
   const [favorites, setFavorites] = useState<Array<object>>([{}]);
   const [user, setUser] = useState<User | null>(null);
 
@@ -58,7 +64,7 @@ export default function NavFavoriteBtn() {
     <div className="relative">
       {user ? (
         <Link
-          href={`/profile?tab=Wishlist`}
+          href={`/profile?tab=${profileLinks.wishlist}`}
           className="hidden lg:block hover:bg-[#333D4C] p-3 hover:rounded-full"
         >
           <Heart className="h-5 w-5 hidden lg:block" strokeWidth={1} />

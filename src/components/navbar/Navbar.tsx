@@ -19,9 +19,21 @@ import Image from "next/image";
 import NavFavoriteBtn from "./_components/NavFavoriteBtn";
 import NavShoppingCart from "./_components/NavShoppingCart";
 import Search from "./_components/Search";
+import { headers } from "next/headers";
 
+const tabTranslations: Record<string, Record<string, string>> = {
+  en: { orders: "Orders", wishlist: "Wishlist" },
+  bg: { orders: "Поръчки", wishlist: "Любими" },
+};
 export default async function Navbar() {
   const user = await getUser();
+
+  const headersList = await headers();
+  const locale = headersList.get("x-next-intl-locale") || "en";
+  const profileLinks = {
+    orders: tabTranslations[locale]?.orders || "Orders",
+    wishlist: tabTranslations[locale]?.wishlist || "Wishlist",
+  };
 
   return (
     <nav className="bg-[#222934] w-full px-3 xl:px-0">
@@ -69,11 +81,11 @@ export default async function Navbar() {
             <MobileSearch />
           </div>
           <Theme />
-          <NavFavoriteBtn />
+          <NavFavoriteBtn profileLinks={profileLinks} />
 
           {user ? (
             <div className="hidden lg:flex justify-center text-center gap-1 items-center">
-              <Link href={`/profile?tab=Orders`}>
+              <Link href={`/profile?tab=${profileLinks.orders}`}>
                 <div className="flex items-center">
                   <p className="hidden lg:block size-10 text-lg text-center bg-[#333D4C] p-2 rounded-full">
                     <span className="text-xl">

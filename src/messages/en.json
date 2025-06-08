@@ -336,6 +336,10 @@
       "leadershipDescription": "Cartzilla people are young, ambitious and energetic individuals. With identified leadership qualities, with a desire to be the best at what they do.",
       "sustainability": "Sustainability",
       "sustainabilityDescription": "We are committed to minimizing our environmental impact and promoting sustainable practices. From responsible sourcing to eco-friendly packaging, we aim to make a positive contribution to the well-being of our planet."
+    },
+    "philanthropy": {
+      "title": "The role of philanthropy in building a better world",
+      "paragraph": "Charitable contributions are a vital aspect of building a better world. These contributions come in various forms, including monetary donations..."
     }
   }
 }

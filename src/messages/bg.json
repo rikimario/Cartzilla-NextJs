@@ -286,6 +286,9 @@
       "helpLink": "Център за помощ"
     }
   },
+  "AllCategories": {
+    "title": "Всички категории"
+  },
   "About": {
     "title": "Cartzilla - Повече от търговец",
     "about": "Go to the about page"

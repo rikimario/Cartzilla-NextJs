@@ -286,6 +286,9 @@
       "helpLink": "Help Center"
     }
   },
+  "AllCategories": {
+    "title": "All Categories"
+  },
   "About": {
     "title": "Cartzilla - More than a retailer",
     "about": "Go to the about page"

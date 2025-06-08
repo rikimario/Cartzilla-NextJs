@@ -4,10 +4,12 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import React from "react";
 
 export default function AboutPrinciples() {
+  const t = useTranslations("About");
   return (
     <div className="md:flex md:gap-8 md:py-6">
       <div className="px-4 md:px-0 md:w-4/5 md:h-2/3">
@@ -21,50 +23,42 @@ export default function AboutPrinciples() {
       </div>
 
       <div className="px-4 md:px-0 pt-8 w-full">
-        <p className="px-4 pt-4 text-gray-600 dark:text-gray-300">Principles</p>
+        <p className="px-4 pt-4 text-gray-600 dark:text-gray-300">
+          {t("principles.paragraph1")}
+        </p>
         <h1 className="text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white p-4">
-          The main principles that will allow us to grow
+          {t("principles.title")}
         </h1>
         <p className="text-lg text-gray-600 dark:text-gray-300 px-4">
-          Cartzilla is a comprehensive solution to fulfill any customer's needs,
-          serving as both the starting point and end destination of their
-          search. It operates as a reliable assistant, dedicated to eliminating
-          the need for any unpleasant compromises, making their dreams a
-          reality, and empowering them to think big.
+          {t("principles.paragraph2")}
         </p>
 
         <div className="px-4 py-4">
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
               <AccordionTrigger className="text-base font-semibold">
-                Customer focus
+                {t("principles.customerFocus")}
               </AccordionTrigger>
               <AccordionContent className="text-gray-600 dark:text-gray-300">
-                We prioritize understanding and anticipating our customers'
-                needs, delivering an exceptional and personalized experience
-                from start to finish.
+                {t("principles.customerFocusDesription")}
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-2">
               <AccordionTrigger className="text-base font-semibold">
-                Betting on reputation
+                {t("principles.bettingOnReputation")}
               </AccordionTrigger>
               <AccordionContent className="text-gray-600 dark:text-gray-300">
-                We value a solid reputation built on integrity, transparency,
-                and quality - ensuring our customers trust and rely on our
-                brand.
+                {t("principles.bettingOnReputationDescription")}
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-3">
               <AccordionTrigger className="text-base font-semibold">
-                Fast, convenient and enjoyable
+                {t("principles.fastAndEnjoyable")}
               </AccordionTrigger>
               <AccordionContent className="text-gray-600 dark:text-gray-300">
-                We've streamlined our process for speed, convenience, and an
-                enjoyable shopping experience, redefining online standards for
-                our delighted customers.
+                {t("principles.fastAndEnjoyableDescription")}
               </AccordionContent>
             </AccordionItem>
           </Accordion>

@@ -309,6 +309,17 @@
       "paragraph1": "Mission",
       "title": "The best products at fair prices",
       "paragraph2": "'We believe that things exist to make life easier, more pleasant and kinder. That's why the search for the right thing should be quick, convenient and enjoyable. We do not just sell household appliances and electronics, but comfort and accessibility.'"
+    },
+    "principles": {
+      "paragraph1": "Principles",
+      "title": "The main principles that will allow us to grow",
+      "paragraph2": "Cartzilla is a comprehensive solution to fulfill any customer's needs, serving as both the starting point and end destination of their search. It operates as a reliable assistant, dedicated to eliminating the need for any unpleasant compromises, making their dreams a reality, and empowering them to think big.",
+      "customerFocus": "Customer focus",
+      "customerFocusDesription": "We prioritize understanding and anticipating our customers' needs, delivering an exceptional and personalized experience from start to finish.",
+      "bettingOnReputation": "Betting on reputation",
+      "bettingOnReputationDescription": "We value a solid reputation built on integrity, transparency, and quality - ensuring our customers trust and rely on our brand.",
+      "fastAndEnjoyable": "Fast, convenient and enjoyable",
+      "fastAndEnjoyableDescription": "We've streamlined our process for speed, convenience, and an enjoyable shopping experience, redefining online standards for our delighted customers."
     }
   }
 }

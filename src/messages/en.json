@@ -291,6 +291,19 @@
   },
   "About": {
     "title": "Cartzilla - More than a retailer",
-    "about": "Go to the about page"
+    "titleParagraph": "Since 2015, we have been fulfilling the small dreams and big plans of millions of people. You can find literally everything here.",
+    "learnMore": "Learn more",
+    "products": {
+      "label": "products available for purchase"
+    },
+    "visitors": {
+      "label": "users visited our site from 2015"
+    },
+    "employees": {
+      "label": "employees around the world"
+    },
+    "returnRate": {
+      "label": "of our customers return"
+    }
   }
 }

@@ -31,8 +31,7 @@ export default function About() {
               {t("title")}
             </h1>
             <p className="text-gray-600 dark:text-gray-300 pt-6 text-sm lg:text-base font-medium">
-              Since 2015, we have been fulfilling the small dreams and big plans
-              of millions of people. You can find literally everything here.
+              {t("titleParagraph")}
             </p>
             <div className="pt-6">
               <Link href="#mission">
@@ -41,7 +40,7 @@ export default function About() {
                   variant="outline"
                   size="lg"
                 >
-                  Learn more
+                  {t("learnMore")}
                   <span>
                     <ArrowDown className="h-4 w-4" />
                   </span>
@@ -58,7 +57,7 @@ export default function About() {
             14K
           </h1>
           <p className="text-gray-600 dark:text-gray-300 pt-2 text-sm font-medium">
-            products available for purchase
+            {t("products.label")}
           </p>
         </div>
         <div className="text-center p-2">
@@ -66,7 +65,7 @@ export default function About() {
             12M
           </h1>
           <p className="text-gray-600 dark:text-gray-300 pt-2 text-sm font-medium">
-            users visited our site from 2015
+            {t("visitors.label")}
           </p>
         </div>
         <div className="text-center p-2">
@@ -74,7 +73,7 @@ export default function About() {
             80+
           </h1>
           <p className="text-gray-600 dark:text-gray-300 pt-2 text-sm font-medium">
-            employees around the world
+            {t("employees.label")}
           </p>
         </div>
         <div className="text-center p-2">
@@ -82,7 +81,7 @@ export default function About() {
             92%
           </h1>
           <p className="text-gray-600 dark:text-gray-300 pt-2 text-sm font-medium">
-            of our customers return
+            {t("returnRate.label")}
           </p>
         </div>
       </div>

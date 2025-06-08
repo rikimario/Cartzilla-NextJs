@@ -320,6 +320,22 @@
       "bettingOnReputationDescription": "We value a solid reputation built on integrity, transparency, and quality - ensuring our customers trust and rely on our brand.",
       "fastAndEnjoyable": "Fast, convenient and enjoyable",
       "fastAndEnjoyableDescription": "We've streamlined our process for speed, convenience, and an enjoyable shopping experience, redefining online standards for our delighted customers."
+    },
+    "values": {
+      "paragrahp": "values",
+      "title": "Simple values to achieve goals",
+      "people": "People",
+      "peopleDescription": "The most important value of the Company is people (employees, partners, clients). Behind any success there is, first and foremost, a specific person. It is he who creates the product, technology, and innovation.",
+      "service": "Service",
+      "serviceDescription": "Care, attention, desire and ability to be helpful (to a colleague in his department, other departments, clients, customers and all other people who surround us).",
+      "responsibility": "Responsibility",
+      "responsibilityDescription": "Responsibility is our key quality. We don't shift it to external circumstances or other people. If we see something that could be improved, we don't just criticize, but offer our own options.",
+      "innovation": "Innovation",
+      "innovationDescription": "We foster a culture of continuous improvement and innovation. Embracing change and staying ahead of the curve are essential for our success. We encourage creative thinking, experimentation, and the pursuit of new ideas.",
+      "leadership": "Leadership",
+      "leadershipDescription": "Cartzilla people are young, ambitious and energetic individuals. With identified leadership qualities, with a desire to be the best at what they do.",
+      "sustainability": "Sustainability",
+      "sustainabilityDescription": "We are committed to minimizing our environmental impact and promoting sustainable practices. From responsible sourcing to eco-friendly packaging, we aim to make a positive contribution to the well-being of our planet."
     }
   }
 }

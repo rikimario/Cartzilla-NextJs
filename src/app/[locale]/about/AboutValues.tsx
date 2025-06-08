@@ -14,15 +14,19 @@ import {
   TrendingUp,
   UserRoundPlus,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import React from "react";
 
 export default function AboutValues() {
+  const t = useTranslations("About");
   return (
     <div className="md:flex overflow-hidden">
       <div className="px-4 md:px-0 pt-8 w-full">
-        <p className="px-4 pt-4 text-gray-600 dark:text-gray-300">Values</p>
+        <p className="px-4 pt-4 text-gray-600 dark:text-gray-300">
+          {t("values.paragraph")}
+        </p>
         <h1 className="text-3xl md:text-4xl font-semibold text-gray-900 dark:text-white p-4">
-          Simple values to achieve goals
+          {t("values.title")}
         </h1>
       </div>
       <div className="pb-4">
@@ -44,14 +48,11 @@ export default function AboutValues() {
                         strokeWidth={1}
                       />
                       <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
-                        People
+                        {t("values.people")}
                       </h1>
                     </div>
                     <p className="text-gray-600 dark:text-gray-300 p-2">
-                      The most important value of the Company is people
-                      (employees, partners, clients). Behind any success there
-                      is, first and foremost, a specific person. It is he who
-                      creates the product, technology, and innovation.
+                      {t("values.peopleDescription")}
                     </p>
                   </div>
                 </CardContent>
@@ -68,13 +69,11 @@ export default function AboutValues() {
                         strokeWidth={1}
                       />
                       <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
-                        Service
+                        {t("values.service")}
                       </h1>
                     </div>
                     <p className="text-gray-600 dark:text-gray-300 p-2">
-                      Care, attention, desire and ability to be helpful (to a
-                      colleague in his department, other departments, clients,
-                      customers and all other people who surround us).
+                      {t("values.serviceDescription")}
                     </p>
                   </div>
                 </CardContent>
@@ -91,14 +90,11 @@ export default function AboutValues() {
                         strokeWidth={1}
                       />
                       <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
-                        Responsibility
+                        {t("values.responsibility")}
                       </h1>
                     </div>
                     <p className="text-gray-600 dark:text-gray-300 p-2">
-                      Responsibility is our key quality. We don't shift it to
-                      external circumstances or other people. If we see
-                      something that could be improved, we don't just criticize,
-                      but offer our own options.
+                      {t("values.responsibilityDescription")}
                     </p>
                   </div>
                 </CardContent>
@@ -115,14 +111,11 @@ export default function AboutValues() {
                         strokeWidth={1}
                       />
                       <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
-                        Innovation
+                        {t("values.innovation")}
                       </h1>
                     </div>
                     <p className="text-gray-600 dark:text-gray-300 p-2">
-                      We foster a culture of continuous improvement and
-                      innovation. Embracing change and staying ahead of the
-                      curve are essential for our success. We encourage creative
-                      thinking, experimentation, and the pursuit of new ideas.
+                      {t("values.innovationDescription")}
                     </p>
                   </div>
                 </CardContent>
@@ -139,13 +132,11 @@ export default function AboutValues() {
                         strokeWidth={1}
                       />
                       <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
-                        Leadership
+                        {t("values.leadership")}
                       </h1>
                     </div>
                     <p className="text-gray-600 dark:text-gray-300 p-2">
-                      Cartzilla people are young, ambitious and energetic
-                      individuals. With identified leadership qualities, with a
-                      desire to be the best at what they do.
+                      {t("values.leadershipDescription")}
                     </p>
                   </div>
                 </CardContent>
@@ -162,14 +153,11 @@ export default function AboutValues() {
                         strokeWidth={1}
                       />
                       <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
-                        Sustainability
+                        {t("values.sustainability")}
                       </h1>
                     </div>
                     <p className="text-gray-600 dark:text-gray-300 p-2">
-                      We are committed to minimizing our environmental impact
-                      and promoting sustainable practices. From responsible
-                      sourcing to eco-friendly packaging, we aim to make a
-                      positive contribution to the well-being of our planet.
+                      {t("values.sustainabilityDescription")}
                     </p>
                   </div>
                 </CardContent>

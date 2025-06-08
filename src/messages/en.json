@@ -304,6 +304,11 @@
     },
     "returnRate": {
       "label": "of our customers return"
+    },
+    "mission": {
+      "paragraph1": "Mission",
+      "title": "The best products at fair prices",
+      "paragraph2": "'We believe that things exist to make life easier, more pleasant and kinder. That's why the search for the right thing should be quick, convenient and enjoyable. We do not just sell household appliances and electronics, but comfort and accessibility.'"
     }
   }
 }

@@ -340,6 +340,19 @@
     "philanthropy": {
       "title": "The role of philanthropy in building a better world",
       "paragraph": "Charitable contributions are a vital aspect of building a better world. These contributions come in various forms, including monetary donations..."
+    },
+    "careers": {
+      "paragraph": "Careers",
+      "title": "Open positions",
+      "card1": "Supply Chain and Logistics Coordinator",
+      "card2": "Content Manager for Social Networks",
+      "card3": "Customer Service Representative",
+      "card4": "Data Analyst/Analytics Specialist",
+      "card5": "E-commerce Manager/Director",
+      "place1": "New York",
+      "place2": "London",
+      "place3": "Remote",
+      "place4": "In house"
     }
   }
 }

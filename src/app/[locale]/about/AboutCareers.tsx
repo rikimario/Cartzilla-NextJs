@@ -6,15 +6,19 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { useTranslations } from "next-intl";
 import React from "react";
 
 export default function AboutCareers() {
+  const t = useTranslations("About");
   return (
     <div className=" overflow-hidden">
       <div className="pt-8 w-full">
-        <p className="pt-4 text-gray-600 dark:text-gray-300">Careers</p>
+        <p className="pt-4 text-gray-600 dark:text-gray-300">
+          {t("careers.paragraph")}
+        </p>
         <h1 className="text-3xl md:text-4xl font-semibold text-gray-900 dark:text-white py-4">
-          Open positions
+          {t("careers.title")}
         </h1>
       </div>
       <div className="pb-4">
@@ -34,10 +38,10 @@ export default function AboutCareers() {
                       <p className="text-xs">Full time</p>
                     </div>
                     <h1 className="text-xl p-2 font-semibold text-gray-900 dark:text-white">
-                      Supply Chain and Logistics Coordinator
+                      {t("careers.card1")}
                     </h1>
                     <p className="text-gray-600 dark:text-gray-300 p-2">
-                      New York
+                      {t("careers.place1")}
                     </p>
                   </div>
                 </CardContent>
@@ -52,10 +56,10 @@ export default function AboutCareers() {
                       <p className="text-xs">Part time</p>
                     </div>
                     <h1 className="text-xl p-2 font-semibold text-gray-900 dark:text-white">
-                      Content Manager for Social Networks
+                      {t("careers.card2")}
                     </h1>
                     <p className="text-gray-600 dark:text-gray-300 p-2">
-                      Remote
+                      {t("careers.place3")}
                     </p>
                   </div>
                 </CardContent>
@@ -70,10 +74,10 @@ export default function AboutCareers() {
                       <p className="text-xs">Full time</p>
                     </div>
                     <h1 className="text-xl p-2 font-semibold text-gray-900 dark:text-white">
-                      Customer Service Representative
+                      {t("careers.card3")}
                     </h1>
                     <p className="text-gray-600 dark:text-gray-300 p-2">
-                      London
+                      {t("careers.place2")}
                     </p>
                   </div>
                 </CardContent>
@@ -88,10 +92,10 @@ export default function AboutCareers() {
                       <p className="text-xs">Freelance</p>
                     </div>
                     <h1 className="text-xl p-2 font-semibold text-gray-900 dark:text-white">
-                      Data Analyst/Analytics Specialist
+                      {t("careers.card4")}
                     </h1>
                     <p className="text-gray-600 dark:text-gray-300 p-2">
-                      Remote
+                      {t("careers.place3")}
                     </p>
                   </div>
                 </CardContent>
@@ -106,10 +110,10 @@ export default function AboutCareers() {
                       <p className="text-xs">Full time</p>
                     </div>
                     <h1 className="text-xl p-2 font-semibold text-gray-900 dark:text-white pr-8">
-                      E-commerce Manager/Director
+                      {t("careers.card5")}
                     </h1>
                     <p className="text-gray-600 dark:text-gray-300 p-2">
-                      In house
+                      {t("careers.place4")}
                     </p>
                   </div>
                 </CardContent>

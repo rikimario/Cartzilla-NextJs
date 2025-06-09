@@ -8,18 +8,20 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Clock, Mail, MapPin, PhoneOutgoing } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import React from "react";
 
 export default function page() {
+  const t = useTranslations("Contact");
   return (
     <div className="py-6">
       <div className="text-center py-6">
         <h1 className="text-3xl lg:text-4xl text-gray-900 dark:text-white font-semibold py-4">
-          Contact Us
+          {t("title")}
         </h1>
         <p className="text-gray-600 dark:text-gray-300 pb-4">
-          Fill out the form below and we will reply within 24 hours
+          {t("paragraph")}
         </p>
       </div>
 
@@ -31,7 +33,7 @@ export default function page() {
                 className="text-sm text-gray-900 dark:text-white"
                 htmlFor=""
               >
-                Name *
+                {t("name")} *
               </label>
               <input
                 className="w-full h-12 dark:bg-inherit rounded-3xl border border-gray-300 px-4"
@@ -44,7 +46,7 @@ export default function page() {
                 className="text-sm text-gray-900 dark:text-white"
                 htmlFor=""
               >
-                Email *
+                {t("email")} *
               </label>
               <input
                 className="w-full h-12 dark:bg-inherit rounded-3xl border border-gray-300 px-4"
@@ -57,35 +59,37 @@ export default function page() {
                 className="text-sm text-gray-900 dark:text-white"
                 htmlFor=""
               >
-                Subject *
+                {t("subject")} *
               </label>
               <Select>
                 <SelectTrigger className="w-full h-12 dark:bg-inherit rounded-3xl border border-gray-300 text-gray-600 dark:text-white px-4">
                   <SelectValue
                     className="text-gray-300"
-                    placeholder="Select subject"
+                    placeholder={t("selectSubject")}
                   />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
                     <SelectItem value="general-inquiry">
-                      General inquiry
+                      {t("subject1")}
                     </SelectItem>
-                    <SelectItem value="order-status">Order status</SelectItem>
+                    <SelectItem value="order-status">
+                      {t("subject7")}
+                    </SelectItem>
                     <SelectItem value="product-information">
-                      Product information
+                      {t("subject2")}
                     </SelectItem>
                     <SelectItem value="technical-support">
-                      Technical support
+                      {t("subject3")}
                     </SelectItem>
                     <SelectItem value="website-feedback">
-                      Website feedback
+                      {t("subject4")}
                     </SelectItem>
                     <SelectItem value="account-assistance">
-                      Account assistance
+                      {t("subject5")}
                     </SelectItem>
                     <SelectItem value="security-concerns">
-                      Security concerns
+                      {t("subject6")}
                     </SelectItem>
                   </SelectGroup>
                 </SelectContent>
@@ -97,7 +101,7 @@ export default function page() {
                 className="text-sm text-gray-900 dark:text-white"
                 htmlFor=""
               >
-                Message *
+                {t("message")} *
               </label>
               <textarea
                 className="w-full min-h-44 bg-white dark:bg-inherit rounded-3xl border border-gray-300 p-4"
@@ -108,7 +112,7 @@ export default function page() {
 
             <div>
               <Button className="rounded-3xl" size="lg">
-                Send message
+                {t("send")}
               </Button>
             </div>
           </form>
@@ -130,14 +134,18 @@ export default function page() {
             <PhoneOutgoing className="w-5 h-5" strokeWidth={2} />
           </div>
           <p className="text-gray-900 dark:text-white font-semibold text-lg py-3">
-            Call us directly
+            {t("callUs")}
           </p>
           <div className="flex lg:flex-col xl:flex-row text-center gap-2">
-            <p className="text-gray-500 dark:text-gray-300">Customers:</p>
+            <p className="text-gray-500 dark:text-gray-300">
+              {t("customers")}:
+            </p>
             <p>+1 50 537 53 082</p>
           </div>
           <div className="flex lg:flex-col xl:flex-row text-center gap-2">
-            <p className="text-gray-500 dark:text-gray-300">Franchise:</p>
+            <p className="text-gray-500 dark:text-gray-300">
+              {t("franchise")}:
+            </p>
             <p>+1 50 537 53 000</p>
           </div>
         </div>
@@ -147,14 +155,18 @@ export default function page() {
             <Mail className="w-5 h-5" strokeWidth={2} />
           </div>
           <p className="text-gray-900 dark:text-white font-semibold text-lg py-3">
-            Send a message
+            {t("sendAMessage")}
           </p>
           <div className="flex lg:flex-col xl:flex-row text-center gap-2">
-            <p className="text-gray-500 dark:text-gray-300">Customers:</p>
+            <p className="text-gray-500 dark:text-gray-300">
+              {t("customers")}:
+            </p>
             <p>info@cartzilla.com</p>
           </div>
           <div className="flex lg:flex-col xl:flex-row text-center gap-2">
-            <p className="text-gray-500 dark:text-gray-300">Franchise:</p>
+            <p className="text-gray-500 dark:text-gray-300">
+              {t("franchise")}:
+            </p>
             <p>franchise@cartzilla.com</p>
           </div>
         </div>
@@ -164,7 +176,7 @@ export default function page() {
             <MapPin className="w-5 h-5" strokeWidth={2} />
           </div>
           <p className="text-gray-900 dark:text-white font-semibold text-lg py-3">
-            Store location
+            {t("storeLocation")}
           </p>
           <div className="text-center h-full">
             <p className="text-gray-500 dark:text-gray-300">
@@ -181,7 +193,7 @@ export default function page() {
             <Clock className="w-5 h-5" strokeWidth={2} />
           </div>
           <p className="text-gray-900 dark:text-white font-semibold text-lg py-3">
-            Working hours
+            {t("workingHours")}
           </p>
           <div className="text-center h-full">
             <p className="text-gray-500 dark:text-gray-300">
@@ -196,18 +208,17 @@ export default function page() {
 
       <div className="py-14 text-center">
         <h1 className="text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white pb-5">
-          Looking for support?
+          {t("lookingForSupport")}
         </h1>
         <p className="text-gray-500 dark:text-gray-300 pb-5">
-          We might already have what you are looking for. See our FAQs or head
-          to our dedicated Help Center
+          {t("supportParagraph")}
         </p>
         <Button
           size="lg"
           variant="outline"
           className="rounded-3xl bg-inherit text-gray-900 dark:text-white border-gray-800 dark:border-white text-lg"
         >
-          Help Center
+          {t("help")}
         </Button>
       </div>
     </div>

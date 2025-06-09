@@ -354,5 +354,31 @@
       "place3": "Remote",
       "place4": "In house"
     }
+  },
+  "Contact": {
+    "title": "Contact",
+    "paragraph": "Fill out the form below and we will reply within 24 hours",
+    "name": "Name",
+    "email": "Email",
+    "subject": "Subject",
+    "selectSubject": "Select subject",
+    "subject1": "General question",
+    "subject2": "Product information",
+    "subject3": "Technical support",
+    "subject4": "Website feedback",
+    "subject5": "Account assistance",
+    "subject6": "Security concerns",
+    "subject7": "Other status",
+    "message": "Message",
+    "send": "Send message",
+    "callUs": "Call us directly",
+    "customers": "Customers",
+    "franchise": "Franchise",
+    "sendAMessage": "Send a message",
+    "storeLocation": "Store location",
+    "workingHours": "Working hours",
+    "lookingForSupport": "Looking for support?",
+    "supportParagraph": "We might already have what you are looking for. See our FAQs or head to our dedicated Help Center",
+    "help": "Help Center"
   }
 }

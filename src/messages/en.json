@@ -380,5 +380,30 @@
     "lookingForSupport": "Looking for support?",
     "supportParagraph": "We might already have what you are looking for. See our FAQs or head to our dedicated Help Center",
     "help": "Help Center"
+  },
+  "Cart": {
+    "title": "Shopping Cart",
+    "paragraph": "Your cart is currently empty",
+    "checkout": "Proceed to checkout",
+    "listTitle": "Product",
+    "price": "Price",
+    "quantity": "Quantity",
+    "total": "Total",
+    "size": "Size",
+    "emptyCart": "Your cart is empty",
+    "shopNow": "Shop Now",
+    "removeItemTitle": "Are you sure you want to remove this item?",
+    "removeItemDescription": "This action will remove the item from your cart.",
+    "yes": "Yes",
+    "no": "No",
+    "clearCart": "Clear Cart",
+    "removeAllItemsTitle": "Are you sure you want to remove all items?",
+    "removeAllItemsDescription": "This action will remove all items from your cart.",
+    "orderSummary": "Order Summary",
+    "subTotal": "Subtotal",
+    "items": "items",
+    "shipping": "Shipping",
+    "calculateAtCheckout": "Calculated at checkout",
+    "estimatedTotal": " Estimated total"
   }
 }

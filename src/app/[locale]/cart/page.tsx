@@ -10,8 +10,10 @@ import CartRemoveProduct from "./_components/CartRemoveProduct";
 import CartRemoveAllProducts from "./_components/CartRemoveAllProducts";
 import OrderSummary from "./_components/OrderSummary";
 import { Button } from "@/components/ui/button";
+import { useTranslations } from "next-intl";
 
 export default function Cart() {
+  const t = useTranslations("Cart");
   const [product, setProduct] = useState<Product[]>([]);
 
   const handleUpdateQuantity = async (
@@ -89,17 +91,17 @@ export default function Cart() {
   return (
     <div className="py-10">
       <h1 className="text-3xl text-gray-900 dark:text-white font-semibold mb-10">
-        Shopping Cart
+        {t("title")}
       </h1>
       {product.length > 0 ? (
         <div className="flex flex-col lg:flex-row justify-between">
           <div className="flex flex-col w-full lg:w-2/3 lg:pr-8">
             <div className="flex items-center text-gray-500 dark:text-gray-200 py-4 gap-6">
-              <p className="w-1/2 pl-2">Product</p>
+              <p className="w-1/2 pl-2">{t("listTitle")}</p>
               <div className="flex items-center w-1/2">
-                <p className="w-full hidden xl:block">Price</p>
-                <p className="w-full hidden md:block">Quantity</p>
-                <p className="w-full ml-4 hidden md:block">Total</p>
+                <p className="w-full hidden xl:block">{t("price")}</p>
+                <p className="w-full hidden md:block">{t("quantity")}</p>
+                <p className="w-full ml-4 hidden md:block">{t("total")}</p>
                 <CartRemoveAllProducts setProduct={setProduct} />
               </div>
             </div>
@@ -119,11 +121,11 @@ export default function Cart() {
                     <div className="max-w-56 space-y-1">
                       <h2>{product.title}</h2>
                       <p className="text-sm flex gap-1">
-                        <span className="text-gray-400">Size:</span>{" "}
+                        <span className="text-gray-400">{t("size")}:</span>{" "}
                         {product.size}
                       </p>
                       <p className="text-sm flex gap-1 xl:hidden">
-                        <span className="text-gray-400">Price:</span>{" "}
+                        <span className="text-gray-400">{t("price")}:</span>{" "}
                         {product.price}
                       </p>
                       <div className="md:hidden flex">
@@ -167,11 +169,11 @@ export default function Cart() {
       ) : (
         <div className="flex flex-col items-center justify-center">
           <p className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-            Your cart is empty
+            {t("emptyCart")}
           </p>
           <Link href="/">
             <Button className="flex items-center justify-center text-lg dark:text-white gap-2 h-14 rounded-lg bg-[#F55266] hover:bg-[#F2223B]">
-              Shop Now
+              {t("shopNow")}
             </Button>
           </Link>
         </div>

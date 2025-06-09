@@ -12,6 +12,7 @@ import React from "react";
 import { createClient } from "../../../../../utils/supabase/client";
 import { Product } from "@/lib/types";
 import toast from "react-hot-toast";
+import { useTranslations } from "next-intl";
 
 export default function CartRemoveProduct({
   product,
@@ -20,6 +21,7 @@ export default function CartRemoveProduct({
   product: Product;
   setProduct: (product: Product[]) => void;
 }) {
+  const t = useTranslations("Cart");
   const handleRemove = async (productId: number) => {
     const supabase = await createClient();
     const {
@@ -65,10 +67,10 @@ export default function CartRemoveProduct({
         </DialogTrigger>
         <DialogContent>
           <DialogTitle className="text-center">
-            Are you sure you want to remove this item?
+            {t("removeItemTitle")}
           </DialogTitle>
           <DialogDescription className="text-center">
-            This action will permanently remove the item from your cart.
+            {t("removeItemDescription")}
           </DialogDescription>
           <DialogClose className="w-full flex justify-center gap-2">
             <Button
@@ -76,10 +78,10 @@ export default function CartRemoveProduct({
               variant={"outline"}
               onClick={() => handleRemove(product.product_id)}
             >
-              Yes
+              {t("yes")}
             </Button>
             <Button className="w-full" variant={"destructive"}>
-              No
+              {t("no")}
             </Button>
           </DialogClose>
         </DialogContent>

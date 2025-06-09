@@ -11,12 +11,14 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import toast from "react-hot-toast";
+import { useTranslations } from "next-intl";
 
 export default function CartRemoveAllProducts({
   setProduct,
 }: {
   setProduct: (product: Product[]) => void;
 }) {
+  const t = useTranslations("Cart");
   const handleRemove = async () => {
     const supabase = await createClient();
     const {
@@ -52,15 +54,15 @@ export default function CartRemoveAllProducts({
       <Dialog>
         <DialogTrigger asChild>
           <span className="w-full text-right md:text-left text-gray-700 dark:text-gray-200 dark:hover:text-white hover:text-gray-600 font-medium underline underline-offset-4 hover:no-underline cursor-pointer">
-            Clear cart
+            {t("clearCart")}
           </span>
         </DialogTrigger>
         <DialogContent>
           <DialogTitle className="text-center">
-            Are you sure you want to remove all items?
+            {t("removeAllItemsTitle")}
           </DialogTitle>
           <DialogDescription className="text-center">
-            This action will permanently remove all items from your cart.
+            {t("removeAllItemsDescription")}
           </DialogDescription>
           <DialogClose className="w-full flex justify-center gap-2">
             <Button
@@ -68,10 +70,10 @@ export default function CartRemoveAllProducts({
               variant={"outline"}
               onClick={handleRemove}
             >
-              Yes
+              {t("yes")}
             </Button>
             <Button className="w-full" variant={"destructive"}>
-              No
+              {t("no")}
             </Button>
           </DialogClose>
         </DialogContent>

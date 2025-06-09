@@ -8,6 +8,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Check, ChevronRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 import React, { useState } from "react";
 
 export default function DeliveryInfo({
@@ -27,6 +28,7 @@ export default function DeliveryInfo({
   setIsNextStepDisabled: (isNextStepDisabled: boolean) => void;
   isNextStepDisabled: boolean;
 }) {
+  const t = useTranslations("Order");
   const [selectedTime, setSelectedTime] = useState<string>("");
   const handleDeliveryInfoChange = (time: string) => {
     setDeliveryInfo(time);
@@ -83,11 +85,11 @@ export default function DeliveryInfo({
               1
             </span>
             <h2 className="text-xl md:text-2xl font-medium">
-              Delivery Information
+              {t("deliveryInfoTitle")}
             </h2>
           </div>
           <p className="text-gray-700 dark:text-gray-400 font-semibold md:text-lg md:ml-14 mb-5">
-            Choose shipping day and time
+            {t("shippingDayAndTime")}
           </p>
           <div className="border-t border-gray-200 pt-8">
             <div className="flex">
@@ -137,7 +139,7 @@ export default function DeliveryInfo({
                 onClick={handleNextStep}
                 disabled={isNextStepDisabled}
               >
-                Continue
+                {t("continue")}
                 <ChevronRight className="w-5 h-5" />
               </Button>
             </div>
@@ -153,18 +155,18 @@ export default function DeliveryInfo({
             </span>
             <div className="flex items-center justify-between w-full">
               <h2 className="md:text-2xl md:font-medium font-semibold">
-                Delivery Information
+                {t("deliveryInfoTitle")}
               </h2>
               <button
                 onClick={() => setCurrentStep(1)}
                 className="text-gray-700 dark:text-gray-200 dark:hover:text-white hover:text-gray-600 font-medium underline underline-offset-4 hover:no-underline cursor-pointer"
               >
-                Edit
+                {t("edit")}
               </button>
             </div>
           </div>
           <p className="text-gray-700 dark:text-gray-400 font-semibold text-lg ml-14 mb-3">
-            Estimated delivery date
+            {t("deliveryDate")}
           </p>
           <p className="text-gray-500 ml-14 mb-5">{displayedDeliveryInfo}</p>
         </div>

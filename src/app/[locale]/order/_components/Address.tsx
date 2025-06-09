@@ -10,6 +10,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Check, ChevronRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export default function Address({
   currentStep,
@@ -52,6 +53,7 @@ export default function Address({
   setIsNextStepDisabled: (isNextStepDisabled: boolean) => void;
   isNextStepDisabled: boolean;
 }) {
+  const t = useTranslations("Order");
   const cities = [
     "Sofia",
     "Plovdiv",
@@ -74,7 +76,7 @@ export default function Address({
           <span className="flex items-center justify-center w-6 h-6 p-4 text-lg bg-gray-300 dark:bg-gray-600 font-medium text-white rounded-full">
             2
           </span>
-          <h2 className="text-2xl font-medium">Shipping Address</h2>
+          <h2 className="text-2xl font-medium">{t("shippingAddressTitle")}</h2>
         </div>
       )}
 
@@ -84,12 +86,14 @@ export default function Address({
             <span className="flex items-center justify-center w-6 h-6 p-4 text-lg bg-red-500 font-medium text-white rounded-full">
               2
             </span>
-            <h2 className="text-2xl font-medium">Shipping Address</h2>
+            <h2 className="text-2xl font-medium">
+              {t("shippingAddressTitle")}
+            </h2>
           </div>
           <ul className="md:grid md:grid-cols-2 md:gap-4 md:space-y-0 space-y-4 w-full mb-5">
             <li className="w-full space-y-2">
               <Label>
-                First Name <span className="text-red-500">*</span>
+                {t("firstName")} <span className="text-red-500">*</span>
               </Label>
               <Input
                 className="h-14 text-lg text-gray-500 bg-inherit"
@@ -100,7 +104,7 @@ export default function Address({
             </li>
             <li className="w-full space-y-2">
               <Label>
-                Last Name <span className="text-red-500">*</span>
+                {t("lastName")} <span className="text-red-500">*</span>
               </Label>
               <Input
                 className="h-14 text-lg text-gray-500 bg-inherit"
@@ -111,7 +115,7 @@ export default function Address({
             </li>
             <li className="w-full space-y-2">
               <Label>
-                Email address <span className="text-red-500">*</span>
+                {t("email")} <span className="text-red-500">*</span>
               </Label>
               <Input
                 className="h-14 text-lg text-gray-500 bg-inherit"
@@ -122,7 +126,7 @@ export default function Address({
             </li>
             <li className="w-full space-y-2">
               <Label>
-                Phone number <span className="text-red-500">*</span>
+                {t("phone")} <span className="text-red-500">*</span>
               </Label>
               <Input
                 className="h-14 text-lg text-gray-500 bg-inherit"
@@ -133,7 +137,8 @@ export default function Address({
             </li>
             <li className="w-full space-y-2">
               <Label>
-                City <span className="text-red-500">*</span>
+                {}
+                {t("city")} <span className="text-red-500">*</span>
               </Label>
               <Select
                 value={city}
@@ -143,7 +148,7 @@ export default function Address({
                 }}
               >
                 <SelectTrigger className="w-full h-14 text-lg text-gray-500 bg-inherit">
-                  <SelectValue placeholder="Select your city" />
+                  <SelectValue placeholder={t("selectCity")} />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
@@ -158,7 +163,7 @@ export default function Address({
             </li>
             <li className="w-full space-y-2">
               <Label>
-                Postcode <span className="text-red-500">*</span>
+                {t("postCode")} <span className="text-red-500">*</span>
               </Label>
               <Input
                 className="h-14 text-lg text-gray-500 bg-inherit"
@@ -169,8 +174,7 @@ export default function Address({
             </li>
             <li className="w-full space-y-2 col-span-2">
               <Label>
-                Home / apartment number and street address{" "}
-                <span className="text-red-500">*</span>
+                {t("street")} <span className="text-red-500">*</span>
               </Label>
               <Input
                 className="h-14 text-lg text-gray-500 bg-inherit"
@@ -197,7 +201,7 @@ export default function Address({
                 firstName.trim() === ""
               }
             >
-              Continue
+              {t("continue")}
               <ChevronRight className="w-5 h-5" />
             </Button>
           </div>
@@ -212,13 +216,13 @@ export default function Address({
             </span>
             <div className="flex items-center justify-between w-full">
               <h2 className="md:text-2xl md:font-medium font-semibold">
-                Shipping Address
+                {t("shippingAddressTitle")}
               </h2>
               <button
                 onClick={() => setCurrentStep(2)}
                 className="text-gray-700 dark:text-gray-200 dark:hover:text-white hover:text-gray-600 font-medium underline underline-offset-4 hover:no-underline cursor-pointer"
               >
-                Edit
+                {t("edit")}
               </button>
             </div>
           </div>

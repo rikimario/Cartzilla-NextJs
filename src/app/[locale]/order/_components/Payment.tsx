@@ -12,6 +12,7 @@ import {
   AccordionTrigger,
 } from "@radix-ui/react-accordion";
 import { CreditCard } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import React, { useState } from "react";
 
@@ -38,6 +39,7 @@ export default function Payment({
   total: () => number;
   handleCheckout: () => void;
 }) {
+  const t = useTranslations("Order");
   const [cardNumber, setCardNumber] = useState<string>("");
   const [expiryDate, setExpiryDate] = useState<string>("");
   const [cvc, setCvc] = useState<string>("");
@@ -67,7 +69,7 @@ export default function Payment({
           <span className="flex items-center justify-center w-6 h-6 p-4 text-lg bg-gray-300 dark:bg-gray-600 font-medium text-white rounded-full">
             3
           </span>
-          <h2 className="text-2xl font-medium">Payment</h2>
+          <h2 className="text-2xl font-medium">{t("payment")}</h2>
         </div>
       )}
 
@@ -77,7 +79,7 @@ export default function Payment({
             <span className="flex items-center justify-center w-6 h-6 p-4 text-lg bg-red-500 font-medium text-white rounded-full">
               3
             </span>
-            <h2 className="text-2xl font-medium">Payment</h2>
+            <h2 className="text-2xl font-medium">{t("payment")}</h2>
           </div>
 
           <div className="w-full pl-14 mb-5">
@@ -105,7 +107,7 @@ export default function Payment({
                     <div className="flex items-center space-x-4">
                       <RadioGroupItem value="Cash on delivery" id="r1" />
                       <Label className="font-semibold" htmlFor="r1">
-                        Cash on delivery
+                        {t("cashOnDelivery")}
                       </Label>
                     </div>
                   </AccordionTrigger>
@@ -116,7 +118,7 @@ export default function Payment({
                     <div className="flex items-center space-x-4">
                       <RadioGroupItem value="card" id="r2" />
                       <Label className="font-semibold" htmlFor="r2">
-                        Credit or debit card
+                        {t("creditCardOrDebit")}
                       </Label>
                       {cards.map((card, index) => (
                         <Image
@@ -134,7 +136,7 @@ export default function Payment({
                     <div className="relative">
                       <Input
                         type="text"
-                        placeholder="Card number"
+                        placeholder={t("cardNumber")}
                         value={cardNumber}
                         onChange={(e) => {
                           setCardNumber(formatCardNumber(e.target.value));
@@ -149,7 +151,7 @@ export default function Payment({
                     <div className="md:flex gap-4 space-y-4 md:space-y-0">
                       <Input
                         type="text"
-                        placeholder="MM/YY"
+                        placeholder={t("MM/YY")}
                         value={expiryDate}
                         onChange={(e) => {
                           setExpiryDate(formatExpiryDate(e.target.value));
@@ -160,7 +162,7 @@ export default function Payment({
                       />
                       <Input
                         type="text"
-                        placeholder="CVC"
+                        placeholder={t("CVC")}
                         value={cvc}
                         onChange={(e) => {
                           setCvc(e.target.value.replace(/\D/g, "").slice(0, 3));
@@ -211,7 +213,7 @@ export default function Payment({
 
             <textarea
               className="my-6 text-lg w-full min-h-32 border border-gray-300 dark:text-gray-300 bg-inherit rounded-lg p-4"
-              placeholder="Additional comments"
+              placeholder={t("additionalComment")}
               value={comment}
               onChange={(e) => setComment(e.target.value)}
             />
@@ -223,7 +225,7 @@ export default function Payment({
               onClick={handleCheckout}
               disabled={isNextStepDisabled || !paymentMethod}
             >
-              Pay ${(total() + 16.5).toFixed(2)}
+              {t("pay")} ${(total() + 16.5).toFixed(2)}
             </Button>
           </div>
         </>

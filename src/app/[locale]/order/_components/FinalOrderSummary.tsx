@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/sheet";
 import { Product } from "@/lib/types";
 import { ChevronRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -22,17 +23,18 @@ export default function FinalOrderSummary({
   total: () => number;
   totalQuantity: number;
 }) {
+  const t = useTranslations("Order");
   return (
     <div className="lg:w-1/3 mt-6 lg:mt-0 max-h-[26rem] bg-gray-100 rounded-lg p-4 md:p-8 dark:bg-[#222934]">
       <div className="flex items-start justify-between">
         <h1 className="text-2xl font-semibold text-gray-900 mb-10 dark:text-white">
-          Order Summary
+          {t("orderSummary")}
         </h1>
         <Link
           href={"/cart"}
           className="text-gray-700 dark:text-gray-200 dark:hover:text-white hover:text-gray-600 font-medium underline underline-offset-4 hover:no-underline cursor-pointer"
         >
-          Edit
+          {t("edit")}
         </Link>
       </div>
       <div className="flex items-center justify-between">
@@ -64,7 +66,7 @@ export default function FinalOrderSummary({
           <SheetContent className="dark:bg-[#181D25] dark:text-[white]">
             <ScrollArea className="h-full py-4">
               <SheetTitle className="text-2xl font-semibold text-gray-900 mb-10 dark:text-white">
-                Your Order
+                {t("yourOrder")}
               </SheetTitle>
               {product.map((item, index) => (
                 <div
@@ -89,7 +91,7 @@ export default function FinalOrderSummary({
                         ${item.price}
                       </p>
                       <p className="text-gray-600 dark:text-gray-400 text-sm">
-                        Qty: {item.quantity}
+                        {t("quantity")}: {item.quantity}
                       </p>
                     </div>
                   </div>
@@ -100,7 +102,7 @@ export default function FinalOrderSummary({
                   variant="outline"
                   className="absolute bottom-0 w-full text-lg text-gray-500 bg-inherit"
                 >
-                  Edit cart
+                  {t("editCart")}
                 </Button>
               </Link>
             </ScrollArea>
@@ -108,17 +110,19 @@ export default function FinalOrderSummary({
         </Sheet>
       </div>
       <div className="flex items-center justify-between text-gray-600 dark:text-gray-400 border-t dark:border-gray-500 py-6">
-        <p>Subtotal ({totalQuantity} items):</p>
+        <p>
+          {t("subtotal")} ({totalQuantity} {t("items")}):
+        </p>
         <p className="text-gray-900 font-medium dark:text-white">
           ${total().toFixed(2)}
         </p>
       </div>
       <div className="flex items-center justify-between text-gray-600 dark:text-gray-400 border-b dark:border-gray-500 pb-6">
-        <p>Shipping:</p>
+        <p>{t("shipping")}:</p>
         <p className="text-gray-900 font-medium dark:text-white">$16.50</p>
       </div>
       <div className="flex items-center justify-between text-gray-600 dark:text-gray-400 py-6">
-        <p>Estimated total:</p>
+        <p>{t("estimatedTotal")}:</p>
         <p className="text-gray-900 text-2xl font-semibold dark:text-white">
           ${(total() + 16.5).toFixed(2)}
         </p>

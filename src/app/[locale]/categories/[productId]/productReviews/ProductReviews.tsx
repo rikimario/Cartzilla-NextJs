@@ -5,8 +5,10 @@ import ProductComments from "./ProductComments";
 import LeaveReview from "./LeaveReview";
 import { Product } from "@/lib/types";
 import { createClient } from "../../../../../../utils/supabase/client";
+import { useTranslations } from "next-intl";
 
 export default function ProductReviews({ product }: { product: Product }) {
+  const t = useTranslations("Categories");
   const [stars, setStars] = useState([
     { rating: 5, count: 0 },
     { rating: 4, count: 0 },
@@ -64,7 +66,7 @@ export default function ProductReviews({ product }: { product: Product }) {
   return (
     <div id="reviews" className="p-4 mt-14 lg:w-1/2">
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Reviews</h1>
+        <h1 className="text-2xl font-bold">{t("productReviews.title")}</h1>
         <div className="hidden md:flex">
           <LeaveReview product={product} />
         </div>
@@ -125,7 +127,7 @@ export default function ProductReviews({ product }: { product: Product }) {
               </div>
               <div>
                 <p className="text-xs md:text-sm text-gray-500 flex items-center">
-                  {reviews.length} reviews
+                  {reviews.length} {t("productReviews.reviews")}
                 </p>
               </div>
             </div>

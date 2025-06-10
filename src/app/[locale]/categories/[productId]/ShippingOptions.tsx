@@ -5,36 +5,38 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Product } from "@/lib/types";
+import { useTranslations } from "next-intl";
 import React from "react";
 
 export default function ShippingOptions({ product }: { product: Product }) {
+  const t = useTranslations("Categories");
   return (
     <div className="mt-6">
       <Accordion type="single" collapsible className="w-full">
         {/* Shipping */}
         <AccordionItem value="item-1">
           <AccordionTrigger className="text-base font-semibold">
-            Shipping options
+            {t("shippingOptions.shipping")}
           </AccordionTrigger>
           <div className="flex justify-between">
             <AccordionContent className="text-gray-600 dark:text-gray-300">
               <div className="flex flex-col gap-5">
-                <p className="">Pickup from the store</p>
-                <p className="">Pickup from postal offices</p>
-                <p className="">Delivery by courier</p>
+                <p className="">{t("shippingOptions.place1")}</p>
+                <p className="">{t("shippingOptions.place2")}</p>
+                <p className="">{t("shippingOptions.place3")}</p>
               </div>
             </AccordionContent>
             <AccordionContent className="text-gray-600 dark:text-gray-300">
               <div className="flex flex-col gap-5">
-                <p>Today</p>
-                <p>Tomorrow</p>
-                <p>2-3 days</p>
+                <p>{t("shippingOptions.time1")}</p>
+                <p>{t("shippingOptions.time2")}</p>
+                <p>{t("shippingOptions.time3")}</p>
               </div>
             </AccordionContent>
             <AccordionContent className="text-gray-600 dark:text-gray-300">
               <div className="text-end flex flex-col gap-5">
                 <p className="text-gray-900 dark:text-gray-300 font-semibold">
-                  Free
+                  {t("shippingOptions.free")}
                 </p>
                 <p className="text-gray-900 dark:text-gray-300 font-semibold">
                   $5.00
@@ -49,7 +51,7 @@ export default function ShippingOptions({ product }: { product: Product }) {
         {/* Warranty */}
         <AccordionItem value="item-2">
           <AccordionTrigger className="text-base font-semibold">
-            Warranty information
+            {t("shippingOptions.warrantyInfo")}
           </AccordionTrigger>
           <AccordionContent className="text-gray-600 dark:text-gray-300">
             <p className="text-gray-600 dark:text-gray-300 font-semibold">
@@ -60,7 +62,7 @@ export default function ShippingOptions({ product }: { product: Product }) {
         {/* Return */}
         <AccordionItem value="item-3">
           <AccordionTrigger className="text-base font-semibold">
-            Return policy
+            {t("shippingOptions.returnPolicy")}
           </AccordionTrigger>
           <AccordionContent className="text-gray-600 dark:text-gray-300">
             <p className="text-gray-600 dark:text-gray-300 font-semibold">

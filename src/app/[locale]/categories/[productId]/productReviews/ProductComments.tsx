@@ -11,6 +11,7 @@ import {
   ThumbsDown,
   ThumbsUp,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import React, { useState } from "react";
 
 interface ReviewState {
@@ -21,6 +22,7 @@ interface ReviewState {
 }
 
 export default function ProductComments({ reviews }: { reviews: any[] }) {
+  const t = useTranslations("Categories");
   const [reviewState, setReviewState] = useState<ReviewState>({});
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -148,7 +150,7 @@ export default function ProductComments({ reviews }: { reviews: any[] }) {
                 <span>
                   <CornerDownRight size={16} />
                 </span>
-                Reply
+                {t("reply")}
               </button>
               <div className="flex gap-4">
                 <button
@@ -238,7 +240,7 @@ export default function ProductComments({ reviews }: { reviews: any[] }) {
                   <span>
                     <CornerDownRight size={16} />
                   </span>
-                  Reply
+                  {t("reply")}
                 </button>
                 <div className="flex gap-4">
                   <button
@@ -264,9 +266,9 @@ export default function ProductComments({ reviews }: { reviews: any[] }) {
         <CollapsibleTrigger asChild>
           <button className="mt-4 text-sm flex items-center gap-1 font-medium text-[#F55266] hover:text-[#F2223B]">
             {isOpen ? (
-              <span className="">Hide reviews</span>
+              <span className="">{t("hideReviews")}</span>
             ) : (
-              <span className="">Show all reviews</span>
+              <span className="">{t("showReviews")}</span>
             )}
             <ChevronRight size={16} strokeWidth={1} />
           </button>

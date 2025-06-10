@@ -16,8 +16,10 @@ import { createClient } from "../../../../../../utils/supabase/client";
 import toast from "react-hot-toast";
 import { Product } from "@/lib/types";
 import { DialogClose } from "@radix-ui/react-dialog";
+import { useTranslations } from "next-intl";
 
 export default function LeaveReview({ product }: { product: Product | null }) {
+  const t = useTranslations("Categories");
   const [rating, setRating] = useState<number>(1);
   const [hover, setHover] = useState<number>(0);
   const [comment, setComment] = useState<string>("");
@@ -85,15 +87,15 @@ export default function LeaveReview({ product }: { product: Product | null }) {
         <DialogTrigger asChild>
           <Button className="bg-gray-100 text-gray-900 hover:bg-gray-300 font-semibold flex items-center gap-2">
             <PenLine className="h-5 w-5" strokeWidth={2} />
-            Leave a review
+            {t("leaveReview.trigger")}
           </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogDescription></DialogDescription>
-          <DialogTitle>Create a review</DialogTitle>
+          <DialogTitle>{t("leaveReview.title")}</DialogTitle>
           <div className="mt-4">
             <div className="flex flex-col gap-2">
-              <Label htmlFor="rating">Rating: *</Label>
+              <Label htmlFor="rating">{t("leaveReview.rating")}: *</Label>
               <div className="flex">
                 {[...Array(5)].map((_, index) => {
                   const currentRating = index + 1;
@@ -125,7 +127,7 @@ export default function LeaveReview({ product }: { product: Product | null }) {
               </div>
             </div>
             <div className="flex flex-col gap-2 mt-5">
-              <Label htmlFor="name">Name: *</Label>
+              <Label htmlFor="name">{t("leaveReview.name")}: *</Label>
               <Input
                 required
                 type="text"
@@ -133,12 +135,12 @@ export default function LeaveReview({ product }: { product: Product | null }) {
                 maxLength={50}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="Maximum 50 characters"
+                placeholder={t("leaveReview.namePlaceholder")}
                 className="text-gray-900 dark:text-white font-semibold placeholder:text-gray-350"
               />
             </div>
             <div className="flex flex-col gap-2 mt-5">
-              <Label htmlFor="email">Email: *</Label>
+              <Label htmlFor="email">{t("leaveReview.email")}: *</Label>
               <Input
                 required
                 type="text"
@@ -150,14 +152,14 @@ export default function LeaveReview({ product }: { product: Product | null }) {
               />
             </div>
             <div className="flex flex-col gap-2 mt-5 text-sm">
-              <Label htmlFor="review">Comment: *</Label>
+              <Label htmlFor="review">{t("leaveReview.comment")}: *</Label>
               <textarea
                 required
                 id="review"
                 maxLength={3000}
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
-                placeholder="Maximum 3000 characters"
+                placeholder={t("leaveReview.commentPlaceholder")}
                 className="text-gray-900 dark:text-white dark:bg-[#020817] font-semibold w-full px-3 py-2 rounded-md border border-input min-h-32"
               />
             </div>
@@ -169,12 +171,12 @@ export default function LeaveReview({ product }: { product: Product | null }) {
                 disabled={!name || !email || !comment}
                 className="bg-gray-200 text-gray-900 hover:bg-gray-300 font-semibold"
               >
-                Submit review
+                {t("leaveReview.submit")}
               </Button>
             </DialogClose>
           </DialogFooter>
           <span className="text-gray-500 text-sm font-light">
-            * Required fields
+            * {t("leaveReview.required")}
           </span>
         </DialogContent>
       </Dialog>

@@ -447,5 +447,40 @@
     "couponParagraph": "Use your cupon now or look for it in your personal account.",
     "couponBtn": "Copy coupon",
     "order": "Order"
+  },
+  "Categories": {
+    "reviews": "reviews",
+    "addToCart": "Add to cart",
+    "shippingOptions": {
+      "shipping": "Shipping options",
+      "place1": "Pickup from the store",
+      "place2": "Pickup from postal offices",
+      "place3": "Delivery by courier",
+      "time1": "Today",
+      "time2": "Tomorrow",
+      "time3": "2-3 days",
+      "free": "free",
+      "warrantyInfo": "Warranty information",
+      "returnPolicy": "Return policy"
+    },
+    "productReviews": {
+      "title": "Reviews",
+      "reviews": "reviews"
+    },
+    "leaveReview": {
+      "trigger": "Leave a review",
+      "title": "Create a review",
+      "rating": "Rating",
+      "name": "Name",
+      "namePlaceholder": "Maximum 50 characters",
+      "email": "Email",
+      "comment": "Comment",
+      "commentPlaceholder": "Maximum 3000 characters",
+      "submit": "Submit review",
+      "required": "Required fields"
+    },
+    "reply": "Reply",
+    "hideReviews": "Hide reviews",
+    "showReviews": "Show all reviews"
   }
 }

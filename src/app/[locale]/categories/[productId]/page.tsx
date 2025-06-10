@@ -18,8 +18,10 @@ import ProductFavorite from "@/app/[locale]/utils/ProductFavorite";
 import { getProductById } from "../../../../../utils/supabase/actions";
 import { Product } from "@/lib/types";
 import { createClient } from "../../../../../utils/supabase/client";
+import { useTranslations } from "next-intl";
 
 export default function ProductDetails() {
+  const t = useTranslations("Categories");
   const { productId } = useParams() as { productId: string };
   const [product, setProduct] = useState<Product | null>(null);
   const [count, setCount] = useState<number>(1);
@@ -270,7 +272,7 @@ export default function ProductDetails() {
                   )
                 )}
                 <p className="pl-2 text-xs md:text-sm text-gray-400 flex items-center">
-                  ({product.reviews.length}) reviews
+                  ({product.reviews.length}) {t("reviews")}
                 </p>
               </span>
             </div>

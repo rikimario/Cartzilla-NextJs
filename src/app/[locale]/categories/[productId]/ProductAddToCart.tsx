@@ -4,6 +4,7 @@ import { ShoppingCart } from "lucide-react";
 import { getUser } from "../../../../../utils/supabase/actions";
 import { createClient } from "../../../../../utils/supabase/client";
 import toast from "react-hot-toast";
+import { useTranslations } from "next-intl";
 
 export default function ProductAddToCart({
   product,
@@ -14,6 +15,7 @@ export default function ProductAddToCart({
   count: number;
   size: string | null;
 }) {
+  const t = useTranslations("Categories");
   const handleAddToCart = async () => {
     const user = await getUser();
     const supabase = await createClient();
@@ -56,7 +58,7 @@ export default function ProductAddToCart({
         onClick={handleAddToCart}
         className="flex items-center dark:text-white gap-2 h-[62px] w-[178px] rounded-lg bg-[#F55266] hover:bg-[#F2223B]"
       >
-        <ShoppingCart /> Add to cart
+        <ShoppingCart /> {t("addToCart")}
       </Button>
     </div>
   );

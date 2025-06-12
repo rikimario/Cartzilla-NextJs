@@ -515,5 +515,18 @@
     "password": "Password",
     "rememberMe": "Remember for 30 days",
     "orContinue": "or continue with"
+  },
+  "Register": {
+    "title": "Welcome back",
+    "haveAccount": "I already have an account",
+    "login": "Sign in",
+    "username": "Username",
+    "email": "Email",
+    "password": "Password",
+    "passLength": "Password must be at least 6 characters",
+    "savePassword": "Save the password",
+    "offers": "I would like to receive offers from Cartzilla by email",
+    "register": "Create an account",
+    "orContinue": "or continue with"
   }
 }

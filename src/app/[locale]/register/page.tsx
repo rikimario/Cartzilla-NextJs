@@ -6,10 +6,12 @@ import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
 import { signup } from "../../../../utils/supabase/actions";
 import SignInWithGoogleButton from "@/components/SignInWithGoogle";
+import { useTranslations } from "next-intl";
 
 export default function Register() {
+  const t = useTranslations("Register");
   return (
-    <div className="my-10 dark:bg-[#181D25]">
+    <div className="my-10 lg:mx-60 xl:mx-80 dark:bg-[#181D25]">
       <Card className="flex flex-col items-center justify-center p-2 dark:bg-[#181D25]">
         <CardContent className="w-full">
           <form className="flex flex-col gap-2 xl:p-6">
@@ -20,19 +22,19 @@ export default function Register() {
                 </p>
               )} */}
               <h1 className="text-3xl text-gray-900 dark:text-white mb-4 font-semibold">
-                Create an account
+                {t("title")}
               </h1>
               <p className="text-sm text-gray-500 dark:text-gray-400 ml-2">
-                I already have an account{" "}
+                {t("haveAccount")}{" "}
                 <span className="text-gray-900 dark:text-white hover:text-gray-500 font-semibold underline underline-offset-2">
-                  <Link href={"/login"}>Sign in</Link>
+                  <Link href={"/login"}>{t("login")}</Link>
                 </span>
               </p>
             </div>
             <div className="flex flex-col gap-4">
               <input
                 className="border border-gray-300 w-full p-3 rounded-2xl"
-                placeholder="Username"
+                placeholder={t("username")}
                 type="text"
                 id="full_name"
                 name="full_name"
@@ -40,7 +42,7 @@ export default function Register() {
               />
               <input
                 className="border border-gray-300 w-full p-3 rounded-2xl"
-                placeholder="Email"
+                placeholder={t("email")}
                 type="email"
                 id="email"
                 name="email"
@@ -48,28 +50,26 @@ export default function Register() {
               />
               <input
                 className="border border-gray-300 w-full p-3 rounded-2xl"
-                placeholder="Password"
+                placeholder={t("password")}
                 type="password"
                 id="password"
                 name="password"
                 required
               />
             </div>
-            <p className="text-sm text-gray-400 ml-2">
-              password must be at least 6 characters
-            </p>
+            <p className="text-sm text-gray-400 ml-2">{t("passLength")}</p>
 
             <div className="flex flex-col gap-2 my-4">
               <div className="flex items-center gap-1 ml-2">
                 <Checkbox />
                 <p className="text-sm text-gray-700 dark:text-gray-400 ml-2">
-                  Save the password
+                  {t("savePassword")}
                 </p>
               </div>
               <div className="flex items-center gap-1 ml-2">
                 <Checkbox />
                 <p className="text-sm text-gray-700 dark:text-gray-400 ml-2">
-                  I would like to receive offers from Cartzilla by email
+                  {t("offers")}
                 </p>
               </div>
             </div>
@@ -78,13 +78,13 @@ export default function Register() {
               formAction={signup}
               className="bg-[#F55266] hover:bg-[#F2223B] w-full p-3 text-xl font-light dark:text-white rounded-2xl mt-6"
             >
-              Create an account
+              {t("register")}
             </Button>
 
             <div className="flex items-center justify-center">
               <hr className="w-full h-px bg-gray-200 border-0 dark:bg-gray-700" />
               <p className="w-full text-center my-4 text-gray-700 dark:text-gray-400">
-                or continue with
+                {t("orContinue")}
               </p>
               <hr className="w-full h-px bg-gray-200 border-0 dark:bg-gray-700" />
             </div>

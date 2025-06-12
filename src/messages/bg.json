@@ -481,5 +481,11 @@
     "reply": "Отговор",
     "hideReviews": "Скрий отзивите",
     "showReviews": "Покажи отзивите"
+  },
+  "Products": {
+    "productsMain": {
+      "found": "Намерени",
+      "items": "продукта"
+    }
   }
 }

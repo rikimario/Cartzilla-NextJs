@@ -482,5 +482,11 @@
     "reply": "Reply",
     "hideReviews": "Hide reviews",
     "showReviews": "Show all reviews"
+  },
+  "Products": {
+    "productsMain": {
+      "found": "Found",
+      "items": "items"
+    }
   }
 }

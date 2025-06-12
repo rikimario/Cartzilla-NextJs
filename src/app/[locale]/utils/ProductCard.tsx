@@ -2,11 +2,13 @@ import { handleFavoriteBtn } from "@/app/[locale]/utils/handleFavoriteBtn";
 import { Card, CardContent } from "@/components/ui/card";
 import { Product } from "@/lib/types";
 import { Heart, Star } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 
 export default function ProductCard({ product }: { product: Product }) {
+  const t = useTranslations("Products");
   const { isFavorite, toggleFavorite } = handleFavoriteBtn({ product });
   const [isHeartVisible, setIsHeartVisible] = useState(false);
   return (
@@ -108,7 +110,7 @@ export default function ProductCard({ product }: { product: Product }) {
               </p>
             </div>
             <p className="flex text-xs md:text-base gap-2 text-gray-400">
-              Available:{" "}
+              {t("available")}:{" "}
               <span className="text-gray-900 dark:text-white text-xs md:text-base">
                 {product.stock}
               </span>

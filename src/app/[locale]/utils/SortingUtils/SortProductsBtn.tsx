@@ -7,21 +7,22 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { SortOrder } from "@/lib/types";
+import { useTranslations } from "next-intl";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useMemo } from "react";
-
-const SORT_OPTIONS = [
-  { value: "relevance", name: "Relevance" },
-  { value: "name", name: "Name" },
-  { value: "low", name: "Price: Low to High" },
-  { value: "high", name: "Price: High to Low" },
-] as const;
 
 export default function SortProductsBtn({
   handleSortedProductsChange,
 }: {
   handleSortedProductsChange: (sortOrder: SortOrder) => void;
 }) {
+  const t = useTranslations("Products");
+  const SORT_OPTIONS = [
+    { value: "relevance", name: t("relevance") },
+    { value: "name", name: t("name") },
+    { value: "low", name: t("low") },
+    { value: "high", name: t("high") },
+  ] as const;
   const router = useRouter();
   const searchParams = useSearchParams();
   const selectedSort = useMemo(
@@ -40,7 +41,7 @@ export default function SortProductsBtn({
   return (
     <div className="flex items-center lg:justify-end mt-4 text-nowrap">
       <label className="text-sm font-semibold text-gray-900 dark:text-white">
-        Sort by:
+        {t("sortBy")}:
       </label>
       <Select
         value={selectedSort[0] || "relevance"}

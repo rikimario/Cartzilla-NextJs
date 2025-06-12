@@ -1,6 +1,7 @@
 "use client";
 import { Slider } from "@/components/ui/slider";
 import { Product } from "@/lib/types";
+import { useTranslations } from "next-intl";
 
 export default function FilterBtnPrice({
   values,
@@ -12,13 +13,14 @@ export default function FilterBtnPrice({
   values: [number, number];
   setValue: (newValue: [number, number]) => void;
 }) {
+  const t = useTranslations("Products");
   const handlePriceChange = (newValues: [number, number]) => {
     setValue(newValues);
   };
   return (
     <div className="p-6 border border-gray-200 rounded-xl text-gray-700 dark:text-white mt-6">
       <h2 className="text-start text-xl text-gray-700 dark:text-white font-semibold mb-6">
-        Price
+        {t("price")}
       </h2>
       <div>
         <Slider

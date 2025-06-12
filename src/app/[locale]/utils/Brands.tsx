@@ -2,6 +2,7 @@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Product } from "@/lib/types";
+import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 
 export default function Brands({
@@ -13,6 +14,7 @@ export default function Brands({
   selectedBrands: string[];
   onBrandChange: (selectedBrands: string[]) => void;
 }) {
+  const t = useTranslations("Products");
   const router = useRouter();
 
   const handleBrandClick = (brand: string) => {
@@ -35,7 +37,7 @@ export default function Brands({
   return (
     <div className="p-6 border border-gray-200 rounded-xl text-gray-700 dark:text-white mt-6">
       <h2 className="text-start text-xl text-gray-700 dark:text-white font-semibold">
-        Brand
+        {t("brand")}
       </h2>
       <div className="relative flex flex-col items-start gap-3 mt-4">
         {Array.from(new Set(products?.map((item) => item.brand))).map(

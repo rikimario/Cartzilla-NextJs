@@ -1,6 +1,7 @@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Product } from "@/lib/types";
+import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 
 export default function FilterBtnCategories({
@@ -12,6 +13,7 @@ export default function FilterBtnCategories({
   selectedCategories: string[];
   handleCategoryChange: (selectedCategories: string[]) => void;
 }) {
+  const t = useTranslations("Products");
   const router = useRouter();
 
   const handleCategoryClick = (category: string) => {
@@ -37,7 +39,7 @@ export default function FilterBtnCategories({
   return (
     <div className="p-6 border border-gray-200 rounded-xl text-gray-700 dark:text-white mt-10">
       <h2 className="text-start text-xl text-gray-700 dark:text-white font-semibold">
-        Categories
+        {t("categories")}
       </h2>
       <div className="relative flex flex-col items-start gap-3 mt-4">
         {Array.from(new Set(products?.map((item) => item.category))).map(

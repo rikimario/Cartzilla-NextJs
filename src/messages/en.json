@@ -484,6 +484,15 @@
     "showReviews": "Show all reviews"
   },
   "Products": {
+    "available": "Available",
+    "brand": "Brand",
+    "categories": "Categories",
+    "sortBy": "Sort by",
+    "relevance": "Relevance",
+    "name": "Name",
+    "low": "Price: Low to High",
+    "high": "Price: High to Low",
+    "price": "Price",
     "productsMain": {
       "found": "Found",
       "items": "items"

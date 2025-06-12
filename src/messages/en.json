@@ -484,6 +484,14 @@
     "showReviews": "Show all reviews"
   },
   "Products": {
+    "automotive": "Automotive",
+    "cosmetics": "Cosmetics",
+    "electronics": "Electronics",
+    "groceries": "Home & Kitchen",
+    "men": "Men",
+    "women": "Women",
+    "sportsAccessories": "Sports accessories",
+    "sunglasses": "Sunglasses",
     "available": "Available",
     "brand": "Brand",
     "categories": "Categories",

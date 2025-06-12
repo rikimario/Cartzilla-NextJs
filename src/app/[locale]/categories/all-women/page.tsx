@@ -16,8 +16,10 @@ import {
 } from "@/components/ui/sheet";
 import { Filter } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { useTranslations } from "next-intl";
 
 export default function page() {
+  const t = useTranslations("Products");
   const [products, setProducts] = useState<Product[]>([]);
   const [sortedProducts, setSortedProducts] = useState<Product[]>([]);
   const [sortOrder, setSortOrder] = useState<SortOrder>(SortOrder.Relevance);
@@ -88,7 +90,7 @@ export default function page() {
   };
   return (
     <div className="py-4 dark:bg-[#181D25]">
-      <h1 className="text-4xl font-semibold mt-10">Women</h1>
+      <h1 className="text-4xl font-semibold mt-10">{t("women")}</h1>
 
       <SortProductsBtn
         handleSortedProductsChange={handleSortedProductsChange}

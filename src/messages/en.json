@@ -505,5 +505,15 @@
       "found": "Found",
       "items": "items"
     }
+  },
+  "Login": {
+    "title": "Welcome back",
+    "createAccount": "Don't have an account?",
+    "register": "Sign up",
+    "login": "Sign in",
+    "email": "Email",
+    "password": "Password",
+    "rememberMe": "Remember for 30 days",
+    "orContinue": "or continue with"
   }
 }

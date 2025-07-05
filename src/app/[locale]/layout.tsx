@@ -10,6 +10,7 @@ import { Toaster } from "react-hot-toast";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import Breadcrumbs from "./utils/Breadcrumbs";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -38,6 +39,7 @@ export default async function RootLayout({
           <Toaster position="top-center" />
           <Navbar />
           <div className="dark:bg-[#181D25] max-w-[83rem] mx-3 xl:mx-auto">
+            <Breadcrumbs />
             {children}
           </div>
           <NewsLetter />

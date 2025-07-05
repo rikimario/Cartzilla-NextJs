@@ -17,7 +17,7 @@ export default function AllCategoriesList() {
               <Image
                 className="hover:scale-105 hover:overflow-hidden hover:cursor-pointer hover:ease-in-out hover:duration-300"
                 src={item.image}
-                alt={item.name}
+                alt={t(item.name)}
                 width={400}
                 height={400}
               />

@@ -6,6 +6,7 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
+  BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { useTranslations } from "next-intl";
@@ -35,19 +36,29 @@ export default function Breadcrumbs() {
     <Breadcrumb className="mt-4">
       <BreadcrumbItem>
         <BreadcrumbLink asChild>
-          <Link href="/">Home</Link>
+          <Link className="text-muted-foreground" href="/">
+            Home
+          </Link>
         </BreadcrumbLink>
         {segments.length > 0 && <BreadcrumbSeparator />}
       </BreadcrumbItem>
 
-      {breadcrumbs.map((crumb, idx) => (
-        <BreadcrumbItem key={idx}>
-          <BreadcrumbLink asChild>
-            <Link href={crumb.href}>{crumb.label}</Link>
-          </BreadcrumbLink>
-          {idx < breadcrumbs.length - 1 && <BreadcrumbSeparator />}
-        </BreadcrumbItem>
-      ))}
+      {breadcrumbs.map((crumb, idx) => {
+        const isLast = idx === breadcrumbs.length - 1;
+
+        return (
+          <BreadcrumbItem key={idx}>
+            {isLast ? (
+              <BreadcrumbPage>{crumb.label}</BreadcrumbPage>
+            ) : (
+              <BreadcrumbLink asChild className="text-muted-foreground">
+                <Link href={crumb.href}>{crumb.label}</Link>
+              </BreadcrumbLink>
+            )}
+            {!isLast && <BreadcrumbSeparator />}
+          </BreadcrumbItem>
+        );
+      })}
     </Breadcrumb>
   );
 }

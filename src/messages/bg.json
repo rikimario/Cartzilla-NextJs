@@ -557,5 +557,19 @@
     "offers": "Искам да получавам оферти от Cartzilla по имейл",
     "register": "Създай акаунт",
     "orContinue": "или продължи с"
-  }
+  },
+  "cart": "Количка",
+  "profile": "Профил",
+  "order": "Поръчка",
+  "categories": "Категории",
+  "all-men": "Мъже",
+  "all-women": "Жени",
+  "all-electronics": "Електроника",
+  "all-automotive": "Автомобили",
+  "all-cosmetics": "Козметика",
+  "all-home": "Дом и кухня",
+  "all-sports": "Спортни аксесоари",
+  "all-sunglasses": "Слънчеви очила",
+  "about": "За нас",
+  "contact": "Контакт"
 }

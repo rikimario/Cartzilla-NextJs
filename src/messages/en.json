@@ -558,5 +558,19 @@
     "offers": "I would like to receive offers from Cartzilla by email",
     "register": "Create an account",
     "orContinue": "or continue with"
-  }
+  },
+  "cart": "Cart",
+  "profile": "Profile",
+  "order": "Order",
+  "categories": "Categories",
+  "all-men": "Men",
+  "all-women": "Women",
+  "all-electronics": "Electronics",
+  "all-automotive": "Automotive",
+  "all-cosmetics": "Cosmetics",
+  "all-home": "Home & Kitchen",
+  "all-sports": "Sports accessories",
+  "all-sunglasses": "Sunglasses",
+  "about": "About",
+  "contact": "Contact"
 }

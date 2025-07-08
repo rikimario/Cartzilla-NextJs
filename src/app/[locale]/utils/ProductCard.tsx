@@ -11,6 +11,8 @@ export default function ProductCard({ product }: { product: Product }) {
   const t = useTranslations("Products");
   const { isFavorite, toggleFavorite } = handleFavoriteBtn({ product });
   const [isHeartVisible, setIsHeartVisible] = useState(false);
+
+  // const slug = product.title.toLowerCase().replace(/\s+/g, "-");
   return (
     <div
       key={product.product_id}

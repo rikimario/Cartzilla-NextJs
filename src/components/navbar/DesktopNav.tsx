@@ -39,7 +39,7 @@ export default function DesktopNav() {
             <div className="flex justify-between items-center">
               <Link
                 className="flex gap-[6.59rem]"
-                href="/all-categories"
+                href="/categories"
                 onClick={closeDropdown}
               >
                 {t("allCategories")}{" "}

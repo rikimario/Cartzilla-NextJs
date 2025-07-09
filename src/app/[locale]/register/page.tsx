@@ -16,11 +16,6 @@ export default function Register() {
         <CardContent className="w-full">
           <form className="flex flex-col gap-2 xl:p-6">
             <div className="my-4">
-              {/* {error && (
-                <p className="text-sm text-red-500 dark:text-gray-400 ml-2">
-                  {error}
-                </p>
-              )} */}
               <h1 className="text-3xl text-gray-900 dark:text-white mb-4 font-semibold">
                 {t("title")}
               </h1>

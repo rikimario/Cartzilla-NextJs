@@ -70,7 +70,7 @@ export default function ProductDetails() {
     return () => {
       supabase.removeChannel(subscription);
     };
-  }, []);
+  }, [product?.product_id]);
 
   if (!product) return <div>Loading...</div>;
   return (

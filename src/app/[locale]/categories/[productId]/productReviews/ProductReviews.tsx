@@ -61,7 +61,7 @@ export default function ProductReviews({ product }: { product: Product }) {
     return () => {
       supabase.removeChannel(subscription);
     };
-  }, []);
+  }, [product?.product_id]);
 
   return (
     <div id="reviews" className="p-4 mt-14 lg:w-1/2">

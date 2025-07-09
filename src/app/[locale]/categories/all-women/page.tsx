@@ -18,7 +18,7 @@ import { Filter } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useTranslations } from "next-intl";
 
-export default function page() {
+export default function Page() {
   const t = useTranslations("Products");
   const [products, setProducts] = useState<Product[]>([]);
   const [sortedProducts, setSortedProducts] = useState<Product[]>([]);
@@ -46,7 +46,7 @@ export default function page() {
     };
 
     fetchProducts();
-  }, []);
+  }, [category]);
 
   const handleSortedProductsChange = (newSortOrder: SortOrder) => {
     setSortOrder(newSortOrder);

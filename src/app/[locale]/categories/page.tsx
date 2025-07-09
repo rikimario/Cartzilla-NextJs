@@ -4,7 +4,7 @@ import AllCategoriesList from "./AllCategoriesList";
 import AllCategoriesBanner from "./AllCategoriesBanner";
 import { useTranslations } from "next-intl";
 
-export default function page() {
+export default function Page() {
   const t = useTranslations("AllCategories");
   return (
     <div className="py-12 dark:bg-[#181D25]">

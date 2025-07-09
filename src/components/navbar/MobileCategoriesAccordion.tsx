@@ -13,7 +13,7 @@ export default function MobileCategoriesAccordion() {
     <div className="py-4 pl-6">
       <Accordion type="single" collapsible className="w-full">
         {links.map((link) => (
-          <AccordionItem value={link.name}>
+          <AccordionItem key={link.name} value={link.name}>
             <AccordionTrigger
               onClick={() =>
                 heading !== link.name ? setHeading(link.name) : setHeading("")
@@ -38,28 +38,6 @@ export default function MobileCategoriesAccordion() {
             </AccordionContent>
           </AccordionItem>
         ))}
-        {/* <AccordionContent className="py-4">
-          <Link
-            className="flex items-center justify-between gap-2 text-gray-700 dark:text-white"
-            href="/sports-accessories"
-          >
-            Sports Accessories
-            <span>
-              <ChevronRight className="h-4 w-4" />
-            </span>
-          </Link>
-        </AccordionContent>
-        <AccordionContent className="py-4 text-gray-700 dark:text-white">
-          <Link
-            className="flex items-center justify-between gap-2"
-            href="/sunglasses"
-          >
-            Sunglasses
-            <span>
-              <ChevronRight className="h-4 w-4" />
-            </span>
-          </Link>
-        </AccordionContent> */}
       </Accordion>
     </div>
   );

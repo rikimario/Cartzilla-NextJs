@@ -12,7 +12,7 @@ export default async function Login() {
   const t = await getTranslations("Login");
   const supabase = await createClient();
 
-  const { data, error } = await supabase.auth.getUser();
+  const { data } = await supabase.auth.getUser();
 
   if (data?.user) {
     redirect("/");

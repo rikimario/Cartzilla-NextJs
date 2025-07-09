@@ -2,13 +2,13 @@ import { Card, CardContent } from "../ui/card";
 import { Heart, Star } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { handleFavoriteBtn } from "@/app/[locale]/utils/handleFavoriteBtn";
+import { useFavoriteButton } from "@/app/[locale]/utils/handleFavoriteBtn";
 import { Product } from "@/lib/types";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 
 export default function SpecialOffersCard({ product }: { product: Product }) {
-  const { isFavorite, toggleFavorite } = handleFavoriteBtn({ product });
+  const { isFavorite, toggleFavorite } = useFavoriteButton({ product });
   const [isHeartVisible, setIsHeartVisible] = useState(false);
   const t = useTranslations("Home");
   return (

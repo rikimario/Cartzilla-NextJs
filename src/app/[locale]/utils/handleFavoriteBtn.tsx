@@ -5,7 +5,7 @@ import { getUser } from "../../../../utils/supabase/actions";
 import { createClient } from "../../../../utils/supabase/client";
 import { Product } from "@/lib/types";
 
-export function handleFavoriteBtn({ product }: { product: Product | null }) {
+export function useFavoriteButton({ product }: { product: Product | null }) {
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
   const toggleFavorite = async () => {
     try {

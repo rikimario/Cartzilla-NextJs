@@ -1,4 +1,4 @@
-import { handleFavoriteBtn } from "@/app/[locale]/utils/handleFavoriteBtn";
+import { useFavoriteButton } from "@/app/[locale]/utils/handleFavoriteBtn";
 import { Card, CardContent } from "@/components/ui/card";
 import { Product } from "@/lib/types";
 import { Heart, Star } from "lucide-react";
@@ -9,7 +9,7 @@ import React, { useState } from "react";
 
 export default function ProductCard({ product }: { product: Product }) {
   const t = useTranslations("Products");
-  const { isFavorite, toggleFavorite } = handleFavoriteBtn({ product });
+  const { isFavorite, toggleFavorite } = useFavoriteButton({ product });
   const [isHeartVisible, setIsHeartVisible] = useState(false);
 
   // const slug = product.title.toLowerCase().replace(/\s+/g, "-");

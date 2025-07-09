@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 
-export function footerLinks() {
-  const t = useTranslations("FooterLinks");
+export function footerLinks(t: (key: string) => string) {
+  // const t = useTranslations("FooterLinks");
   return [
     {
       name: t("mansTShirts"),

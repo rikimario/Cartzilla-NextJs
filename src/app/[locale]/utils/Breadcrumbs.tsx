@@ -19,12 +19,8 @@ export default function Breadcrumbs() {
 
   const breadcrumbs = segments.map((segment, index) => {
     const href = "/" + segments.slice(0, index + 1).join("/");
-    // const isNumeric = /^\d+$/.test(segment);
 
     const label = decodeURIComponent(segment).replace(/-/g, " ");
-    // const label = isNumeric
-    //   ? segment
-    //   : decodeURIComponent(segment).replace(/-/g, " ");
 
     return {
       label: t(segment) || label.charAt(0).toUpperCase() + label.slice(1),

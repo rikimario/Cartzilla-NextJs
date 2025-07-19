@@ -4,7 +4,7 @@ Live demo: [cartzilla-flame.vercel.app](https://cartzilla-flame.vercel.app)
 
 ---
 
-![Homepage Screenshot](./home-screenshot.png)
+![Homepage Screenshot](/public/home-screenshot.png)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
@@ -16,7 +16,7 @@ Cartzilla‑NextJs is a modern e-commerce frontend template built using Next.js.
 
 ## Features
 
-![Categories Screenshot](./category-screenshot.png)
+![Categories Screenshot](/public/category-screenshot.png)
 
 - 🚀 Lightning-fast performance with Next.js
 - 📱 Mobile-responsive layout
@@ -63,7 +63,7 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 ## Product Page Preview
 
-![Men's Category Screenshot](./product-screenshot.png)
+![Men's Category Screenshot](/public/product-screenshot.png)
 
 ---
 

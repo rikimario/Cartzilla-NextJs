@@ -39,7 +39,7 @@ export default function Page() {
     };
 
     fetchProducts();
-  }, [category]);
+  }, []);
 
   const handleSortedProductsChange = (newSortOrder: SortOrder) => {
     setSortOrder(newSortOrder);

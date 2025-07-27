@@ -6,6 +6,7 @@ import MobileCategoriesAccordion from "./MobileCategoriesAccordion";
 import MobileNavLinks from "./MobileNavLinks";
 import MobileFooter from "./MobileFooter";
 import { useTranslations } from "next-intl";
+import { SheetClose } from "../ui/sheet";
 
 export default function DDMobileNav() {
   const t = useTranslations("Navigation");
@@ -22,18 +23,20 @@ export default function DDMobileNav() {
                 {t("categories")}
               </AccordionTrigger>
               <AccordionContent className="text-start text-sm p-4 pr-8  border border-gray-100 mt-2">
-                <Link
-                  className="relative flex items-center gap-2"
-                  href="/all-categories"
-                >
-                  <span>
-                    <LayoutGrid className="h-5 w-5 text-gray-400" />
-                  </span>
-                  {t("allCategories")}
-                  <span className="absolute right-0">
-                    <ChevronRight className=" h-4 w-4" />
-                  </span>
-                </Link>
+                <SheetClose asChild>
+                  <Link
+                    className="relative flex items-center gap-2"
+                    href="/categories"
+                  >
+                    <span>
+                      <LayoutGrid className="h-5 w-5 text-gray-400" />
+                    </span>
+                    {t("allCategories")}
+                    <span className="absolute right-0">
+                      <ChevronRight className=" h-4 w-4" />
+                    </span>
+                  </Link>
+                </SheetClose>
                 <MobileCategoriesAccordion />
               </AccordionContent>
               <MobileNavLinks />

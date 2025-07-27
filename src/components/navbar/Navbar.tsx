@@ -6,6 +6,7 @@ import MobileSearch from "./MobileSearch";
 import DesktopNav from "./DesktopNav";
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetDescription,
   SheetHeader,

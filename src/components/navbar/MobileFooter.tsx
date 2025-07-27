@@ -3,6 +3,7 @@ import { createClient } from "../../../utils/supabase/server";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { headers } from "next/headers";
+import { SheetClose } from "../ui/sheet";
 
 const tabTranslations: Record<string, Record<string, string>> = {
   en: { orders: "Orders", wishlist: "Wishlist" },
@@ -24,30 +25,36 @@ export default async function MobileFooter() {
   return (
     <div className="absolute flex bottom-0 left-0 right-0 bg-inherit py-6 border-t-2 border-gray-200 items-center justify-center gap-12">
       {data.user ? (
-        <Link href={`/profile?tab=${profileLinks.orders}`}>
-          <button className="flex items-center justify-center w-full p-2 gap-2">
-            {t("account")}
-          </button>
-        </Link>
+        <SheetClose asChild>
+          <Link href={`/profile?tab=${profileLinks.orders}`}>
+            <button className="flex items-center justify-center w-full p-2 gap-2">
+              {t("account")}
+            </button>
+          </Link>
+        </SheetClose>
       ) : (
-        <Link href={"/login"}>
-          <span className="flex items-center justify-center w-full border-r-2 border-x-gray-200 p-2 gap-2">
-            <span>
-              <User className="h-6 w-6" strokeWidth={1} />
+        <SheetClose asChild>
+          <Link href={"/login"}>
+            <span className="flex items-center justify-center w-full border-r-2 border-x-gray-200 p-2 gap-2">
+              <span>
+                <User className="h-6 w-6" strokeWidth={1} />
+              </span>
+              {t("account")}
             </span>
-            {t("account")}
-          </span>
-        </Link>
+          </Link>
+        </SheetClose>
       )}
-      <Link
-        href={`/profile?tab=${profileLinks.orders}`}
-        className="flex items-center justify-center p-2 gap-2"
-      >
-        <span>
-          <Heart className="h-6 w-6" strokeWidth={1} />
-        </span>
-        {t("wishlist")}
-      </Link>
+      <SheetClose asChild>
+        <Link
+          href={`/profile?tab=${profileLinks.orders}`}
+          className="flex items-center justify-center p-2 gap-2"
+        >
+          <span>
+            <Heart className="h-6 w-6" strokeWidth={1} />
+          </span>
+          {t("wishlist")}
+        </Link>
+      </SheetClose>
     </div>
   );
 }

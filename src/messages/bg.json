@@ -572,5 +572,7 @@
   "all-sunglasses": "Слънчеви очила",
   "about": "За нас",
   "contact": "Контакт",
-  "terms-and-conditions": "Условия за ползване"
+  "terms-and-conditions": "Условия за ползване",
+  "login": "Вход",
+  "register": "Регистрация"
 }

@@ -573,5 +573,7 @@
   "all-sunglasses": "Sunglasses",
   "about": "About",
   "contact": "Contact",
-  "terms-and-conditions": "Terms and conditions"
+  "terms-and-conditions": "Terms and conditions",
+  "login": "Login",
+  "register": "Register"
 }

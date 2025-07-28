@@ -25,7 +25,7 @@ export default function MobileCategoriesAccordion() {
             </AccordionTrigger>
             <AccordionContent className="text-gray-600 border dark:text-gray-300 border-gray-200 rounded-xl">
               {link.sublinks.map((sublink) => (
-                <SheetClose asChild>
+                <SheetClose key={sublink.name} asChild>
                   <Link
                     key={sublink.name}
                     className="flex items-center justify-between gap-2 p-2"

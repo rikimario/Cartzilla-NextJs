@@ -26,7 +26,7 @@
     "allCategories": "Всички категории",
     "bestSellers": "Най-продавани",
     "todayDeals": "Оферти на деня",
-    "newArrivals": "Нови пристигания",
+    "newArrivals": "Нови продукти",
     "about": "За нас",
     "contact": "Контакти",
     "men": "Мъже",
@@ -574,5 +574,8 @@
   "contact": "Контакт",
   "terms-and-conditions": "Условия за ползване",
   "login": "Вход",
-  "register": "Регистрация"
+  "register": "Регистрация",
+  "best-sellers": "Най-продавани",
+  "today-deals": "Оферти на деня",
+  "new-arrivals": "Нови продукти"
 }

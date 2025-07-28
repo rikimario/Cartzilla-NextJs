@@ -18,6 +18,15 @@ import { Filter } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useTranslations } from "next-intl";
 
+const category: string[] = [
+  "womens-shirts",
+  "womens-shoes",
+  "womens-watches",
+  "womens-dresses",
+  "womens-jewellery",
+  "tops",
+];
+
 export default function Page() {
   const t = useTranslations("Products");
   const [products, setProducts] = useState<Product[]>([]);
@@ -26,15 +35,6 @@ export default function Page() {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [value, setValue] = useState<[number, number]>([0, 40000]);
-
-  const category: string[] = [
-    "womens-shirts",
-    "womens-shoes",
-    "womens-watches",
-    "womens-dresses",
-    "womens-jewellery",
-    "tops",
-  ];
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -46,7 +46,7 @@ export default function Page() {
     };
 
     fetchProducts();
-  }, []);
+  }, [category]);
 
   const handleSortedProductsChange = (newSortOrder: SortOrder) => {
     setSortOrder(newSortOrder);
